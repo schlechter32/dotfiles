@@ -1,14 +1,14 @@
 # Set the GPG_TTY to be the same as the TTY, either via the env var
 # or via the tty command.
-if [ -n "$TTY" ]; then
-  export GPG_TTY=$(tty)
-else
-  export GPG_TTY="$TTY"
-fi
-
-# SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpgconf --launch gpg-agent
+# if [ -n "$TTY" ]; then
+#   export GPG_TTY=$(tty)
+# else
+#   export GPG_TTY="$TTY"
+# fi
+#
+# # SSH_AUTH_SOCK set to GPG to enable using gpgagent as the ssh agent.
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# gpgconf --launch gpg-agent
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

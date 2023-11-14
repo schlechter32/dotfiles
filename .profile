@@ -8,14 +8,13 @@ export EDITOR="nvim"
 export SHELL="zsh"
 
 export GOPATH="$HOME/.go"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
 # export PATH="$PATH:/opt/android-sdk/platform-tools"
 # export PATH="$PATH:/opt/android-sdk/build-tools"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 # export KUBECONFIG="$HOME/.kube/config"
-
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 DO_VALAR() {
   pass show tokens/digitalocean/valar
 }
@@ -62,3 +61,4 @@ if [ -f /opt/asdf-vm/asdf.sh ]; then
 
   # Insert autocompletion setup for your shell here.
 fi
+. "$HOME/.cargo/env"
