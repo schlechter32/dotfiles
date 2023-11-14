@@ -99,6 +99,7 @@ local plugins = {
         "black",
         "debugpy",
         "julia-lsp",
+        "typescript-language-server"
       },
     },
   },
