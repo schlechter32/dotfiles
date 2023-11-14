@@ -19,6 +19,8 @@ fi
 
 export PATH="/usr/local/bin:/usr/bin"
 
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 autoload -Uz compinit && compinit
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -89,6 +91,6 @@ bindkey "^N" down-line-or-beginning-search
 # Capslock command
 alias capslock="sudo killall -USR1 caps2esc"
 
-if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-    export MOZ_ENABLE_WAYLAND=1
-fi
+# if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+#     export MOZ_ENABLE_WAYLAND=1
+# fi

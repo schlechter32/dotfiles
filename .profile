@@ -14,7 +14,24 @@ export PATH="$GOPATH/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
 # export KUBECONFIG="$HOME/.kube/config"
+platform='unknown'
+unamestr=$(uname)
+if [[ "$unamestr" == 'Linux' ]]; then
+   platform='linux'
+elif [[ "$unamestr" == 'Darwin' ]]; then
+   platform='Darwin'
+fi
+# if [[ $platform == 'linux' ]]; then
+#    alias ls='ls --color=auto'
+# elif [[ $platform == 'freebsd' ]]; then
+#    alias ls='ls -G'
+# fi
+if [[ $platform == 'linux' ]]; then
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+if [[ $platform == 'Darwin' ]]; then
+export PATH="/opt/homebrew/bin:$PATH"
+fi
 DO_VALAR() {
   pass show tokens/digitalocean/valar
 }
@@ -61,4 +78,8 @@ if [ -f /opt/asdf-vm/asdf.sh ]; then
 
   # Insert autocompletion setup for your shell here.
 fi
+
+# if [[ $platform == 'linux' ]]; then
+if [[ $platform == 'linux' ]]; then
 . "$HOME/.cargo/env"
+fi
