@@ -28,7 +28,7 @@ fi
 # fi
 if [[ $platform == 'linux' ]]; then
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-eval "$(/home/homebrew/bin/brew shellenv)"
+export PATH="~/homebrew/bin:$PATH"
 fi
 if [[ $platform == 'Darwin' ]]; then
 export PATH="/opt/homebrew/bin:$PATH"
