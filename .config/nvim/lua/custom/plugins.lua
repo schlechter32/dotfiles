@@ -12,10 +12,11 @@ local plugins = {
   -- end
   --
   --   },
-  { 
-    "tope/vim-fugitive",
-    opts = {}
-
+  {
+    "tpope/vim-fugitive",
+    opts = {},
+    lazy = false,
+    config = function(_, _) end,
   },
   {
     "mfussenegger/nvim-dap-python",
@@ -96,6 +97,7 @@ local plugins = {
         "codelldb",
         "rust-analyzer",
         "luaformatter",
+        "lua-language-server",
         "luau-lsp",
         "pyright",
         "mypy",
@@ -103,14 +105,14 @@ local plugins = {
         "black",
         "debugpy",
         "julia-lsp",
-        "typescript-language-server"
+        "typescript-language-server",
       },
     },
   },
   {
-    'simrat39/symbols-outline.nvim',
-    lazy=false,
-    opts={}
+    "simrat39/symbols-outline.nvim",
+    lazy = false,
+    opts = {},
   },
 }
 return plugins
