@@ -13,6 +13,16 @@ local plugins = {
   --
   --   },
   {
+    "ThePrimeagen/harpoon",
+    lazy = false,
+    config = function(_, _)
+      require "custom.configs.harpoonconf"
+    end,
+  },
+
+  { "lervag/vimtex", opts = {}, config = function(_, _) end },
+  { "mbbill/undotree", opts = {}, lazy = false, config = function(_, _) end },
+  {
     "tpope/vim-fugitive",
     opts = {},
     lazy = false,

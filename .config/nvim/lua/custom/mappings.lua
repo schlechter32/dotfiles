@@ -1,4 +1,7 @@
+--local mark = require "harpoon.mark"
+--local ui = require "harpoon.ui"
 local M = {}
+
 M.dap = {
 
   plugin = true,
@@ -35,9 +38,9 @@ M.general = {
     --    telescope.builtin.grep_string({ search = vim.fn.input("Grep > ") })
     --end)
 
+    ["<leader>w"] = { "<cmd> w <CR>", "Save file" },
     vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv"),
     vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv"),
-    ["<leader>w"] = { "<cmd> w <CR>", "Save file" },
   },
 }
 -- M.comment = {
