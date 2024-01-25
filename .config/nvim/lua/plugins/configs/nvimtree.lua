@@ -1,4 +1,5 @@
 local options = {
+ ensure_installed = { "help", "javascript", "typescript", "c", "lua", "rust" }, 
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" },
