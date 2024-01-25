@@ -10,6 +10,7 @@ end
 -- Settings
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
+	{ family = "Monaspace Neon Var", scale = 1.2 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
@@ -129,5 +130,5 @@ wezterm.on("update-right-status", function(window, pane)
 		{ Text = " |" },
 	}))
 end)
-
+config.default_prog = { "zsh" }
 return config

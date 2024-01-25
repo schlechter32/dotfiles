@@ -27,10 +27,11 @@ fi
 #    alias ls='ls -G'
 # fi
 if [[ $platform == 'linux' ]]; then
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-export PATH="~/homebrew/bin:$PATH"
+#eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+export PATH="/home/$USER/homebrew/bin:$PATH"
 mkdir -p ~/global
 export PATH=~/global:$PATH
+export PATH=~/global/npm/node-v20.11.0-linux-x64/bin:$PATH
 fi
 if [[ $platform == 'Darwin' ]]; then
 export PATH="/opt/homebrew/bin:$PATH"
@@ -84,6 +85,6 @@ if [ -f /opt/asdf-vm/asdf.sh ]; then
 fi
 
 # if [[ $platform == 'linux' ]]; then
-if [[ $platform == 'linux' ]]; then
-. "$HOME/.cargo/env"
-fi
+#if [[ $platform == 'linux' ]]; then
+#. "$HOME/.cargo/env"
+#fi

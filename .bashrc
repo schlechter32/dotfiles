@@ -111,7 +111,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-# . "$HOME/.cargo/env"
 # export PATH="$PATH:~/.local/bin"
 #export PATH="$PATH:~/global"
+#source .profile
 zsh
