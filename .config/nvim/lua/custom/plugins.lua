@@ -12,7 +12,11 @@ local plugins = {
   -- end
   --
   --   },
-  -- { "tope/vim-fugitive" },
+  { 
+    "tope/vim-fugitive",
+    opts = {}
+
+  },
   {
     "mfussenegger/nvim-dap-python",
     ft = "python",
@@ -102,6 +106,11 @@ local plugins = {
         "typescript-language-server"
       },
     },
+  },
+  {
+    'simrat39/symbols-outline.nvim',
+    lazy=false,
+    opts={}
   },
 }
 return plugins

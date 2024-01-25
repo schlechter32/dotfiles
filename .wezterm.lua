@@ -10,7 +10,7 @@ end
 -- Settings
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
-	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
+	{ family = "Monaspace Neon", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
 config.window_background_opacity = 0.9
