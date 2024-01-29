@@ -9,10 +9,12 @@ export SHELL="zsh"
 
 export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 # export PATH="$PATH:/opt/android-sdk/platform-tools"
 # export PATH="$PATH:/opt/android-sdk/build-tools"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/usr/local/sbin"
+export PATH="$PATH:$HOME/nbin"
 # export KUBECONFIG="$HOME/.kube/config"
 platform='unknown'
 unamestr=$(uname)
