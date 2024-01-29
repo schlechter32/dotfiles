@@ -20,7 +20,13 @@ local plugins = {
     end,
   },
 
-  { "lervag/vimtex", opts = {}, config = function(_, _) end },
+  {
+    "lervag/vimtex",
+    ft = "tex",
+    config = function(_, _)
+      require "custom.configs.vimtexconf"
+    end,
+  },
   { "mbbill/undotree", opts = {}, lazy = false, config = function(_, _) end },
   {
     "tpope/vim-fugitive",
@@ -122,7 +128,10 @@ local plugins = {
   {
     "simrat39/symbols-outline.nvim",
     lazy = false,
-    opts = {},
+    opts = {
+
+      vim.keymap.set({ "n", "v" }, "<leader>s", "<CMD>SymbolsOutline<CR>"),
+    },
   },
 }
 return plugins

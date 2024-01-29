@@ -23,6 +23,7 @@ M.general = {
     ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "window right" },
     ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "window down" },
     ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "window up" },
+    --Mappings for vimtex
     --Mappings for movement on buffer
     vim.keymap.set("n", "<C-d>", "<C-d>zz"),
 
