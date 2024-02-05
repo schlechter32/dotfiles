@@ -114,5 +114,5 @@ fi
 # export PATH="$PATH:~/.local/bin"
 #export PATH="$PATH:~/global"
 #source .profile
-zsh
-. "$HOME/.cargo/env"
+# zsh
+# . "$HOME/.cargo/env"

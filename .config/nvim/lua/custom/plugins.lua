@@ -12,6 +12,17 @@ local plugins = {
   -- end
   --
   --   },
+  --   baad
+  -- {  'lewis6991/spellsitter.nvim',
+  --     lazy=false,
+  --   config=function (_,_)
+  --     require("spellsitter").setup(){
+  --       enabled= true,
+  --       debug= true
+  --     }
+  --   end
+  --     
+  -- },
   {
     "ThePrimeagen/harpoon",
     lazy = false,
