@@ -24,6 +24,33 @@ local plugins = {
   --     
   -- },
   {
+{
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    -- tag = "*",
+    -- lazy=false,o
+    ft =  'norg',
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+        conceallevel=2
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+                papers = "~/phd/papers"
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  },
+  {
     "ThePrimeagen/harpoon",
     lazy = false,
     config = function(_, _)

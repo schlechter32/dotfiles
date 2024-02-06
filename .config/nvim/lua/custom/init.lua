@@ -4,4 +4,5 @@ vim.opt.colorcolumn = "80"
 vim.cmd("setlocal spell spelllang=en,de")
 print(vim.spelllang)
 vim.opt.spell = true
+vim.cmd("set conceallevel=2")
 -- test
