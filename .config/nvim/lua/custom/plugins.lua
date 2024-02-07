@@ -28,7 +28,7 @@ local plugins = {
     "nvim-neorg/neorg",
     build = ":Neorg sync-parsers",
     -- tag = "*",
-    -- lazy=false,o
+    lazy=false,
     ft =  'norg',
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
@@ -37,6 +37,8 @@ local plugins = {
         load = {
           ["core.defaults"] = {}, -- Loads default behaviour
           ["core.concealer"] = {}, -- Adds pretty icons to your documents
+
+          ["core.export"] = {}, -- Loads default behaviour
           ["core.dirman"] = { -- Manages Neorg workspaces
             config = {
               workspaces = {

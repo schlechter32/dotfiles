@@ -116,3 +116,4 @@ fi
 #source .profile
 # zsh
 # . "$HOME/.cargo/env"
+source ~/.profile
