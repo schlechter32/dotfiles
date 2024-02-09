@@ -1,0 +1,181 @@
+ls
+cd
+cd dotfiles/
+cd
+:q
+v .tmux.conf
+source .profil
+source .profile
+cd
+source .profile
+nvim
+nvim .tmux.conf
+:q
+exit
+v .tmux.conf
+vim
+nvim
+cat .profile
+cd .config/
+ls
+cd nushell/
+ls
+nvim env.nu
+nvim config.nu
+scope aliases 
+help aliases 
+exit
+scope aliases 
+help aliases 
+v
+exit
+v
+alias v=nvim
+exit
+v
+clear
+exit
+cat .profile
+cd
+cat .profile
+exit
+nvim .
+exit
+c
+s
+ls
+ll
+ls -l
+:q
+exit
+tmux list-sessions
+ls
+cd phd/
+ls
+cat test.norg
+rm test.norg
+v .
+:q
+exit
+tmux new-session -t phd
+exit
+ls
+v ~/.config/nushell/
+v ~/.config/nushell/config.nu
+exit
+curl -fsSL https://install.julialang.org | sh
+cd
+curl -fsSL https://install.julialang.org | sh
+source .profile
+exit
+ls
+cd
+ls -a
+cd .julia/ls
+cd .julia | ls
+la
+v ~/.config/nushell/config.nu
+nvim ~/.config/nushell/config.nu
+exit
+la
+nvim ~/.config/nushell/config.nu
+exit
+la
+nvim ~/.config/nushell/config.nu
+exit
+la
+cd
+la
+cd .julia
+la
+cd juliaup/
+la
+cd
+la
+la | rg julia
+la | rg notes
+ls
+cat .bashrc
+julia
+exit
+julia
+cd
+cat .profile
+c
+cd
+touch zoomlink
+v zoomlink
+setxkbmap eu
+lazygit
+la
+cd
+la
+rm .git-credentials
+fzf index.org
+fzf
+ssh cnode01
+v
+mutt 
+cd
+cd Mail/
+mutt .
+exit
+tmux attach -t notes
+tmux new-session -t phd
+cd ~/notes/
+nvim .
+tmux new-session -t notes
+exit
+tmux list-sessions
+exit
+ifconfig
+cat /sys/class/power_supply/BAT0/uevent
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY=
+cat /sys/class/power_supply/BAT0/uevent
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY=
+cd
+v .config/nushell/config.nu
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY=
+v .config/nushell/config.nu
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY=
+exit
+ch
+exit
+ch
+tmux list-sessions
+cd notes/
+cd
+ls
+bat .profile
+exit
+ls
+v .config/nushell/config.nu
+exit
+cd
+cd notes/
+ch
+exit
+v index.norg
+lazygit
+tmux new-session -t notes
+cd
+cd phd/
+ls
+v index.norg
+v .config/nvim/
+cd .config/nvim/
+v papers/index.norg
+v `papers/Deep-RMSA A Deep-Reinforcement-Learning Routing, Modulation and Spectrum Assignment Agent for Elastic Optical Networks.norg`
+cd phd/
+setxkbmap eu
+nvim .
+lazygit
+cd ~/notes/
+lazygit
+cd
+ls
+mkdir dotfiles_ikr
+cp .profile dotfiles_ikr/
+cp .bashrc dotfiles_ikr/
+cp -r .config/nvim/ dotfiles_ikr/
+cp -r .config/kitty/ dotfiles_ikr/
