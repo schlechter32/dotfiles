@@ -96,10 +96,12 @@ return {
 				},
 				marksman = {},
 				-- nil_ls = {},
-				-- ruff_lsp = {}
+				-- ruff_lsp = {},
 				-- ocamllsp = {},
 				-- prismals = {},
 				pyright = {},
+				mypy = {},
+				black = {},
 				-- solidity = {},
 				-- sqlls = {},
 				-- tailwindcss = {
@@ -179,6 +181,8 @@ return {
 					formatting.prettierd,
 					formatting.stylua,
 					-- formatting.latex_indent,
+					formatting.mypy,
+					formatting.black,
 					formatting.ocamlformat,
 
 					-- diagnostics
