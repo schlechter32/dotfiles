@@ -1,4 +1,4 @@
-$env.PATH = ($env.PATH | split row (char esep) | prepend "/u/home/wima/nclshrnk/.config/carapace/bin")
+$env.PATH = ($env.PATH | split row (char esep) | prepend "/home/nhtest/.config/carapace/bin")
 
 def --env get-env [name] { $env | get $name }
 def --env set-env [name, value] { load-env { $name: $value } }

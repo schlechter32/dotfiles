@@ -2,6 +2,9 @@
 export PATH="$PATH:$HOME/.local/bin"
 
 export PATH="$PATH:$HOME/execs"
+export PATH="$PATH:$HOME/homebrew/bin"
+export PATH="$PATH:$HOME/homebrew/sbin"
+
 export PATH="$PATH:$HOME/execs/node-v20.11.0-linux-x64/bin"
 # export PATH="$PATH:$HOME/execs"
 NPM_PACKAGES="${HOME}/.npm-packages" 
