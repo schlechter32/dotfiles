@@ -5,9 +5,9 @@ mkdir -p  ~/homebrew && curl -L https://github.com/Homebrew/brew/tarball/master 
 git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
 export PATH="$PATH:home/$USER/homebrew/bin"
 #git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-~/homebrew/bin/brew install nvim luarocks ripgrep stylua lazygit ccls tmux
-rm -r ~/.config/nvim/custom
-~/homebrew/bin/brew install zsh luarocks ripgrep stylua lazygit ccls tmux mc mosh kitty nu
+# ~/homebrew/bin/brew install nvim luarocks ripgrep stylua lazygit ccls tmux
+# rm -r ~/.config/nvim/custom
+~/homebrew/bin/brew install zsh luarocks ripgrep stylua lazygit ccls tmux mc mosh kitty nu carapace bat fzf
 ~/homebrew/bin/brew install stow
 wget https://nodejs.org/dist/v20.11.0/node-v20.11.0-linux-x64.tar.xz
 mkdir -p ~/global/npm
