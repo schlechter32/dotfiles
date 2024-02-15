@@ -179,3 +179,957 @@ cp .profile dotfiles_ikr/
 cp .bashrc dotfiles_ikr/
 cp -r .config/nvim/ dotfiles_ikr/
 cp -r .config/kitty/ dotfiles_ikr/
+cp -r .config/nushell/ dotfiles_ikr/
+ls
+cp CaskaydiaCoveNerdFontMono-Bold.ttf CaskaydiaCoveNerdFontMono-BoldItalic.ttf CaskaydiaCoveNerdFontMono-Italic.ttf CaskaydiaCoveNerdFontMono-Regular.ttf dotfiles_ikr/
+ls
+cd dotfiles_ikr/
+ls
+cd
+cd .config/
+ls
+mc
+cp mc ~/dotfiles_ikr/
+cp mc ~/dotfiles_ikr/ -r
+ls
+cd
+cp .tmux.conf dotfiles_ikr/
+ls
+cd dotfiles_ikr/
+ls
+mkdir .config
+m kitty/ mc/ nushell/ nvim/ .config/
+mv kitty/ mc/ nushell/ nvim/ .config/
+mv kitty/ .config/
+mv mc .config/
+mv nushell/ .config/
+mv nvim/ .config/
+ls
+cd
+la
+cd .config/
+ls
+la
+cd
+cd dotfiles_ikr/
+git init
+git remote add origin https://github.tik.uni-stuttgart.de/ac130185/dotfiles_ikr.git<\n>git branch -M main<\n>git push -u origin main
+git remote add origin https://github.tik.uni-stuttgart.de/ac130185/dotfiles_ikr.git
+git add .
+git commit -m "initial"
+git remote add origin https://github.tik.uni-stuttgart.de/ac130185/dotfiles_ikr.git<\n>git branch -M main<\n>git push -u origin main
+git branch -M main
+git push -u origin main
+cd
+ls
+tmux list-sessions
+cd notes/
+v index.norg
+v .
+v index.norg
+tmux new-session -t notes
+cd
+cd .config/nvim/
+v index.norg
+mv Pictures/Screenshots/Screenshot_2024-02-09_11-13-58.png  ~/notes/
+cd notes/
+mkdir pics
+mv Screenshot_2024-02-09_11-13-58.png pics/
+exit
+v index.norg
+cd
+cd Mail/
+ls
+fzf
+ls
+cd inbox/
+ls
+cd cur/
+ls
+cat 1706787475.V19I139bb5ccM743406.netsrv1:2,S
+:q
+rg -l Battery
+v .
+cat rg -l Battery
+cat:::rg -l Battery
+v .
+mutt
+fzf -h
+cd
+cd Mail/
+fzf Battery
+rg -l Battery
+tail
+tail -f . | rg Battery
+tail -f  rg Battery
+tail -f ~/Mail rg Battery
+tail -f ~/Mail | rg Battery
+tail -f ~/Mail | rg -l Battery
+rg -l Battery
+cat rg -l Battery
+rg -l Battery | cat
+cat -f | rg -l Battery 
+awk 
+tail -f . | grep --line-buffered "Battery" | awk '{print FILENAME ":" $0}' | less -R
+while inotifywait -q -e modify .; do<\n>    grep "Battery" .<\n>done<\n>
+watch
+watch -n 1 'rg Battery'
+watch -h
+watch -n 1 'grep -r "Battery" . | cut -d: -f1 | xargs cat'<\n>
+watch  'grep -r "Battery" . | cut -d: -f1 | xargs cat'<\n>
+rg -l Battery | xargs cat
+v .
+ch
+mutt .
+mutt -f .
+cd inbox/
+mutt -f .
+exit
+cd
+cd phd/
+chromium --app=https://outlook.live.com/calendar/0/view/week
+v ~/.config/nushell/config.nu
+exit
+cal
+la
+cd
+la
+la | rg cred
+cat .git-credentials
+rm .git-credentials
+la | rg cred
+ls
+cd notes/
+lazygit
+cd ..
+cd phd/
+lazygit
+cd
+cd dotfiles_ikr/
+tmux list-sessions
+cd notes/
+setxkbmap eu
+tmux new-session -t notes
+cd ~/.config/nvim/
+v .
+cd
+mkdir know
+cd know/
+v .
+setxkbmap eu
+setxkbmap de
+exit
+cat index.norg
+setxkbmap eu
+cd
+bat .profile
+cd ressources/
+v .
+okular paper/rl/Deep-RMSA_A_Deep-Reinforcement-Learning_Routing_Modulation_and_Spectrum_Assignment_Agent_for_Elastic_Optical_Networks.pdf
+tmux attach -t notes
+ls
+cd
+cd source/softwareinfrastructureideas/softwareInfrastructPres/
+v .
+cd source/softwareinfrastructureideas/
+ls
+cd softwareInfrastructPres/
+ls
+v,
+v .
+pip
+pip show tensorboard
+pip show tensorflow
+docker
+ssh cnode01
+venv
+python
+python3 -m venv
+python3 -m venv test
+ls
+rm -rf test/
+cd
+cd phd/papers/
+git instaweb
+git instaweb --httpd=webrick
+cd
+cd notes/
+la
+git instaweb --httpd=webrick
+cd .git/
+git instaweb --httpd=webrick
+git instaweb 
+git instaweb --httpd
+httpd
+ping
+ping 8.8.8.8
+setxkbmap de
+setxkbmap eu
+cd /
+fzf unison
+fzf
+cat /usr/local/share/applications/Unison/unisonMailSync.desktop
+cd /usr/local/unison/bin/
+ls
+./unison
+./unison maulsync
+./unison mailsync
+lazygit 
+display --h
+cd ..
+v index.norg
+tmux attach -t notes
+v index.norg
+cd
+ls
+cd dotfiles_ikr/
+cd .config/nvim/
+v .
+ls
+la
+ls
+la
+cd
+la
+more .profile
+c
+cat .profile
+luatex 
+luatex swPres.aux
+luatex swPres.tex
+git instaweb --httpd
+cd notes/
+git instaweb --httpd
+git instaweb
+git instaweb --httpd=webrick
+git status
+cat OPL_Start.norg
+git diff OPL_Start.norg
+lazygit 
+cd
+rm .git-credentials
+cd notes
+git push
+cd
+ls
+la
+ssh cnode01
+cd notes/
+lazygit 
+exit
+cd
+cd Mail/
+v .
+v index.norg
+v index.norg
+cd ..
+lazygit 
+cd
+cd notes/
+lazygit 
+cd
+la
+rm .git-credentials
+git config --global credential.helper cache
+cd notes/
+git pull
+git config --global credential.helper cache --timeout=3600
+la | rg cred
+exit
+exit
+exit
+tmux new-session -t swpres
+tmux list-sessions
+tmux attach -t swPres
+exit
+tmux attach -t swpres
+tmux list-sessions
+exit
+setxkbmap eu
+setxkbmap de
+cd notes/
+cd .config/
+cd kitty/
+ls
+cd .config/
+cd kitty/
+ls
+rm macchiato.conf
+cd
+cd Downloads/
+ls
+cd
+fzf
+cd ..
+cd
+fzf
+cd source/
+ls
+cd themes/
+ls
+git clone https://github.com/catppuccin/kitty.git
+cd kitty/
+ls
+cd themes/
+ls
+cp macchiato.conf ~/.config/kitty/
+cd .config/
+cd nvim/
+v index.norg
+cd
+cd Downloads/
+cd MonoLisa-Trial-2.008-ttf/
+cat README.md
+cd
+cd .config/kitty/
+v kitty.conf
+exit
+v kitty.conf
+exit
+cd notes/
+cd Downloads/
+ls
+cd MonoLisa-script-2.012/
+ls
+v index.norg
+exit
+v .
+exit
+cd .config/nvim/
+v .
+cd ..
+mkdir nvimv2
+cd nvimv2/
+cd
+v .tmux.conf
+exit
+tmux
+exit
+v .tmux.conf
+cd
+cd .config/nvimv2/
+cd source/
+mkdir configs
+cd configs/
+git clone https://github.com/dmmulroy/kickstart.nix.git
+cd kickstart.nix/
+cd config/
+ls
+cd nvim/
+ls
+cp -r after/ ~/.config/nvimv2/
+cp init.lua ~/.config/nvimv2/
+cp -r lua/ ~/.config/nvimv2/
+ls
+cd ..
+mv nvim nvimikr.bak
+mv nvimv2 nvim
+cd ..
+cd nvim/
+cat | fzf mappings
+exit
+tmux list-sessions
+tmux attach -t 0
+tmux kill-session -t 0
+cd source/configs/
+ls
+cd kickstart.nix/
+ls
+cd config/nvim/
+fzf
+cat lua/user/keymaps.lua
+k
+v .
+cd nvimikr.bak/
+ch
+cd notes/
+v index.norg
+cd
+cd .config/nvim/
+setxkbmap eu
+cd
+cd .config/kitty/
+v kitty.conf
+cd
+cd .config/
+cd
+cd .config/kitty/
+kj
+exit
+cd .config/nvimikr.bak/
+v .
+ch
+exit
+v .
+v kitty.conf
+cd
+cd phd/papers/
+v index.norg
+v  `Deep-RMSA A Deep-Reinforcement-Learning Routing, Modulation and Spectrum Assignment Agent for Elastic Optical Networks.norg`
+v .
+cd
+cd source/softwareinfrastructureideas/
+cd softwareInfrastructPres/
+cd .config/
+cp -r nvimikr.bak/spell nvim/
+v .
+cd
+v .
+cd
+ch
+exit
+v .
+cd .config/nvim/
+v .
+v .
+exit
+cd
+cd execs/
+ls
+mkdir npmtar
+cd npmtar/
+wget https://nodejs.org/dist/v20.11.0/node-v20.11.0-linux-x64.tar.xz
+tar -xJvf node-v20.11.0-linux-x64.tar.xz -C .
+ls
+cd node-v20.11.0-linux-x64/
+ls
+cd bin/
+ls
+./npm
+cd
+cat .profile
+export 
+exit
+v .npmrc
+npm
+cd .config/nvim/
+v .
+v
+cd source/softwareinfrastructureideas/softwareInfrastructPres/
+cargo-binstall stylua
+v swPres.tex
+cd ..
+cd
+cd source/
+cd
+cd .config/
+ls
+cd nvimikr.bak/
+julia
+ls
+cd testproject/
+ls
+v .
+ls
+exit
+tmux 
+exit
+tmux
+tmux new-session -t juliatest
+julia
+cd
+cd .julia/
+ls
+mkdir config
+cd config/
+v startup.jl
+cd
+cd source/testproject/
+julia
+julia --testproject
+julia --h
+julia --help
+julia .
+cd
+cd .julia/config/
+v startup.jl
+julia
+v startup.jl
+cd
+cd source/testproject/
+julia testproject
+julia .
+julia
+v  ~/.julia/config/startup.jl
+cd
+cd source/testproject/
+julia .
+julia
+cd
+cp ~/.config/nvim/ ~/dotfiles/ -r
+cd dotfiles/
+ls
+mv nvim/ nvim2
+cp nvim2/ ~/dotfiles_ikr/
+cp nvim2/ ~/dotfiles_ikr/ -r
+cd
+cd dotfiles_ikr/
+lazygit 
+cd
+cd source/
+mkdir pythontest
+cd pythontest/
+touch test.py
+v .
+npm
+cd
+cd execs/
+ls
+cd node-v20.11.0-linux-x64/bin/
+./npm
+cd
+v .
+exit
+v .profile
+exit
+v .
+exit
+npm
+exit
+cd source/pythontest/
+v .
+python3 test.py
+pip install pandas
+exit
+cd .config/nvim/
+v .
+v .
+cd
+cd dotfiles_ikr/
+ls
+rm -rf nvim2/
+cp -r ~/.config/nvim/ .
+ls
+mv nvim/ nvim2
+lazygit 
+exit
+exit
+tmux
+exit
+cd source/
+mkdir mdpsurveyresearch
+cd mdpsurveyresearch/
+cp  ~/source/BeamerThemeIKRv2/minimal.tex .
+ls
+cat source/softwareinfrastructureideas/softwareInfrastructPres/m
+cd source/softwareinfrastructureideas/
+ls
+cd
+cat source/softwareinfrastructureideas/softwareInfrastructPres/swPres.tex
+cd source/softwareinfrastructureideas/softwareInfrastructPres/
+v .
+cd
+cd phd/papers/
+v .
+exit
+cd
+cd dotfiles/
+exit
+v .
+ls
+mv minimal.tex surveypaperpres
+mv surveypaperpres surveypaperpres.tex
+latex clean
+ls
+rm minimal.aux
+rm minimal.fdb_latexmk
+rm minimal.fls
+rm minimal.log
+rm minimal.nav
+rm minimal.out
+rm minimal.toc
+rm minimal.snm
+v .
+git init
+git remote add origin http://appsrv2/nclshrnk/mdpsurveyresearch.git<\n>git branch -M main<\n>git push -uf origin main<\n>
+git add .
+git commit -m "initial"
+git remote add origin http://appsrv2/nclshrnk/mdpsurveyresearch.git<\n>git branch -M main<\n>git push -uf origin main<\n>
+git push
+git branch -M main
+git push -u origin main
+git push -uf origin main
+git push -u origin main
+git pull
+git branch --set-upstream-to=origin/<branch> main
+git branch --set-upstream-to=origin main
+git branch --set-upstream-to=main
+git fetch
+lazygit 
+cd
+cd dotfiles_ikr/
+lazygit 
+cd .config/nushell/
+lg
+v .
+exit
+v index.norg
+exit
+tmux
+exut
+exit
+cd dotfiles_ikr/
+lg
+exit
+lg
+v .config/nushell/config.nu
+exit
+lg
+cd dotfiles_ikr/
+lg
+cd
+lsblk
+du -hs
+du -h
+du -hs
+du-hs
+df -hs
+du
+du --h
+du --help
+exit
+ch
+cal
+cd source/mdpsurveyresearch/
+ls
+cd
+cd notes/
+ls
+cd source/mdpsurveyresearch/
+lg
+exit
+lg
+cd source/mdpsurveyresearch/
+lg
+lualatex surveypaperpres.tex
+ls
+open surveypaperpres.pdf
+kj
+okular surveypaperpres.pdf
+lualatex surveypaperpres.tex -shell-escape
+cd
+cd .config/nvim/
+cat lua/user/keymaps.lua
+cd
+cd source/mdpsurveyresearch/
+ls
+latex surveypaperpres.tex
+lualatex source/BeamerThemeIKRv2/theme/package/beamerthemeIKRv2.sty
+ls
+cd source/BeamerThemeIKRv2/
+ls
+cd theme/
+ls
+cd fonts/
+ls
+cd ..
+ls
+cat install.sh
+cd
+cd source/mdpsurveyresearch/
+lualatex surveypaperpres.tex -shell-escape
+cd
+la
+la | grep latex
+la | grep .latex
+touch .latexmkrc
+cd .config/nvim/
+v .
+v .latexmkrc
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY=
+cat .config/kitty/kitty.conf
+v .config/kitty/kitty.conf
+v .
+exit
+cat /sys/class/power_supply/BAT0/uevent | grep POWER_SUPPLY_CAPACITY=
+v .
+cat /sys/class/power_supply/BAT0/uevent
+exit
+exit
+tmux
+exit
+v .
+exot
+exit
+v .
+c
+cd
+cd .config/nvim/
+v .
+v .
+v index.norg
+exit
+exit
+tmux attach
+tmux list-sessions
+tmux kill-session -t 0
+cd notes/
+tmux new-session -t .
+tmux list-sessions
+tmux kill-session -t 0
+tmux kill-session -t _-0
+echo $pwd
+pwd
+exit
+tmux new-session -t pwd
+tmux new-session -t $PWD
+tmux new-session -t $env.PWD
+tmux list-sessions
+v .config/nushell/config.nu
+ls
+cd
+v .config/nushell/config.nu
+exit
+cd notes/
+tmux
+tmux list-sessions
+cd
+v .config/nushell/config.nu
+exit
+tmux list-sessions
+ltm
+tmux list-sessions
+tmux kill-session -t 0
+$env.PWD
+cd notes/
+$env.PWD#HOME"/
+echo "${PWD#"$HOME"/}"
+"${PWD#"$HOME"/}"
+path relative-to "~"
+$env.PWD | path relative-to "~"
+tmux new-session -t $env.PWD | path relative-to "~"
+tmux list-sessions
+ls
+cd
+v .config/nushell/config.nu
+exit
+cd notes/
+tmux new-session -t $env.PWD | path relative-to "~"
+tmux list-sessions
+tmux new-session -s $env.PWD | path relative-to "~"
+tmux list-sessions
+tmux new-session -s {$env.PWD | path relative-to "~"}
+cd
+v .config/nushell/config.nu
+exit
+tl
+cd
+cd .config/nvim/
+v .
+cd
+v .config/nushell/config.nu
+cd .config/nvim/
+v .
+cd ..
+v nushell/
+v .config/nushell/config.nu
+v .
+v nushell/
+exit
+v .config/nushell/config.nu
+exit
+htmux
+env.PWD
+$env.PWD
+exit
+htmux
+tl
+cd
+cd notes/
+htmux
+tl
+tmux kill-session 
+tl
+tmux kill-session *
+tmux kill-session -a
+tl
+tmux attach _config/nushell
+cd
+cat .tmux.conf
+cat --h
+cat --help
+cat .tmux.conf
+cd
+tmux attach -t _config/nushell
+tl
+htmux 
+tl
+cd
+cd source/mdpsurveyresearch/
+htmux
+tl
+cd phd/papers/
+cd
+cd phd/papers/
+htmux
+tl
+cd
+cd source/softwareinfrastructureideas/softwareInfrastructPres/
+htmux
+tl
+tmux attach -t 3
+tmux attach notes
+cd .config/nushell/
+v .
+exit
+tmux attach -t notes
+tl
+cd
+cd .config/nushell/
+exit
+htmux
+exit
+v .
+carapace
+c
+cd
+mv Downloads/carapace-bin_linux_amd64.tar.gz execs/
+cd execs/
+tar -xvf carapace-bin_linux_amd64.tar.gz
+ls
+cd
+carapace 
+exit
+v .
+cd
+mkdir .cache
+cd .cache/
+ls
+cd ..
+la
+la | grep cach
+cd .cache/
+ls
+mkdir carapace
+exit
+tmux attach -t notes
+tl
+carapace
+exit
+nu
+exit
+v .
+exit
+v .
+exit
+tmux attach-session 
+v .
+exit
+htmux
+ta
+cd
+cd .config/nvim/
+ls
+cd
+cd ressources/
+ls
+cd paper/
+ls
+cd rl/
+ls
+okular Deep-RMSA_A_Deep-Reinforcement-Learning_Routing_Modulation_and_Spectrum_Assignment_Agent_for_Elastic_Optical_Networks.pdf
+ls
+cd ..
+ls
+cd ..
+cd
+cd phd/papers/
+v index.norg 
+htmux 
+v .
+cd
+cat .tmux.conf
+setxkbmap eu
+cd source/ma1030/
+julia .
+v .
+tmux
+htmux
+ls
+julia
+v .
+cd ..
+mkdir dqltest
+cd dqltest/
+julia
+cd ..
+rm dqltest/
+julia
+ls
+cd dqltest/
+cd ..
+ssh netlabserv1
+cd
+knock_lab 
+ssh netlabserv1
+ssh 129.69.172.5
+knock_lab 
+ssh 129.69.172.5
+knock_lab --target 129.69.172.5
+ssh 129.69.172.5
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+cat knock_lab
+cd execs/
+cat knock_lab 
+cd
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh nclshrnk@129.69.172.4
+knock_lab --target 129.69.172.5
+cd /etc/
+fzf
+ssh 129.69.172.5
+ls
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4
+knock_lab --target 129.69.172.4
+ssh 129.69.172.4 -v
+knock_lab --target 129.69.172.5
+ssh 129.69.172.5
+cd source/ma1030/
+nvim .
+setxkbmap eu
+julia
+exit
+exit
+v .
+exit
+ta
+tl
+cd
+cd execs/
+ls
+cd
+cd Downloads/
+ls
+tar -xvf stow-1.3.3.tar.gz 
+cd stow-1.3.3/
+ls
+./configure
+ls
+chmod +x stow
+./stow
+cp stow ~/execs/
+cd
+cd dotfiles_ikr/
+git status
+git add.
+git add .
+git commit -m "added carapace to nu"
+git push
+cd
+cp -rf .config/nvim/ dotfiles_ikr/

@@ -251,10 +251,10 @@ let catppuccin = {
 }
 
 # External completer example
-# let carapace_completer = {|spans|
-#     carapace $spans.0 nushell ...$spans | from json
-# }
-
+let carapace_completer = {|spans|
+    carapace $spans.0 nushell ...$spans | from json
+}
+source ~/.cache/carapace/init.nu
 # The default config record. This is where much of your global configuration is setup.
 $env.config = {
     show_banner: true # true or false to enable or disable the welcome banner at startup
@@ -324,7 +324,7 @@ $env.config = {
         external: {
             enable: true # set to false to prevent nushell looking into $env.PATH to find more suggestions, `false` recommended for WSL users as this look up may be very slow
             max_results: 100 # setting it lower can improve completion performance at the cost of omitting some options
-            completer: null # check 'carapace_completer' above as an example
+            completer: $carapace_completer # check 'carapace_completer' above as an example
         }
     }
 
@@ -956,7 +956,15 @@ alias v = nvim
 alias vim = nvim
 alias c = clear
 alias cat = bat
-alias tmux = tmux -u
+alias tmux = tmux -u 
 alias la = ls -a
 alias ch = cat /sys/class/power_supply/BAT0/uevent 
+alias cal = chromium --app=https://outlook.live.com/calendar/0/view/week
 alias lg = lazygit
+alias tl = tmux list-sessions
+def htmux [] {
+    # let path_components = (syspath | split-path | str collect);
+    let session_name = $env.PWD | path relative-to "~"
+    tmux new-session -s $session_name
+}
+alias ta = tmux attach-session
