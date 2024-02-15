@@ -959,3 +959,4 @@ alias cat = bat
 alias tmux = tmux -u
 alias la = ls -a
 alias ch = cat /sys/class/power_supply/BAT0/uevent 
+alias lg = lazygit
