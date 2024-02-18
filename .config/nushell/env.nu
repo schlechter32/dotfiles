@@ -85,6 +85,15 @@ $env.ENV_CONVERSIONS = {
     }
 }
 
+# Path definitions
+# let $execs_path = $env.HOME + "/execs"
+let $paths_to_add = ["/execs", "/homebrew/bin", "/homebrew/sbin",".cargo/bin"]
+for $path_to_add in $paths_to_add {
+# $env.NPM_PACKAGES = 
+let $append_string = $env.HOME + $path_to_add
+# $append_string
+$env.PATH = ($env.PATH | prepend $append_string)
+}
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts
 $env.NU_LIB_DIRS = [
@@ -99,6 +108,8 @@ $env.NU_PLUGIN_DIRS = [
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
+
 mkdir  ~/.cache/carapace/
+
 touch ~/.cache/carapace/init.nu
-carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
+# print $env.PATH

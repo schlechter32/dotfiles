@@ -1,16 +1,16 @@
 
 export PATH="$PATH:$HOME/.local/bin"
 
-export PATH="$PATH:$HOME/execs"
-export PATH="$PATH:$HOME/homebrew/bin"
-export PATH="$PATH:$HOME/homebrew/sbin"
+# export PATH="$PATH:$HOME/execs"
+# export PATH="$PATH:$HOME/homebrew/bin"
+# export PATH="$PATH:$HOME/homebrew/sbin"
 
-export PATH="$PATH:$HOME/execs/node-v20.11.0-linux-x64/bin"
+# export PATH="$PATH:$HOME/execs/node-v20.11.0-linux-x64/bin"
 # export PATH="$PATH:$HOME/execs"
 NPM_PACKAGES="${HOME}/.npm-packages" 
 NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH" 
 MANPATH="$HOME/.node/share/man:$MANPATH" 
-export PATH="$HOME/.cargo/bin:$PATH"
+# export PATH="$HOME/.cargo/bin:$PATH"
 alias c="clear"
 alias vim="nvim"
 alias v='nvim'
@@ -39,7 +39,7 @@ case ":$PATH:" in
         ;;
 
     *)
-        export PATH=/u/home/wima/nclshrnk/.juliaup/bin${PATH:+:${PATH}}
+      export PATH=$HOME.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
