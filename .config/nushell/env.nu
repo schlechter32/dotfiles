@@ -87,7 +87,17 @@ $env.ENV_CONVERSIONS = {
 
 # Path definitions
 # let $execs_path = $env.HOME + "/execs"
-let $paths_to_add = ["/execs", "/homebrew/bin", "/homebrew/sbin",".cargo/bin"]
+let $paths_to_add = ["/execs", 
+"/homebrew/bin",
+"/homebrew/sbin",
+".cargo/bin",
+"node-v20.11.0-linux-x64/bin",
+]
+$env.NPM_PACKAGES = $env.HOME + ".npm-packages"
+$env.NODE_PATH =  $env.HOME + ".node/lib/node-modules"
+let $node_man_path = $env.HOME + ".node/share/man"
+$env.MANPATH = $node_man_path
+
 for $path_to_add in $paths_to_add {
 # $env.NPM_PACKAGES = 
 let $append_string = $env.HOME + $path_to_add
