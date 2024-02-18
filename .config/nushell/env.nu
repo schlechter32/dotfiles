@@ -123,5 +123,7 @@ $env.NU_PLUGIN_DIRS = [
 
 mkdir  ~/.cache/carapace/
 
+carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 touch ~/.cache/carapace/init.nu
+tms config -p  ~/source -d 5  --full-path=true
 # print $env.PATH
