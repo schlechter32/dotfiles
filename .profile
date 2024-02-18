@@ -1,5 +1,5 @@
 
-export PATH="$PATH:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/.local/bin"
 
 # export PATH="$PATH:$HOME/execs"
 # export PATH="$PATH:$HOME/homebrew/bin"
@@ -7,15 +7,15 @@ export PATH="$PATH:$HOME/.local/bin"
 
 # export PATH="$PATH:$HOME/execs/node-v20.11.0-linux-x64/bin"
 # export PATH="$PATH:$HOME/execs"
-NPM_PACKAGES="${HOME}/.npm-packages" 
-NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH" 
-MANPATH="$HOME/.node/share/man:$MANPATH" 
+# NPM_PACKAGES="${HOME}/.npm-packages" 
+# NODE_PATH="$HOME/.node/lib/node_modules:$NODE_PATH" 
+# MANPATH="$HOME/.node/share/man:$MANPATH" 
 # export PATH="$HOME/.cargo/bin:$PATH"
-alias c="clear"
-alias vim="nvim"
-alias v='nvim'
-alias cat="bat"
-alias tmux="tmux -u"
+# alias c="clear"
+# alias vim="nvim"
+# alias v='nvim'
+# alias cat="bat"
+# alias tmux="tmux -u"
 # alias v="nvim"
 # alias ls='ls --color=auto'
 
@@ -35,12 +35,12 @@ fi
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:/u/home/wima/nclshrnk/.juliaup/bin:*)
+    *:/home/nhornek/.juliaup/bin:*)
         ;;
 
     *)
-      export PATH=$HOME.juliaup/bin${PATH:+:${PATH}}
+        export PATH=/home/nhornek/.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
-# <<< juliaup initialize <<<
+ <<< juliaup initialize <<<

@@ -124,11 +124,11 @@ source ~/.profile
 # !! Contents within this block are managed by juliaup !!
 
 case ":$PATH:" in
-    *:/u/home/wima/nclshrnk/.juliaup/bin:*)
+    *:/home/nhornek/.juliaup/bin:*)
         ;;
 
     *)
-        export PATH=/u/home/wima/nclshrnk/.juliaup/bin${PATH:+:${PATH}}
+        export PATH=/home/nhornek/.juliaup/bin${PATH:+:${PATH}}
         ;;
 esac
 
