@@ -30,17 +30,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# >>> juliaup initialize >>>
 
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/nhornek/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/nhornek/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
- <<< juliaup initialize <<<
