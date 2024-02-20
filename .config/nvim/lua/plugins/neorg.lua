@@ -5,7 +5,7 @@ return {
   lazy = false,
   ft = "norg",
   dependencies = { "nvim-lua/plenary.nvim" },
-  conceallevel = 2,
+
   config = function()
     require("neorg").setup {
       load = {
@@ -20,10 +20,11 @@ return {
         ["core.dirman"] = { -- Manages Neorg workspaces
           config = {
             workspaces = {
-              secondBrain = "~/source/secondBrain/",
+              secondBrain = "~/secondBrain/",
               -- areas = "~/phd/papers",
               -- reso = "~/know",
             },
+            default_workspace = secondBrain,
           },
         },
       },

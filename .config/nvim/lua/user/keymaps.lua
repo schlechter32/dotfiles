@@ -3,25 +3,24 @@ local vnoremap = require("user.keymap_utils").vnoremap
 local inoremap = require("user.keymap_utils").inoremap
 local tnoremap = require("user.keymap_utils").tnoremap
 local xnoremap = require("user.keymap_utils").xnoremap
-local harpoon_ui = require("harpoon.ui")
-local harpoon_mark = require("harpoon.mark")
-local opens = require("user.open_functions")
-local utils = require("user.utils")
+local harpoon_ui = require "harpoon.ui"
+local harpoon_mark = require "harpoon.mark"
+local opens = require "user.open_functions"
+local utils = require "user.utils"
 --local leap = require("leap")
 -- local undotree = require("undotree")
 
 local M = {}
 
-  nnoremap("<leader>a", function()
-    print("test")
-    require("Comment.api").toggle.linewise.current()
-  end
-  , { desc = "Toggle comment" })
+nnoremap("<leader>a", function()
+  print "test"
+  require("Comment.api").toggle.linewise.current()
+end, { desc = "Toggle comment" })
 nnoremap("<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undootree" })
 --nnoremap("f", leap.leap(),{desc= "Leap forwards"})
 -- Maybe insert this if we are running out of shortcuts
 -- vim.g.maplocalleader=","
-local TERM = os.getenv("TERM")
+local TERM = os.getenv "TERM"
 
 -- Normal --
 -- Disable Space bar since it'll be used as the leader key
@@ -29,42 +28,42 @@ nnoremap("<space>", "<nop>")
 
 -- Window +  better kitty navigation
 nnoremap("<C-j>", function()
-  if vim.fn.exists(":KittyNavigateDown") ~= 0 and TERM == "xterm-kitty" then
+  if vim.fn.exists ":KittyNavigateDown" ~= 0 and TERM == "xterm-kitty" then
     vim.cmd.KittyNavigateDown()
-  elseif vim.fn.exists(":NvimTmuxNavigateDown") ~= 0 then
+  elseif vim.fn.exists ":NvimTmuxNavigateDown" ~= 0 then
     vim.cmd.NvimTmuxNavigateDown()
   else
-    vim.cmd.wincmd("j")
+    vim.cmd.wincmd "j"
   end
 end)
 
 nnoremap("<C-k>", function()
-  if vim.fn.exists(":KittyNavigateUp") ~= 0 and TERM == "xterm-kitty" then
+  if vim.fn.exists ":KittyNavigateUp" ~= 0 and TERM == "xterm-kitty" then
     vim.cmd.KittyNavigateUp()
-  elseif vim.fn.exists(":NvimTmuxNavigateUp") ~= 0 then
+  elseif vim.fn.exists ":NvimTmuxNavigateUp" ~= 0 then
     vim.cmd.NvimTmuxNavigateUp()
   else
-    vim.cmd.wincmd("k")
+    vim.cmd.wincmd "k"
   end
 end)
 
 nnoremap("<C-l>", function()
-  if vim.fn.exists(":KittyNavigateRight") ~= 0 and TERM == "xterm-kitty" then
+  if vim.fn.exists ":KittyNavigateRight" ~= 0 and TERM == "xterm-kitty" then
     vim.cmd.KittyNavigateRight()
-  elseif vim.fn.exists(":NvimTmuxNavigateRight") ~= 0 then
+  elseif vim.fn.exists ":NvimTmuxNavigateRight" ~= 0 then
     vim.cmd.NvimTmuxNavigateRight()
   else
-    vim.cmd.wincmd("l")
+    vim.cmd.wincmd "l"
   end
 end)
 
 nnoremap("<C-h>", function()
-  if vim.fn.exists(":KittyNavigateLeft") ~= 0 and TERM == "xterm-kitty" then
+  if vim.fn.exists ":KittyNavigateLeft" ~= 0 and TERM == "xterm-kitty" then
     vim.cmd.KittyNavigateLeft()
-  elseif vim.fn.exists(":NvimTmuxNavigateLeft") ~= 0 then
+  elseif vim.fn.exists ":NvimTmuxNavigateLeft" ~= 0 then
     vim.cmd.NvimTmuxNavigateLeft()
   else
-    vim.cmd.wincmd("h")
+    vim.cmd.wincmd "h"
   end
 end)
 
@@ -72,18 +71,18 @@ end)
 nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 nnoremap("<leader>'", "<tab>", { desc = "Switch to last buffer" })
 -- Save with leader key
-nnoremap("<leader>w", "<cmd>w<cr>", { silent = false },{desc="Save file"})
+nnoremap("<leader>w", "<cmd>w<cr>", { silent = false }, { desc = "Save file" })
 
 -- Quit with leader key
-nnoremap("<leader>q", "<cmd>q<cr>", { silent = false }, {desc= "Close Buffer"})
+nnoremap("<leader>q", "<cmd>q<cr>", { silent = false }, { desc = "Close Buffer" })
 
 -- Save and Quit with leader key
-nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false }, {desc="Save and close Buffer"})
+nnoremap("<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
 
 -- Map Oil to <leader>e
 nnoremap("<leader>e", function()
   require("oil").toggle_float()
-end, {desc= "Open oil floating"})
+end, { desc = "Open oil floating" })
 
 -- Center buffer while navigating
 nnoremap("<C-u>", "<C-u>zz")
@@ -110,12 +109,12 @@ end)
 -- Open Spectre for global find/replace
 nnoremap("<leader>S", function()
   require("spectre").toggle()
-end, {desc= "Open Spectre global"})
+end, { desc = "Open Spectre global" })
 
 -- Open Spectre for global find/replace for the word under the cursor in normal mode
 -- TODO Fix, currently being overriden by Telescope
 nnoremap("<leader>sw", function()
-  require("spectre").open_visual({ select_word = true })
+  require("spectre").open_visual { select_word = true }
 end, { desc = "Search current word" })
 
 -- Press 'H', 'L' to jump to start/end of a line (first/last char)
@@ -132,45 +131,45 @@ nnoremap("<leader>no", "<cmd>noh<cr>")
 
 -- Goto next diagnostic of any severity
 nnoremap("]d", function()
-  vim.diagnostic.goto_next({})
+  vim.diagnostic.goto_next {}
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 -- Goto previous diagnostic of any severity
 nnoremap("[d", function()
-  vim.diagnostic.goto_prev({})
+  vim.diagnostic.goto_prev {}
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 -- Goto next error diagnostic
 nnoremap("]e", function()
-  vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+  vim.diagnostic.goto_next { severity = vim.diagnostic.severity.ERROR }
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 -- Goto previous error diagnostic
 nnoremap("[e", function()
-  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR })
+  vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.ERROR }
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 -- Goto next warning diagnostic
 nnoremap("]w", function()
-  vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+  vim.diagnostic.goto_next { severity = vim.diagnostic.severity.WARN }
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 -- Goto previous warning diagnostic
 nnoremap("[w", function()
-  vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN })
+  vim.diagnostic.goto_prev { severity = vim.diagnostic.severity.WARN }
   vim.api.nvim_feedkeys("zz", "n", false)
 end)
 
 nnoremap("<leader>d", function()
-  vim.diagnostic.open_float({
+  vim.diagnostic.open_float {
     border = "rounded",
-  })
-end, {desc= "Floating diagnostics"})
+  }
+end, { desc = "Floating diagnostics" })
 
 -- Place all dignostics into a qflist
 nnoremap("<leader>ld", vim.diagnostic.setqflist, { desc = "Quickfix [L]ist [D]iagnostics" })
@@ -201,7 +200,7 @@ nnoremap("<leader>rw", ":RotateWindows<cr>", { desc = "[R]otate [W]indows" })
 
 -- Press gx to open the link under the cursor
 -- nnoremap("gx", OpenFileInxdg(), { silent = true })
-nnoremap("gx", ':lua OpenFileInxdg()<CR>', { silent = true })
+nnoremap("gx", ":lua OpenFileInxdg()<CR>", { silent = true })
 -- vim.keymap.set("n",  )
 
 -- nnoremap("gx", function() vim.fn.jobstart(":sil !open <cWORD><cr>") end, { silent = true })
@@ -212,43 +211,43 @@ nnoremap("gx", ':lua OpenFileInxdg()<CR>', { silent = true })
 -- Open harpoon ui
 nnoremap("<leader>ho", function()
   harpoon_ui.toggle_quick_menu()
-end, {desc = "Open Harpoon"})
+end, { desc = "Open Harpoon" })
 
 -- Add current file to harpoon
 nnoremap("<leader>ha", function()
   harpoon_mark.add_file()
-end,{desc = "Add Harpoon"})
+end, { desc = "Add Harpoon" })
 
 -- Remove current file from harpoon
 nnoremap("<leader>hr", function()
   harpoon_mark.rm_file()
-end,{desc = "Remove Harpoon"})
+end, { desc = "Remove Harpoon" })
 
 -- Remove all files from harpoon
 nnoremap("<leader>hc", function()
   harpoon_mark.clear_all()
-end,{desc = "Clear all Harpoon"})
+end, { desc = "Clear all Harpoon" })
 
 -- Quickly jump to harpooned files
 nnoremap("<leader>1", function()
   harpoon_ui.nav_file(1)
-end, {desc = "Jump to Spear 1"})
+end, { desc = "Jump to Spear 1" })
 
 nnoremap("<leader>2", function()
   harpoon_ui.nav_file(2)
-end, {desc = "Jump to Spear 2"})
+end, { desc = "Jump to Spear 2" })
 
 nnoremap("<leader>3", function()
   harpoon_ui.nav_file(3)
-end, {desc = "Jump to Spear 3"})
+end, { desc = "Jump to Spear 3" })
 
 nnoremap("<leader>4", function()
   harpoon_ui.nav_file(4)
-end, {desc = "Jump to Spear 4"})
+end, { desc = "Jump to Spear 4" })
 
 nnoremap("<leader>5", function()
   harpoon_ui.nav_file(5)
-end, {desc = "Jump to Spear 5"})
+end, { desc = "Jump to Spear 5" })
 
 -- Git keymaps --
 nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
@@ -276,27 +275,27 @@ end, { desc = "Search [G]it [F]iles" })
 nnoremap("<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 nnoremap("<leader>sb", require("telescope.builtin").buffers, { desc = "[S]earch Open [B]uffers" })
 nnoremap("<leader>sf", function()
-  require("telescope.builtin").find_files({ hidden = true })
+  require("telescope.builtin").find_files { hidden = true }
 end, { desc = "[S]earch [F]iles" })
 nnoremap("<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 nnoremap("<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 
 nnoremap("<leader>sc", function()
-  require("telescope.builtin").commands(require("telescope.themes").get_dropdown({
+  require("telescope.builtin").commands(require("telescope.themes").get_dropdown {
     previewer = false,
-  }))
+  })
 end, { desc = "[S]earch [C]ommands" })
 
 nnoremap("<leader>/", function()
-  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
     previewer = false,
-  }))
+  })
 end, { desc = "[/] Fuzzily search in current buffer]" })
 
 nnoremap("<leader>ss", function()
-  require("telescope.builtin").spell_suggest(require("telescope.themes").get_dropdown({
+  require("telescope.builtin").spell_suggest(require("telescope.themes").get_dropdown {
     previewer = false,
-  }))
+  })
 end, { desc = "[S]earch [S]pelling suggestions" })
 
 -- LSP Keybinds (exports a function to be used in ../../after/plugin/lsp.lua b/c we need a reference to the current buffer) --
@@ -364,8 +363,11 @@ vnoremap("<space>", "<nop>")
 -- Press 'H', 'L' to jump to start/end of a line (first/last char)
 vnoremap("L", "$<left>")
 vnoremap("H", "^")
-vnoremap("<leader>a", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
-  { desc = "Togle comment" })
+vnoremap(
+  "<leader>a",
+  "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>",
+  { desc = "Togle comment" }
+)
 
 -- Paste without losing the contents of the register
 xnoremap("<leader>p", '"_dP')
@@ -376,13 +378,13 @@ vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Reselect the last visual selection
 xnoremap("<<", function()
-  vim.cmd("normal! <<")
-  vim.cmd("normal! gv")
+  vim.cmd "normal! <<"
+  vim.cmd "normal! gv"
 end)
 
 xnoremap(">>", function()
-  vim.cmd("normal! >>")
-  vim.cmd("normal! gv")
+  vim.cmd "normal! >>"
+  vim.cmd "normal! gv"
 end)
 
 -- Terminal --
@@ -399,4 +401,5 @@ tnoremap("<C-l>", [[<Cmd>wincmd l<CR>]])
 -- Reenable default <space> functionality to prevent input delay
 tnoremap("<space>", "<space>")
 
+inoremap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 return M

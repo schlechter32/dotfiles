@@ -99,7 +99,7 @@ $env.NPM_PACKAGES = $env.HOME + ".npm-packages"
 $env.NODE_PATH =  $env.HOME + ".node/lib/node-modules"
 let $node_man_path = $env.HOME + ".node/share/man"
 $env.MANPATH = $node_man_path
-
+$env.EDITOR = "nvim"
 for $path_to_add in $paths_to_add {
 # $env.NPM_PACKAGES = 
 let $append_string = $env.HOME + $path_to_add
@@ -125,5 +125,5 @@ mkdir  ~/.cache/carapace/
 
 carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 touch ~/.cache/carapace/init.nu
-tms config -p  ~/source -d 5  --full-path=true
+tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true
 # print $env.PATH
