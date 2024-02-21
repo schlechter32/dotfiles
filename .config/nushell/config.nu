@@ -968,5 +968,6 @@ def htmux [] {
     tmux new-session -s $session_name
 }
 alias ta = tmux attach-session
+alias du = dust
 # alias z = zoxide 
 source ~/.config/nushell/zoxide.nu
