@@ -32,7 +32,11 @@ config.keys = {
 	-- Send C-a when pressing C-a twice
 	{ key = "a", mods = "LEADER", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
-
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 	-- Pane keybindings
 	{ key = "-", mods = "LEADER", action = act.SplitVertical({ domain = "CurrentPaneDomain" }) },
 	-- SHIFT is for when caps lock is on
@@ -131,4 +135,5 @@ wezterm.on("update-right-status", function(window, pane)
 	}))
 end)
 config.default_prog = { "nu" }
+
 return config
