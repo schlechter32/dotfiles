@@ -1,0 +1,7 @@
+[hostname]
+ssh_only = false  # Set this to true if you only want to display the hostname when connected via SSH
+trim_at = "."     # Trims hostname at the first dot (default)
+
+# Example of other configurations you might have
+[character]
+format = "[$symbol$hostname]($style) "

@@ -971,3 +971,4 @@ alias ta = tmux attach-session
 alias du = dust
 # alias z = zoxide 
 source ~/.config/nushell/zoxide.nu
+use ~/.cache/starship/init.nu

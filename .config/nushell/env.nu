@@ -127,3 +127,5 @@ carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
 touch ~/.cache/carapace/init.nu
 tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true
 # print $env.PATH
+mkdir ~/.cache/starship
+starship init nu | save -f ~/.cache/starship/init.nu

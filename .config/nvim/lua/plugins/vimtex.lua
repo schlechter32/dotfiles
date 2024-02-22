@@ -21,17 +21,17 @@ return {
     vim.g.vimtex_view_automatic = 0
     -- Disable conceal
     vim.g.vimtex_syntax_conceal = {
-      accents = 1,
-      cites = 1,
-      fancy = 1,
-      greek = 1,
-      math_bounds = 1,
-      math_delimiters = 1,
-      math_fracs = 1,
-      math_super_sub = 1,
-      math_symbols = 1,
-      sections = 1,
-      styles = 1,
+      accents = 0,
+      cites = 0,
+      fancy = 0,
+      greek = 0,
+      math_bounds = 0,
+      math_delimiters = 0,
+      math_fracs = 0,
+      math_super_sub = 0,
+      math_symbols = 0,
+      sections = 0,
+      styles = 0,
     }
     -- Disable quickfix auto open
     -- vim.g.vimtex_view_method = "zathura"
