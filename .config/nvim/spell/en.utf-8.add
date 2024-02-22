@@ -13,3 +13,6 @@ config
 VsCodium
 Zotero
 Lazygit
+RL
+kSP
+PPO
