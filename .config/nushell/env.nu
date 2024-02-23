@@ -94,7 +94,8 @@ let $paths_to_add = ["/execs",
 "/execs/node-v20.11.0-linux-x64/bin",
 ".juliaup/bin",
 ".local/bin",
-"/nbin"
+"/nbin",
+"/opt"
 ]
 $env.NPM_PACKAGES = $env.HOME + ".npm-packages"
 $env.NODE_PATH =  $env.HOME + ".node/lib/node-modules"
