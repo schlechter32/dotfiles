@@ -110,7 +110,8 @@ wezterm.on("update-right-status", function(window, pane)
 	-- Current working directory
 	local basename = function(s)
 		-- Nothign a little regex can't fix
-		return string.gsub(s, "(.*[/\\])(.*)", "%2")
+		-- print("my s is", s)
+		return string.gsub(tostring(s), "(.*[/\\])(.*)", "%2")
 	end
 	local cwd = basename(pane:get_current_working_dir())
 	-- Current command

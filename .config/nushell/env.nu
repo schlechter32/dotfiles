@@ -88,9 +88,9 @@ $env.ENV_CONVERSIONS = {
 # Path definitions
 # let $execs_path = $env.HOME + "/execs"
 let $paths_to_add = ["/execs", 
+"/.cargo/bin"
 "/homebrew/bin",
 "/homebrew/sbin",
-".cargo/bin",
 "/execs/node-v20.11.0-linux-x64/bin",
 ".juliaup/bin",
 ".local/bin",

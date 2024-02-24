@@ -3,6 +3,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
+export PATH="$HOME/.cargo/bin:$PATH"
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -117,7 +118,7 @@ fi
 #source .profile
 # zsh
 # . "$HOME/.cargo/env"
-source ~/.profile
+# source ~/.profile
 
 # >>> juliaup initialize >>>
 
