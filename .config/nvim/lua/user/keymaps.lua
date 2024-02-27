@@ -371,7 +371,11 @@ vnoremap(
 
 -- Paste without losing the contents of the register
 xnoremap("<leader>p", '"_dP')
-
+-- Yank to system clipboard
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- Delete to void register
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- Move selected text up/down in visual mode
 vnoremap("<A-j>", ":m '>+1<CR>gv=gv")
 vnoremap("<A-k>", ":m '<-2<CR>gv=gv")

@@ -180,7 +180,7 @@ return {
         border = "rounded",
         sources = {
           -- formatting
-          formatting.prettierd,
+          formatting.prettier,
           formatting.stylua,
           -- formatting.latex_indent,
           -- formatting.mypy,
