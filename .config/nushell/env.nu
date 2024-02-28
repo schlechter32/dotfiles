@@ -93,7 +93,7 @@ let $paths_to_add = ["/execs",
 "/homebrew/sbin",
 "/execs/node-v20.11.0-linux-x64/bin",
 ".juliaup/bin",
-".local/bin",
+# ".local/bin",
 "/nbin",
 "/opt"
 ]
