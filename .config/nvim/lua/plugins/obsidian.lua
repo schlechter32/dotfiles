@@ -122,7 +122,7 @@ return {
       end,
 
       -- Either 'wiki' or 'markdown'.
-      preferred_link_style = "wiki",
+      preferred_link_style = "markdown",
 
       -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
       ---@return string
