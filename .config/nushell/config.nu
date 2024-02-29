@@ -969,6 +969,8 @@ def htmux [] {
 }
 alias ta = tmux attach-session
 alias du = dust
+alias j = julia
+alias ll = ls -l
 # alias z = zoxide 
 source ~/.config/nushell/zoxide.nu
 use ~/.cache/starship/init.nu

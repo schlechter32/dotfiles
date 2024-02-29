@@ -92,21 +92,33 @@ let $paths_to_add = ["/execs",
 "/homebrew/bin",
 "/homebrew/sbin",
 "/execs/node-v20.11.0-linux-x64/bin",
-".juliaup/bin",
 # ".local/bin",
 "/nbin",
 "/opt"
+,"/.pyenv/bin"
 ]
 $env.NPM_PACKAGES = $env.HOME + ".npm-packages"
 $env.NODE_PATH =  $env.HOME + ".node/lib/node-modules"
 let $node_man_path = $env.HOME + ".node/share/man"
 $env.MANPATH = $node_man_path
 $env.EDITOR = "nvim"
+$env.PYENV_ROOT = $env.HOME + "/.pyenv"
 for $path_to_add in $paths_to_add {
 # $env.NPM_PACKAGES = 
 let $append_string = $env.HOME + $path_to_add
 # $append_string
 $env.PATH = ($env.PATH | prepend $append_string)
+}
+$env.PATH = ($env.PATH | prepend $env.PYENV_ROOT)
+let $host = sys | get host | hostname
+echo $host | str contains "cnode"
+let $on_cnode = $host | str contains "cnode"
+if $on_cnode {
+# $env.PATH = ($env.PATH | append "/u/bulk/home/wima/nclshrnk/.juliaup/bin/")
+} else {
+# let julia_loc = $env.HOME + "/.juliaup/bin"
+# $env.PATH = ($env.PATH | append $julia_loc)
+echo "Local julia"
 }
 # Directories to search for scripts when calling source or use
 # The default for this is $nu.default-config-dir/scripts

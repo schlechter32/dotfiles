@@ -120,17 +120,3 @@ fi
 # . "$HOME/.cargo/env"
 # source ~/.profile
 
-# >>> juliaup initialize >>>
-
-# !! Contents within this block are managed by juliaup !!
-
-case ":$PATH:" in
-    *:/home/nhornek/.juliaup/bin:*)
-        ;;
-
-    *)
-        export PATH=/home/nhornek/.juliaup/bin${PATH:+:${PATH}}
-        ;;
-esac
-
-# <<< juliaup initialize <<<
