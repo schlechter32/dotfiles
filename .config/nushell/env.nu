@@ -114,7 +114,9 @@ let $host = sys | get host | hostname
 echo $host | str contains "cnode"
 let $on_cnode = $host | str contains "cnode"
 if $on_cnode {
-# $env.PATH = ($env.PATH | append "/u/bulk/home/wima/nclshrnk/.juliaup/bin/")
+$env.PATH = ($env.PATH | append "/u/home/wima/nclshrnk/.juliaup/bin/")
+$env.JULIAUP_DEPOT_PATH = "/u/bulk/home/wima/nclshrnk/julia/"
+$env.JULIA_DEPOT_PATH = "/u/bulk/home/wima/nclshrnk/julia/"
 } else {
 # let julia_loc = $env.HOME + "/.juliaup/bin"
 # $env.PATH = ($env.PATH | append $julia_loc)
