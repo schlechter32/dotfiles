@@ -18,11 +18,34 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export PATH="/usr/local/bin:/usr/bin"
-
 export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export FZF_BASE="$HOME/homebrew/bin"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/homebrew/bin:$PATH"
+export PATH="$HOME/homebrew/sbin:$PATH"
+export PATH="$HOME/execs/node-v20.11.0-linux-x64/bin:$PATH"
+export PATH="$HOME/nbin:$PATH"
+export PATH="$HOME/opt:$PATH"
+export PATH="$HOME/.pyenv/bin:$PATH"
+export PATH="$HOME/.juliaup/bin:$PATH"
+
+# Exprot variables
+export NPM_PACKAGES="$HOME/.npm-packages"
+export NODE_PATH="$HOME/.node/lib/node-modules"
+export NODE_MAN_PATH="$HOME/.node/share/man"
+export EDITOR="nvim"
+export PYENV_ROOT="$HOME/.pyenv"
+
+if [[ $(hostname) == *"cnode"* ]]; then
+
+export JULIAUP_DEPOT_PATH="/u/bulk/home/wima/nclshrnk/julia/"
+export JULIA_DEPOT_PATH="/u/bulk/home/wima/nclshrnk/julia/"
+else
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+fi
+# Initialization of Completions
 autoload -Uz compinit && compinit
+
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 # Download Zinit, if it's not there yet
@@ -91,6 +114,9 @@ alias zi="__zoxide_zi"
 alias cf="cd \$(find * -type d | fzf)"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
+alias vf="v \$(ff)"
+
+alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Completions
 #
 #

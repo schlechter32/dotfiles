@@ -135,6 +135,6 @@ wezterm.on("update-right-status", function(window, pane)
 		{ Text = " |" },
 	}))
 end)
-config.default_prog = { "nu" }
+config.default_prog = { "zsh" }
 
 return config
