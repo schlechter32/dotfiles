@@ -98,12 +98,13 @@ alias sudo='sudo '
 # alias capslock="sudo killall -USR1 caps2esc"
 
 alias v="nvim"
-alias ls="exa -l"
+alias ls="exa"
 alias vim="nvim"
 alias c="clear"
 alias cat="bat"
 alias tmux='tmux -u' 
 alias la='ls -a'
+alias lla="ls -al"
 alias ch='cat /sys/class/power_supply/BAT0/uevent' 
 alias cal='chromium --app=https://outlook.live.com/calendar/0/view/week'
 alias lg='lazygit'
@@ -169,6 +170,12 @@ function ya() {
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
 echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
