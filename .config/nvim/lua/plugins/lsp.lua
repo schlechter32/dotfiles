@@ -30,6 +30,7 @@ return {
         ui = {
           border = "rounded",
         },
+        ensure_installed = { "debugpy" },
       }
 
       -- Configure mason to auto install servers
@@ -72,8 +73,9 @@ return {
         bashls = {},
         clangd = {},
         julials = {},
-        rust_analyzer = {},
+        -- rust_analyzer = {},
         -- latex_indent = {},
+        -- debugpy = {},
 
         cssls = {},
         -- gleam = {},
