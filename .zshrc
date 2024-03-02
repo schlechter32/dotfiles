@@ -23,10 +23,12 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/homebrew/bin:$PATH"
 export PATH="$HOME/homebrew/sbin:$PATH"
 export PATH="$HOME/execs/node-v20.11.0-linux-x64/bin:$PATH"
+export PATH="$HOME/execs:$PATH"
 export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.juliaup/bin:$PATH"
+
 
 # Exprot variables
 export NPM_PACKAGES="$HOME/.npm-packages"
