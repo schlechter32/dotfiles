@@ -172,3 +172,5 @@ function ya() {
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+eval "$(tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
