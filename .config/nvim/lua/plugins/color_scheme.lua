@@ -13,8 +13,8 @@ return {
         show_end_of_buffer = true, -- shows the '~' characters after the end of buffers
         term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
         dim_inactive = {
-          enabled = true, -- dims the background color of inactive window
-          shade = "dark",
+          enabled = false, -- dims the background color of inactive window
+          shade = "light",
           percentage = 0.20, -- percentage of the shade to apply to the inactive window
         },
         no_italic = false, -- Force no italic

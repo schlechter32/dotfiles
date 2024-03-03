@@ -73,7 +73,7 @@ return {
         bashls = {},
         clangd = {},
         julials = {},
-        -- rust_analyzer = {},
+        rust_analyzer = {},
         -- latex_indent = {},
         -- debugpy = {},
 
