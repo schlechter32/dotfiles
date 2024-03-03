@@ -190,18 +190,18 @@ return {
           -- formatting.ocamlformat,
 
           -- diagnostics
-          diagnostics.eslint_d.with {
-            condition = function(utils)
-              return utils.root_has_file { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
-            end,
-          },
+          -- diagnostics.eslint_d.with {
+          --   condition = function(utils)
+          --     return utils.root_has_file { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
+          --   end,
+          -- },
 
           -- code actions
-          code_actions.eslint_d.with {
-            condition = function(utils)
-              return utils.root_has_file { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
-            end,
-          },
+          -- code_actions.eslint_d.with {
+          --   condition = function(utils)
+          --     return utils.root_has_file { ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.json" }
+          --   end,
+          -- },
         },
       }
 
