@@ -9,13 +9,13 @@ return {
   },
 
   config = function(_, opts)
-    local leap = require("leap")
+    local leap = require "leap"
     leap.setup(opts)
     leap.set_default_keymaps(true)
 
     -- Bidirectional search
-    vim.keymap.set("n", "s", function()
-      leap.leap({ target_windows = { vim.api.nvim_get_current_win() } })
+    vim.keymap.set("n", "<leader>s", function()
+      leap.leap { target_windows = { vim.api.nvim_get_current_win() } }
     end)
     -- vim.keymap.set("x", "f", function()
     --   leap.leap({ target_windows = { vim.api.nvim_get_current_win() } })
@@ -25,14 +25,14 @@ return {
     vim.api.nvim_create_autocmd("User", {
       pattern = "LeapEnter",
       callback = function()
-        vim.cmd("normal m'")
+        vim.cmd "normal m'"
       end,
     })
     -- center cursor after jumping
     vim.api.nvim_create_autocmd("User", {
       pattern = "LeapLeave",
       callback = function()
-        vim.cmd("normal zz")
+        vim.cmd "normal zz"
       end,
     })
   end,
