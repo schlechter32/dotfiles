@@ -100,7 +100,7 @@ alias sudo='sudo '
 # alias capslock="sudo killall -USR1 caps2esc"
 
 alias v="nvim"
-alias ls="exa"
+alias ls="exa --icons"
 alias vim="nvim"
 alias c="clear"
 alias cat="bat"
