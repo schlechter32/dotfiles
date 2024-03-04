@@ -106,7 +106,7 @@ alias c="clear"
 alias cat="bat"
 alias tmux='tmux -u' 
 alias la='ls -a'
-alias lla="ls -al"
+alias lla="ls -alh"
 alias ch='cat /sys/class/power_supply/BAT0/uevent' 
 alias cal='chromium --app=https://outlook.live.com/calendar/0/view/week'
 alias lg='lazygit'

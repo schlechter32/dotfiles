@@ -38,4 +38,4 @@ esac
 knock_lab --target "$TARGET_IP"
 
 # Execute SSH to the IP address
-ssh "$USER"@"$TARGET_IP"
+ssh -L 8888:localhost:8888 "$USER"@"$TARGET_IP"
