@@ -38,6 +38,7 @@ export NODE_PATH="$HOME/.node/lib/node-modules"
 export NODE_MAN_PATH="$HOME/.node/share/man"
 export EDITOR="nvim"
 export PYENV_ROOT="$HOME/.pyenv"
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 if [[ $(hostname) == *"cnode"* ]]; then
 
@@ -185,11 +186,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 eval "$(tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
-function ya() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+
+function lt() {
+  if [ -z "$1" ]; then
+    exa --icons -T -L 2
+  else
+    exa --icons -T -L "$1"
+  fi
 }
