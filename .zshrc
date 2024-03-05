@@ -125,13 +125,13 @@ alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
 
 # Update all submodules
-alias git-submodule-update='git submodule update --init --recursive'
+alias gsu='git submodule update --init --recursive'
 
 # Add changes in submodules
-alias git-submodule-add='git submodule foreach git add .'
+alias gsa='git submodule foreach git add .'
 
 # Commit changes in submodules
-alias git-submodule-commit='git submodule foreach git commit -am'
+alias gsm='git submodule foreach git commit -am'
 
 # Push changes in submodules
 alias git-submodule-push='git submodule foreach git push'
