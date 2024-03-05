@@ -87,7 +87,7 @@ skin=gray-green-purple256
 
 [Layout]
 output_lines=0
-left_panel_size=95
+left_panel_size=79
 top_panel_size=0
 message_visible=true
 keybar_visible=true
@@ -116,6 +116,8 @@ base_color=
 xterm-kitty=
 color_terminals=
 screen-256color=
+
+xterm-256color=
 
 [Panels]
 show_mini_info=true

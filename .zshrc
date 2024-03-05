@@ -116,7 +116,7 @@ alias du="dust"
 alias hf="history | fzf"
 alias z="__zoxide_z"
 alias zi="__zoxide_zi"
-alias ya="yazi"
+# alias ya="yazi"
 alias cf="cd \$(find * -type d | fzf)"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
@@ -174,3 +174,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 eval "$(tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
+function ya() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
