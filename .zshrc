@@ -13,9 +13,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
@@ -49,7 +49,7 @@ export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 fi
 # Initialization of Completions
-# autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit
 
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -62,7 +62,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 zinit light ohmyzsh/ohmyzsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 # zinit snippet OMZP::aws
@@ -146,7 +146,7 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Fix for password store
 # export PASSWORD_STORE_GPG_OPTS='--no-throw-keyids'
@@ -157,7 +157,7 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 #
 # bindkey "^P" up-line-or-beginning-search
 # bindkey "^N" down-line-or-beginning-search
-my_tms_command(){
+function my_tms_command(){
 tms
 }
 zle -N my_tms_command
@@ -205,6 +205,4 @@ function css() {
     local argument=$1
     ssh -X -L 8888:localhost:888 -L 6006:localhost:6006 "cnode0$1" -t zsh
 }
-
-# Example usage:
-# css 3
+eval "$(starship init zsh)"
