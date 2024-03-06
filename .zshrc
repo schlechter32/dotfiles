@@ -185,7 +185,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
+eval "$(tms config -p  ~/source ~/secondBrain ~/secondBrain/extrepos/ ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
 
 function lt() {
   if [ -z "$1" ]; then
@@ -194,3 +194,4 @@ function lt() {
     exa --icons -T -L "$1"
   fi
 }
+eval "$(pyenv virtualenv-init -)"
