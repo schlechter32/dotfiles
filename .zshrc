@@ -49,7 +49,7 @@ export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 fi
 # Initialization of Completions
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -195,3 +195,16 @@ function lt() {
   fi
 }
 eval "$(pyenv virtualenv-init -)"
+# Define the css function
+function css() {
+    if [[ $# -ne 1 ]]; then
+        echo "Usage: css <number>"
+        return 1
+    fi
+
+    local argument=$1
+    ssh -X -L 8888:localhost:888 -L 6006:localhost:6006 "cnode0$1" -t zsh
+}
+
+# Example usage:
+# css 3
