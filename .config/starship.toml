@@ -2,17 +2,32 @@ format = """
 $username\
 $hostname\
 $directory\
-$git_branch\
 $git_state\
 $git_status\
 $cmd_duration\
 $line_break\
-$python\
+$git_branch\
 $character"""
+
+right_format="""
+$python\
+"""
+[line_break]
+disabled =false
 
 [directory]
 style = "blue"
+truncation_length=20
+truncation_symbol=".../"
+truncate_to_repo=false
 
+[username]
+disabled =true
+# format='[$user]($style)'
+[hostname]
+ssh_only=false
+format='[$ssh_symbol$hostname: ]($style)'
+ssh_symbol='🌐 '
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
@@ -20,7 +35,7 @@ vimcmd_symbol = "[❮](green)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+style = "red"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
@@ -43,4 +58,4 @@ style = "yellow"
 
 [python]
 format = "[$virtualenv]($style) "
-style = "bright-black"
+style = "white"
