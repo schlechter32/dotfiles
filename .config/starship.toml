@@ -2,11 +2,11 @@ format = """
 $username\
 $hostname\
 $directory\
-$git_state\
-$git_status\
 $cmd_duration\
 $line_break\
 $git_branch\
+  $git_state\
+  $git_status\
 $character"""
 
 right_format="""
@@ -57,5 +57,6 @@ format = "[$duration]($style) "
 style = "yellow"
 
 [python]
-format = "[$virtualenv]($style) "
+# format = "[$virtualenv]($style) "
+format ='[${symbol}${pyenv_prefix}(($virtualenv)\((${version}))\)]($style)'
 style = "white"
