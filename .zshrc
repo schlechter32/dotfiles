@@ -20,6 +20,11 @@
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
 
+export PATH="/usr/local/tde/curr/bin:$PATH"
+export PATH="/ext/bin:$PATH"
+
+export PATH="/usr/games:$PATH"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/homebrew/bin:$PATH"
