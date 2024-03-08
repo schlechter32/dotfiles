@@ -202,4 +202,3 @@ function lt() {
 eval "$(pyenv virtualenv-init -)"
 
 eval "$(atuin init zsh)"
-eval "$(atuin init zsh)"
