@@ -13,12 +13,17 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
+
+export PATH="/usr/local/tde/curr/bin:$PATH"
+export PATH="/ext/bin:$PATH"
+
+export PATH="/usr/games:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -62,7 +67,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 zinit light ohmyzsh/ohmyzsh
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 # zinit snippet OMZP::aws
@@ -146,7 +151,7 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 
 # P10k customizations
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+# [[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
 
 # Fix for password store
 # export PASSWORD_STORE_GPG_OPTS='--no-throw-keyids'
@@ -157,7 +162,7 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 #
 # bindkey "^P" up-line-or-beginning-search
 # bindkey "^N" down-line-or-beginning-search
-my_tms_command(){
+function my_tms_command(){
 tms
 }
 zle -N my_tms_command
@@ -185,7 +190,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-eval "$(tms config -p  ~/source ~/secondBrain ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
+eval "$(tms config -p  ~/source ~/secondBrain ~/secondBrain/extrepos/ ~/dotfiles_ikr -d 5  --full-path=true &>/dev/null)"
 
 function lt() {
   if [ -z "$1" ]; then
