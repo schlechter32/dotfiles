@@ -194,3 +194,7 @@ function lt() {
     exa --icons -T -L "$1"
   fi
 }
+eval "$(pyenv virtualenv-init -)"
+
+eval "$(atuin init zsh)"
+eval "$(atuin init zsh)"
