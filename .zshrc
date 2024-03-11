@@ -20,6 +20,7 @@
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
 
+export PATH="/home/nhornek/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/bin/:$PATH"
 export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/ext/bin:$PATH"
 
