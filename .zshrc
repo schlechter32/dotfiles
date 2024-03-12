@@ -20,6 +20,7 @@
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
 
+export PATH="/home/nhornek/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/bin/:$PATH"
 export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/ext/bin:$PATH"
 
@@ -200,14 +201,9 @@ function lt() {
   fi
 }
 eval "$(pyenv virtualenv-init -)"
-# Define the css function
-function css() {
-    if [[ $# -ne 1 ]]; then
-        echo "Usage: css <number>"
-        return 1
-    fi
 
     local argument=$1
     ssh -q -X -L 8888:localhost:888 -L 6006:localhost:6006 "cnode0$1" -t zsh
 }
+eval "$(atuin init zsh)" 
 eval "$(starship init zsh)"

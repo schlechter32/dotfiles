@@ -200,7 +200,7 @@ nnoremap("<leader>rw", ":RotateWindows<cr>", { desc = "[R]otate [W]indows" })
 
 -- Press gx to open the link under the cursor
 -- nnoremap("gx", OpenFileInxdg(), { silent = true })
-nnoremap("gx", ":lua OpenFileInxdg()<CR>", { silent = true })
+nnoremap("gp", ":lua OpenFileInxdg()<CR>", { silent = true })
 -- vim.keymap.set("n",  )
 
 -- nnoremap("gx", function() vim.fn.jobstart(":sil !open <cWORD><cr>") end, { silent = true })
