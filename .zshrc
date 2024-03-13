@@ -201,9 +201,5 @@ function lt() {
   fi
 }
 eval "$(pyenv virtualenv-init -)"
-
-    local argument=$1
-    ssh -q -X -L 8888:localhost:888 -L 6006:localhost:6006 "cnode0$1" -t zsh
-}
 eval "$(atuin init zsh)" 
 eval "$(starship init zsh)"
