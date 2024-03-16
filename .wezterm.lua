@@ -148,8 +148,8 @@ wezterm.on("update-right-status", function(window, pane)
 			hostname = wezterm.hostname()
 		end
 
-		table.insert(cells, cwd)
-		table.insert(cells, hostname)
+		-- table.insert(cells, cwd)
+		-- table.insert(cells, hostname)
 	end
 
 	-- I like my date/time in this style: "Wed Mar 3 08:14"
