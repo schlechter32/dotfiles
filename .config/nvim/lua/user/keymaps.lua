@@ -7,13 +7,22 @@ local harpoon_ui = require "harpoon.ui"
 local harpoon_mark = require "harpoon.mark"
 local opens = require "user.open_functions"
 local utils = require "user.utils"
+local neogit = require "neogit"
 --local leap = require("leap")
 -- local undotree = require("undotree")
 
 local M = {}
 
+nnoremap("<leader>gs", function()
+  require("neogit").open()
+end, { desc = "Open Neogit" })
+nnoremap("<leader>gc", ":Neogit commit <CR>")
+nnoremap("<leader>gp", ":Neogit pull<CR>")
+nnoremap("<leader>gP", ":Neogit pull<CR>")
+nnoremap("<leader>gb", ":Telescope git_branches<CR>")
+
 nnoremap("<leader>a", function()
-  print "test"
+  -- print "test"
   require("Comment.api").toggle.linewise.current()
 end, { desc = "Toggle comment" })
 nnoremap("<leader>u", vim.cmd.UndotreeToggle, { desc = "Toggle Undootree" })
