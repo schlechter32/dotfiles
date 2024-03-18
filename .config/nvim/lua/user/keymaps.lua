@@ -15,10 +15,11 @@ local M = {}
 
 nnoremap("<leader>gs", function()
   require("neogit").open()
+  -- kj(ij(kl()))-- i
 end, { desc = "Open Neogit" })
 nnoremap("<leader>gc", ":Neogit commit <CR>")
 nnoremap("<leader>gp", ":Neogit pull<CR>")
-nnoremap("<leader>gP", ":Neogit pull<CR>")
+nnoremap("<leader>gP", ":Neogit push<CR>")
 nnoremap("<leader>gb", ":Telescope git_branches<CR>")
 
 nnoremap("<leader>a", function()
