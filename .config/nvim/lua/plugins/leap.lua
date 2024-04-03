@@ -1,17 +1,17 @@
 return {
   "ggandor/leap.nvim",
   lazy = false,
-  opts = {
-    case_sensitive = false,
-    safe_labels = {}, -- disable auto-jumping to the first match; doesn't work on one unique target
-    max_phase_one_targets = 0, -- first char won't show possible matches
-    max_highlighted_traversal_targets = 10,
-  },
+  case_sensitive = false,
+  safe_labels = {}, -- disable auto-jumping to the first match; doesn't work on one unique target
+  max_phase_one_targets = 0, -- first char won't show possible matches
+  max_highlighted_traversal_targets = 10,
+  -- set_default_kemaps = false,
 
-  config = function(_, opts)
+  config = function(_, _)
     local leap = require "leap"
-    leap.setup(opts)
-    leap.set_default_keymaps(false)
+    -- leap.set_default_keymaps(false)
+    -- leap.setup(opts)
+    require("leap.user").set_repeat_keys("<enter>", "<backspace>")
 
     -- Bidirectional search
     vim.keymap.set("n", "<leader>s", function()
