@@ -119,6 +119,7 @@ fi
 # zsh
 # . "$HOME/.cargo/env"
 # source ~/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 [[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 eval "$(atuin init bash)"

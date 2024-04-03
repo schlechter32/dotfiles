@@ -17,6 +17,7 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+
 export PATH="/usr/local/bin:/usr/bin"
 export PATH="/usr/local/bin:$PATH"
 
@@ -86,6 +87,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 source $HOME/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 # source $HOME/.config/tmuxinator/tmuxinator.zsh
 
 # if [ Darwin = `uname` ]; then
