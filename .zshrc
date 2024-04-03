@@ -17,8 +17,9 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+export PATH="/usr/local/bin:/usr/bin:$PATH"
 
-export PATH="/usr/local/bin:/usr/bin"
+export PATH="/usr/local/sbin:/usr/sbin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 
 export PATH="/home/nhornek/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/bin/:$PATH"
