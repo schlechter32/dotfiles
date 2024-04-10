@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Identify all connected monitors except for eDP-1
+monitors=$(xrandr | grep " connected" | grep -v "eDP-1" | cut -d" " -f1)
+
+# Loop through each monitor and apply scaling
+for monitor in $monitors
+do
+  echo "Scaling $monitor by 0.9x0.9"
+  xrandr --output $monitor --scale 0.9x0.9
+done
+
+echo "Scaling complete."
+
