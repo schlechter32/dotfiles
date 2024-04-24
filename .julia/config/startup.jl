@@ -12,3 +12,4 @@ atreplinit() do repl
     @warn "error while importing OhMyREPL" e
   end
 end
+ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"

@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Apply the resolution and refresh rate to the external monitors and position them
+# xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --output DP-3-2 --mode 3840x2160 --rate 30 --right-of DP-3-1-5  --output eDP-1 --mode 1920x1200 --rate 60 --right-of DP-3-1-6
+
+# Scale the external monitors, eDP-1 remains unscaled
+# xrandr --output DP-3-1-5 --scale 0.85x0.85
+# xrandr --output DP-3-2 --scale 0.85x0.85
+
+# echo "Display configuration complete."
+
+# !/bin/bash
+
+# Define desired refresh rate for external monitors
+# desired_refresh_rate="30.0" # Example refresh rate
+
+# Automatically set the resolution for the laptop display
+# xrandr --output eDP-1 --auto
+#
+# # Automatically set the resolution for the external monitors and apply the desired refresh rate
+# for monitor in DP-3-1-5 DP-3-1-6; do
+#     # Use --auto to set resolution to preferred
+#     xrandr --output "$monitor" --auto
+#     
+#     # Find a mode with the desired refresh rate and apply it
+#     mode_line=$(xrandr | grep "$monitor connected" -A20 | grep "$desired_refresh_rate" | head -n 1 | awk '{print $1}')
+#     if [[ ! -z "$mode_line" ]]; then
+#         xrandr --output "$monitor" --mode "$mode_line"
+#     fi
+#
+#     # Apply scaling
+#     xrandr --output "$monitor" --scale 0.9x0.9
+# done
+#
+# # Arrange monitors
+# xrandr --output DP-3-1-6 --right-of DP-3-1-5
+# xrandr --output eDP-1 --right-of DP-3-1-6
+#
+# echo "Display configuration complete."
+#
+
+# Automatically set the resolution for the laptop display (eDP-1) and external monitors (DP-3-1-5 and DP-3-2)
+# xrandr --output eDP-1 --mode 1920x1200 --rate 30  --output DP-3-1-5 --auto --output DP-3-2 --mode 3840x2160 --rate 30
+# Arrange the monitors with DP-3-1-5 to the left, DP-3-2 in the middle
+#
+
+# xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --output DP-3-2 --mode 3840x2160 --rate 30
+#
+# # Place the laptop display (eDP-1) to the right of DP-3-2
+#
+# xrandr --output eDP-1 --right-of DP-3-2
+# xrandr --output DP-3-2 --right-of DP-3-1-5 --primary
+# # xrandr --output eDP-1 --auto
+#
+# # Apply scaling to the external monitors
+# xrandr --output DP-3-1-5 --scale 0.9x0.9
+# xrandr --output DP-3-2 --scale 0.9x0.9
+
+# xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --primary --output eDP-1 --auto --right-of DP-3-2
+
+xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --right-of DP-3-1-5 --primary --output eDP-1 --auto --right-of DP-3-2
+echo "Display configuration complete."

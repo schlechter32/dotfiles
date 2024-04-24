@@ -11,7 +11,7 @@ return {
     local leap = require "leap"
     -- leap.set_default_keymaps(false)
     -- leap.setup(opts)
-    require("leap.user").set_repeat_keys("<enter>", "<backspace>")
+    -- require("leap.user").set_repeat_keys("<enter>", "<backspace>")
 
     -- Bidirectional search
     vim.keymap.set("n", "<leader>s", function()
