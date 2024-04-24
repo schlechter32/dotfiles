@@ -1,0 +1,3 @@
+#! /bin/bash
+knock_ikr_linux
+sshpass -e ssh -X nclshrnk@129.69.170.21 -t mutt -f .IncomingMail.d/
