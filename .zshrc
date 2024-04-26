@@ -17,6 +17,7 @@
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
 
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
 
 export PATH="/usr/local/sbin:/usr/sbin:$PATH"
@@ -88,7 +89,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 source $HOME/.profile
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # source $HOME/.config/tmuxinator/tmuxinator.zsh
 
