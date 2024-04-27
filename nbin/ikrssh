@@ -1,4 +1,4 @@
-#! /bin/bash
+! /bin/bash
 knock_ikr_linux
 sshpass -e ssh -X nclshrnk@129.69.170.21
 # ssh -X nclshrnk@129.69.170.21

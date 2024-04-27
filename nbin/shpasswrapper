@@ -1,0 +1,4 @@
+#!/bin/bash
+sshpass -e ssh $1
+# sshpass -d 123 ssh -o ProxyCommand="sshpass -e ssh -W %h:%p ingress" cnode01 
+# 123 << $1

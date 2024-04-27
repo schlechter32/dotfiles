@@ -1,0 +1,6 @@
+#!/bin/bash
+# sshpass -d 123 ssh \
+#     -o ProxyCommand="sshpass -e ssh -W %h:%p ingress" \
+#   cnode01 \
+#   123<<<TARGET_PASSWORD
+sshpass -e ssh -J ingress cnode01
