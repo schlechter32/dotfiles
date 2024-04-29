@@ -16,8 +16,7 @@
 # if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
 #   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 # fi
-
-eval "$(/opt/homebrew/bin/brew shellenv)"
+zmodload zsh/zprof
 export PATH="/usr/local/bin:/usr/bin:$PATH"
 
 export PATH="/usr/local/sbin:/usr/sbin:$PATH"
@@ -39,6 +38,9 @@ export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.juliaup/bin:$PATH"
+export PATH="/opt/homebrew/bin/:$PATH"
+export PATH="/opt/homebrew/sbin/:$PATH"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # Exprot variables
@@ -70,7 +72,7 @@ fi
 
 source "${ZINIT_HOME}/zinit.zsh"
 
-zinit light ohmyzsh/ohmyzsh
+# zinit light ohmyzsh/ohmyzsh
 # zinit ice depth=1; zinit light romkatv/powerlevel10k
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -173,7 +175,7 @@ tms
 }
 zle -N my_tms_command
 bindkey "^f" my_tms_command
-bindkey -M menuselect "\r" .accept-line
+# bindkey -M menuselect "\r" .accept-line
 
 # [ -s "/home/elliott/.svm/svm.sh" ] && source "/home/elliott/.svm/svm.sh"
 
@@ -205,6 +207,7 @@ function lt() {
     exa --icons -T -L "$1"
   fi
 }
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 eval "$(atuin init zsh)" 
 eval "$(starship init zsh)"

@@ -1,9 +1,0 @@
-#!/bin/bash
-pw=$(security find-generic-password -s $1 -w)
-# echo "ran rist command"
-# echo $pw  
-export SSHPASS=$pw
-# echo $SSHPASS
-sshpassproxywrapper $pw
-# $RAWSTRING |sed 's/.*="\(.*\)"/\1/'
-

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Define the Docker image
+IMAGE="rofrano/vagrant-provider:debian"
+
+# Define the local directory where the executable is located
+LOCAL_DIR="$HOME/nbin/libscripts/"
+
+# Define the directory inside the container where the local directory will be mounted
+CONTAINER_DIR="/opt/nbin"
+
+# Define the executable command
+COMMAND="knock_ikr_linux"
+
+# Pull the Docker image
+# docker pull $IMAGE
+
+# Run the command inside a new Docker container
+# This command mounts the local directory to a directory in the container
+# Uses '--rm' to remove the container after it exits
+# '--platform' specifies the architecture
+docker run --platform linux/amd64 -v "$LOCAL_DIR:$CONTAINER_DIR" $IMAGE "$CONTAINER_DIR/$COMMAND"

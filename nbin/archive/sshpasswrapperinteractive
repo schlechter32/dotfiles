@@ -1,0 +1,2 @@
+#!/bin/bash
+sshpass -e ssh $1 $2

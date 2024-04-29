@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Get password from secure storage on macos
+initial_host=$1
+get_ssh_config_block() {
+    local initial_host="$1"
+    local config=$(awk -v host="$initial_host" '
+        BEGIN { found = 0; print_block = 0; }
+        /^Host / {  # This regex matches lines that exactly start with "Host " followed by a space
+            if ($2 == host) {
+                found = 1;  # Start of the desired host block
+                print_block = 1;  # Enable printing
+            } else if (found) {
+                print_block = 0;  # If another host block starts and weve already found our block, stop printing
+                exit;  # Exit the program as were done printing the desired block
+            }
+        }
+        print_block { print; }  # Print lines of the current block
+        ' ~/.ssh/config)
+    
+    if [ -n "$config" ]; then
+        echo "$config"
+    else
+        echo "No configuration found for host: $initial_host"
+    fi
+}
+determine_sshpass_prompt_pw() {
+  local host="$1"
+  opt_pw=$(security find-generic-password -s $host  -w)
+  if [ -n "$opt_pw" ]; then
+    # echo "pw not "
+    echo "sshpass -p $opt_pw"
+  else
+    echo ""
+    # echo "pw found"
+  fi
+}
+config=$(get_ssh_config_block $initial_host)
+user=$(echo $config | grep -o "User [^ ]*" | awk '{print $2}')
+jump_needed=$(echo $config | grep -o "ProxyJump [^ ]*" | awk '{print $2}')
+hostname_var=$(echo $config | grep -o "HostName [^ ]*" | awk '{print $2}')
+# pw=$(security find-generic-password -s $initial_host  -w)
+port=6006
+sshcommand="ssh -X -C $user@$hostname_var"
+sshpass_command=$(determine_sshpass_prompt_pw $initial_host)
+# echo "sshpass_command"
+# echo $sshpass_command
+
+echo $sshcommand
+if [ -n "$jump_needed"]; then
+  echo "no jump needed"
+   $sshpass_command $sshcommand
+else
+  echo "Jump needed statement "
+  # jump_pw =$(get_ssh_config_block jump_needed)
+  jump_pw=$(security find-generic-password -s $jump_needed  -w)
+  echo "jumppw"
+  echo $jump_pw
+  sshpass -d 123 $sshcommand -o ProxyCommand="sshpass -p $jump_pw ssh -W %h:%p $jump_needed"  $user@$hostname 123<<<$pw
+fi
+# Usefull flags 
+# -C compression
+# -N No remote command useful for ports andtinneling
+
+# sshpass -d 123  ssh -o ProxyCommand="sshpass -p 369Qwe369#+# ssh -W %h:%p ingress"  nclshrnk@cnode01 123<<<369Qwe369#+#
+#
