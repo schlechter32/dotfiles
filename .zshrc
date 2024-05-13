@@ -26,6 +26,7 @@ export PATH="/home/nhornek/zephyr-sdk-0.16.3/sysroots/x86_64-pokysdk-linux/usr/b
 export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/ext/bin:$PATH"
 
+export PATH="/Library/TeX/texbin/:$PATH"
 export PATH="/usr/games:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
@@ -115,6 +116,7 @@ alias sudo='sudo '
 
 alias v="nvim"
 alias ls="exa --icons"
+alias ll="ll -l"
 alias vim="nvim"
 alias c="clear"
 alias cat="bat"

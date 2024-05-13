@@ -38,8 +38,10 @@ return {
     vim.g.vimtex_quickfix_ignore_mode = 0
     vim.g.vimtex_compiler_progname = "nvr"
     -- PDF viewer settings
-    vim.g.vimtex_view_general_viewer = "okular"
-
+    vim.g.vimtex_view_method = "skim"
+    vim.g.vimtex_view_skim_sync = 1
+    vim.g.vimtex_view_skim_avctivate = 1
+    vim.g.vimtex_view_general_viewer = "open -a skim"
     vim.g.vimtex_view_general_options = "-unique file:@pdf\\#src:@line@tex"
     -- vim.g.vimtex_view_general_options = "-reuse-instance -forward-search @tex @line @pdf"
     -- Do not auto open quickfix on compile erros
