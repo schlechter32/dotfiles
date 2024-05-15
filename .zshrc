@@ -116,7 +116,7 @@ alias sudo='sudo '
 
 alias v="nvim"
 alias ls="exa --icons"
-alias ll="ll -l"
+alias ll="ls -l"
 alias vim="nvim"
 alias c="clear"
 alias cat="bat"
