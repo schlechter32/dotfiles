@@ -6,7 +6,7 @@ monitors=$(xrandr | grep " connected" | grep -v "eDP-1" | cut -d" " -f1)
 # Loop through each monitor and apply scaling
 for monitor in $monitors
 do
-  echo "Scaling $monitor by 0.9x0.9"
+  echo "Scaling $monitor by 0.8x0.8"
   xrandr --output $monitor --scale 0.9x0.9
 done
 
