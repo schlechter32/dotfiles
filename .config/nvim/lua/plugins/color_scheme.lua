@@ -4,6 +4,7 @@ return {
     "catppuccin/nvim",
     config = function()
       require("catppuccin").setup {
+        -- vim.api.nvim_set_hl(0, "Tabline", { fg = colors.green, bg = colors.mantle })
 
         background = { -- :h background
           light = "latte",
@@ -59,7 +60,7 @@ return {
         custom_highlights = function(colors)
           return {
             Comment = { fg = colors.flamingo },
-            TabLineSel = { bg = colors.pink },
+            -- TabLineSel = { bg = colors.pink },
             CmpBorder = { fg = colors.surface2 },
             Pmenu = { bg = colors.none },
             Conceal = { fg = colors.green },
