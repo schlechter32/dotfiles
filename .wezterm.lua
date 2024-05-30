@@ -50,7 +50,11 @@ config.keys = {
 	{ key = "s", mods = "LEADER", action = act.RotatePanes("Clockwise") },
 	-- We can make separate keybindings for resizing panes
 	-- But Wezterm offers custom "mode" in the name of "KeyTable"
-	{ key = "r", mods = "LEADER", action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }) },
+	{
+		key = "r",
+		mods = "LEADER",
+		action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
+	},
 
 	-- Tab keybindings
 	{ key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
@@ -62,6 +66,20 @@ config.keys = {
 
 	-- Lastly, workspace
 	{ key = "w", mods = "LEADER", action = act.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+	-- Make Option-Left equivalent to Alt-b which many line editors interpret as backward-word
+	{ key = "LeftArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bb" }) },
+	-- Make Option-Right equivalent to Alt-f; forward-word
+	{ key = "RightArrow", mods = "OPT", action = wezterm.action({ SendString = "\x1bf" }) },
+	{
+		key = "LeftArrow",
+		mods = "CMD",
+		action = wezterm.action({ SendString = "\x1bOH" }),
+	},
+	{
+		key = "RightArrow",
+		mods = "CMD",
+		action = wezterm.action({ SendString = "\x1bOF" }),
+	},
 }
 -- I can use the tab navigator (LDR t), but I also want to quickly navigate tabs with index
 for i = 1, 9 do

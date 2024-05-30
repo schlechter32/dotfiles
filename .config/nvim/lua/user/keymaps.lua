@@ -76,7 +76,6 @@ nnoremap("<C-h>", function()
     vim.cmd.wincmd "h"
   end
 end)
-
 -- Swap between last two buffers
 nnoremap("<leader>'", "<C-^>", { desc = "Switch to last buffer" })
 nnoremap("<leader>'", "<tab>", { desc = "Switch to last buffer" })
@@ -403,8 +402,8 @@ end)
 
 -- Terminal --
 -- Enter normal mode while in a terminal
-tnoremap("<esc>", [[<C-\><C-n>]])
-tnoremap("jj", [[<C-\><C-n>]])
+-- tnoremap("<esc>", [[<C-\><C-n>]])
+-- tnoremap("jj", [[<C-\><C-n>]])
 
 -- Window navigation from terminal
 tnoremap("<C-h>", [[<Cmd>wincmd h<CR>]])
@@ -420,4 +419,9 @@ inoremap("<C-l>", "<c-g>u<Esc>[s1z=`]a<c-g>u")
 nnoremap("<leader>tb", "<cmd>DapToggleBreakpoint <CR>")
 
 -- nnoremap("<leader>rt", "<cmd>DapToggleBreakpoint <CR>")
+
+-- nnoremap("<C-n>", "tabnext<cr>")
+-- nnoremap("<C-p>", "tabprevious<cr>")
+nnoremap('<C-n>', '<cmd>tabprevious<cr>')
+nnoremap('<C-p>', '<cmd>tabnext<cr>')
 return M
