@@ -1,3 +1,4 @@
+ENV["JULIA_PKG_USE_CLI_GIT"]=true
 using Revise
 using DrWatson
 using Pkg
