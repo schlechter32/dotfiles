@@ -106,7 +106,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 #
 if [ Darwin = `uname` ]; then
 elif [ Linux = `uname` ]; then
-alias yq="yq_amd64"
+# alias yq="yq_amd64"
 fi
 # Aliases
 alias ls='ls --color'
