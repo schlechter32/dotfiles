@@ -8,16 +8,74 @@ if wezterm.config_builder then
 end
 
 -- Settings
-config.color_scheme = "Catppuccin Mocha"
+Dark_color_scheme = "rose-pine"
+Light_color_scheme = "rose-pine-dawn"
+-- for key, _ in pairs(wezterm.color.get_builtin_schemes()) do
+-- 	print(key)
+-- end
+Dark_scheme = wezterm.color.get_builtin_schemes()[Dark_color_scheme]
+Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
+-- scheme.background = "black"
+-- scheme.ansi = {
+-- 	"#1c1e1b",
+-- 	"#e75a7c",
+-- 	"#8fb573",
+-- 	"#dbb671",
+-- 	"#57a5e5",
+-- 	"#aaaaff",
+-- 	"#70c2be",
+-- 	"#f1e9d2",
+-- }
+-- scheme.brights = {
+-- 	"#f0c6c6",
+-- 	"#f38ba8",
+-- 	"#a6e3a1",
+-- 	"#f9e2af",
+-- 	"#89b4fa",
+-- 	"#f5c2e7",
+-- 	"#94e2d5",
+-- 	"#a6adc8",
+-- }
+Dark_scheme.brights[1] = "#a285c6"
+Light_scheme.brights[1] = "#a285c6"
+Dark_scheme.background = "#222436"
+Dark_scheme.foreground = "#cdd6f4"
+config.color_schemes = {
+	-- Override the builtin Gruvbox Light scheme with our modification.
+	["mydark"] = Dark_scheme,
+
+	-- We can also give it a different name if we don't want to override
+	-- the default
+	["mylight"] = Light_scheme,
+}
+config.color_scheme = "mydark"
+-- print("mycolor debug")
+-- print(mycolors)
+-- mycolors.background = "red"
+-- config.color_scheme = "mycolors"
+-- toggle light/dark scheme with CTRL+l
+wezterm.on("toggle-dark-mode", function(window, pane)
+	print("got event")
+	print(config.color_scheme)
+	local overrides = window:get_config_overrides() or {}
+	if overrides.color_scheme == "mydark" then
+		-- print("setting to light")
+		overrides.color_scheme = "mylight"
+	else
+		-- print("setting to dark")
+		overrides.color_scheme = "mydark"
+	end
+	window:set_config_overrides(overrides)
+end)
 config.font = wezterm.font_with_fallback({
 	{ family = "MonoLisa script", scale = 1.15 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
-config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
-config.scrollback_lines = 3000
+config.scrollback_lines = 30000
 config.default_workspace = "home"
 
 -- Dim inactive panes
@@ -30,6 +88,8 @@ config.inactive_pane_hsb = {
 config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
 	-- Send C-a when pressing C-a twice
+	--
+	{ key = "q", mods = "CTRL", action = wezterm.action({ EmitEvent = "toggle-dark-mode" }) },
 	{ key = "a", mods = "LEADER", action = act.SendKey({ key = "a", mods = "CTRL" }) },
 	{ key = "c", mods = "LEADER", action = act.ActivateCopyMode },
 	{
@@ -234,19 +294,19 @@ wezterm.on("update-right-status", function(window, pane)
 	local time = wezterm.strftime("%H:%M")
 
 	-- Let's add color to one of the components
-	window:set_right_status(wezterm.format({
-		-- Wezterm has a built-in nerd fonts
-		{ Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
-		{ Text = " | " },
-		{ Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
-		{ Text = " | " },
-		{ Foreground = { Color = "FFB86C" } },
-		{ Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
-		"ResetAttributes",
-		{ Text = " | " },
-		{ Text = wezterm.nerdfonts.md_clock .. "  " .. time },
-		{ Text = " |" },
-	}))
+	-- window:set_right_status(wezterm.format({
+	-- 	-- Wezterm has a built-in nerd fonts
+	-- 	{ Text = wezterm.nerdfonts.oct_table .. "  " .. stat },
+	-- 	{ Text = " | " },
+	-- 	{ Text = wezterm.nerdfonts.md_folder .. "  " .. cwd },
+	-- 	{ Text = " | " },
+	-- 	{ Foreground = { Color = "FFB86C" } },
+	-- 	{ Text = wezterm.nerdfonts.fa_code .. "  " .. cmd },
+	-- 	"ResetAttributes",
+	-- 	{ Text = " | " },
+	-- 	{ Text = wezterm.nerdfonts.md_clock .. "  " .. time },
+	-- 	{ Text = " |" },
+	-- }))
 end)
 config.default_prog = { "zsh" }
 
