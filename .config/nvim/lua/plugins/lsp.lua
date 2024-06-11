@@ -228,6 +228,8 @@ return {
         typescriptreact = { { "prettierd", "prettier", "biome" } },
         svelte = { { "prettierd", "prettier " } },
         lua = { "stylua" },
+        -- julia = { "julials" },
+        python = { "black" },
       },
     },
   },
