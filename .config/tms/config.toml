@@ -1,4 +1,4 @@
-display_full_path = true
+display_full_path = false
 search_submodules = true
 session_sort_order = "Alphabetical"
 
