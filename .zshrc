@@ -38,6 +38,8 @@ export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
 export PATH="$HOME/.pyenv/bin:$PATH"
 export PATH="$HOME/.juliaup/bin:$PATH"
+# Variables
+BULK_HOME="/u/bulk/home/wima/$USER"
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -166,9 +168,9 @@ eval "$(fzf --zsh)"
 
 if [[ $(hostname) == *"cnode"* ]]; then
 
-export JULIAUP_DEPOT_PATH="/u/bulk/home/wima/nclshrnk/julia/"
-export JULIA_DEPOT_PATH="/u/bulk/home/wima/nclshrnk/julia/"
-export PYENV_ROOT="/u/bulk/home/wima/nclshrnk/.pyenv"
+export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
+export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
+export PYENV_ROOT="$BULK_HOME/.pyenv"
 else
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"

@@ -9,22 +9,8 @@
   ; proxy = socks5h://127.0.0.1:8080
   [core]
     pager = delta
-
-[interactive]
-    diffFilter = delta --color-only
-
-[delta]
-    navigate = true    # use n and N to move between diff sections
-
-    # delta detects terminal colors automatically; set one of these to disable auto-detection
-    # dark = true
-    # light = true
-
-[merge]
-    conflictstyle = diff3
-
-[diff]
-    colorMoved = default
+[safe]
+     directory = /u/bulk/home/wima/fchrstou/workspace/RL_RSA_MDPs/exp1/MetaData/Tool
 [pull]
 	rebase = false
 [alias]
