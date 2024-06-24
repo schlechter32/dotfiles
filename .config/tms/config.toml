@@ -1,0 +1,15 @@
+display_full_path = true
+search_submodules = true
+session_sort_order = "Alphabetical"
+
+[[search_dirs]]
+path = "~/source"
+depth = 10
+
+[[search_dirs]]
+path = "~/source/mdppaper/"
+depth = 10
+
+[[search_dirs]]
+path = "~/secondBrain"
+depth = 10
