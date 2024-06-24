@@ -36,8 +36,24 @@ Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
 -- 	"#94e2d5",
 -- 	"#a6adc8",
 -- }
-Dark_scheme.brights[1] = "#a285c6"
-Light_scheme.brights[1] = "#a285c6"
+--#9ccfd8
+Dark_scheme.brights = { "#9ccfd8", "#eb6f92", "#9ccfd8", "#f6c177", "#31748f", "#c4a7e7", "#ebbcba", "#e0def4" }
+Dark_scheme.ansi = {
+	"#26233a",
+	"#eb6f92",
+	"#9ccfd8",
+	"#f6c177",
+	"#31748f",
+	"#c4a7e7",
+	"#a285c6",
+	"#e0def4",
+}
+-- Dark_scheme.brights = { "#6e6a86", "#eb6f92", "#9ccfd8", "#f6c177", "#31748f", "#c4a7e7", "#ebbcba", "#e0def4" }
+print(pairs(Dark_scheme))
+-- Dark_scheme.brights[7] = "#9ccfd8"
+Light_scheme.brights[1] = "#9ccfd8"
+-- Dark_scheme.brights[1] = "#a285c6"
+-- Light_scheme.brights[1] = "#a285c6"
 Dark_scheme.background = "#222436"
 Dark_scheme.foreground = "#cdd6f4"
 config.color_schemes = {
