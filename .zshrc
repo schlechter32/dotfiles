@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+BULK_HOME="/u/bulk/home/wima/$USER"
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -14,6 +15,17 @@ if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if [[ $(hostname) == *"cnode"* ]]; then
+
+export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
+export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
+export PYENV_ROOT="$BULK_HOME/.pyenv"
+else
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+
+export PYENV_ROOT="$HOME/.pyenv"
+fi
 # PATHS
 #
 export PATH="/usr/local/bin:/usr/bin:$PATH"
@@ -36,10 +48,9 @@ export PATH="$HOME/execs/node-v20.11.0-linux-x64/bin:$PATH"
 export PATH="$HOME/execs:$PATH"
 export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="$PYENV_ROOT/.pyenv/bin:$PATH"
 export PATH="$HOME/.juliaup/bin:$PATH"
 # Variables
-BULK_HOME="/u/bulk/home/wima/$USER"
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -166,19 +177,11 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
 eval "$(fzf --zsh)"
 
-if [[ $(hostname) == *"cnode"* ]]; then
-
-export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
-export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
-export PYENV_ROOT="$BULK_HOME/.pyenv"
-else
-export JULIAUP_DEPOT_PATH="$HOME/.julia/"
-export JULIA_DEPOT_PATH="$HOME/.julia/"
-
-fi
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+
+# Make nice tree
 function lt() {
   if [ -z "$1" ]; then
     exa --icons -T -L 2
@@ -197,5 +200,4 @@ function ya() {
 	rm -f -- "$tmp"
 
 }
-
 eval "$(zoxide init zsh)"

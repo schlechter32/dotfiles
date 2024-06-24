@@ -7,6 +7,10 @@ path = "~/source"
 depth = 10
 
 [[search_dirs]]
+path = "~/dotfiles_ikr/"
+depth = 1
+
+[[search_dirs]]
 path = "~/source/mdppaper/"
 depth = 10
 
