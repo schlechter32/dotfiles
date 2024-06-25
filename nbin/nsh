@@ -77,8 +77,8 @@ fi
 if [[ " ${ikr_cent_list[@]} " =~ " $initial_host " ]]; then
   echo "host on ikr"
   if [ $(uname) == "Darwin" ]; then
-    echo "On mac so using docker to execute knock"
-    ~/nbin/libscripts/docker_knock
+    # echo "On mac so using docker to execute knock"
+    ~/nbin/knock_ikr_mac
   else 
     ~/nbin/libscripts/knock_ikr_linux
   fi

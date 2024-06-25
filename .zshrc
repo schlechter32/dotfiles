@@ -5,6 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+BULK_HOME="/u/bulk/home/wima/$USER"
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -14,6 +15,17 @@ if [[ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]] then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+if [[ $(hostname) == *"cnode"* ]]; then
+
+export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
+export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
+export PYENV_ROOT="$BULK_HOME/.pyenv"
+else
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+
+export PYENV_ROOT="$HOME/.pyenv"
+fi
 # PATHS
 #
 export PATH="/usr/local/bin:/usr/bin:$PATH"
@@ -36,8 +48,9 @@ export PATH="$HOME/execs/node-v20.11.0-linux-x64/bin:$PATH"
 export PATH="$HOME/execs:$PATH"
 export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
-export PATH="$HOME/.pyenv/bin:$PATH"
+# export PATH="$PYENV_ROOT/.pyenv/bin:$PATH"
 export PATH="$HOME/.juliaup/bin:$PATH"
+# Variables
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -108,7 +121,10 @@ if [ Darwin = `uname` ]; then
 elif [ Linux = `uname` ]; then
 # alias yq="yq_amd64"
 fi
+
 # Aliases
+#
+#
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
@@ -134,6 +150,7 @@ alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias zi="__zoxide_zi"
+# alias cdo="cd"
 # alias ya="yazi"
 alias cf="cd \$(find * -type d | fzf)"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
@@ -143,6 +160,7 @@ alias ff='fzf --preview="bat --color=always --style=plain --line-range=:100000 {
 alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
+
 
 # Update all submodules
 alias gsu='git submodule update --init --recursive'
@@ -158,12 +176,12 @@ alias git-submodule-push='git submodule foreach git push'
 alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
 
-export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+
+# Make nice tree
 function lt() {
   if [ -z "$1" ]; then
     exa --icons -T -L 2
@@ -176,9 +194,10 @@ function ya() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
+    # echo $cwd
+		cd "$cwd"
 	fi
 	rm -f -- "$tmp"
 
 }
-
+eval "$(zoxide init zsh)"
