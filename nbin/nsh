@@ -60,7 +60,7 @@ hostname_var=$(echo "$config" | grep -o "HostName [^ ]*" | awk '{print $2}')
 echo "Connecting to $initial_host with $hostname_var"
 
 
-lab_list=("smart" "netserv1", "cobra")
+lab_list=("smart" "netserv1" "cobra")
 ikr_cent_list=("cnode01" "ingress" "cnode09")
 
 # Get password from secure storage on macOS
