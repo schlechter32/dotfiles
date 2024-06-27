@@ -1,0 +1,42 @@
+#!/bin/bash
+
+ssh_base_command="ssh"
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -p) ssh_base_command+=" -p $2"; shift ;;
+        -l) ssh_base_command+=" -l $2"; shift ;;
+        -i) ssh_base_command+=" -i $2"; shift ;;
+        -X) ssh_base_command+=" -X" ;;
+        -L) ssh_base_command+=" -L $2:localhost:$2"; shift;;
+        -C) ssh_base_command+=" -C" ;;
+        -D) ssh_base_command+=" -D $2"; shift;;
+        *) break ;;
+    esac
+    shift
+done
+initial_host=$1
+lab_list=("smart" "netserv1" "cobra")
+ikr_cent_list=("cnode01" "ingress" "cnode09")
+
+# Get password from secure storage on macOS
+if [[ " ${lab_list[@]} " =~ " $initial_host " ]]; then
+  echo "host on lab list"
+  if [ $(uname) == "Darwin" ]; then
+    echo "On mac so using docker to execute knock"
+    ~/nbin/libscripts/docker_knock_lab
+  else 
+    ~/nbin/libscripts/knock_lab --target "$hostname_var"
+  fi
+fi
+
+if [[ " ${ikr_cent_list[@]} " =~ " $initial_host " ]]; then
+  echo "host on ikr"
+  if [ $(uname) == "Darwin" ]; then
+    # echo "On mac so using docker to execute knock"
+    ~/nbin/knock_ikr_mac
+  else 
+    ~/nbin/libscripts/knock_ikr_linux
+  fi
+fi
+sshcommand="$ssh_base_command $initial_host"
+$sshcommand
