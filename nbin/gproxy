@@ -1,0 +1,8 @@
+#!/bin/bash
+if git config --global --get http.proxy > /dev/null; then
+    echo "removing proxy"
+    git config --global --unset http.proxy
+else
+    echo "setting proxy"
+    git config --global http.proxy socks5h://127.0.0.1:8080
+fi
