@@ -8,7 +8,10 @@ initial_host="ingress"
   else 
     ~/nbin/libscripts/knock_ikr_linux
   fi
-ss
 
-opt_pw=$(security find-generic-password -s "$initial_host" -w)
-sshpass -p $opt_pw rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
+ if [ comman -v security &> /dev/null ]; then
+    opt_pw=$(security find-generic-password -s "$initial_host" -w)
+   sshpass -p $opt_pw rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
+else
+    rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
+ fi
