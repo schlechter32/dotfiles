@@ -5,9 +5,7 @@
 	sslverify = false
 [credential]
   helper = cache --timeout 28800
-[http]
-  ; proxy = socks5h://127.0.0.1:8080
-  [core]
+[core]
     pager = delta
 [safe]
      directory = /u/bulk/home/wima/fchrstou/workspace/RL_RSA_MDPs/exp1/MetaData/Tool
@@ -51,6 +49,7 @@ sm-diff = "! git diff && git submodule foreach 'git diff' "
 # git sm-push will ask to push also submodules
 sm-push = push --recurse-submodules=on-demand
 
+pclone = "! ALL_PROXY=socks5h://127.0.0.1:8080 git clone"
 # git alias: list all aliases
 # useful in order to learn git syntax
 alias = "!git config -l | grep alias | cut -c 7-"

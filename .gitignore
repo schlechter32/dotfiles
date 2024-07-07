@@ -1,3 +1,4 @@
 .DS_Store
 nbin/yq
 .config/nvim/lazy-lock.json
+.python-version
