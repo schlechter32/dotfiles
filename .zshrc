@@ -202,3 +202,4 @@ function ya() {
 
 }
 eval "$(zoxide init zsh)"
+source ~/.secrets
