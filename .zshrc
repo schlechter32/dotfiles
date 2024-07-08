@@ -207,3 +207,4 @@ function st(){
     source "$ST_PATH/st_wrapper.bash"
 
 }
+source ~/.secrets

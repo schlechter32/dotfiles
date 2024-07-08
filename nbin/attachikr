@@ -1,4 +1,4 @@
-
+#!/bin/bash
 file=$1
 initial_host="ingress"
   echo "host on ikr"
@@ -9,7 +9,7 @@ initial_host="ingress"
     ~/nbin/libscripts/knock_ikr_linux
   fi
 
- if [ comman -v security &> /dev/null ]; then
+if [[ $(command -v security) ]]; then
     opt_pw=$(security find-generic-password -s "$initial_host" -w)
    sshpass -p $opt_pw rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
 else

@@ -42,7 +42,7 @@ get_ssh_config_block() {
 }
 determine_sshpass_prompt_pw() {
   local host="$1"
- if [ comman -v security &> /dev/null ]; then
+if [[ $(command -v security) ]]; then
   opt_pw=$(security find-generic-password -s "$host" -w)
  fi
   if [ -n "$opt_pw" ]; then
@@ -94,7 +94,7 @@ echo "SSH-Command: $sshcommand"
 if [ -n "$jump_needed" ]; then
   echo "Jump needed statement "
 
- if [ comman -v security &> /dev/null ]; then
+if [[ $(command -v security) ]]; then
   jump_pw=$(security find-generic-password -s "$jump_needed" -w)
   pw=$(security find-generic-password -s "$initial_host" -w)
   sshpass -d 123 $ssh_base_command -o ProxyCommand="sshpass -p $jump_pw ssh -W %h:%p $jump_needed"  "$user@$hostname_var" 123<<<"$pw"
