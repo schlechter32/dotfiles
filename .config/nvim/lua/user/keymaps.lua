@@ -12,7 +12,8 @@ local neogit = require "neogit"
 -- local undotree = require("undotree")
 
 local M = {}
-
+nnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
+vnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
 nnoremap("<leader>gs", function()
   require("neogit").open()
   -- kj(ij(kl()))-- i
@@ -422,6 +423,6 @@ nnoremap("<leader>tb", "<cmd>DapToggleBreakpoint <CR>")
 
 -- nnoremap("<C-n>", "tabnext<cr>")
 -- nnoremap("<C-p>", "tabprevious<cr>")
-nnoremap('<C-n>', '<cmd>tabprevious<cr>')
-nnoremap('<C-p>', '<cmd>tabnext<cr>')
+nnoremap("<C-n>", "<cmd>tabprevious<cr>")
+nnoremap("<C-p>", "<cmd>tabnext<cr>")
 return M
