@@ -202,3 +202,8 @@ function ya() {
 
 }
 eval "$(zoxide init zsh)"
+export ST_PATH="$HOME/source/SimTreeUtils.jl"
+function st(){
+    source "$ST_PATH/st_wrapper.bash"
+
+}
