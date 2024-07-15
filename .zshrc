@@ -68,10 +68,10 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-syntax-highlighting
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # Add in snippets
 zinit snippet OMZP::git
@@ -83,7 +83,8 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit 
+compinit
 
 zinit cdreplay -q
 
@@ -148,6 +149,7 @@ alias ta='tmux attach-session'
 alias hf="history | fzf"
 alias z="__zoxide_z"
 alias ..="cd .."
+alias cd="z"
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias zi="__zoxide_zi"
