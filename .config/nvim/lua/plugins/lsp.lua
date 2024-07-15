@@ -88,6 +88,13 @@ return {
         },
         html = {},
         jsonls = {},
+        texlab = {
+          latexFormatter = "latexindent",
+          latexindent = {
+            modifyLineBreaks = true,
+            -- local = "lindent.yamls"
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
