@@ -3,6 +3,7 @@
 vim.cmd [[
   command! EnableFormatOnSave lua vim.g.format_on_save = 1
   command! DisableFormatOnSave lua vim.g.format_on_save = 0
+  command! Format lua vim.lsp.buf.format()
 ]]
 
 -- vim.api.nvim_create_autocmd("BufWritePre", {

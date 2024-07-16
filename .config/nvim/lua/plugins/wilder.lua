@@ -10,6 +10,8 @@ return {
 
       "catppuccin/nvim",
     },
+
+    lazy = true,
     config = function()
       local wilder = require "wilder"
       -- local flavor = vim.g.colors_name:match "^[^%-]+%-(.+)$"
