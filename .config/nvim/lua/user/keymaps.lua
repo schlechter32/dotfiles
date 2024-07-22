@@ -96,6 +96,7 @@ end, { desc = "Open oil floating" })
 
 -- Center buffer while navigating
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<C-f>", "<C-u>zz")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("{", "{zz")
 nnoremap("}", "}zz")

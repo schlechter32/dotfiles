@@ -16,3 +16,19 @@ vim.cmd [[
 --     end
 --   end,
 -- })
+--
+-- Function to print current LSP settings
+function Print_lsp_settings()
+  local clients = vim.lsp.get_active_clients()
+  if next(clients) == nil then
+    print("No active LSP clients.")
+    return
+  end
+  for _, client in ipairs(clients) do
+    print("Client: " .. client.name)
+    print(vim.inspect(client.config.settings))
+  end
+end
+
+-- Bind the function to a command
+vim.cmd("command! LspPrintSettings lua print_lsp_settings()")
