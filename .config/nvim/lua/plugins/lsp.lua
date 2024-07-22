@@ -113,18 +113,18 @@ return {
                             diagnosticsDelay = 300,
                             formatterLineLength = 80,
                             forwardSearch = {
-                                -- executable="displayline",
-                                -- args={'%l', '%p', '%f'}
+                                executable="displayline",
+                                args={'%l', '%p', '%f'}
 
-                                executable = 'sioyek',
-                                args = {
-                                    '--reuse-window',
-                                    '--execute-command', 'toggle_synctex', -- Open Sioyek in synctex mode.
-                                    '--inverse-search',
-                                    [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
-                                    '--forward-search-file', '%f',
-                                    '--forward-search-line', '%l', '%p'
-                                }
+                                -- executable = 'sioyek',
+                                -- args = {
+                                --     '--reuse-window',
+                                --     '--execute-command', 'toggle_synctex', -- Open Sioyek in synctex mode.
+                                --     '--inverse-search',
+                                --     [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
+                                --     '--forward-search-file', '%f',
+                                --     '--forward-search-line', '%l', '%p'
+                                -- }
                             },
                             latexFormatter = "latexindent",
                             latexindent = {
