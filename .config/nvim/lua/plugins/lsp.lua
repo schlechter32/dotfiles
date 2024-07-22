@@ -210,6 +210,7 @@ return {
             local formatters = {
                 prettierd = {},
                 stylua = {},
+                black={}
             }
 
             local manually_installed_servers = { "ocamllsp", "gleam", "rust_analyzer" }
@@ -285,26 +286,27 @@ return {
             }
         end,
     },
-    -- {
-    --   "stevearc/conform.nvim",
-    --   event = { "BufWritePre" },
-    --   cmd = { "ConformInfo" },
-    --   opts = {
-    --     notify_on_error = false,
-    --     -- format_after_save = {
-    --     --   async = true,
-    --     --   timeout_ms = 500,
-    --     --   lsp_fallback = true,
-    --     -- },
-    --     formatters_by_ft = {
-    --       javascript = { { "prettierd", "prettier", "biome" } },
-    --       typescript = { { "prettierd", "prettier", "biome" } },
-    --       typescriptreact = { { "prettierd", "prettier", "biome" } },
-    --       svelte = { { "prettierd", "prettier " } },
-    --       lua = { "stylua" },
-    --       -- julia = { "julials" },
-    --       python = { "black" },
-    --     },
-    --   },
-    -- },
+    {
+      "stevearc/conform.nvim",
+      event = { "BufWritePre" },
+      cmd = { "ConformInfo" },
+      opts = {
+        notify_on_error = false,
+        format_after_save = {
+          async = true,
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+        formatters_by_ft = {
+          javascript = { { "prettierd", "prettier", "biome" } },
+          typescript = { { "prettierd", "prettier", "biome" } },
+          typescriptreact = { { "prettierd", "prettier", "biome" } },
+          svelte = { { "prettierd", "prettier " } },
+          lua = { "stylua" },
+          -- julia = { "julials" },
+          python = {"autopep8", "black" },
+          latex={"latexindent"}
+        },
+      },
+    },
 }
