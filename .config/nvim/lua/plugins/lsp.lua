@@ -113,8 +113,13 @@ return {
                             diagnosticsDelay = 300,
                             formatterLineLength = 80,
                             forwardSearch = {
-                                executable="displayline",
-                                args={'%l', '%p', '%f'}
+                                executable = "displayline",
+                                args = { '-g', '%l', '%p', '%f' }
+                                -- Enable back search on Skim -> Preference -> Sync:
+                                --   Preset: Custom
+                                --   Command: /Users/simo/go/bin/nvim-texlabconfig
+                                --   Arguments: -file '%file' -line %line -cache_root /Users/simo/.cache/lvim
+                                -- (Commands and Arguments accept only full path, change '/User/simo')
 
                                 -- executable = 'sioyek',
                                 -- args = {
