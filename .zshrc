@@ -120,6 +120,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # OS dependent execs
 #
 if [ Darwin = `uname` ]; then
+
+export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
+
 elif [ Linux = `uname` ]; then
 # alias yq="yq_amd64"
 fi
@@ -149,7 +152,7 @@ alias ta='tmux attach-session'
 alias hf="history | fzf"
 alias z="__zoxide_z"
 alias ..="cd .."
-alias cd="z"
+# alias cd="z"
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias zi="__zoxide_zi"

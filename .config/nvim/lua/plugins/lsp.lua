@@ -88,11 +88,54 @@ return {
         },
         html = {},
         jsonls = {},
+        -- texlab = {
+        --         latexFormatter = "latexindent",
+        --         latexindent = {
+        --             modifyLineBreaks = true,
+        --             -- local = "lindent.yamls"
+        --         },
+        -- },
         texlab = {
-          latexFormatter = "latexindent",
-          latexindent = {
-            modifyLineBreaks = true,
-            -- local = "lindent.yamls"
+          settings = {
+            texlab = {
+              auxDirectory = ".",
+              bibtexFormatter = "texlab",
+              build = {
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                executable = "latexmk",
+                forwardSearchAfter = true,
+                onSave = true,
+              },
+              chktex = {
+                onEdit = false,
+                onOpenAndSave = false,
+              },
+              diagnosticsDelay = 300,
+              formatterLineLength = 80,
+              forwardSearch = {
+                executable = "displayline",
+                args = { "-g", "%l", "%p", "%f" },
+                -- Enable back search on Skim -> Preference -> Sync:
+                --   Preset: Custom
+                --   Command: /Users/simo/go/bin/nvim-texlabconfig
+                --   Arguments: -file '%file' -line %line -cache_root /Users/simo/.cache/lvim
+                -- (Commands and Arguments accept only full path, change '/User/simo')
+
+                -- executable = 'sioyek',
+                -- args = {
+                --     '--reuse-window',
+                --     '--execute-command', 'toggle_synctex', -- Open Sioyek in synctex mode.
+                --     '--inverse-search',
+                --     [[nvim-texlabconfig -file %%%1 -line %%%2 -server ]] .. vim.v.servername,
+                --     '--forward-search-file', '%f',
+                --     '--forward-search-line', '%l', '%p'
+                -- }
+              },
+              latexFormatter = "latexindent",
+              latexindent = {
+                modifyLineBreaks = true,
+              },
+            },
           },
         },
         lua_ls = {
@@ -166,6 +209,7 @@ return {
       local formatters = {
         prettierd = {},
         stylua = {},
+        black = {},
       }
 
       local manually_installed_servers = { "ocamllsp", "gleam", "rust_analyzer" }
@@ -197,6 +241,29 @@ return {
           root_dir = config.root_dir,
         }
       end
+      -- Special child texlabconfig
+      --
+      local executable = "displayline"
+      local args = { "%l", "%p", "%f" }
+      -- require("lspconfig").texlab.setup({
+      --
+      --     autostart = texlab.autostart,
+      --     cmd = texlab.cmd,
+      --     capabilities = capabilities,
+      --     filetypes = texlab.filetypes,
+      --     handlers = vim.tbl_deep_extend("force", {}, default_handlers, texlab.handlers or {}),
+      --     on_attach = on_attach,
+      --     -- settings = config.settings,
+      --     root_dir = texlab.root_dir,
+      --     setting = {
+      --         texlab = {
+      --             forwardSearch = {
+      --                 executable = executable,
+      --                 args = args,
+      --             },
+      --         },
+      --     },
+      -- })
 
       -- Setup mason so it can manage 3rd party LSP servers
       require("mason").setup {
@@ -218,26 +285,27 @@ return {
       }
     end,
   },
-  -- {
-  --   "stevearc/conform.nvim",
-  --   event = { "BufWritePre" },
-  --   cmd = { "ConformInfo" },
-  --   opts = {
-  --     notify_on_error = false,
-  --     -- format_after_save = {
-  --     --   async = true,
-  --     --   timeout_ms = 500,
-  --     --   lsp_fallback = true,
-  --     -- },
-  --     formatters_by_ft = {
-  --       javascript = { { "prettierd", "prettier", "biome" } },
-  --       typescript = { { "prettierd", "prettier", "biome" } },
-  --       typescriptreact = { { "prettierd", "prettier", "biome" } },
-  --       svelte = { { "prettierd", "prettier " } },
-  --       lua = { "stylua" },
-  --       -- julia = { "julials" },
-  --       python = { "black" },
-  --     },
-  --   },
-  -- },
+  {
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    opts = {
+      notify_on_error = false,
+      -- format_after_save = {
+      --   async = true,
+      --   timeout_ms = 500,
+      --   lsp_fallback = true,
+      -- },
+      formatters_by_ft = {
+        javascript = { { "prettierd", "prettier", "biome" } },
+        typescript = { { "prettierd", "prettier", "biome" } },
+        typescriptreact = { { "prettierd", "prettier", "biome" } },
+        svelte = { { "prettierd", "prettier " } },
+        lua = { "stylua" },
+        -- julia = { "julials" },
+        python = { "autopep8", "black" },
+        latex = { "latexindent" },
+      },
+    },
+  },
 }
