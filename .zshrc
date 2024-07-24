@@ -150,14 +150,9 @@ alias lg='lazygit'
 alias tl='tmux list-sessions'
 alias ta='tmux attach-session'
 alias hf="history | fzf"
-alias z="__zoxide_z"
 alias ..="cd .."
-# alias cd="z"
 alias ....="cd ../.."
 alias ......="cd ../../.."
-alias zi="__zoxide_zi"
-# alias cdo="cd"
-# alias ya="yazi"
 alias cf="cd \$(find * -type d | fzf)"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
@@ -206,7 +201,8 @@ function ya() {
 	rm -f -- "$tmp"
 
 }
-eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh --cmd cd)"
+alias z="cd"
 export ST_PATH="$HOME/source/SimTreeUtils.jl"
 function st(){
     source "$ST_PATH/st_wrapper.bash"
