@@ -203,9 +203,8 @@ function ya() {
 }
 eval "$(zoxide init zsh --cmd cd)"
 alias z="cd"
-export ST_PATH="$HOME/source/SimTreeUtils.jl"
+export ST_PATH=/home/cobra/source/simtree_wrapper
 function st(){
-    source "$ST_PATH/st_wrapper.bash"
-
+    source /home/cobra/source/simtree_wrapper/st_wrapper.bash
 }
 source ~/.secrets
