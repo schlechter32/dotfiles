@@ -34,4 +34,4 @@ function Print_lsp_settings()
 end
 
 -- Bind the function to a command
-vim.cmd("command! LspPrintSettings lua print_lsp_settings()")
+vim.cmd("command! LspPrintSettings lua Print_lsp_settings()")

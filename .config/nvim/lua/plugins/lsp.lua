@@ -241,6 +241,18 @@ return {
           root_dir = config.root_dir,
         }
       end
+    
+    require("lspconfig").ltex.setup({
+            capabilities=capabilities,
+            on_attach=function(client,bufnr)
+                    require("ltex-utils").on_attach(bufnr)
+                end,
+          settings = {
+            ltex = {
+              language = "de-DE",
+            },
+          }
+            })
       -- Special child texlabconfig
       --
       local executable = "displayline"

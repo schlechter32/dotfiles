@@ -14,5 +14,5 @@ if [[ $(command -v security) ]]; then
 opt_pw=$(security find-generic-password -s "$initial_host" -w)
 sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.21:~/$1 .
 else
- rsync -avz nclshrnk@129.69.170.21:~/$1 .
+ rsync -avz nclshrnk@129.69.170.21:~/Documents/$1 .
  fi
