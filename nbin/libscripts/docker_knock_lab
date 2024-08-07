@@ -11,7 +11,7 @@ LOCAL_DIR="$HOME/nbin/libscripts/"
 CONTAINER_DIR="/opt/nbin"
 
 # Define the executable command
-COMMAND="netserv1knock"
+COMMAND="$1knock"
 
 # Pull the Docker image
 # docker pull $IMAGE
