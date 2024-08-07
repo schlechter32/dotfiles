@@ -120,6 +120,9 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # OS dependent execs
 #
 if [ Darwin = `uname` ]; then
+
+export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
+
 elif [ Linux = `uname` ]; then
 # alias yq="yq_amd64"
 fi
@@ -147,19 +150,15 @@ alias lg='lazygit'
 alias tl='tmux list-sessions'
 alias ta='tmux attach-session'
 alias hf="history | fzf"
-alias z="__zoxide_z"
 alias ..="cd .."
-alias cd="z"
 alias ....="cd ../.."
 alias ......="cd ../../.."
-alias zi="__zoxide_zi"
-# alias cdo="cd"
-# alias ya="yazi"
 alias cf="cd \$(find * -type d | fzf)"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
 
-alias ff='fzf --preview="bat --color=always --style=plain --line-range=:100000 {}" --bind "k:preview-up,j:preview-down,e:execute(bat --color=always --style=plain --line-range=:100000 {})"'
+alias ff='fzf --preview="bat --color=always --style=plain {}"'
+# alias ff='fzf --preview="bat --color=always --style=plain --line-range=:100000 {}" --bind "k:preview-up,j:preview-down,e:execute(bat --color=always --style=plain --line-range=:100000 {})"'
 alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
@@ -203,10 +202,10 @@ function ya() {
 	rm -f -- "$tmp"
 
 }
-eval "$(zoxide init zsh)"
-export ST_PATH="$HOME/source/SimTreeUtils.jl"
+eval "$(zoxide init zsh --cmd cd)"
+alias z="cd"
+export ST_PATH=/home/cobra/source/simtree_wrapper
 function st(){
-    source "$ST_PATH/st_wrapper.bash"
-
+    source /home/cobra/source/simtree_wrapper/st_wrapper.bash
 }
 source ~/.secrets

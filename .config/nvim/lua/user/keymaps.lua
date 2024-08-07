@@ -96,6 +96,7 @@ end, { desc = "Open oil floating" })
 
 -- Center buffer while navigating
 nnoremap("<C-u>", "<C-u>zz")
+nnoremap("<C-f>", "<C-u>zz")
 nnoremap("<C-d>", "<C-d>zz")
 nnoremap("{", "{zz")
 nnoremap("}", "}zz")
@@ -204,6 +205,7 @@ nnoremap("<leader>=", "<C-w>=")
 
 -- Press leader f to format
 nnoremap("<leader>f", ":Format<cr>")
+nnoremap("<leader>lf", ":LspFormat<cr>")
 
 -- Press leader rw to rotate open windows
 nnoremap("<leader>rw", ":RotateWindows<cr>", { desc = "[R]otate [W]indows" })
