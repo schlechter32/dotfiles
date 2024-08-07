@@ -21,10 +21,19 @@ if [[ $(hostname) == *"cnode"* ]]; then
 export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
 export PYENV_ROOT="$BULK_HOME/.pyenv"
+
+export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
+function st(){
+    source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
+}
 else
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
+export ST_PATH=/home/cobra/source/simtree_wrapper
+function st(){
+    source /home/cobra/source/simtree_wrapper/st_wrapper.bash
+}
 export PYENV_ROOT="$HOME/.pyenv"
 fi
 # PATHS
@@ -204,8 +213,4 @@ function ya() {
 }
 eval "$(zoxide init zsh --cmd cd)"
 alias z="cd"
-export ST_PATH=/home/cobra/source/simtree_wrapper
-function st(){
-    source /home/cobra/source/simtree_wrapper/st_wrapper.bash
-}
 source ~/.secrets
