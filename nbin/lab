@@ -1,6 +1,11 @@
 #!/bin/bash
 
 ssh_base_command="ssh"
+
+mosh_list=("cobra")
+if [[ " ${mosh_list[@]} " =~ " $initial_host " ]]; then
+    ssh_base_command="ssh"
+fi
 while [[ $# -gt 0 ]]; do
     case $1 in
         -p) ssh_base_command+=" -p $2"; shift ;;
@@ -18,12 +23,36 @@ initial_host=$1
 lab_list=("smart" "netserv1" "cobra")
 ikr_cent_list=("cnode01" "ingress" "cnode09")
 
+get_ssh_config_block() {
+    local initial_host="$1"
+    local config=$(awk -v host="$initial_host" '
+        BEGIN { found = 0; print_block = 0; }
+        /^Host / {  # This regex matches lines that exactly start with "Host " followed by a space
+            if ($2 == host) {
+                found = 1;  # Start of the desired host block
+                print_block = 1;  # Enable printing
+            } else if (found) {
+                print_block = 0;  # If another host block starts and weve already found our block, stop printing
+                exit;  # Exit the program as were done printing the desired block
+            }
+        }
+        print_block { print; }  # Print lines of the current block
+        ' ~/.ssh/config)
+    
+    if [ -n "$config" ]; then
+        echo "$config"
+    else
+        echo "No configuration found for host: $initial_host"
+    fi
+}
+config=$(get_ssh_config_block "$initial_host")
+hostname_var=$(echo "$config" | grep -o "HostName [^ ]*" | awk '{print $2}')
 # Get password from secure storage on macOS
 if [[ " ${lab_list[@]} " =~ " $initial_host " ]]; then
   echo "host on lab list"
   if [ $(uname) == "Darwin" ]; then
     echo "On mac so using docker to execute knock"
-    ~/nbin/libscripts/docker_knock_lab
+    ~/nbin/libscripts/docker_knock_lab $initial_host
   else 
     ~/nbin/libscripts/knock_lab --target "$hostname_var"
   fi

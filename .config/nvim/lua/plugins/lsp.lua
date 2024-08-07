@@ -255,8 +255,8 @@ return {
             })
       -- Special child texlabconfig
       --
-      local executable = "displayline"
-      local args = { "%l", "%p", "%f" }
+      -- local executable = "displayline"
+      -- local args = { "%l", "%p", "%f" }
       -- require("lspconfig").texlab.setup({
       --
       --     autostart = texlab.autostart,
