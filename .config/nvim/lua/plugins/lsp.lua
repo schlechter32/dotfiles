@@ -142,6 +142,7 @@ return {
           settings = {
             Lua = {
               runtime = { version = "LuaJIT" },
+              telemery = { enable = false },
               workspace = {
                 checkThirdParty = false,
                 -- Tells lua_ls where to find all the Lua files that you have loaded
@@ -199,6 +200,25 @@ return {
         },
         yamlls = {},
         svelte = {},
+        ltex = {
+          filetypes = {
+            "gitcommit",
+            "markdown",
+            "org",
+            "plaintex",
+            "rst",
+            "rnoweb",
+            "tex",
+            "pandoc",
+            "quarto",
+            "rmd",
+            "context",
+            "html",
+            "xhtml",
+            "mail",
+            "text",
+          },
+        },
         rust_analyzer = {
           check = {
             command = "clippy",
@@ -241,10 +261,22 @@ return {
           root_dir = config.root_dir,
         }
       end
+
+      -- require("lspconfig").ltex.setup({
+      --         capabilities=capabilities,
+      --         on_attach=function(client,bufnr)
+      --                 require("ltex-utils").on_attach(bufnr)
+      --             end,
+      --       settings = {
+      --         ltex = {
+      --           language = "de-DE",
+      --         },
+      --       }
+      --         })
       -- Special child texlabconfig
       --
-      local executable = "displayline"
-      local args = { "%l", "%p", "%f" }
+      -- local executable = "displayline"
+      -- local args = { "%l", "%p", "%f" }
       -- require("lspconfig").texlab.setup({
       --
       --     autostart = texlab.autostart,
