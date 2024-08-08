@@ -16,7 +16,6 @@ return {
                 ensure_installed = {
                     "bash",
                     "vimdoc",
-                    "luadoc",
                     "c",
                     "css",
                     "gleam",

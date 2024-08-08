@@ -139,6 +139,7 @@ fi
 # Aliases
 #
 #
+alias sc="st cd"
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
