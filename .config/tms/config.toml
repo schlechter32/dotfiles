@@ -1,6 +1,6 @@
 display_full_path = false
 search_submodules = true
-session_sort_order = "Alphabetical"
+session_sort_order ="LastAttached"
 
 [[search_dirs]]
 path = "~/source"
@@ -17,3 +17,9 @@ depth = 10
 [[search_dirs]]
 path = "~/secondBrain"
 depth = 10
+
+[shortcuts]
+"ctrl-k" = "move_up"
+"ctrl-j" = "move_down"
+"ctrl-h" = "cursor_left"
+"ctrl-l" = "cursor_right"
