@@ -215,3 +215,5 @@ function ya() {
 eval "$(zoxide init zsh --cmd cd)"
 alias z="cd"
 source ~/.secrets
+export DENO_INSTALL="/home/cobra/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

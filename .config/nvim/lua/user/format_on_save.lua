@@ -35,3 +35,23 @@ end
 
 -- Bind the function to a command
 vim.cmd("command! LspPrintSettings lua Print_lsp_settings()")
+-- Set autoread option
+vim.opt.autoread = true
+
+-- Define the autocmd for FocusGained, BufEnter, CursorHold, CursorHoldI events
+vim.api.nvim_create_autocmd(
+    {"FocusGained", "BufEnter", "CursorHold", "CursorHoldI"}, {
+        callback = function()
+            if vim.fn.mode() ~= 'c' then
+                vim.cmd('checktime')
+            end
+        end
+    }
+)
+
+-- Define the autocmd for FileChangedShellPost event
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+    callback = function()
+        vim.cmd('echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None')
+    end
+})
