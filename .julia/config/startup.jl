@@ -24,5 +24,5 @@ function rr()
   Revise.retry()
 end
 function pluto()
-  Pluto.run(threads=6)
+  Pluto.run(threads=6, launch_browser=false, auto_reload_from_file=true)
 end
