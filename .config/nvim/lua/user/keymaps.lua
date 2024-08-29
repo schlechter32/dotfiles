@@ -271,6 +271,9 @@ nnoremap("<leader>5", function()
   harpoon_ui.nav_file(5)
 end, { desc = "Jump to Spear 5" })
 
+nnoremap("<leader>6", function()
+  harpoon_ui.nav_file(6)
+end, { desc = "Jump to Spear 6" })
 -- Git keymaps --
 nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
 nnoremap("<leader>gf", function()
