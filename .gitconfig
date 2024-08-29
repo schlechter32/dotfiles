@@ -1,11 +1,6 @@
 [user]
 	name = nclshrnk
 	email = nicolas.hornek@ikr.uni-stutgart.de
-[http "http://appsrv2/"]
-	proxy = socks5h://127.0.0.1:8080
-
-[http "http://gitlab/"]
-	proxy = socks5h://127.0.0.1:8080
 [credential]
   helper = cache --timeout 28800
 [core]
@@ -56,3 +51,7 @@ pclone = "! ALL_PROXY=socks5h://127.0.0.1:8080 git clone"
 # git alias: list all aliases
 # useful in order to learn git syntax
 alias = "!git config -l | grep alias | cut -c 7-"
+[http "http://gitlab/"]
+	proxy = socks5h://127.0.0.1:8080
+[http "http://appsrv2/"]
+	proxy = socks5h://127.0.0.1:8080

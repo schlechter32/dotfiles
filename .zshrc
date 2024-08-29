@@ -30,6 +30,11 @@ else
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
+if [[ $(hostname) == *"pc"* ]]; then
+else
+git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
+git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
+fi
 export ST_PATH=/home/cobra/source/simtree_wrapper
 function st(){
     source /home/cobra/source/simtree_wrapper/st_wrapper.bash
