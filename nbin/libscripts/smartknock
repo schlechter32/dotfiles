@@ -1,0 +1,2 @@
+#!/bin/bash
+opt/nbin/knock_lab --target 129.69.172.4
