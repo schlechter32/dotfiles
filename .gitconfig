@@ -1,8 +1,11 @@
 [user]
 	name = nclshrnk
 	email = nicolas.hornek@ikr.uni-stutgart.de
-[http]
-	sslverify = false
+[http "http://appsrv2/"]
+	proxy = socks5h://127.0.0.1:8080
+
+[http "http://gitlab/"]
+	proxy = socks5h://127.0.0.1:8080
 [credential]
   helper = cache --timeout 28800
 [core]
