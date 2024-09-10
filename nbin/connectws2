@@ -1,0 +1,60 @@
+#!/bin/bash
+ms=1.5 # main scale
+ls=1.5
+rs=1
+
+mw=3840
+mh=2160
+msw=$(echo "$mw * $ms / 1" | bc) # use bc to round the number
+msh=$(echo "$mh * $ms / 1" | bc)
+
+lw=3840
+lh=2160
+lsw=$(echo "$lw * $ls / 1" | bc)
+lsh=$(echo "$lh * $ls / 1" | bc)
+
+rw=1920
+rh=1200
+rsw=$(echo "$rw * $rs / 1" | bc)
+rsh=$(echo "$rh * $rs / 1" | bc)
+
+totalw=$(echo "($msw + $lw  + $rw  )/1" | bc )
+totalh=$(echo "($lh * $ls)/1" | bc)
+fb="${totalw}x${totalh}"
+
+mainmode=${mw}x${mh}
+lmode="${lw}x${lh}"
+rmode="${rw}x${rh}"
+
+echo $fb
+echo $mainmode
+echo $lmode
+echo $rmode
+
+xrandr --dpi 276
+
+xrandr \
+  --output DP-3-1-5 \
+  --primary \
+  --rate 30 \
+  --mode $mainmode \
+  --fb $fb \
+  --rotate normal \
+  --scale "${ms}x${ms}" \
+  --panning "${msw}x${msh}+${lsw}+0" \
+\
+  --output DP-3-2 \
+  --left-of DP-3-1-5 \
+  --rate 30 \
+  --mode $lmode \
+  --fb $fb \
+  --scale "${ls}x${ls}" \
+  --panning "${lsw}x${lsh}+0+0" \
+\
+  --output eDP-1 \
+  --rate 60 \
+  --right-of DP-3-2 \
+  --mode $rmode \
+  --fb $fb \
+  --scale "${rs}x${rs}" \
+  --panning "${rsw}x${rsh}+$((lsw+msw))+0" \
