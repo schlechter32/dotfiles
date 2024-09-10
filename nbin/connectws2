@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Display scaling factors
-ms=1.5 # main scale
-ls=1.5 # left scale
+ms=0.9 # main scale
+ls=0.9 # left scale
 rs=1   # right scale
 
 # Main display (DP-3-1-5)
