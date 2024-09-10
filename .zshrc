@@ -30,9 +30,14 @@ else
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
-export ST_PATH=/home/cobra/source/simtree_wrapper
+if [[ $(hostname) == *"pc"* ]]; then
+else
+git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
+git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
+fi
+export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
-    source /home/cobra/source/simtree_wrapper/st_wrapper.bash
+    source $HOME/source/simtree_wrapper/st_wrapper.bash
 }
 export PYENV_ROOT="$HOME/.pyenv"
 fi
@@ -215,3 +220,5 @@ function ya() {
 eval "$(zoxide init zsh --cmd cd)"
 alias z="cd"
 source ~/.secrets
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"

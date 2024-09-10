@@ -2,3 +2,4 @@
 nbin/yq
 .config/nvim/lazy-lock.json
 .python-version
+.config/btop/btop.log

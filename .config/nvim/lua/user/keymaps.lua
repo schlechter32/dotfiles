@@ -47,6 +47,16 @@ nnoremap("<C-j>", function()
     vim.cmd.wincmd "j"
   end
 end)
+-- Pluto notebook bindings
+nnoremap("<leader>pia", ":call pluto#insert_cell_above()<CR>", {desc="Insert cell above"})
+nnoremap("<leader>pib", ":call pluto#insert_cell_below()<CR>", {desc="Insert cell below"})
+nnoremap("<leader>pyc", ":call pluto#yank_cell()<CR>", {desc="Yank cell"})
+nnoremap("<leader>pdc", ":call pluto#delete_cell()<CR>", {desc="Delete cell"})
+nnoremap("<leader>ppa", ":call pluto#paste_cell_above()<CR>", {desc="Paste cell above"})
+nnoremap("<leader>ppb", ":call pluto#paste_cell_below()<CR>", {desc="Paste cell below"})
+nnoremap("<leader>psc", ":call pluto#show_code()<CR>", {desc="Show code"})
+nnoremap("<leader>phc", ":call pluto#hide_code()<CR>", {desc="Hide code"})
+nnoremap("<leader>ptc", ":call pluto#toggle_code()<CR>", {desc="Toggle code"})
 
 nnoremap("<C-k>", function()
   if vim.fn.exists ":KittyNavigateUp" ~= 0 and TERM == "xterm-kitty" then
@@ -261,6 +271,9 @@ nnoremap("<leader>5", function()
   harpoon_ui.nav_file(5)
 end, { desc = "Jump to Spear 5" })
 
+nnoremap("<leader>6", function()
+  harpoon_ui.nav_file(6)
+end, { desc = "Jump to Spear 6" })
 -- Git keymaps --
 nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
 nnoremap("<leader>gf", function()
