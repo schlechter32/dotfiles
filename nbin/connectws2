@@ -1,0 +1,66 @@
+#!/bin/bash
+
+# Display scaling factors
+ms=0.9 # main scale
+ls=0.9 # left scale
+rs=1   # right scale
+
+# Main display (DP-3-1-5)
+mw=3840
+mh=2160
+msw=$(printf "%.0f" $(echo "$mw * $ms" | bc)) # Round to nearest integer
+msh=$(printf "%.0f" $(echo "$mh * $ms" | bc))
+
+# Left display (DP-3-2)
+lw=3840
+lh=2160
+lsw=$(printf "%.0f" $(echo "$lw * $ls" | bc))
+lsh=$(printf "%.0f" $(echo "$lh * $ls" | bc))
+
+# Right display (eDP-1)
+rw=1920
+rh=1200
+rsw=$(printf "%.0f" $(echo "$rw * $rs" | bc))
+rsh=$(printf "%.0f" $(echo "$rh * $rs" | bc))
+
+# Calculate total dimensions
+totalw=$((lsw + msw + rsw))
+totalh=$lsh # Assuming left display height is the maximum
+fb="${totalw}x${totalh}"
+
+# Set mode strings
+mainmode="${mw}x${mh}"
+lmode="${lw}x${lh}"
+rmode="${rw}x${rh}"
+
+# Debug output
+echo "Framebuffer: $fb"
+echo "Main mode: $mainmode"
+echo "Left mode: $lmode"
+echo "Right mode: $rmode"
+
+# Set DPI
+xrandr --dpi 276
+
+# Configure displays
+xrandr \
+  --output DP-3-1-5 \
+  --primary \
+  --mode $mainmode \
+  --rate 30 \
+  --scale "${ms}x${ms}" \
+  --pos ${lsw}x0 \
+\
+  --output DP-3-2 \
+  --mode $lmode \
+  --rate 30 \
+  --scale "${ls}x${ls}" \
+  --pos 0x0 \
+\
+  --output eDP-1 \
+  --mode $rmode \
+  --rate 60 \
+  --scale "${rs}x${rs}" \
+  --pos $((lsw + msw))x0 \
+\
+  --fb $fb

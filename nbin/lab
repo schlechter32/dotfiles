@@ -12,6 +12,8 @@ while [[ $# -gt 0 ]]; do
         -l) ssh_base_command+=" -l $2"; shift ;;
         -i) ssh_base_command+=" -i $2"; shift ;;
         -X) ssh_base_command+=" -X" ;;
+        -N) ssh_base_command+=" -N" ;;
+        -N) ssh_base_command+=" -N" ;;
         -L) ssh_base_command+=" -L $2:localhost:$2"; shift;;
         -C) ssh_base_command+=" -C" ;;
         -D) ssh_base_command+=" -D $2"; shift;;
