@@ -1,0 +1,65 @@
+#!/bin/bash
+
+sudo apt install openjdk-17-jre
+knock_ikr_linux
+
+lib_path="/ext/misc/lib"
+# Setup folders
+sudo mkdir -p /ext/misc/lib
+sudo mkdir -p /ext/bin
+sudo mkdir -p /ext/misc/doc
+# Setup Path
+touch extpath.sh
+echo 'export PATH="/ext/bin:$PATH"' > extpath.sh
+sudo cp extpath.sh /etc/profile.d
+rm extpath.sh
+export PATH="/ext/bin:$PATH"
+# Rsync files down
+usr=$1
+sudo rsync -avz -e "ssh -J $usr@129.69.170.21" \
+$usr@cnode09:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar \
+$usr@cnode09:/ext/misc/lib/ikr-simtree.jar \
+$usr@cnode09:/ext/misc/lib/ikr-simtree-lzma-01.jar \
+$usr@cnode09:/ext/misc/lib/ikr-simtree-lzma.jar \
+$usr@cnode09:/ext/misc/lib/ikr-simtree-bzip-01.jar \
+$usr@cnode09:/ext/misc/lib/ikr-simtree-bzip.jar \
+$usr@cnode09:/ext/misc/bin/simtree_helper \
+$usr@cnode09:/ext/misc/doc/SimTree.html \
+$usr@cnode09:/ext/misc/doc/SimTree.txt \
+$usr@cnode09:/ext/bin/SimTree \
+$usr@cnode09:/ext/bin/GSProgramStarter \
+$usr@cnode09:/ext/bin/SimTreeGS \
+$usr@cnode09:/ext/bin/SimTreeGSControl \
+$usr@cnode09:/ext/bin/STResultPrinter \
+$usr@cnode09:/ext/bin/STResultViewer \
+$usr@cnode09:/ext/bin/gs_local_program_starter \
+$usr@cnode09:/ext/bin/gs_remote_program_starter \
+/ext/simtree/
+
+sudo ln -s /ext/simtree/SimTree /ext/bin/
+sudo ln -s /ext/simtree/SimtReeGS /ext/bin/
+sudo ln -s /ext/simtree/SimTreeGSControl /ext/bin/
+sudo ln -s /ext/simtree/simtree_helper /ext/bin/
+sudo ln -s /ext/simtree/gs_local_program_starter /ext/bin/
+sudo ln -s /ext/simtree/gs_remote_program_starter /ext/bin/
+sudo cp /ext/simtree/ikr-simtree.jar /ext/misc/lib/
+sudo ln -s /ext/simtree/SimTree.html /ext/misc/doc/
+sudo ln -s /ext/simtree/SimTree.txt /ext/misc/doc/
+
+
+
+# ingress:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar /ext/simtree/lib/ \
+# ingress:/ext/misc/lib/ikr-simtree-lzma-01.jar /ext/simtree/lib \
+# ingress:/ext/misc/lib/ikr-simtree-lzma.jar /ext/simtree/lib \
+# ingress:/ext/misc/lib/ikr-simtree-bzip-01.jar /ext/simtree/lib \
+# ingress:/ext/misc/lib/ikr-simtree-bzip.jar /ext/simtree/lib \
+# ingress:/ext/misc/bin/simtree_helper /ext/simtree/bin \
+# ingress:/ext/misc/doc/SimTree.html /ext/simtree/doc \
+# ingress:/ext/misc/doc/SimTree.txt /ext/simtree/doc \
+# ingress:/ext/bin/SimTree /ext/simtree/bin \
+# ingress:/ext/bin/SimTreeGS /ext/simtree/bin \
+# ingress:/ext/bin/SimTreeGSControl /ext/simtree/bin \
+# ingress:/ext/bin/STResultPrinter /ext/simtree/bin \
+# ingress:/ext/bin/STResultViewer /ext/simtree/bin \
+# ingress:/ext/bin/gs_local_programm_starter /ext/simtree/bin \
+# ingress:/ext/bin/gs_remote_programm_starter /ext/simtree/bin 
