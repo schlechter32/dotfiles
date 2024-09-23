@@ -24,6 +24,7 @@ return {
 						},
 					},
 					file_ignore_patterns = {
+            "04archive/", 
 						"node_modules",
 						"yarn.lock",
 						".git",

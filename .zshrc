@@ -177,7 +177,7 @@ alias ff='fzf --preview="bat --color=always --style=plain {}"'
 alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
-
+alias sf="sf_script.sh"
 
 # Update all submodules
 alias gsu='git submodule update --init --recursive'
@@ -222,3 +222,29 @@ alias z="cd"
 source ~/.secrets
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+# fsshmap multiple ports
+function fsshmap() {
+  echo -n "-L 1$1:127.0.0.1:$1 " > $HOME/sh/sshports.txt
+  for ((i=($1+1);i<$2;i++))
+  do
+    echo -n "-L 1$i:127.0.0.1:$i " >> $HOME/sh/sshports.txt
+  done
+  line=$(head -n 1 $HOME/sh/sshports.txt)
+  cline="nsh "$3" "$line
+  echo $cline
+  eval $cline
+}
+function tnl {
+  TUNNEL="nsh -N"
+  echo Port forwarding for ports:
+  for i in ${@:2}
+  do
+    echo " - $i"
+    TUNNEL="$TUNNEL -L $i"
+    # echo $TUNNEL
+  done
+  TUNNEL="$TUNNEL $1"
+  eval "$TUNNEL &"
+  PID=$!
+  alias tnlkill="kill $PID && unalias tnlkill"
+}
