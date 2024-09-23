@@ -82,3 +82,4 @@ vim.opt.guicursor = {
 vim.opt.conceallevel = 2
 vim.highlight.Conceal = { gui = "bold" }
 vim.cmd "highlight Conceal gui=bold"
+vim.g.tex_flavor="latex"
