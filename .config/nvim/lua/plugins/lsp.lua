@@ -205,7 +205,7 @@ return {
             "gitcommit",
             "markdown",
             "org",
-            "plaintex",
+            -- "plaintex",
             "rst",
             "rnoweb",
             "tex",
