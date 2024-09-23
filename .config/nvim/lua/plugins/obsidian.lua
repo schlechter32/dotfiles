@@ -1,13 +1,14 @@
+-- return {}
 return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
+  lazy = false,
   ft = { "markdown", "quarto" },
 
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
-    "preservim/vim-markdown",
+    -- "preservim/vim-markdown",
 
     -- see below for full list of optional dependencies 👇
   },
@@ -252,7 +253,7 @@ return {
         -- The default folder to place images in via `:ObsidianPasteImg`.
         -- If this is a relative path it will be interpreted as relative to the vault root.
         -- You can always override this per image by passing a full path to the command instead of just a filename.
-        img_folder = "3resources/pics", -- This is the default
+        img_folder = "03resources/pics", -- This is the default
         -- A function that determines the text to insert in the note when pasting an image.
         -- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
         -- This is the default implementation.

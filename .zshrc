@@ -177,7 +177,7 @@ alias ff='fzf --preview="bat --color=always --style=plain {}"'
 alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
-
+alias sf="sf_script.sh"
 
 # Update all submodules
 alias gsu='git submodule update --init --recursive'
