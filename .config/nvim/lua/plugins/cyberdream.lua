@@ -28,7 +28,10 @@ return {
                     -- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
 
                     -- Example:
-                    Comment = { fg = "#ebaeae", bg = "NONE", italic = true }
+                    Comment = { fg = "#ebaeae", bg = "NONE", italic = true },
+                    LineNr = { fg = "#ebaeae", bg = "NONE", italic = false },
+                    CursorColumn = {  bg = "#ebaeae", italic = false },
+                    Cursor = {  bg = "#ebaeae", italic = false }
 
                     -- Complete list can be found in `lua/cyberdream/theme.lua`
                 },
@@ -50,13 +53,13 @@ return {
                 telescope = true,
                 notify = true,
                 mini = true,
-                dashboard=true,
-                neogit=true,
-                treesitter=true,
-                whichkey=true,
-                leap=false,
-                indentblankline=true,
-                lazy=true
+                dashboard = true,
+                neogit = true,
+                treesitter = true,
+                whichkey = true,
+                leap = false,
+                indentblankline = false,
+                lazy = true
 
             },
         })
