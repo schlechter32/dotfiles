@@ -165,7 +165,7 @@ return {
                 -- nil_ls = {},
                 pyright = {},
                 sqlls = {},
-                tailwindcss = {},
+                -- tailwindcss = {},
                 -- tsserver = {
                 --   settings = {
                 --     maxTsServerMemory = 12288,
@@ -201,7 +201,8 @@ return {
                 yamlls = {},
                 svelte = {},
                 ltex = {
-                    language = {"en","de"},
+                    -- language = {},
+                    autostart=false, 
                     filetypes = {
                         "gitcommit",
                         "markdown",
