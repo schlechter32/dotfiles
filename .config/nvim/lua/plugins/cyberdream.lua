@@ -53,7 +53,10 @@ return {
                 dashboard=true,
                 neogit=true,
                 treesitter=true,
-                whichkey=true
+                whichkey=true,
+                leap=false,
+                indentblankline=false,
+                lazy=true
 
             },
         })

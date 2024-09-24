@@ -4,7 +4,7 @@ return {
     config = function()
         -- Minimal config
         require("themery").setup({
-            themes = { "catppuccin-mocha", "catppuccin-latte","rose-pine-moon", "rose-pine-dawn","tokyonight-night","tokyonight-storm","tokyonight-day", "tokyonight-moon","cyberdream"}, -- Your list of installed colorschemes.
+            themes = {"cyberdream", "catppuccin-mocha", "catppuccin-latte","rose-pine-moon", "rose-pine-dawn","tokyonight-night","tokyonight-storm","tokyonight-day", "tokyonight-moon"}, -- Your list of installed colorschemes.
             livePreview = true,     -- Apply theme while picking. Default to true.
         })
     end
