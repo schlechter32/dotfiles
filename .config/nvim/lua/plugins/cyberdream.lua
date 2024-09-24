@@ -30,8 +30,8 @@ return {
                     -- Example:
                     Comment = { fg = "#ebaeae", bg = "NONE", italic = true },
                     LineNr = { fg = "#ebaeae", bg = "NONE", italic = false },
-                    CursorColumn = {  bg = "#ebaeae", italic = false },
-                    Cursor = {  bg = "#ebaeae", italic = false }
+                    -- CursorColumn = {  bg = "#ebaeae", italic = false },
+                    -- Cursor = {  bg = "#ebaeae", italic = false }
 
                     -- Complete list can be found in `lua/cyberdream/theme.lua`
                 },
