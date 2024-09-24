@@ -55,7 +55,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.clipboard = "unnamed,unnamedplus"
 
 -- Enable cursor line highlight
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 
 -- Set fold settings
 -- These options were reccommended by nvim-ufo
@@ -72,7 +72,7 @@ vim.opt.scrolloff = 8
 vim.opt.colorcolumn = "150"
 
 vim.opt.guicursor = {
-  "n-v-c:block", -- Normal, visual, command-line: block cursor
+  "n-v-c:blck", -- Normal, visual, command-line: block cursor
   "i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
   "r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
   "o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
@@ -80,6 +80,6 @@ vim.opt.guicursor = {
   "sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
 }
 vim.opt.conceallevel = 2
-vim.highlight.Conceal = { gui = "bold" }
-vim.cmd "highlight Conceal gui=bold"
+-- vim.highlight.Conceal = { gui = "bold" }
+-- vim.cmd "highlight Conceal gui=bold"
 vim.g.tex_flavor="latex"

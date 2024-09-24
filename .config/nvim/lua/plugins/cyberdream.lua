@@ -55,7 +55,7 @@ return {
                 treesitter=true,
                 whichkey=true,
                 leap=false,
-                indentblankline=false,
+                indentblankline=true,
                 lazy=true
 
             },
