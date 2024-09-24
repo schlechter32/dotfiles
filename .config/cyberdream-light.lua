@@ -1,0 +1,1 @@
+wezterm/cyberdream-light.lua

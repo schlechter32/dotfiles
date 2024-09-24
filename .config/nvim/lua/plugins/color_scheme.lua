@@ -68,7 +68,7 @@ return {
         end,
       }
 
-      -- vim.cmd.colorscheme "catppuccin-frappe"
+      -- vim.cmd.colorscheme "catppuccin-latte"
 
       -- Hide all semantic highlights until upstream issues are resolved (https://github.com/catppuccin/nvim/issues/480)
       for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do

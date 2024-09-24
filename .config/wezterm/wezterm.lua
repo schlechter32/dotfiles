@@ -8,13 +8,15 @@ if wezterm.config_builder then
 end
 
 -- Settings
-Dark_color_scheme = "rose-pine"
-Light_color_scheme = "rose-pine-dawn"
+-- Dark_color_scheme = "rose-pine"
+-- Light_color_scheme = "Raycast_Light"
 -- for key, _ in pairs(wezterm.color.get_builtin_schemes()) do
 -- 	print(key)
 -- end
-Dark_scheme = wezterm.color.get_builtin_schemes()[Dark_color_scheme]
-Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
+-- Dark_scheme = wezterm.color.get_builtin_schemes()[Dark_color_scheme]
+-- Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
+Light_scheme = require("cyberdream-light")
+Dark_scheme=require("cyberdream")
 -- scheme.background = "black"
 -- scheme.ansi = {
 -- 	"#1c1e1b",
@@ -37,25 +39,26 @@ Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
 -- 	"#a6adc8",
 -- }
 --#9ccfd8
-Dark_scheme.brights = { "#9ccfd8", "#eb6f92", "#9ccfd8", "#f6c177", "#31748f", "#c4a7e7", "#ebbcba", "#e0def4" }
-Dark_scheme.ansi = {
-	"#26233a",
-	"#eb6f92",
-	"#9ccfd8",
-	"#f6c177",
-	"#31748f",
-	"#c4a7e7",
-	"#a285c6",
-	"#e0def4",
-}
+--#31748F
+-- Dark_scheme.brights = { "#9ccfd8", "#eb6f92", "#9ccfd8", "#f6c177", "#6f9eb1", "#c4a7e7", "#ebbcba", "#e0def4" }
+-- Dark_scheme.ansi = {
+-- 	"#26233a",
+-- 	"#eb6f92",
+-- 	"#9ccfd8",
+-- 	"#f6c177",
+-- 	"#31748f",
+-- 	"#c4a7e7",
+-- 	"#a285c6",
+-- 	"#e0def4",
+-- }
 -- Dark_scheme.brights = { "#6e6a86", "#eb6f92", "#9ccfd8", "#f6c177", "#31748f", "#c4a7e7", "#ebbcba", "#e0def4" }
-print(pairs(Dark_scheme))
+-- print(pairs(Dark_scheme))
 -- Dark_scheme.brights[7] = "#9ccfd8"
-Light_scheme.brights[1] = "#9ccfd8"
+-- Light_scheme.brights[1] = "#9ccfd8"
 -- Dark_scheme.brights[1] = "#a285c6"
 -- Light_scheme.brights[1] = "#a285c6"
-Dark_scheme.background = "#222436"
-Dark_scheme.foreground = "#cdd6f4"
+-- Dark_scheme.background = "#222436"
+-- Dark_scheme.foreground = "#cdd6f4"
 config.color_schemes = {
 	-- Override the builtin Gruvbox Light scheme with our modification.
 	["mydark"] = Dark_scheme,
@@ -88,7 +91,7 @@ config.font = wezterm.font_with_fallback({
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
-config.window_background_opacity = 0.95
+config.window_background_opacity = 0.8
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000
