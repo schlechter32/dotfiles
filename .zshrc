@@ -151,7 +151,7 @@ alias c='clear'
 
 alias sudo='sudo '
 alias v="nvim"
-alias ls="exa --icons"
+alias ls="eza --icons"
 alias ll="ls -l"
 alias vim="nvim"
 alias c="clear"
@@ -201,9 +201,9 @@ eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 # Make nice tree
 function lt() {
   if [ -z "$1" ]; then
-    exa --icons -T -L 2
+    eza --icons -T -L 2
   else
-    exa --icons -T -L "$1"
+    eza --icons -T -L "$1"
   fi
 }
 
