@@ -52,9 +52,9 @@ pclone = "! ALL_PROXY=socks5h://127.0.0.1:8080 git clone"
 # useful in order to learn git syntax
 alias = "!git config -l | grep alias | cut -c 7-"
 [http "http://gitlab/"]
-	; proxy = socks5h://127.0.0.1:8080
-	proxy = socks5h://129.69.172.4:8080
+	proxy = socks5h://127.0.0.1:8080
+	; proxy = socks5h://129.69.172.4:8080
 [http "http://appsrv2/"]
-	; proxy = socks5h://127.0.0.1:8080
+	proxy = socks5h://127.0.0.1:8080
 
-	proxy = socks5h://129.69.172.4:8080
+	; proxy = socks5h://129.69.172.4:8080
