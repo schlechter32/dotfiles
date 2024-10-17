@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Error: A file name must be set, e.g. on \"the wonderful thing about tiggers\"."
+  exit 1
+fi
+
+file_name=$(echo "$1" | tr ' ' '-')
+formatted_file_name=$(date "+%Y-%m-%d")_${file_name}.md
+cd "$HOME/secondBrain" || exit
+touch "00inbox/${formatted_file_name}"
+# nvim "00inbox/${formatted_file_name}" -c 'normal! G$o' -c ":ObsidianTemplate note" -c 'normal! G$gg' -c 'normal! G$dd'
+#
+nvim "00inbox/${formatted_file_name}" -c 'normal! G$O' -c ":ObsidianTemplate note" 
