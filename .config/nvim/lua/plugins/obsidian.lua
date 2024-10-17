@@ -26,7 +26,7 @@ return {
           path = "~/secondBrain",
           -- Optional, override certain settings.
           overrides = {
-            notes_subdir = "notes",
+            notes_subdir = "00inbox",
           },
         },
       },
@@ -36,7 +36,7 @@ return {
       -- dir = "~/vaults/work",
 
       -- Optional, if you keep notes in a specific subdirectory of your vault.
-      notes_subdir = "notes",
+      -- notes_subdir = "notes",
 
       -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
       -- levels defined by "vim.log.levels.*".
@@ -135,7 +135,7 @@ return {
 
       -- Optional, boolean or a function that takes a filename and returns a boolean.
       -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-      disable_frontmatter = false,
+      disable_frontmatter = true,
 
       -- Optional, alternatively you can customize the frontmatter data.
       ---@return table
@@ -145,7 +145,11 @@ return {
           note:add_alias(note.title)
         end
 
-        local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+        print(note.id)
+
+        local datetime=tostring(os.date("%Y-%m-%d"))
+        print(datetime)
+        local out = { id = note.id, aliases = note.aliases, tags = note.tags, date=datetime ,hubs={},urls={}}
 
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
