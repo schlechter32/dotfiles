@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 BULK_HOME="/u/bulk/home/wima/$USER"
+LAB_BULK_HOME="/home/bulk"
 export EDITOR=nvim
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
@@ -26,19 +27,23 @@ export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
     source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
 }
+elif [[ $(hostname) == *"pc"* ]]; then
+elif [[ $(hostname) == *"cobra"* ]]; then
+
+export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
 else
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
-if [[ $(hostname) == *"pc"* ]]; then
-else
-git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
-git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
-fi
 export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
     source $HOME/source/simtree_wrapper/st_wrapper.bash
 }
+# else
+# git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
+# git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
+# fi
 export PYENV_ROOT="$HOME/.pyenv"
 fi
 # PATHS
