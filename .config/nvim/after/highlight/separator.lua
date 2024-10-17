@@ -1,2 +1,2 @@
-vim.highlight.WinSeparator= {guifg="#ffffff"}
-print("set hi")
+-- vim.highlight.WinSeparator= {guifg="#ffffff"}
+-- print("set hi")
