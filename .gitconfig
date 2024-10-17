@@ -55,3 +55,5 @@ alias = "!git config -l | grep alias | cut -c 7-"
 	proxy = socks5h://127.0.0.1:8080
 [http "http://appsrv2/"]
 	proxy = socks5h://127.0.0.1:8080
+[http]
+	postBuffer = 524288000

@@ -169,6 +169,8 @@ alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias cf="cd \$(find * -type d | fzf)"
+
+alias or="v $HOME/secondBrain/inbox/*.md"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
 
@@ -248,3 +250,4 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
+
