@@ -6,9 +6,10 @@ if [ -z "$1" ]; then
 fi
 
 file_name=$(echo "$1" | tr ' ' '-')
-formatted_file_name=$(date "+%Y-%m-%d")_${file_name}.md
+formatted_file_name=$(date "+%Y-%m-%d-%S")-${file_name}.md
 cd "$HOME/secondBrain" || exit
-touch "00inbox/${formatted_file_name}"
+# touch "00inbox/${formatted_file_name}"
 # nvim "00inbox/${formatted_file_name}" -c 'normal! G$o' -c ":ObsidianTemplate note" -c 'normal! G$gg' -c 'normal! G$dd'
 #
 nvim "00inbox/${formatted_file_name}" -c 'normal! G$O' -c ":ObsidianTemplate note" 
+# nvim "00inbox/${formatted_file_name}" -c 'normal! G$O' -c ":ObsidianTemplate note" 

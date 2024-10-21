@@ -18,4 +18,5 @@
 vim.cmd [[
 command! Dark colorscheme rose-pine-moon
 command! Light colorscheme rose-pine-dawn
+command! On ObsidianNew
 ]]

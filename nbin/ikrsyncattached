@@ -11,10 +11,10 @@ initial_host="ingress"
 
 if [[ $(command -v security) ]]; then
 opt_pw=$(security find-generic-password -s "$initial_host" -w)
-sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~/ikrDocuments/
+sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~/Documents/krDocuments/
 # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
- rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~/ikrDocuments/
+ rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~Documents/ikrDocuments/
 fi
 
 initial_host="ingress"
@@ -28,8 +28,8 @@ initial_host="ingress"
 
 if [[ $(command -v security) ]]; then
 opt_pw=$(security find-generic-password -s "$initial_host" -w)
-sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+sshpass -p $opt_pw rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
- rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+ rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 fi

@@ -100,7 +100,7 @@ return {
             suffix = suffix .. string.char(math.random(65, 90))
           end
         end
-        return tostring(os.time()) .. "-" .. suffix
+        return tostring(os.date("%Y-%m-%d-%S")) .. "-" .. suffix
       end,
 
       -- Optional, customize how wiki links are formatted.

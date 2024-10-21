@@ -10,4 +10,3 @@
 
 vim.cmd "highlight WinSeparator guifg=fffff"
 vim.cmd "set laststatus=3"
-print("set hi")

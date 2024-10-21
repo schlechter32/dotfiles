@@ -39,6 +39,10 @@ nnoremap("<space>", "<nop>")
 -- Review process
 nnoremap("<leader>ok", ":!mv '%:p' $HOME/secondBrain/05Zettelkasten/<cr>:bd<cr>")
 nnoremap("<leader>od", ":!rm '%:p'<cr>:bd<cr>", {desc ="Delete bufferfile"})
+-- Obsidian
+--
+nnoremap("<leader>ot", ":ObsidianTemplate note<CR>")
+nnoremap("<leader>on", ":ObsidianNew<CR>")
 -- Window +  better kitty navigation
 nnoremap("<C-j>", function()
   if vim.fn.exists ":KittyNavigateDown" ~= 0 and TERM == "xterm-kitty" then
