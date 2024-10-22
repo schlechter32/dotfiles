@@ -181,7 +181,7 @@ alias ....="cd ../.."
 alias ......="cd ../../.."
 alias cf="cd \$(find * -type d | fzf)"
 
-alias or="v $HOME/secondBrain/inbox/*.md"
+alias or="v $HOME/secondBrain/00inbox/*.md"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
 
