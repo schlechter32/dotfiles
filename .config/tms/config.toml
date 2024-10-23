@@ -5,21 +5,21 @@ session_sort_order ="LastAttached"
 [[search_dirs]]
 path = "~/source"
 depth = 10
-
+#
 [[search_dirs]]
 path = "~/dotfiles_ikr/"
 depth = 1
 
-[[search_dirs]]
-path = "/home/bulk/source/mdppaper/"
-depth = 10
+# [[search_dirs]]
+# path = "/home/bulk/source/mdppaper/"
+# depth = 10
 
-[[search_dirs]]
-path = "/home/bulk"
-depth = 1
-[[search_dirs]]
-path = "~/secondBrain"
-depth = 10
+# [[search_dirs]]
+# path = "/home/bulk"
+# depth = 1
+# [[search_dirs]]
+# path = "~/secondBrain"
+# depth = 10
 
 [shortcuts]
 "ctrl-k" = "move_up"

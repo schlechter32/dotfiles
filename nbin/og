@@ -7,7 +7,7 @@ DEST_DIR="05Zettelkasten"
 
 
 # Iterate through all markdown files in the source directory
-find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
+find "$VAULT_DIR/$SOURCE_DIR" -maxdepth 1 -type f -name "*.md" | while read -r file; do
   echo "Processing $file"
 
   # Extract the tag from the file. This assumes the tag is on the line immediately following "tag:"

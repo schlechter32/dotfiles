@@ -1,6 +1,6 @@
 local wezterm = require("wezterm")
 local act = wezterm.action
-local mux = wezterm.mux
+-- local mux = wezterm.mux
 local config = {}
 -- Use config builder object if possible
 if wezterm.config_builder then

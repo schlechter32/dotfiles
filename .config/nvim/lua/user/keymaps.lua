@@ -309,14 +309,16 @@ nnoremap("<leader>sb", require("telescope.builtin").buffers, { desc = "[S]earch 
 nnoremap("<leader>sn", function()
     require("telescope.builtin").find_files({ cwd = "~/secondBrain/05Zettelkasten/" })
 end, { desc = "[S]earch [N]otes" })
+
 nnoremap("<leader>sf", function()
     require("telescope.builtin").find_files { hidden = true }
 end, { desc = "[S]earch [F]iles" })
+
 nnoremap("<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
 nnoremap("<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 
 nnoremap("<leader>gn", function()
-    require("telescope.builtin").live_grep({ cwd = "~/secondBrain/05Zettelkasten/" })
+    require("telescope.builtin").live_grep({ type_filter="md" })
 end, { desc = "[G]rep [N]otes" })
 nnoremap("<leader>sc", function()
     require("telescope.builtin").commands(require("telescope.themes").get_dropdown {
