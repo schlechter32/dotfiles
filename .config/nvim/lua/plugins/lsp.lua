@@ -339,6 +339,9 @@ return {
                 -- julia = { "julials" },
                 python = {  "black" },
                 latex = { "latexindent" },
+                markdown ={"prettier"},
+                bash= {"beautysh"},
+                sh = {"beautysh"}
             },
         },
     },
