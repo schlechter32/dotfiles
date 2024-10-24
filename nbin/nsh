@@ -64,7 +64,7 @@ echo "Connecting to $initial_host with $hostname_var"
 
 
 lab_list=("smart" "netserv1" "cobra")
-ikr_cent_list=("icnode01" "ingress" "icnode09")
+ikr_cent_list=("icnode01" "ingress" "icnode09" "ninode02")
 
 # Get password from secure storage on macOS
 if [[ " ${lab_list[@]} " =~ " $initial_host " ]]; then
