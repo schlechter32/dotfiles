@@ -17,9 +17,9 @@ depth = 1
 # [[search_dirs]]
 # path = "/home/bulk"
 # depth = 1
-# [[search_dirs]]
-# path = "~/secondBrain"
-# depth = 10
+[[search_dirs]]
+path = "~/secondBrain"
+depth = 10
 
 [shortcuts]
 "ctrl-k" = "move_up"
