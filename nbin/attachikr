@@ -1,17 +1,17 @@
 #!/bin/bash
 file=$1
 initial_host="ingress"
-  echo "host on ikr"
-  if [ $(uname) == "Darwin" ]; then
+echo "host on ikr"
+if [ $(uname) == "Darwin" ]; then
     echo "On mac so using docker to execute knock"
     ~/nbin/knock_ikr_mac
-  else 
+else
     ~/nbin/libscripts/knock_ikr_linux
-  fi
+fi
 
 if [[ $(command -v security) ]]; then
     opt_pw=$(security find-generic-password -s "$initial_host" -w)
-   sshpass -p $opt_pw rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
+    sshpass -p $opt_pw rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles
 else
-    rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles 
- fi
+    rsync -avz $1 nclshrnk@129.69.170.21:~/attachedfiles
+fi

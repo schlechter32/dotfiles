@@ -324,7 +324,7 @@ return {
         event = { "BufWritePre" },
         cmd = { "ConformInfo" },
         opts = {
-            notify_on_error = false,
+            notify_on_error = true,
             -- format_after_save = {
             --   async = true,
             --   timeout_ms = 500,
@@ -337,8 +337,11 @@ return {
                 svelte = { { "prettierd", "prettier " } },
                 lua = { "stylua" },
                 -- julia = { "julials" },
-                python = { "autopep8", "black" },
+                python = {  "black" },
                 latex = { "latexindent" },
+                markdown ={"prettier"},
+                bash= {"beautysh"},
+                sh = {"beautysh"}
             },
         },
     },

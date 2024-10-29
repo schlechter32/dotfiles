@@ -31,3 +31,18 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 
+
+# >>> juliaup initialize >>>
+
+# !! Contents within this block are managed by juliaup !!
+
+case ":$PATH:" in
+    *:/Users/nicolashornek/.juliaup/bin:*)
+        ;;
+
+    *)
+        export PATH=/Users/nicolashornek/.juliaup/bin${PATH:+:${PATH}}
+        ;;
+esac
+
+# <<< juliaup initialize <<<

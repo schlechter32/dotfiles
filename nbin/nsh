@@ -7,6 +7,7 @@ while [[ $# -gt 0 ]]; do
         -l) ssh_base_command+=" -l $2"; shift ;;
         -i) ssh_base_command+=" -i $2"; shift ;;
         -X) ssh_base_command+=" -X" ;;
+        -Y) ssh_base_command+=" -X" ;;
         -N) ssh_base_command+=" -N" ;;
         -L) ssh_base_command+=" -L $2:localhost:$2"; shift;;
         -C) ssh_base_command+=" -C" ;;
@@ -64,7 +65,7 @@ echo "Connecting to $initial_host with $hostname_var"
 
 
 lab_list=("smart" "netserv1" "cobra")
-ikr_cent_list=("icnode01" "ingress" "icnode09")
+ikr_cent_list=("icnode01" "ingress" "icnode09" "ninode02")
 
 # Get password from secure storage on macOS
 if [[ " ${lab_list[@]} " =~ " $initial_host " ]]; then

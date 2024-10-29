@@ -30,6 +30,9 @@ return {
                     -- Example:
                     Comment = { fg = "#ebaeae", bg = "NONE", italic = true },
                     LineNr = { fg = "#ebaeae", bg = "NONE", italic = false },
+                    CurSearch={fg="#d20f39" ,bg="NONE"},
+                    IncSearch={fg="#64eb34" ,bg="NONE"},
+                    Search={fg="#df8e1d" ,bg="NONE"}
                     -- CursorColumn = {  bg = "#ebaeae", italic = false },
                     -- Cursor = {  bg = "#ebaeae", italic = false }
 

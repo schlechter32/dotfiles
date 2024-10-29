@@ -6,6 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 BULK_HOME="/u/bulk/home/wima/$USER"
+LAB_BULK_HOME="/home/bulk"
 export EDITOR=nvim
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
@@ -26,19 +27,29 @@ export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
     source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
 }
-else
-export JULIAUP_DEPOT_PATH="$HOME/.julia/"
-export JULIA_DEPOT_PATH="$HOME/.julia/"
+elif [[ $(hostname) == *"pc"* ]]; then
 
-if [[ $(hostname) == *"pc"* ]]; then
-else
-git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
-git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
-fi
+export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
+function st(){
+    source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
+}
+elif [[ $(hostname) == *"cobra"* ]]; then
+
+export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+
 export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
     source $HOME/source/simtree_wrapper/st_wrapper.bash
 }
+else
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+
+# else
+# git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
+# git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
+# fi
 export PYENV_ROOT="$HOME/.pyenv"
 fi
 # PATHS
@@ -153,7 +164,7 @@ alias c='clear'
 
 alias sudo='sudo '
 alias v="nvim"
-alias ls="exa --icons"
+alias ls="eza --icons"
 alias ll="ls -l"
 alias vim="nvim"
 alias c="clear"
@@ -171,6 +182,9 @@ alias ..="cd .."
 alias ....="cd ../.."
 alias ......="cd ../../.."
 alias cf="cd \$(find * -type d | fzf)"
+
+alias or="v $HOME/secondBrain/00inbox/*.md"
+alias notionsync="python ~/source/notionsync/notionsync.py"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
 
@@ -203,9 +217,9 @@ eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 # Make nice tree
 function lt() {
   if [ -z "$1" ]; then
-    exa --icons -T -L 2
+    eza --icons -T -L 2
   else
-    exa --icons -T -L "$1"
+    eza --icons -T -L "$1"
   fi
 }
 
@@ -250,3 +264,4 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
+
