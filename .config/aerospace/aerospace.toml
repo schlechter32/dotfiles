@@ -102,8 +102,8 @@ ctrl-shift-alt-cmd-k = 'move up'
 ctrl-shift-alt-cmd-l = 'move right'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-ctrl-alt-shift-0 = 'resize smart -50'
-ctrl-alt-shift-equal = 'resize smart +50'
+ctrl-alt-shift-0 = 'resize smart -100'
+ctrl-alt-shift-equal = 'resize smart +100'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
 ctrl-shift-alt-1 = 'workspace 1'
@@ -199,4 +199,5 @@ run = "move-node-to-workspace N"
 # [[on-window-detected]]
 # if.app-id = 'com.thenounproject.Noun-Project'
 # run = "layout floating"
+
 
