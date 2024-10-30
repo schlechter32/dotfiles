@@ -1,3 +1,7 @@
+# in your startup file, usually ~/.julia/config/startup.jl
+if isinteractive()
+    @eval using VimBindings
+end
 ENV["JULIA_PKG_USE_CLI_GIT"] = true
 ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"
 using Revise
