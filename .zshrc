@@ -97,6 +97,7 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting
+zinit light jeffreytse/zsh-vi-mode
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # Add in snippets
 zinit snippet OMZP::git
@@ -117,10 +118,14 @@ zinit cdreplay -q
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
-bindkey -e
+# bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+bindkey '^w' autosuggest-execute
+bindkey '^e' autosuggest-accept
+bindkey '^u' autosuggest-toggle
+# bindkey '^L' vi-forward-word
 
 # History
 HISTSIZE=5000
