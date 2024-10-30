@@ -155,6 +155,8 @@ fi
 # Aliases
 #
 #
+alias studenttopics="PoolEditor SPT"
+alias studentproject="PoolEditor SPP"
 alias sc="st cd"
 alias ls='ls --color'
 alias vim='nvim'
