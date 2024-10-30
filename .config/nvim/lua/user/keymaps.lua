@@ -12,6 +12,17 @@ local neogit = require "neogit"
 -- local undotree = require("undotree")
 
 local M = {}
+
+--" Resize window with Ctrl-w + hjkl
+-- nnoremap ("<C-w>j" ,":resize -5<CR>", {silent=true})
+-- nnoremap ("<C-w>k", ":resize +5<CR>")
+-- nnoremap( "<C-w>h", ":vertical resize 5<CR>" )
+-- nnoremap ("<C-w>l", ":vertical resize -5<CR>")
+-- Resize window with Ctrl-w + hjkl, repeatable
+vim.api.nvim_set_keymap('n', '<C-w>j', ':<C-u>execute "resize -2" .. v:count1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-w>k', ':<C-u>execute "resize +2" .. v:count1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-w>h', ':<C-u>execute "vertical resize +2" .. v:count1<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-w>l', ':<C-u>execute "vertical resize -2" .. v:count1<CR>', { noremap = true, silent = true })
 nnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
 vnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
 nnoremap("<leader>gs", function()
