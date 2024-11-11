@@ -7,14 +7,14 @@
 ;;   as the home row mod will activate an early tap action 
 
 (defcfg 
-  process-unmapped-keys yes 
+  process-unmapped-keys no 
 ) 
 (defsrc
     esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
     F22 1    2    3    4    5    6    7    8    9    0    -    =    bspc
     tab  q    w    e    r    t    y    u    i    o    p    [    ]
     caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
-    lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
+    lsft grv  z    x    c    v    b    n    m    ,    .    /    
     fn   lctl lalt lmet           spc            rmet ralt
 )
 (defvar 
@@ -41,12 +41,12 @@
     lsgt 1    2    3    4    5    6    7    8    9    0    -    =    bspc 
     tab  q    w    e    r    t    y    u    i    o    p    [    ] 
     esc  @a   s    @d   @f   g    h    @j   @k   l    @;   '    \    ret 
-    lsft grv  z    @x   @c   @v   b    n    @m   @,   @.   /    rsft 
+    lsft grv  z    @x   @c   @v   b    n    @m   @,   @.   /    
     fn   lctl lalt lmet           @spc           rmet ralt ;; esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
 ;; lsgt 1    2    3    4    5    6    7    8    9    0    -    =    bspc
 ;; tab  q    w    e    r    t    y    u    i    o    p    [    ]
 ;; esc a    s    d    f    g    h    j    k    l    ;    '    \    ret
-;; lsft grv  z    x    c    v    b    n    m    ,    .    /    rsft
+;; lsft grv  z    x    c    v    b    n    m    ,    .    /    
 ;; fn   lctl lalt lmet           @spc            rmet ralt
 ) 
 
@@ -55,7 +55,7 @@
     lsgt 1    2    3    4    5    6    7    8    9    0    -    =    bspc 
     tab  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  [    ] 
     esc  S--    +    S-6 S-4  _    ArrowLeft ArrowUp ArrowDown ArrowRight ;    '    \    ret 
-    lsft S-grave _    _    _    _    f11  f12  Home End  PageUp PageDown rsft 
+    lsft S-grave _    _    _    _    f11  f12  Home End  PageUp PageDown  
     fn   lctl lalt lmet           @spc           rmet ralt
 ) 
 
@@ -65,7 +65,7 @@
     lsgt 1    2    3    4    5    6    7    8    9    0    -    =    bspc 
     tab  S-2  S-1  S-[  S-]  S-7  S-6  7    8    9    S-4  [    ] 
     del  -    \    S-9  S-0  S-8  0    4    5    6    =    '    \    ret 
-    lsft S-6  grave S-3  [    ]    S-5  S-\  1    2    3    ,    rsft 
+    lsft S-6  grave S-3  [    ]    S-5  S-\  1    2    3    ,     
     fn   lctl lalt lmet           @spc           rmet ralt
 ) 
 (deflayer mehlayer
@@ -73,7 +73,7 @@
     F22 S-C-A-1    S-C-A-2    S-C-A-3    S-C-A-4    S-C-A-5    S-C-A-6    S-C-A-7    S-C-A-8    S-C-A-9    S-C-A-0    S-C-A--    S-C-A-=    bspc 
     tab  S-C-A-q S-C-A-w S-C-A-e S-C-A-r S-C-A-t S-C-A-y S-C-A-u S-C-A-i S-C-A-o S-C-A-p S-C-A-[ S-C-A-] 
     caps S-C-A-a S-C-A-s S-C-A-d S-C-A-f S-C-A-g S-C-A-h S-C-A-j S-C-A-k S-C-A-l S-C-A-; S-C-A-' S-C-A-\ S-C-A-ret 
-    lsft grv  S-C-A-z S-C-A-x S-C-A-c S-C-A-v S-C-A-b S-C-A-n S-C-A-m S-C-A-, S-C-A-. S-C-A-/ rsft 
+    lsft grv  S-C-A-z S-C-A-x S-C-A-c S-C-A-v S-C-A-b S-C-A-n S-C-A-m S-C-A-, S-C-A-. S-C-A-/  
     fn   lctl lalt lmet           spc            rmet ralt
 )
 (defalias 
