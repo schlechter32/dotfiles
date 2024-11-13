@@ -160,6 +160,8 @@ fi
 # Aliases
 #
 #
+#
+alias smi="watch -n0.1 nvidia-smi"
 alias studenttopics="PoolEditor SPT"
 alias studentproject="PoolEditor SPP"
 alias sc="st cd"
