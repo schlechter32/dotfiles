@@ -158,6 +158,8 @@ fi
 #
 #
 #
+#
+alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
 alias smi="watch -n0.1 nvidia-smi"
 alias studenttopics="PoolEditor SPT"
 alias studentproject="PoolEditor SPP"
@@ -268,7 +270,7 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
-source .zkeybinds
+source ~/.zkeybinds
 # bindkey '^p' history-search-backward
 # bindkey '^n' history-search-forward
 # bindkey '^[w' kill-region

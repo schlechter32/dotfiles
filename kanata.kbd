@@ -77,10 +77,11 @@
    lower_sw (layer-while-held lower)
 
   d ( tap-hold $tap-time $hold-time  d  @raise_sw ) 
+  meh ( tap-hold $tap-time $hold-time  spc  (multi lalt lctl lsft) ) 
   k ( tap-hold $tap-time $hold-time  k  @raise_sw ) 
   f ( tap-hold $tap-time $hold-time  f  @lower_sw ) 
  j ( tap-hold $tap-time $hold-time  j  @lower_sw ) 
-meh (tap-hold-release 200 150 ; (layer-while-held mehlayer))
+;; meh (tap-hold-release 200 150 ; (layer-while-held mehlayer))
 spc ( tap-hold $tap-time $hold-time  spc @meh ) 
   a (tap-hold-release-keys $tap-time $hold-time  a  lsft $left-hand-keys) 
   x (tap-hold-release-keys $tap-time $hold-time  x  lctl $left-hand-keys) 
