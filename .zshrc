@@ -98,6 +98,9 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light jeffreytse/zsh-vi-mode
+
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
 # zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
 # Add in snippets
 zinit snippet OMZP::git
@@ -154,6 +157,8 @@ fi
 # Aliases
 #
 #
+#
+alias smi="watch -n0.1 nvidia-smi"
 alias studenttopics="PoolEditor SPT"
 alias studentproject="PoolEditor SPP"
 alias sc="st cd"
