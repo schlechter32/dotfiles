@@ -268,10 +268,10 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
-
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-bindkey '^g' autosuggest-execute
-bindkey '^e' autosuggest-accept
-bindkey '^u' autosuggest-toggle
+source .zkeybinds
+# bindkey '^p' history-search-backward
+# bindkey '^n' history-search-forward
+# bindkey '^[w' kill-region
+# bindkey '^g' autosuggest-execute
+# bindkey '^e' autosuggest-accept
+# bindkey '^u' autosuggest-toggle
