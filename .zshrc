@@ -119,12 +119,6 @@ zinit cdreplay -q
 
 # Keybindings
 # bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-bindkey '^g' autosuggest-execute
-bindkey '^e' autosuggest-accept
-bindkey '^u' autosuggest-toggle
 # bindkey '^L' vi-forward-word
 
 # History
@@ -270,3 +264,9 @@ function tnl {
   alias tnlkill="kill $PID && unalias tnlkill"
 }
 
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^[w' kill-region
+bindkey '^g' autosuggest-execute
+bindkey '^e' autosuggest-accept
+bindkey '^u' autosuggest-toggle
