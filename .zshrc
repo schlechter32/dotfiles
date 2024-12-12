@@ -241,6 +241,7 @@ function ya() {
 }
 eval "$(zoxide init zsh --cmd cd)"
 alias z="cd"
+alias c9="nsh icnode09"
 source ~/.secrets
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
