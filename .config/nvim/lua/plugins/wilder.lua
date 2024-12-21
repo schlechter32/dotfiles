@@ -1,3 +1,4 @@
+-- Run :UpdateRemotePlugins needed for fresh install
 return {
   {
     "gelguy/wilder.nvim",
