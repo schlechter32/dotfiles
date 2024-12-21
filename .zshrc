@@ -271,7 +271,15 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
-source ~/.zkeybinds
+function zvm_after_init() {
+    bindkey '^p' history-search-backward
+    bindkey '^n' history-search-forward
+    bindkey '^[w' kill-region
+    bindkey '^g' autosuggest-execute
+    bindkey '^e' autosuggest-accept
+    bindkey '^u' autosuggest-toggle
+}
+zvm_after_init
 # bindkey '^p' history-search-backward
 # bindkey '^n' history-search-forward
 # bindkey '^[w' kill-region
