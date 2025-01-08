@@ -7,6 +7,9 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+config.enable_wayland=true
+config.front_end="WebGpu"
+
 -- Settings
 -- Dark_color_scheme = "rose-pine"
 -- Light_color_scheme = "Raycast_Light"
@@ -15,6 +18,7 @@ end
 -- end
 -- Dark_scheme = wezterm.color.get_builtin_schemes()[Dark_color_scheme]
 -- Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
+
 Light_scheme = require("cyberdream-light")
 Dark_scheme=require("cyberdream")
 -- scheme.background = "black"
@@ -92,7 +96,8 @@ config.font = wezterm.font_with_fallback({
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
 config.window_background_opacity =1
-config.window_background_image="/Users/nicolashornek/.config/wezterm/AutumnalPeachMatt.jpg"
+local homedir= os.getenv("HOME")
+config.window_background_image=homedir .."/.config/wezterm/AutumnalPeachMatt.jpg"
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000

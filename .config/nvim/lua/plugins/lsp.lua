@@ -95,6 +95,7 @@ return {
                 --             -- local = "lindent.yamls"
                 --         },
                 -- },
+                rnix={},
                 texlab = {
                     settings = {
                         texlab = {
