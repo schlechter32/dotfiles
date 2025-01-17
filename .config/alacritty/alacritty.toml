@@ -1,6 +1,6 @@
-live_config_reload = true
+general.live_config_reload = true
 # theme = "Catppuccin"
-import =[
+general.import =[
 "~/.config/alacritty/catppuccin-macchiato.toml"
 ] 
 [bell]
@@ -94,16 +94,13 @@ mouse = "Middle"
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
-program = "/bin/zsh"
-
 [window]
 decorations = "full"
 dynamic_title = true
 # option_as_alt = "Both"
 startup_mode = "Maximized"
 
-opacity = 0.8
+opacity = 0.95
 
 [window.dimensions]
 columns = 160
