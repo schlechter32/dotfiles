@@ -21,7 +21,7 @@ if [[ $(hostname) == *"cnode"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
-export PYENV_ROOT="$BULK_HOME/.pyenv"
+# export PYENV_ROOT="$BULK_HOME/.pyenv"
 
 export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
@@ -50,7 +50,7 @@ export JULIA_DEPOT_PATH="$HOME/.julia/"
 # git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
 # git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
 # fi
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 fi
 # PATHS
 #
@@ -216,9 +216,9 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
 eval "$(fzf --zsh)"
 
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 
 # Make nice tree
 function lt() {
