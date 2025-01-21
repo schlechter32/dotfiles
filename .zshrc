@@ -170,7 +170,7 @@ alias c='clear'
 
 alias sudo='sudo '
 alias v="nvim"
-alias ls="eza --icons"
+alias ls="eza --icons --group --header --mounts --created "
 alias ll="ls -l"
 alias vim="nvim"
 alias c="clear"
