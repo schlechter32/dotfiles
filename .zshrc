@@ -35,8 +35,8 @@ function st(){
 }
 elif [[ $(hostname) == *"cobra"* ]]; then
 
-export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
-export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+# export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+# export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
 
 export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
