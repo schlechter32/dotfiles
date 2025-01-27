@@ -1,4 +1,3 @@
-#!/bin/bash
 # Argument parsing
 ssh_base_command="ssh"
 while [[ $# -gt 0 ]]; do

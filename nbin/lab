@@ -54,7 +54,8 @@ if [[ " ${lab_list[@]} " =~ " $initial_host " ]]; then
   echo "host on lab list"
   if [ $(uname) == "Darwin" ]; then
     echo "On mac so using docker to execute knock"
-    ~/nbin/libscripts/docker_knock_lab $initial_host
+    # ~/nbin/libscripts/docker_knock_lab $initial_host
+    ~/nbin/libscripts/knock_lab_mac --target "$hostname_var"
   else 
     ~/nbin/libscripts/knock_lab --target "$hostname_var"
   fi

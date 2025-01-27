@@ -3,10 +3,10 @@
 	email = nicolas.hornek@ikr.uni-stutgart.de
 [credential]
   helper = cache --timeout 28800
-[core]
-    pager = delta
-[safe]
-     directory = /u/bulk/home/wima/fchrstou/workspace/RL_RSA_MDPs/exp1/MetaData/Tool
+; [core]
+;     pager = delta
+; [safe]
+;      directory = /u/bulk/home/wima/fchrstou/workspace/RL_RSA_MDPs/exp1/MetaData/Tool
 [pull]
 	rebase = false
 [alias]
@@ -51,12 +51,12 @@ pclone = "! ALL_PROXY=socks5h://127.0.0.1:8080 git clone"
 # git alias: list all aliases
 # useful in order to learn git syntax
 alias = "!git config -l | grep alias | cut -c 7-"
-[http "http://gitlab/"]
-	proxy = socks5h://127.0.0.1:8080
-	; proxy = socks5h://129.69.172.4:8080
-[http "http://appsrv2/"]
-	proxy = socks5h://127.0.0.1:8080
-[http]
-	postBuffer = 524288000
+; [http "http://gitlab/"]
+; 	proxy = socks5h://127.0.0.1:8080
+; 	; proxy = socks5h://129.69.172.4:8080
+; [http "http://appsrv2/"]
+; 	proxy = socks5h://127.0.0.1:8080
+; [http]
+; 	postBuffer = 524288000
 
 	; proxy = socks5h://129.69.172.4:8080
