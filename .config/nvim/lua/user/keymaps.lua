@@ -7,7 +7,7 @@ local harpoon_ui = require "harpoon.ui"
 local harpoon_mark = require "harpoon.mark"
 local opens = require "user.open_functions"
 local utils = require "user.utils"
-local neogit = require "neogit"
+--local neogit = require "neogit"
 --local leap = require("leap")
 -- local undotree = require("undotree")
 
@@ -25,14 +25,14 @@ vim.api.nvim_set_keymap('n', '<C-w>h', ':<C-u>execute "vertical resize +2" .. v:
 vim.api.nvim_set_keymap('n', '<C-w>l', ':<C-u>execute "vertical resize -2" .. v:count1<CR>', { noremap = true, silent = true })
 nnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
 vnoremap("<leader>i", ":Gen<CR>", { desc = "Ask local llm" })
-nnoremap("<leader>gs", function()
-    require("neogit").open()
+--nnoremap("<leader>gs", function()
+--    require("neogit").open()
     -- kj(ij(kl()))-- i
-end, { desc = "Open Neogit" })
-nnoremap("<leader>gc", ":Neogit commit <CR>")
-nnoremap("<leader>gp", ":Neogit pull<CR>")
-nnoremap("<leader>gP", ":Neogit push<CR>")
-nnoremap("<leader>gb", ":Telescope git_branches<CR>")
+--end, { desc = "Open Neogit" })
+--nnoremap("<leader>gc", ":Neogit commit <CR>")
+--nnoremap("<leader>gp", ":Neogit pull<CR>")
+--nnoremap("<leader>gP", ":Neogit push<CR>")
+--nnoremap("<leader>gb", ":Telescope git_branches<CR>")
 
 nnoremap("<leader>a", function()
     -- print "test"
@@ -292,26 +292,26 @@ nnoremap("<leader>6", function()
     harpoon_ui.nav_file(6)
 end, { desc = "Jump to Spear 6" })
 -- Git keymaps --
-nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
-nnoremap("<leader>gf", function()
-    local cmd = {
-        "sort",
-        "-u",
-        "<(git diff --name-only --cached)",
-        "<(git diff --name-only)",
-        "<(git diff --name-only --diff-filter=U)",
-    }
+-- nnoremap("<leader>gb", ":Gitsigns toggle_current_line_blame<cr>")
+-- nnoremap("<leader>gf", function()
+--     local cmd = {
+--         "sort",
+--         "-u",
+--         "<(git diff --name-only --cached)",
+--         "<(git diff --name-only)",
+--         "<(git diff --name-only --diff-filter=U)",
+--     }
 
-    if not utils.is_git_directory() then
-        vim.notify(
-            "Current project is not a git directory",
-            vim.log.levels.WARN,
-            { title = "Telescope Git Files", git_command = cmd }
-        )
-    else
-        require("telescope.builtin").git_files()
-    end
-end, { desc = "Search [G]it [F]iles" })
+--     if not utils.is_git_directory() then
+--         vim.notify(
+--             "Current project is not a git directory",
+--             vim.log.levels.WARN,
+--             { title = "Telescope Git Files", git_command = cmd }
+--         )
+--     else
+--         require("telescope.builtin").git_files()
+--     end
+-- end, { desc = "Search [G]it [F]iles" })
 
 -- Telescope keybinds --
 nnoremap("<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
