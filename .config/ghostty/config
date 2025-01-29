@@ -5,7 +5,7 @@ mouse-hide-while-typing = true
 #window-decoration = true
 # keybind = global:cmd+/=toggle_quick_terminal
 macos-option-as-alt = true
-background-opacity = 0.6
+background-opacity = 0.4
 font-family="MonoLisa nh"
 background-blur-radius = 20 
 window-decoration=false
