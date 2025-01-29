@@ -9,18 +9,7 @@ background-opacity = 0.4
 font-family="MonoLisa nh"
 background-blur-radius = 20 
 window-decoration=false
-# Ghostty color configuration
-foreground = #ffffff
-# background = #16181a
-background = #324e5b
-
-cursor-color = #ffffff
-cursor-text = #16181a
-
-selection-foreground = #ffffff
-selection-background = #3c4048
-
-# ANSI Colors (0-7)
+# cyberdream theme for ghostty
 palette = 0=#16181a
 palette = 1=#ff6e5e
 palette = 2=#5eff6c
@@ -29,8 +18,7 @@ palette = 4=#5ea1ff
 palette = 5=#bd5eff
 palette = 6=#5ef1ff
 palette = 7=#ffffff
-
-# Bright Colors (8-15)
+# palette = 8=#3c4048
 palette = 8=#ebaeae
 palette = 9=#ff6e5e
 palette = 10=#5eff6c
@@ -39,3 +27,11 @@ palette = 12=#5ea1ff
 palette = 13=#bd5eff
 palette = 14=#5ef1ff
 palette = 15=#ffffff
+
+background = #16181a
+foreground = #ffffff
+cursor-color = #ffffff
+selection-background = #3c4048
+selection-foreground = #ffffff
+
+#3C4048

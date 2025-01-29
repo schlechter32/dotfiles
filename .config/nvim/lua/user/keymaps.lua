@@ -429,6 +429,8 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "v" }, "<leader>d", [["_d]])
 -- Move selected text up/down in visual mode
 vnoremap("<A-j>", ":m '>+1<CR>gv=gv")
+-- Try these alternatives:
+-- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv") -- Option-j produces ∆ on macO
 vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
 
 -- Reselect the last visual selection
