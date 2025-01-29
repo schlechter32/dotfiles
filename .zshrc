@@ -54,6 +54,7 @@ export JULIA_DEPOT_PATH="$HOME/.julia/"
 fi
 # PATHS
 #
+export TMS_CONFIG_FILE="$HOME/.config/tms/config.toml"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
 
 export PATH="/usr/local/sbin:/usr/sbin:$PATH"
