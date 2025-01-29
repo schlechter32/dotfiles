@@ -53,33 +53,34 @@ TERM = "xterm-256color"
 
 [font]
 size = 13
-builtin_box_drawing = false
+# builtin_box_drawing = false
 
 [font.bold]
-family = "MonoLisa script"
+family = "MonoLisa nh"
 style = "Bold"
 
 # [font.underline]
 # family = "MonoLisa script"
 # style = "underline"
-[font.glyph_offset]
-x = 0
-y = 0
+# [font.glyph_offset]
+# x = 0
+# y = 0
 
 [font.italic]
-family = "MonoLisa script"
+family = "MonoLisa nh"
 
 [font.normal]
-# family = "Jetbrains Mono Nerdfont"
-family = "MonoLisa script"
+# family = "Jetbrains Mono NF"
+# family = 'MesloLGS Nerd Font Mono'
+family= "MonoLisa nh"
 style = "Regular"
 
-[font.offset]
-x = 0
-y = 0
+# [font.offset]
+# x = 0
+# y = 0
 
 [mouse]
-hide_when_typing = true
+hide_when_typing = false
 
 [[mouse.bindings]]
 action = "PasteSelection"
@@ -95,7 +96,7 @@ mouse = "Middle"
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
 [window]
-decorations = "full"
+decorations = "Buttonless"
 dynamic_title = true
 # option_as_alt = "Both"
 startup_mode = "Maximized"

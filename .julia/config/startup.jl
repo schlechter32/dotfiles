@@ -1,4 +1,18 @@
 # in your startup file, usually ~/.julia/config/startup.jl
+
+# if occursin(r"^cnode[0-9]+$", gethostname())
+#
+#     println("Setting depot paths for cnodes")
+# # "/u/home/wima/nclshrnk"
+#     ENV["JULIA_DEPOT_PATH"]="$(ENV["HOME"])/.julia"
+#     ENV["JULIAUP_DEPOT_PATH"]="$(ENV["HOME"])/.julia"
+# elseif occursin(r"^cobra", gethostname())
+#
+#
+#     println("Setting depot paths for netlab")
+#     ENV["JULIA_DEPOT_PATH"]="/home/bulk/.julia"
+#     ENV["JULIAUP_DEPOT_PATH"]="/home/bulk/.julia"
+# end
 if isinteractive()
     @eval using VimBindings
 end
