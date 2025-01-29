@@ -1,7 +1,5 @@
 format = """
-$username\
-$hostname\
-$directory\
+ $directory\
 $git_branch\
 $git_state\
 $git_status\
@@ -9,7 +7,10 @@ $cmd_duration\
 $line_break\
 $python\
 $character"""
-
+right_format="""
+$username\
+$hostname\
+"""
 [directory]
 style = "blue"
 
