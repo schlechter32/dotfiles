@@ -159,6 +159,9 @@ fi
 #
 #
 #
+alias z="zellij"
+alias za="zellij attach"
+alias zl="zellij list-sessions"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
 alias smi="watch -n0.1 nvidia-smi"
 alias studenttopics="PoolEditor SPT"
@@ -240,7 +243,7 @@ function ya() {
 
 }
 eval "$(zoxide init zsh --cmd cd)"
-alias z="cd"
+# alias z="cd"
 alias c9="nsh -D 8080 icnode09"
 source ~/.secrets
 export DENO_INSTALL="$HOME/.deno"
