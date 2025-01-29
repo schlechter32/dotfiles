@@ -13,6 +13,12 @@ $character"""
 [directory]
 style = "blue"
 
+[username]
+format='[$user]($style)'
+[hostname]
+ssh_symbol="@"
+format='[$ssh_symbol$hostname]($style) '
+
 [character]
 success_symbol = "[❯](purple)"
 error_symbol = "[❯](red)"
