@@ -6,9 +6,9 @@ ENV["JULIA_PKG_USE_CLI_GIT"] = true
 ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"
 using Revise
 using OhMyREPL
+colorscheme!("TomorrowNightBright")
 using Logging
 # using LoggingExtras
-colorscheme!("TomorrowNightBright")
 using Infiltrator
 
 if isfile("Project.toml") && isfile("Manifest.toml")
