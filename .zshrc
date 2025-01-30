@@ -76,7 +76,7 @@ export PATH="$HOME/execs:$PATH"
 export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
 # export PATH="$PYENV_ROOT/.pyenv/bin:$PATH"
-export PATH="$HOME/.juliaup/bin:$PATH"
+# export PATH="$HOME/.juliaup/bin:$PATH"
 # Variables
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
