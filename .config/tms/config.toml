@@ -1,0 +1,21 @@
+display_full_path = false
+search_submodules = true
+session_sort_order = "LastAttached"
+
+[[search_dirs]]
+path = "/Users/nicolashornek/source"
+depth = 10
+
+[[search_dirs]]
+path = "/Users/nicolashornek/dotfiles_ikr"
+depth = 10
+
+[[search_dirs]]
+path = "/Users/nicolashornek/secondBrain"
+depth = 10
+
+[shortcuts]
+ctrl-l = "cursor_right"
+ctrl-j = "move_down"
+ctrl-k = "move_up"
+ctrl-h = "cursor_left"
