@@ -91,7 +91,9 @@ wezterm.on("toggle-dark-mode", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 config.font = wezterm.font_with_fallback({
-	{ family = "MonoLisa nh", scale = 1.15 },
+	-- { family = "MonoLisa nh", scale = 1.15 },
+	{ family = "MonoLisa script", scale = 1.15 },
+	{ family = "JetbrainMono NerdFont", scale = 1.15 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
