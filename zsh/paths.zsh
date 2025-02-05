@@ -1,0 +1,12 @@
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/nbin:$PATH"
+export PATH="/Library/TeX/texbin/:$PATH"
+export PATH="/ext/bin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/sbin:$PATH"
+export PATH="/usr/local/tde/curr/bin:$PATH"
+export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
+
+export PATH="$DENO_INSTALL/bin:$PATH"
