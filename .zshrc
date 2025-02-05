@@ -63,10 +63,11 @@ source $HOME/dotfiles_ikr/zsh/paths.zsh
 # Shell integrations
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
+# Secrets
 if [ -f "$HOME/.secrets" ]; then
 source ~/.secrets
 fi
-# fsshmap multiple ports
+# Shortcuts
 function zvm_after_init() {
     bindkey '^p' history-search-backward
     bindkey '^n' history-search-forward
