@@ -4,3 +4,4 @@ nbin/yq
 .python-version
 .config/btop/btop.log
 .ssh/config
+.config/tms/config.toml

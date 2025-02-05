@@ -62,3 +62,5 @@ alias = "!git config -l | grep alias | cut -c 7-"
 ; 	postBuffer = 524288000
 
 	; proxy = socks5h://129.69.172.4:8080
+[http "https://appsrv1:3000/"]
+  sslVerify = "false"
