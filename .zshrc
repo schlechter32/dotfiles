@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 BULK_HOME="/u/bulk/home/wima/$USER"
 LAB_BULK_HOME="/home/bulk"
@@ -21,7 +21,7 @@ if [[ $(hostname) == *"cnode"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
-export PYENV_ROOT="$BULK_HOME/.pyenv"
+# export PYENV_ROOT="$BULK_HOME/.pyenv"
 
 export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
@@ -35,8 +35,8 @@ function st(){
 }
 elif [[ $(hostname) == *"cobra"* ]]; then
 
-export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
-export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+# export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+# export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
 
 export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
@@ -50,10 +50,11 @@ export JULIA_DEPOT_PATH="$HOME/.julia/"
 # git config --global  http.http://gitlab/.proxy socks5h://127.0.0.1:8080
 # git config --global  http.http://appsrv2/.proxy socks5h://127.0.0.1:8080
 # fi
-export PYENV_ROOT="$HOME/.pyenv"
+# export PYENV_ROOT="$HOME/.pyenv"
 fi
 # PATHS
 #
+export TMS_CONFIG_FILE="$HOME/.config/tms/config.toml"
 export PATH="/usr/local/bin:/usr/bin:$PATH"
 
 export PATH="/usr/local/sbin:/usr/sbin:$PATH"
@@ -75,7 +76,7 @@ export PATH="$HOME/execs:$PATH"
 export PATH="$HOME/nbin:$PATH"
 export PATH="$HOME/opt:$PATH"
 # export PATH="$PYENV_ROOT/.pyenv/bin:$PATH"
-export PATH="$HOME/.juliaup/bin:$PATH"
+# export PATH="$HOME/.juliaup/bin:$PATH"
 # Variables
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -90,7 +91,7 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-completions
@@ -118,7 +119,7 @@ compinit
 zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Keybindings
 # bindkey -e
@@ -159,6 +160,9 @@ fi
 #
 #
 #
+alias z="zellij"
+alias za="zellij attach"
+alias zl="zellij list-sessions"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
 alias smi="watch -n0.1 nvidia-smi"
 alias studenttopics="PoolEditor SPT"
@@ -167,10 +171,11 @@ alias sc="st cd"
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
-
+alias seu="setxkbmap eu"
+alias sde="setxkbmap de"
 alias sudo='sudo '
 alias v="nvim"
-alias ls="eza --icons"
+alias ls="eza --icons --group --header --mounts --created "
 alias ll="ls -l"
 alias vim="nvim"
 alias c="clear"
@@ -216,9 +221,9 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
 eval "$(fzf --zsh)"
 
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 
 # Make nice tree
 function lt() {
@@ -240,8 +245,8 @@ function ya() {
 
 }
 eval "$(zoxide init zsh --cmd cd)"
-alias z="cd"
-alias c9="nsh icnode09"
+# alias z="cd"
+alias c9="nsh -D 8080 icnode09"
 source ~/.secrets
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
@@ -280,6 +285,7 @@ function zvm_after_init() {
     bindkey '^u' autosuggest-toggle
 }
 zvm_after_init
+eval "$(starship init zsh)"
 # bindkey '^p' history-search-backward
 # bindkey '^n' history-search-forward
 # bindkey '^[w' kill-region
