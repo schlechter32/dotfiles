@@ -171,7 +171,8 @@ alias sc="st cd"
 alias ls='ls --color'
 alias vim='nvim'
 alias c='clear'
-
+alias seu="setxkbmap eu"
+alias sde="setxkbmap de"
 alias sudo='sudo '
 alias v="nvim"
 alias ls="eza --icons --group --header --mounts --created "

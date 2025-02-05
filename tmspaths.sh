@@ -1,3 +1,4 @@
+#! /bin/bash
 process_folders() {
     local all_folders=()
     
