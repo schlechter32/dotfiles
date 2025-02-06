@@ -25,4 +25,8 @@ export ST_PATH=$HOME/source/simtree_wrapper
 function st(){
     source $HOME/source/simtree_wrapper/st_wrapper.bash
 }
+else
+
+# export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+# export JULIA_DEPOT_PATH="$HOME/.julia/"
 fi
