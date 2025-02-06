@@ -72,6 +72,9 @@ config.color_schemes = {
 	["mylight"] = Light_scheme,
 }
 config.color_scheme = "mydark"
+config.window_padding={
+    left=0,right=0, top=0, bottom=0
+}
 -- print("mycolor debug")
 -- print(mycolors)
 -- mycolors.background = "red"

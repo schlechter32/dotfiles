@@ -10,3 +10,4 @@ export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
 
 export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$HOME/localapps/bin:$PATH"
