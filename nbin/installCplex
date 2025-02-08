@@ -1,0 +1,2 @@
+sudo mkdir -p /ext/cplex
+sudo rsync cobra2:/ext/cplex/* /ext/cplex

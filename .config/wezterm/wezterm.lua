@@ -72,6 +72,9 @@ config.color_schemes = {
 	["mylight"] = Light_scheme,
 }
 config.color_scheme = "mydark"
+config.window_padding={
+    left=0,right=0, top=0, bottom=0
+}
 -- print("mycolor debug")
 -- print(mycolors)
 -- mycolors.background = "red"
@@ -91,7 +94,9 @@ wezterm.on("toggle-dark-mode", function(window, pane)
 	window:set_config_overrides(overrides)
 end)
 config.font = wezterm.font_with_fallback({
-	{ family = "MonoLisa nh", scale = 1.15 },
+	-- { family = "MonoLisa nh", scale = 1.15 },
+	{ family = "MonoLisa script", scale = 1.15 },
+	{ family = "JetbrainMono NerdFont", scale = 1.15 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })

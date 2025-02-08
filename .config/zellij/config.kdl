@@ -4,6 +4,12 @@ ui {
         hide_session_name false
     }
 }
+layout {
+    pane size=1 borderless=true {
+        plugin location="compact-bar"
+    }
+    pane
+}
 keybinds clear-defaults=true {
 	normal {
 		unbind "Ctrl p"
@@ -207,7 +213,7 @@ simplified_ui true
 // Choose the path to the default shell that zellij will use for opening new panes
 // Default: $SHELL
 //
-// default_shell "fish"
+default_shell "zsh"
 
 // Toggle between having pane frames around the panes
 // Options:
@@ -317,4 +323,4 @@ theme "catppuccin-mocha"
 
 // The folder in which Zellij will look for themes
 //
-theme_dir "/Users/nicolashornek/.config/zellij/themes"
+theme_dir "/u/home/wima/nclshrnk/.config/zellij/themes"

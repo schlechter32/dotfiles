@@ -1,0 +1,1 @@
+find . -type d -name "Seed01" -exec test -e "{}/simtree.lock" \; -exec rm -rf {} +
