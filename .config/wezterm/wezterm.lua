@@ -8,6 +8,7 @@ if wezterm.config_builder then
 end
 
 config.enable_wayland=true
+config.max_fps=120
 config.front_end="WebGpu"
 
 -- Settings
@@ -100,9 +101,9 @@ config.font = wezterm.font_with_fallback({
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
-config.window_background_opacity =1
+config.window_background_opacity =0.8
 local homedir= os.getenv("HOME")
-config.window_background_image=homedir .."/.config/wezterm/AutumnalPeachMatt.jpg"
+-- config.window_background_image=homedir .."/.config/wezterm/AutumnalPeachMatt.jpg"
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000
