@@ -53,5 +53,7 @@ pclone = "! ALL_PROXY=socks5h://127.0.0.1:8080 git clone"
 alias = "!git config -l | grep alias | cut -c 7-"
 
 	; proxy = socks5h://129.69.172.4:8080
+  ;
 [http "https://appsrv1:3000/"]
-  sslVerify = "false"
+	proxy = "socks5h://127.0.0.1:8080"
+	sslVerify = "false"

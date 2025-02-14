@@ -2,6 +2,7 @@ export EDITOR=nvim
 
 # PATHS
 source $HOME/dotfiles_ikr/zsh/paths.zsh
+source $HOME/dotfiles_ikr/zsh/homebrew.zsh
 
 export TMS_CONFIG_FILE="$HOME/.config/tms/config.toml"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -57,7 +58,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 source $HOME/dotfiles_ikr/zsh/aliases.zsh
 source $HOME/dotfiles_ikr/zsh/functions.zsh
-source $HOME/dotfiles_ikr/zsh/homebrew.zsh
 source $HOME/dotfiles_ikr/zsh/ikrhosts.zsh
 
 
