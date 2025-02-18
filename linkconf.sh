@@ -13,5 +13,6 @@ ln -sf $REPODIR/.config/tmux/* ~/.config/tmux
 ln -sf $REPODIR/.config/zellij/* ~/.config/zellij
 ln -sf $REPODIR/.config/starship ~/.config/
 ln -sf $REPODIR/.gitconfig $HOME
+ln -sf $REPODIR/.zshrc $HOME
 
 
