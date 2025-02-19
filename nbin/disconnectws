@@ -5,6 +5,7 @@
 xrandr --output DP-3-1-5 --off
 xrandr --output DP-3-1-6 --off
 xrandr --output DP-3-2 --off
+xrandr --output DP-4 --off
 
 # Ensure the laptop display (eDP-1) is running at its native resolution and refresh rate
 xrandr --output eDP-1 --auto
