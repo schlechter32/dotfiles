@@ -23,26 +23,6 @@ return {
                 "This may be converted to an async function.",
             }
 
-            local function tsserver_on_publish_diagnostics_override(_, result, ctx, config)
-                local filtered_diagnostics = {}
-
-                for _, diagnostic in ipairs(result.diagnostics) do
-                    local found = false
-                    for _, message in ipairs(messages_to_filter) do
-                        if diagnostic.message == message then
-                            found = true
-                            break
-                        end
-                    end
-                    if not found then
-                        table.insert(filtered_diagnostics, diagnostic)
-                    end
-                end
-
-                result.diagnostics = filtered_diagnostics
-
-                vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
-            end
 
             -- Default handlers for LSP
             local default_handlers = {
@@ -73,19 +53,19 @@ return {
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
             local servers = {
                 -- LSP Servers
-                bashls = {},
-                biome = {},
+                bashls  = {},
+                -- biome = {},
                 cssls = {},
 
                 julials = {},
                 -- gleam = {},
-                eslint = {
-                    autostart = false,
-                    cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=12288" },
-                    settings = {
-                        format = false,
-                    },
-                },
+                -- eslint = {
+                --     autostart = false,
+                --     cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=12288" },
+                --     settings = {
+                --         format = false,
+                --     },
+                -- },
                 html = {},
                 jsonls = {},
                 -- texlab = {
@@ -95,7 +75,7 @@ return {
                 --             -- local = "lindent.yamls"
                 --         },
                 -- },
-                rnix={},
+                nil_ls = {},
                 texlab = {
                     settings = {
                         texlab = {
@@ -158,13 +138,13 @@ return {
                     },
                 },
                 -- marksman = {},
-                ocamllsp = {
-                    settings = {
-                        inlayHints = true,
-                    },
-                },
+                -- ocamllsp = {
+                --     settings = {
+                --         inlayHints = true,
+                --     },
+                -- },
                 -- nil_ls = {},
-                pyright = {},
+                ruff = {},
                 sqlls = {},
                 -- tailwindcss = {},
                 -- tsserver = {
@@ -200,10 +180,10 @@ return {
                 --   },
                 -- },
                 yamlls = {},
-                svelte = {},
+                -- svelte = {},
                 ltex = {
                     -- language = {},
-                    autostart=false, 
+                    autostart = false,
                     filetypes = {
                         "gitcommit",
                         "markdown",
@@ -332,17 +312,18 @@ return {
             --   lsp_fallback = true,
             -- },
             formatters_by_ft = {
-                javascript = { { "prettierd", "prettier", "biome" } },
-                typescript = { { "prettierd", "prettier", "biome" } },
-                typescriptreact = { { "prettierd", "prettier", "biome" } },
-                svelte = { { "prettierd", "prettier " } },
+                javascript = { "prettierd", "prettier", "biome", stop_after_first = true },
+                typescript = { "prettierd", "prettier", "biome", stop_after_first = true },
+                typescriptreact = { "prettierd", "prettier", "biome", stop_after_first = true },
+                svelte = { "prettierd", "prettier ", stop_after_first = true },
                 lua = { "stylua" },
                 -- julia = { "julials" },
-                python = {  "black" },
+                python = { "black" },
                 latex = { "latexindent" },
-                markdown ={"prettier"},
-                bash= {"beautysh"},
-                sh = {"beautysh"}
+                markdown = { "prettier" },
+                bash = { "beautysh" },
+                sh = { "beautysh" },
+                nix = { "nixfmt", "alejandra", stop_after_first = true }
             },
         },
     },

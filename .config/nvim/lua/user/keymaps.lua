@@ -400,8 +400,8 @@ nnoremap("<leader>so", ":SymbolsOutline<cr>")
 -- end, { desc = "[O]pen [C]opilot panel" })
 
 -- nvim-ufo keybinds
-nnoremap("zR", require("ufo").openAllFolds)
-nnoremap("zM", require("ufo").closeAllFolds)
+-- nnoremap("zR", require("ufo").openAllFolds)
+-- nnoremap("zM", require("ufo").closeAllFolds)
 
 -- Insert --
 -- Map jj to <esc>
