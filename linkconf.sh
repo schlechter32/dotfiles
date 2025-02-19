@@ -16,8 +16,22 @@ ln -sf $REPODIR/.config/zellij/* ~/.config/zellij
 ln -sf $REPODIR/.config/wezterm/* ~/.config/wezterm
 ln -sf $REPODIR/.config/alacritty/* ~/.config/alacritty
 ln -sf $REPODIR/.config/starship.toml ~/.config/
-ln -sf $REPODIR/.gitconfig $HOME
 ln -sf $REPODIR/.zshrc $HOME
 ln -sf $REPODIR/.local/share/fonts/* ~/.local/share/fonts
+
+
+if command -v nix &>/dev/null && nix --version &>/dev/null; then
+    echo "On nix assuming shelltools already installed"
+else
+    mkdir -p ~/.ssh
+    ln -sf $REPODIR/.ssh/config ~/.ssh/
+
+    if [ $(uname) == "Darwin" ]; then
+
+        ln -sf $REPODIR/.gitconfig $HOME
+    else
+        ln -sf $REPODIR/.gitconfigikr $/HOME/.gitconfig
+    fi
+fi
 
 
