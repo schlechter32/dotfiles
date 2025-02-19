@@ -43,3 +43,10 @@ function tnl {
   PID=$!
   alias tnlkill="kill $PID && unalias tnlkill"
 }
+function nsh-add() {
+    local key_name="$1"
+    local fifo=$(mktemp -u)
+    trap 'rm -f "$fifo"' EXIT
+    mkfifo -m 600 "$fifo"
+    pass "ssh/$key_name" > "$fifo" & ssh-add "$fifo"
+}
