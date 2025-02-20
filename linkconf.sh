@@ -28,6 +28,7 @@ else
     ln -sf $REPODIR/.ssh/config ~/.ssh/
 
     if [ $(uname) == "Darwin" ]; then
+        echo "On Darwin"
 
     else
 
