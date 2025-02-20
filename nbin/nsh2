@@ -1,0 +1,97 @@
+#!/bin/bash
+
+# Argument parsing
+ssh_base_command="ssh"
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -p) ssh_base_command+=" -p $2"; shift ;;
+        -l) ssh_base_command+=" -l $2"; shift ;;
+        -i) ssh_base_command+=" -i $2"; shift ;;
+        -X) ssh_base_command+=" -X" ;;
+        -Y) ssh_base_command+=" -X" ;;
+        -N) ssh_base_command+=" -N" ;;
+        -L) ssh_base_command+=" -L $2:localhost:$2"; shift;;
+        -C) ssh_base_command+=" -C" ;;
+        -D) ssh_base_command+=" -D $2"; shift;;
+        *) break ;;
+    esac
+    shift
+done
+
+initial_host=$1
+
+# Functions
+get_ssh_config_block() {
+    local initial_host="$1"
+    awk -v host="$initial_host" '
+        BEGIN { found = 0; print_block = 0; }
+        /^Host / {
+            if ($2 == host) {
+                found = 1;
+                print_block = 1;
+            } else if (found) {
+                print_block = 0;
+                exit;
+            }
+        }
+        print_block { print; }
+    ' ~/.ssh/config
+}
+
+determine_sshpass_prompt_pw() {
+    local host="$1"
+    local password=$(pass show "$host" 2>/dev/null)
+    if [ -n "$password" ]; then
+        echo "sshpass -p $password"
+    else
+        echo ""
+    fi
+}
+
+execute_knock() {
+    local jump_host="$1"
+    local os_type=$(uname)
+
+    case $jump_host in
+        "ingress")
+            if [ "$os_type" = "Darwin" ]; then
+                ~/nbin/knock_ikr_mac
+            else
+                ~/nbin/libscripts/knock_ikr_linux
+            fi
+            ;;
+        "netserv1")
+            if [ "$os_type" = "Darwin" ]; then
+                ~/nbin/knock_lab_mac --target 129.69.172.4
+            else
+                ~/nbin/libscripts/knock_lab_linux
+            fi
+            ;;
+    esac
+}
+
+# Get configuration
+config=$(get_ssh_config_block "$initial_host")
+user=$(echo "$config" | grep -o "User [^ ]*" | awk '{print $2}')
+jump_needed=$(echo "$config" | grep -o "ProxyJump [^ ]*" | awk '{print $2}')
+hostname_var=$(echo "$config" | grep -o "HostName [^ ]*" | awk '{print $2}')
+
+echo "Connecting to $initial_host with $hostname_var"
+
+# Handle ProxyJump specific knock commands
+if [ -n "$jump_needed" ]; then
+    execute_knock "$jump_needed"
+fi
+
+# Build and execute SSH command
+sshcommand="$ssh_base_command $initial_host"
+sshpass_command=$(determine_sshpass_prompt_pw "$initial_host")
+
+if [ -n "$jump_needed" ]; then
+  jump_pw=$(pass show "$jump_needed" 2>/dev/null)
+    host_pw=$(pass show "$initial_host" 2>/dev/null)
+    proxy_cmd="sshpass -p '$jump_pw' ssh -W %h:%p $jump_needed"
+    sshpass -d 123 $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$user@$hostname_var" 123<<<"$host_pw"
+else
+    $sshpass_command $sshcommand
+fi
