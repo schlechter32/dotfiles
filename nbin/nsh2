@@ -40,7 +40,8 @@ get_ssh_config_block() {
 
 determine_sshpass_prompt_pw() {
     local host="$1"
-    local password=$(pass show "$host" 2>/dev/null)
+    # echo "Host for pw $host"
+    local password=$(pass show "ssh/$host" 2>/dev/null)
     if [ -n "$password" ]; then
         echo "sshpass -p $password"
     else
@@ -49,49 +50,88 @@ determine_sshpass_prompt_pw() {
 }
 
 execute_knock() {
-    local jump_host="$1"
+    local host="$1"
+    local target_host="$2"  # This will be the HostName from the config
     local os_type=$(uname)
 
-    case $jump_host in
-        "ingress")
+    # Default knock script paths
+    local knock_ikr_mac="~/nbin/knock_ikr_mac"
+    local knock_ikr_linux="~/nbin/libscripts/knock_ikr_linux"
+    local knock_lab_mac="~/nbin/knock_lab_mac"
+    local knock_lab_linux="~/nbin/libscripts/knock_lab_linux"
+
+    case $host in
+        "ingress"|"ingressstud")
             if [ "$os_type" = "Darwin" ]; then
-                ~/nbin/knock_ikr_mac
+                echo "Knocking IKR Mac"
+                $knock_ikr_mac
             else
-                ~/nbin/libscripts/knock_ikr_linux
+                echo "Knocking IKR Linux"
+                $knock_ikr_linux
             fi
             ;;
-        "netserv1")
-            if [ "$os_type" = "Darwin" ]; then
-                ~/nbin/knock_lab_mac --target 129.69.172.4
-            else
-                ~/nbin/libscripts/knock_lab_linux
-            fi
+        *)
+            # For direct connections to cobra* hosts or through netserv1
+            case $target_host in
+                "129.69.172.4")  # netserv1
+                    if [ "$os_type" = "Darwin" ]; then
+                        $knock_lab_mac --target $target_host
+                    else
+                        $knock_lab_linux --target $target_host
+                    fi
+                    ;;
+                "129.69.172.6"|"129.69.172.7"|"129.69.172.8")  # cobra hosts
+                    if [ "$os_type" = "Darwin" ]; then
+                        $knock_lab_mac --target $target_host
+                    else
+                        $knock_lab_linux --target $target_host
+                    fi
+                    ;;
+            esac
             ;;
     esac
 }
 
 # Get configuration
 config=$(get_ssh_config_block "$initial_host")
+echo "config is: $config"
 user=$(echo "$config" | grep -o "User [^ ]*" | awk '{print $2}')
 jump_needed=$(echo "$config" | grep -o "ProxyJump [^ ]*" | awk '{print $2}')
+echo "Global jump needed $jump_needed"
 hostname_var=$(echo "$config" | grep -o "HostName [^ ]*" | awk '{print $2}')
 
 echo "Connecting to $initial_host with $hostname_var"
 
 # Handle ProxyJump specific knock commands
 if [ -n "$jump_needed" ]; then
-    execute_knock "$jump_needed"
+    execute_knock "$jump_needed" "$hostname_var"
+else
+    # For direct connections
+    execute_knock "$initial_host" "$hostname_var"
 fi
 
 # Build and execute SSH command
 sshcommand="$ssh_base_command $initial_host"
 sshpass_command=$(determine_sshpass_prompt_pw "$initial_host")
 
+echo "SShpass command: $sshpass_command $sshcommand"
 if [ -n "$jump_needed" ]; then
-  jump_pw=$(pass show "$jump_needed" 2>/dev/null)
-    host_pw=$(pass show "$initial_host" 2>/dev/null)
-    proxy_cmd="sshpass -p '$jump_pw' ssh -W %h:%p $jump_needed"
-    sshpass -d 123 $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$user@$hostname_var" 123<<<"$host_pw"
+    jump_pw=$(pass show "ssh/$jump_needed" 2>/dev/null)
+    host_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
+    
+    if [ -n "$jump_pw" ] && [ -n "$host_pw" ]; then
+        proxy_cmd="sshpass -p '$jump_pw' ssh -W %h:%p $jump_needed"
+        echo "$host_pw" | sshpass -p "$host_pw" $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$user@$hostname_var"
+    else
+        echo "Error: Missing passwords for jump host or target host"
+        exit 1
+    fi
 else
-    $sshpass_command $sshcommand
+    if [ -n "$sshpass_command" ]; then
+
+echo "SShpass command: $sshpass_command $sshcommand"
+        $sshpass_command $sshcommand
+    else
+        $sshcommand
+    fi
 fi
