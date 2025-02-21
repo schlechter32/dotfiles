@@ -61,14 +61,15 @@
 # chromium --high-dpi-support=1 --force-device-scale-factor=1.5
 # xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --output DP-1-2 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --primary --output eDP-1 --auto --right-of DP-3-2
 # xrandr --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.9x0.9 --right-of DP-3-2 --primary --output eDP-1 --auto --right-of DP-3-1-5
-export QT_SCALE_FACTOR=3
+export QT_AUTO_SCREEN_SET_FACTOR=0
+export QT_SCALE_FACTOR=2
 export QT_FONT_DPI=96
-export GDK_SCALE=3
-export GDK_DPI_SCALE=0.4
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
 # xrandr --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-2 --primary --output eDP-1 --auto --right-of DP-3-1-5
 # xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-1-5 --primary --output eDP-1 --auto --right-of DP-3-2
 # xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-1-5 --primary --output eDP-1 --auto --right-of DP-3-2
-xrandr --output DP-4 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --output DP-3-1-5 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --right-of DP-4 --primary --output eDP-1 --auto --right-of DP-3-1-5
+xrandr --output DP-4 --mode 3840x2160 --rate 60 --output DP-3-1-5 --mode 3840x2160 --rate 60 --right-of DP-4 --primary --output eDP-1 --auto --right-of DP-3-1-5
 
 #xrandr --output DP-3-2 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --output DP-3-1-5 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --right-of DP-3-2 --primary --output eDP-1 --auto --right-of DP-3-1-5
 #xrandr --output DP-3-2 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --output DP-3-1-6 --mode 3840x2160 --rate 60 --scale 0.8x0.8 --right-of DP-3-2 --primary --output eDP-1 --auto --right-of DP-3-1-6
