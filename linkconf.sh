@@ -17,6 +17,7 @@ ln -sf $REPODIR/.config/wezterm/* ~/.config/wezterm
 ln -sf $REPODIR/.config/alacritty/* ~/.config/alacritty
 ln -sf $REPODIR/.config/starship.toml ~/.config/
 ln -sf $REPODIR/.zshrc $HOME
+ln -sf $REPODIR/.latexmkrc $HOME
 ln -sf $REPODIR/nbin/ $HOME
 ln -sf $REPODIR/.local/share/fonts/* ~/.local/share/fonts
 ln -sf $REPODIR/.gitconfig $HOME
