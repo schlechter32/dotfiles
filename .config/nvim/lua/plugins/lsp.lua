@@ -79,7 +79,7 @@ return {
                 texlab = {
                     settings = {
                         texlab = {
-                            auxDirectory = ".",
+                            auxDirectory = "auxfiles",
                             bibtexFormatter = "texlab",
                             build = {
                                 args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },

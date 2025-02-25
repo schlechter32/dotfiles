@@ -421,17 +421,20 @@ vnoremap(
 )
 
 -- Paste without losing the contents of the register
-xnoremap("<leader>p", '"_dP')
+xnoremap("<leader>p", 'p')
+xnoremap("p", '"_dP')
 -- Yank to system clipbord
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- Delete to void register
 vim.keymap.set({ "v" }, "<leader>d", [["_d]])
 -- Move selected text up/down in visual mode
-vnoremap("<A-j>", ":m '>+1<CR>gv=gv")
--- Try these alternatives:
--- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv") -- Option-j produces ∆ on macO
-vnoremap("<A-k>", ":m '<-2<CR>gv=gv")
+vnoremap("<C-j>", ":m '>+1<CR>gv=gv")
+vnoremap("<C-k>", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "<D-j>", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "<D-k>", ":m '<-2<CR>gv=gv")
+-- vim.keymap.set("v", "˚", ":m '<-2<CR>gv=gv") -- Alt-k
+-- vim.keymap.set("v", "∆", ":m '>+1<CR>gv=gv") -- Alt-j
 
 -- Reselect the last visual selection
 xnoremap("<<", function()
