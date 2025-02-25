@@ -58,7 +58,6 @@ alias gsm='git submodule foreach git commit -am'
 alias git-submodule-push='git submodule foreach git push'
 alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
-eval "$(fzf --zsh)"
 
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"

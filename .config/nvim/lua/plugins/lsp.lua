@@ -180,6 +180,7 @@ return {
                 --   },
                 -- },
                 yamlls = {},
+                gopls={},
                 -- svelte = {},
                 ltex = {
                     -- language = {},
@@ -323,7 +324,8 @@ return {
                 markdown = { "prettier" },
                 bash = { "beautysh" },
                 sh = { "beautysh" },
-                nix = { "nixfmt", "alejandra", stop_after_first = true }
+                nix = { "nixfmt", "alejandra", stop_after_first = true },
+                go= {"gofmt"}
             },
         },
     },
