@@ -10,7 +10,7 @@ return {
 
         wo = { relativenumber = true },
         bigfile = { enabled = true },
-        dashboard = { enabled = true },
+        dashboard = { enabled = false },
         indent = { enabled = true },
         input = { enabled = true },
         picker = { enabled = true },
