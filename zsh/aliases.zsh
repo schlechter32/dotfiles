@@ -1,5 +1,6 @@
 # Aliases
 alias z="zellij"
+alias i="ish"
 alias za="zellij attach"
 alias zl="zellij list-sessions"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
