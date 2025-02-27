@@ -1,6 +1,7 @@
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/nbin:$PATH"
+export PATH="$HOME/execs:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
 export PATH="/ext/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
