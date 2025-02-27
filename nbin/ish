@@ -39,7 +39,7 @@ initial_host=$1
 
 determine_sshpass_prompt_pw() {
   local host="$1"
-  if [[ $(command -v security) ]]; then
+  if [[ $(command -v pass) ]]; then
     opt_pw=$(pass show "ssh/$host")
   fi
   if [ -n "$opt_pw" ]; then
