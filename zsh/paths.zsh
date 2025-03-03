@@ -11,4 +11,4 @@ export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH
 
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/localapps/bin:$PATH"
-export PATH="$HOME/.juliaup/bin/:$PATH"
+# export PATH="$HOME/.juliaup/bin/:$PATH"
