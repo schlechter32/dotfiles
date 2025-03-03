@@ -60,10 +60,16 @@ source $HOME/dotfiles_ikr/zsh/aliases.zsh
 source $HOME/dotfiles_ikr/zsh/functions.zsh
 source $HOME/dotfiles_ikr/zsh/ikrhosts.zsh
 
+if [[ $(uname) == "Darwin" ]]; then
+    alias nsh="nsh-darwin-arm64" 
+else
+    alias nsh="nsh-linux-amd64" 
+fi
 
 # Shell integrations
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
+eval "$(fzf --zsh)"
 # Secrets
 if [ -f "$HOME/.secrets" ]; then
 source ~/.secrets

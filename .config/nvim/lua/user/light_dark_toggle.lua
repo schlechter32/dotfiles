@@ -19,7 +19,7 @@ vim.cmd [[
 command! Dark colorscheme rose-pine-moon
 command! Light colorscheme rose-pine-dawn
 command! On ObsidianNew
-command! LspLinesOff lua vim.diagnostic.config({ virtual_lines = false ,virtual_text=true})
-command! LspLinesOn lua vim.diagnostic.config({ virtual_lines = true, virtual_text=false })
+" command! LspLinesOff lua vim.diagnostic.config({ virtual_lines = false ,virtual_text=true})
+" command! LspLinesOn lua vim.diagnostic.config({ virtual_lines = true, virtual_text=false })
 " command! LspLinesToggle vim.diagnostic.config({ virtual_lines = false })
 ]]

@@ -1,0 +1,191 @@
+#!/bin/bash
+
+# Argument parsing
+ssh_base_command="ssh"
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        -p) ssh_base_command+=" -p $2"; shift ;;
+        -l) ssh_base_command+=" -l $2"; shift ;;
+        -i) ssh_base_command+=" -i $2"; shift ;;
+        -X) ssh_base_command+=" -X" ;;
+        -Y) ssh_base_command+=" -X" ;;
+        -N) ssh_base_command+=" -N" ;;
+        -L) ssh_base_command+=" -L $2:localhost:$2"; shift;;
+        -C) ssh_base_command+=" -C" ;;
+        -D) ssh_base_command+=" -D $2"; shift;;
+        *) break ;;
+    esac
+    shift
+done
+
+initial_host=$1
+
+# Functions
+get_ssh_config_block() {
+    local initial_host="$1"
+    # First try exact match
+    local config=$(awk -v host="$initial_host" '
+        BEGIN { found = 0; print_block = 0; }
+        /^Host / {
+            if ($2 == host) {
+                found = 1;
+                print_block = 1;
+            } else if (found) {
+                print_block = 0;
+                exit;
+            }
+        }
+        print_block { print; }
+    ' ~/.ssh/config)
+
+    # If no exact match, try pattern matching for nodes
+    if [ -z "$config" ] && [[ $initial_host =~ ^n[1-9]$ ]]; then
+        config=$(awk '
+            BEGIN { print_block = 0; }
+            /^Host n\[1-9\]/ {
+                print_block = 1;
+            }
+            /^Host [^n]/ {
+                if (print_block) exit;
+            }
+            print_block { print; }
+        ' ~/.ssh/config)
+
+        # Replace %02d with actual node number
+        if [ -n "$config" ]; then
+            local node_num=${initial_host#n}
+            config=$(echo "$config" | sed "s/%02d/$(printf '%02d' $node_num)/g")
+        fi
+    fi
+    echo "$config"
+}
+
+determine_sshpass_prompt_pw() {
+    local host="$1"
+    local password
+    if [[ $host =~ ^n[1-9]$ ]]; then
+        password=$(pass show "ssh/ingress" 2>/dev/null)
+    else
+        password=$(pass show "ssh/$host" 2>/dev/null)
+    fi
+    if [ -n "$password" ]; then
+        echo "sshpass -p $password"
+    else
+        echo ""
+    fi
+}
+
+execute_knock() {
+    local host="$1"
+    local target_host="$2"  # This will be the HostName from the config
+    local os_type=$(uname)
+
+    case $host in
+        "ingress"|"ingressstud")
+            if [ "$os_type" = "Darwin" ]; then
+                echo "Knocking IKR Mac"
+                ~/nbin/knock_ikr_mac
+            else
+                ~/nbin/libscripts/knock_ikr_linux
+            fi
+            ;;
+        "netserv1"|"cobra1")
+            # Special case for cobra1 (129.69.172.6) or netserv1
+            local knock_target="129.69.172.4"  # default to netserv1
+            if [ "$target_host" = "129.69.172.6" ]; then
+                knock_target="129.69.172.6"
+            fi
+            
+            if [ "$os_type" = "Darwin" ]; then
+                ~/nbin/knock_lab_mac --target $knock_target
+            else
+                ~/nbin/libscripts/knock_lab_linux --target $knock_target
+            fi
+            ;;
+    esac
+}
+
+# Get configuration
+config=$(get_ssh_config_block "$initial_host")
+echo "config is: $config"
+user=$(echo "$config" | grep -o "User [^ ]*" | awk '{print $2}')
+jump_needed=$(echo "$config" | grep -o "ProxyJump [^ ]*" | awk '{print $2}')
+echo "Global jump needed $jump_needed"
+hostname_var=$(echo "$config" | grep -o "HostName [^ ]*" | awk '{print $2}')
+
+echo "Connecting to $initial_host with $hostname_var"
+
+# Handle ProxyJump specific knock commands
+if [ -n "$jump_needed" ]; then
+    execute_knock "$jump_needed" "$hostname_var"
+else
+    # For direct connections
+    execute_knock "$initial_host" "$hostname_var"
+fi
+
+# Build and execute SSH command
+sshcommand="$ssh_base_command $initial_host"
+
+if [ -n "$jump_needed" ]; then
+    jump_pw=$(pass show "ssh/$jump_needed" 2>/dev/null)
+    echo "jump pw is $jump_pw"
+    
+    # For nodes n1-n9, use the same password as ingress
+    if [[ $initial_host =~ ^n[1-9]$ ]]; then
+        host_pw=$(pass show "ssh/ingress" 2>/dev/null)
+    else
+        host_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
+    fi
+    echo "host pw is $host_pw"
+    
+    if [ -n "$jump_pw" ] && [ -n "$host_pw" ]; then
+        # Create temporary files for passwords
+        temp_jump_pw=$(mktemp)
+        temp_host_pw=$(mktemp)
+        # echo "$jump_pw" > "$temp_jump_pw"
+        # echo "$host_pw" > "$temp_host_pw"
+        
+        proxy_cmd="sshpass -f $temp_jump_pw ssh -W %h:%p $jump_needed"
+        sshpass -f "$temp_host_pw" $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$initial_host"
+        
+        # Clean up temp files
+        rm -f "$temp_jump_pw" "$temp_host_pw"
+    elif [ -n "$jump_pw" ]; then
+        # Only jump host password available
+        temp_jump_pw=$(mktemp)
+        echo "$jump_pw" > "$temp_jump_pw"
+        proxy_cmd="sshpass -f $temp_jump_pw ssh -W %h:%p $jump_needed"
+        $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$initial_host"
+        rm -f "$temp_jump_pw"
+    elif [ -n "$host_pw" ]; then
+        # Only target host password available
+        temp_host_pw=$(mktemp)
+        echo "$host_pw" > "$temp_host_pw"
+        proxy_cmd="ssh -W %h:%p $jump_needed"
+        sshpass -f "$temp_host_pw" $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$initial_host"
+        rm -f "$temp_host_pw"
+    else
+        # No passwords available - try SSH keys
+        proxy_cmd="ssh -W %h:%p $jump_needed"
+        $ssh_base_command -o "ProxyCommand=$proxy_cmd" "$initial_host"
+    fi
+else
+    # Direct connection
+    if [[ $initial_host =~ ^n[1-9]$ ]]; then
+        # For direct node connections (shouldn't happen with your config)
+        ingress_pw=$(pass show "ssh/ingress" 2>/dev/null)
+        if [ -n "$ingress_pw" ]; then
+            sshpass -p "$ingress_pw" $sshcommand
+        else
+            $sshcommand
+        fi
+    else
+        sshpass_command=$(determine_sshpass_prompt_pw "$initial_host")
+        if [ -n "$sshpass_command" ]; then
+            $sshpass_command $sshcommand
+        else
+            # No password available - try SSH key or prompt for password
+            $sshcommand
+        fi
+    fi
+fi
