@@ -1,5 +1,6 @@
 export EDITOR=nvim
-
+GPG_TTY=$(tty)
+export GPG_TTY
 # PATHS
 source $HOME/dotfiles_ikr/zsh/paths.zsh
 source $HOME/dotfiles_ikr/zsh/homebrew.zsh
