@@ -1,29 +1,31 @@
-# in your startup file, usually ~/.julia/config/startup.jl
+function is_package_installed(package::String)
+    return Base.find_package(package) !== nothing
+end
 
-# if occursin(r"^cnode[0-9]+$", gethostname())
-#
-#     println("Setting depot paths for cnodes")
-# # "/u/home/wima/nclshrnk"
-#     ENV["JULIA_DEPOT_PATH"]="$(ENV["HOME"])/.julia"
-#     ENV["JULIAUP_DEPOT_PATH"]="$(ENV["HOME"])/.julia"
-# elseif occursin(r"^cobra", gethostname())
-#
-#
-#     println("Setting depot paths for netlab")
-#     ENV["JULIA_DEPOT_PATH"]="/home/bulk/.julia"
-#     ENV["JULIAUP_DEPOT_PATH"]="/home/bulk/.julia"
-# end
-if isinteractive()
-    @eval using VimBindings
+function safe_use(package::String)
+    if !is_package_installed(package)
+        @warn "Package $package is not installed. Installing..."
+        Pkg.add(package)
+    end
+    
+    # Use eval to import the package in the Main module
+    packsymbol=Symbol(package)
+    Core.eval(Main, :(import $packsymbol))
+    # Also add a using statement to bring all exported names into scope
+    Core.eval(Main, :(using $packsymbol))
 end
 ENV["JULIA_PKG_USE_CLI_GIT"] = true
 ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"
-using Revise
-using OhMyREPL
+safe_use("Revise")
+safe_use("Infiltrator")
+safe_use("OhMyREPL")
 colorscheme!("TomorrowNightBright")
 using Logging
 # using LoggingExtras
-using Infiltrator
+
+if isinteractive()
+    @eval  safe_use("VimBindings")
+end
 
 if isfile("Project.toml") && isfile("Manifest.toml")
     @eval import Pkg
@@ -41,10 +43,10 @@ end
 function rr()
     Revise.retry()
 end
-function pluto()
+function pluto(;port=1234)
 
     @eval using Pluto
-    Pluto.run(threads=6, launch_browser=false, auto_reload_from_file=true)
+    Pluto.run(threads=6,port=port, launch_browser=false, auto_reload_from_file=true)
 end
 
 function tool_activate()

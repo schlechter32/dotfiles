@@ -98,6 +98,7 @@ if [ -n "$jump_host" ]; then
         # echo "jump pw is $jump_pw"
         if [ -n "$jump_pw" ]; then
             # Both passwords available, use sshpass with ProxyCommand
+            echo "With jumppw"
             sshpass -d 123 $ssh_base_command -o ProxyCommand="sshpass -p $jump_pw ssh -W %h:%p $jump_host" "$user@$initial_host_ip" 123<<<"$jump_pw"
         else
             # Passwords not available, use normal ssh
@@ -106,6 +107,7 @@ if [ -n "$jump_host" ]; then
         fi
     else
         # pass command not available, use normal ssh
+        echo "No jump host"
         $ssh_base_command "$user@$initial_host"
     fi
 else
@@ -114,12 +116,16 @@ else
         target_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
         if [ -n "$target_pw" ]; then
             # Password available, use sshpass
+            echo "No jump host pass command is echo $sshcommand"
             sshpass -p "$target_pw" $sshcommand
         else
+            echo "No jump host sshkey"
             # Password not available, use normal ssh
+            echo "connecting wiht $sshcommand"
             $sshcommand
         fi
     else
+        echo "No pass"
         # pass command not available, use normal ssh
         $sshcommand
     fi
