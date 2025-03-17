@@ -24,7 +24,7 @@ export ST_PATH=/home/nclshrnk/source/simtree_wrapper
 function st(){
     source /home/nclshrnk/source/simtree_wrapper/st_uv_wrapper.bash
 }
-elif [[ $(hostname) == *"cobra1"* ]]; then
+elif [[ $(hostname) == *"cobra"* ]]; then
 
 export PATH="$HOME/.juliaup/bin/:$PATH"
 
