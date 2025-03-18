@@ -7,6 +7,7 @@ mkdir -p ~/.config/zellij
 mkdir -p ~/.config/wezterm
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.local/share/fonts/
+mkdir -p ~/.gnupg
 
 # nvim conf
 ln -sf $REPODIR/.config/nvim/* ~/.config/nvim
@@ -21,6 +22,7 @@ ln -sf $REPODIR/.latexmkrc $HOME
 ln -sf $REPODIR/nbin/ $HOME
 ln -sf $REPODIR/.local/share/fonts/* ~/.local/share/fonts
 ln -sf $REPODIR/.gitconfig $HOME
+ln -sf $REPODIR/.gnupg/gpg-agent.conf $HOME/.gnupg
 
 if command -v nix &>/dev/null && nix --version &>/dev/null; then
     echo "On nix assuming shelltools already installed"

@@ -116,7 +116,7 @@ else
         target_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
         if [ -n "$target_pw" ]; then
             # Password available, use sshpass
-            echo "No jump host pass"
+            echo "No jump host pass command is echo $sshcommand"
             sshpass -p "$target_pw" $sshcommand
         else
             echo "No jump host sshkey"
