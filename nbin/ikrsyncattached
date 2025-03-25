@@ -1,35 +1,38 @@
 #!/bin/bash
 
 initial_host="ingress"
-  echo "host on ikr"
-  if [ $(uname) == "Darwin" ]; then
+echo "host on ikr"
+if [ $(uname) == "Darwin" ]; then
     echo "On mac so using docker to execute knock"
     ~/nbin/knock_ikr_mac
-  else 
+else
     ~/nbin/libscripts/knock_ikr_linux
-  fi
+fi
 
 if [[ $(command -v security) ]]; then
-opt_pw=$(security find-generic-password -s "$initial_host" -w)
-sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.21:~/Documents/down/* ~/Documents/ikrDocuments/down/
-# sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+    opt_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
+    sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.12:~/Documents/down/* ~/Documents/ikrDocuments/down/
+    # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
- rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~Documents/ikrDocuments/
+    rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~Documents/ikrDocuments/
 fi
 
 initial_host="ingress"
-  echo "host on ikr"
-  if [ $(uname) == "Darwin" ]; then
+echo "host on ikr"
+if [ $(uname) == "Darwin" ]; then
     echo "On mac so using docker to execute knock"
     ~/nbin/knock_ikr_mac
-  else 
-    ~/nbin/libscripts/knock_ikr_linux
-  fi
-
-if [[ $(command -v security) ]]; then
-opt_pw=$(security find-generic-password -s "$initial_host" -w)
-sshpass -p $opt_pw rsync -avh --delete ~/Documents/ikrDocuments/up/ nclshrnk@129.69.170.21:~/Documents/up
-# sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
- rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+    ~/nbin/libscripts/knock_ikr_linux
+fi
+sleep 0.5
+if [[ $(command -v pass) ]]; then
+    echo "sshpass being used"
+    # opt_pw=$(security find-generic-password -s "$initial_host" -w)
+
+    opt_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
+    sshpass -p $opt_pw rsync -avz --delete ~/Documents/ikrDocuments/up/ nclshrnk@129.69.170.21:~/Documents/up
+    # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+else
+    rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.12:~/Documents/
 fi

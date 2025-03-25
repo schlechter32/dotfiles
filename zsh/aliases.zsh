@@ -1,5 +1,7 @@
 # Aliases
 alias z="zellij"
+alias i="ish"
+alias finder="open -a finder"
 alias za="zellij attach"
 alias zl="zellij list-sessions"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
@@ -58,9 +60,8 @@ alias gsm='git submodule foreach git commit -am'
 alias git-submodule-push='git submodule foreach git push'
 alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # Shell integrations
-eval "$(fzf --zsh)"
 
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
-alias c9="nsh -D 8080 icnode09"
+alias c9="nsh n9"

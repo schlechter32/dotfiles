@@ -7,8 +7,9 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
-config.enable_wayland=true
--- config.front_end="WebGpu"
+config.enable_wayland = true
+config.max_fps = 120
+config.front_end = "WebGpu"
 
 -- Settings
 -- Dark_color_scheme = "rose-pine"
@@ -20,7 +21,7 @@ config.enable_wayland=true
 -- Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
 
 Light_scheme = require("cyberdream-light")
-Dark_scheme=require("cyberdream")
+Dark_scheme = require("cyberdream")
 -- scheme.background = "black"
 -- scheme.ansi = {
 -- 	"#1c1e1b",
@@ -72,8 +73,11 @@ config.color_schemes = {
 	["mylight"] = Light_scheme,
 }
 config.color_scheme = "mydark"
-config.window_padding={
-    left=0,right=0, top=0, bottom=0
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
 -- print("mycolor debug")
 -- print(mycolors)
@@ -100,9 +104,10 @@ config.font = wezterm.font_with_fallback({
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
-config.window_background_opacity =1
-local homedir= os.getenv("HOME")
-config.window_background_image=homedir .."/.config/wezterm/AutumnalPeachMatt.jpg"
+config.window_background_opacity = 0.8
+config.macos_window_background_blur = 40
+local homedir = os.getenv("HOME")
+config.window_background_image = homedir .. "/.config/wezterm/AutumnalPeachMatt.jpg"
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000
@@ -113,7 +118,8 @@ config.inactive_pane_hsb = {
 	saturation = 0.24,
 	brightness = 0.5,
 }
-
+-- config.send_composed_key_when_left_alt_is_pressed = true
+config.send_composed_key_when_right_alt_is_pressed = true
 -- Keys
 config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
@@ -145,21 +151,21 @@ config.keys = {
 		mods = "LEADER",
 		action = act.ActivateKeyTable({ name = "resize_pane", one_shot = false }),
 	},
- {
-    key = 'E',
-    mods = 'CTRL|SHIFT',
-    action = act.PromptInputLine {
-      description = 'Enter new name for tab',
-      action = wezterm.action_callback(function(window, pane, line)
-        -- line will be `nil` if they hit escape without entering anything
-        -- An empty string if they just hit enter
-        -- Or the actual line of text they wrote
-        if line then
-          window:active_tab():set_title(line)
-        end
-      end),
-    },
-  },
+	{
+		key = "E",
+		mods = "CTRL|SHIFT",
+		action = act.PromptInputLine({
+			description = "Enter new name for tab",
+			action = wezterm.action_callback(function(window, pane, line)
+				-- line will be `nil` if they hit escape without entering anything
+				-- An empty string if they just hit enter
+				-- Or the actual line of text they wrote
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
 	-- Tab keybindings
 	{ key = "n", mods = "LEADER", action = act.SpawnTab("CurrentPaneDomain") },
 	{ key = "[", mods = "LEADER", action = act.ActivateTabRelative(-1) },

@@ -18,8 +18,8 @@ return {
                     "vimdoc",
                     "c",
                     "css",
-                    "gleam",
-                    "graphql",
+                    -- "gleam",
+                    -- "graphql",
                     "html",
                     "javascript",
                     "json",
@@ -43,7 +43,7 @@ return {
                 },
                 indent = {
                     enable = true,
-                    disable = { "ocaml", "ocaml_interface" },
+                    disable = {  },
                 },
                 autopairs = {
                     enable = true,

@@ -1,3 +1,4 @@
+-- vim.g.loaded_node_provider = 0
 -- Enable relative line numbers
 vim.opt.nu = true
 vim.opt.rnu = true

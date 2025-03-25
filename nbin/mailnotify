@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# Get the script's directory (for potential relative paths later)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Get the current date and time
+current_date=$(date +"%a, %d %b %Y %H:%M:%S %z")
+date_only=$(date +"%Y-%m-%d")
+time_only=$(date +"%H:%M:%S")
+
+# Generate a new random number for the Message-ID (up to 5 digits)
+new_message_id=$(printf "%05d" $((RANDOM % 100000)))
+
+# Define the email content (using a heredoc) – *PRESERVING YOUR ORIGINAL From, To, etc.*
+email_content=$(/usr/bin/cat "$HOME/Mail/inbox/cur/$(ls $HOME/Mail/inbox/cur | tail -n 1)")
+# echo $email_content
+sender=$(echo "$email_content" | grep -m 1 "^From:" | sed 's/^From: //')
+
+# Extract the Subject
+subject=$(echo "$email_content" | grep -m 1 "^Subject:" | sed 's/^Subject: //')
+
+# Output the extracted information
+echo "Sender: $sender"
+echo "Subject: $subject"
+email_content=$(cat <<EOF
+From: Nicolas Hornek <nicolas.hornek@ikr.uni-stuttgart.de>
+Organization: University of Stuttgart (Germany), IKR
+To: nicolas.hornek@outlook.com
+Subject: IKR $date_only $time_only
+Date: $current_date
+User-Agent: KMail/1.9.10
+MIME-Version: 1.0
+Content-Type: Text/Plain;
+  charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+X-KMail-Recipients: nicolas.hornek@outlook.com
+Message-Id: <$new_message_id.$new_message_id.nicolas.hornek@ikr.uni-stuttgart.de>
+Status: R
+X-Status: NQ
+X-KMail-EncryptionState:  
+X-KMail-SignatureState:  
+X-KMail-MDN-Sent:  
+
+From: $sender
+Subject: $subject
+EOF
+)
+
+# Send the email using sendmail
+echo "$email_content" | /usr/sbin/sendmail -t
+
+# Check if sendmail succeeded and notify the user
+# if [[ $? -eq 0 ]]; then
+    # echo "Email sent successfully using sendmail."
+# else
+    # echo "Error: Failed to send email using sendmail."
+    # exit 1
+# fi

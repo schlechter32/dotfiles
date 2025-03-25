@@ -12,7 +12,7 @@ return {
             hide_fillchars = false,
 
             -- Modern borderless telescope theme - also applies to fzf-lua
-            borderless_telescope = false,
+            borderless_pickers = false,
 
             -- Set terminal colors used in `:terminal`
             terminal_colors = true,
@@ -21,35 +21,23 @@ return {
             -- Early testing shows a 60-70% improvement in startup time. YMMV. Disables dynamic light/dark theme switching.
             cache = false, -- generate cache with :CyberdreamBuildCache and clear with :CyberdreamClearCache
 
-            theme = {
-                variant = "auto", -- use "light" for the light variant. Also accepts "auto" to set dark or light colors based on the current value of `vim.o.background`
-                highlights = {
-                    -- Highlight groups to override, adding new groups is also possible
-                    -- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
+            variant = "auto",
 
-                    -- Example:
-                    Comment = { fg = "#ebaeae", bg = "NONE", italic = true },
-                    LineNr = { fg = "#ebaeae", bg = "NONE", italic = false },
-                    CurSearch={fg="#d20f39" ,bg="NONE"},
-                    IncSearch={fg="#64eb34" ,bg="NONE"},
-                    Search={fg="#df8e1d" ,bg="NONE"},
-                    Visual={bg="#666666"}
-                    -- CursorColumn = {  bg = "#ebaeae", italic = false },
-                    -- Cursor = {  bg = "#ebaeae", italic = false }
+            highlights = {
+                -- Highlight groups to override, adding new groups is also possible
+                -- See `:h highlight-groups` for a list of highlight groups or run `:hi` to see all groups and their current values
 
-                    -- Complete list can be found in `lua/cyberdream/theme.lua`
-                },
+                -- Example:
+                Comment = { fg = "#ebaeae", bg = "NONE", italic = true },
+                LineNr = { fg = "#ebaeae", bg = "NONE", italic = false },
+                CurSearch = { fg = "#d20f39", bg = "NONE" },
+                IncSearch = { fg = "#64eb34", bg = "NONE" },
+                Search = { fg = "#df8e1d", bg = "NONE" },
+                Visual = { bg = "#666666" }
+                -- CursorColumn = {  bg = "#ebaeae", italic = false },
+                -- Cursor = {  bg = "#ebaeae", italic = false }
 
-                -- Override a highlight group entirely using the color palette
-                -- overrides = function(colors) -- NOTE: This function nullifies the `highlights` option
-                -- --     -- Example:
-                --     return {
-                --         Comment = { fg = colors.green, bg = "NONE", italic = true },
-                --         ["@property"] = { fg = colors.magenta, bold = true },
-                --     }
-                -- end,
-
-                -- Override a color entirely
+                -- Complete list can be found in `lua/cyberdream/theme.lua`
             },
 
             -- Disable or enable colorscheme extensions
