@@ -8,7 +8,7 @@ if wezterm.config_builder then
 end
 
 config.enable_wayland=true
-config.front_end="WebGpu"
+-- config.front_end="WebGpu"
 
 -- Settings
 -- Dark_color_scheme = "rose-pine"
