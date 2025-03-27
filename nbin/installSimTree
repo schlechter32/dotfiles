@@ -1,12 +1,12 @@
 
-sudo apt install openjdk-17-jre
+# sudo apt install openjdk-17-jre
 knock_ikr_linux
-
 lib_path="/ext/misc/lib"
 # Setup folders
-sudo mkdir -p /ext/misc/lib
-sudo mkdir -p /ext/bin
-sudo mkdir -p /ext/misc/doc
+# sudo mkdir -p /ext/misc/lib
+# sudo mkdir -p /ext/bin
+# sudo mkdir -p /ext/misc/doc
+mkdir -p $HOME/ext
 # Setup Path
 touch extpath.sh
 echo 'export PATH="/ext/bin:$PATH"' > extpath.sh
@@ -15,26 +15,30 @@ rm extpath.sh
 export PATH="/ext/bin:$PATH"
 # Rsync files down
 usr=$1
-sudo rsync -avz -e "ssh -J $usr@129.69.170.21" \
-$usr@cnode09:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar \
-$usr@cnode09:/ext/misc/lib/ikr-simtree.jar \
-$usr@cnode09:/ext/misc/lib/ikr-simtree-lzma-01.jar \
-$usr@cnode09:/ext/misc/lib/ikr-simtree-lzma.jar \
-$usr@cnode09:/ext/misc/lib/ikr-simtree-bzip-01.jar \
-$usr@cnode09:/ext/misc/lib/ikr-simtree-bzip.jar \
-$usr@cnode09:/ext/misc/bin/simtree_helper \
-$usr@cnode09:/ext/misc/doc/SimTree.html \
-$usr@cnode09:/ext/misc/doc/SimTree.txt \
-$usr@cnode09:/ext/bin/SimTree \
-$usr@cnode09:/ext/bin/GSProgramStarter \
-$usr@cnode09:/ext/bin/SimTreeGS \
-$usr@cnode09:/ext/bin/SimTreeGSControl \
-$usr@cnode09:/ext/bin/STResultPrinter \
-$usr@cnode09:/ext/bin/STResultViewer \
-$usr@cnode09:/ext/bin/gs_local_program_starter \
-$usr@cnode09:/ext/bin/gs_remote_program_starter \
-/ext/simtree/
+rsync -avz \
+$usr@n9:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar \
+$usr@n9:/ext/misc/lib/ikr-simtree.jar \
+$usr@n9:/ext/misc/lib/ikr-simtree-lzma-01.jar \
+$usr@n9:/ext/misc/lib/ikr-simtree-lzma.jar \
+$usr@n9:/ext/misc/lib/ikr-simtree-bzip-01.jar \
+$usr@n9:/ext/misc/lib/ikr-simtree-bzip.jar \
+$usr@n9:/ext/misc/bin/simtree_helper \
+$usr@n9:/ext/misc/doc/SimTree.html \
+$usr@n9:/ext/misc/doc/SimTree.txt \
+$usr@n9:/ext/bin/SimTree \
+$usr@n9:/ext/bin/GSProgramStarter \
+$usr@n9:/ext/bin/SimTreeGS \
+$usr@n9:/ext/bin/SimTreeGSControl \
+$usr@n9:/ext/bin/STResultPrinter \
+$usr@n9:/ext/bin/STResultViewer \
+$usr@n9:/ext/bin/gs_local_program_starter \
+$usr@n9:/ext/bin/gs_remote_program_starter \
+$HOME/ext/simtree/
+sudo mv $HOME/ext /
 
+sudo mkdir -p /ext/misc/lib
+sudo mkdir -p /ext/bin
+sudo mkdir -p /ext/misc/doc
 sudo ln -s /ext/simtree/SimTree /ext/bin/
 sudo ln -s /ext/simtree/SimtReeGS /ext/bin/
 sudo ln -s /ext/simtree/SimTreeGSControl /ext/bin/

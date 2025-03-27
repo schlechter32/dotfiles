@@ -8,6 +8,7 @@ mkdir -p ~/.config/wezterm
 mkdir -p ~/.config/alacritty
 mkdir -p ~/.local/share/fonts/
 mkdir -p ~/.gnupg
+mkdir -p ~/.julia/config
 
 # nvim conf
 ln -sf $REPODIR/.config/nvim/* ~/.config/nvim
@@ -17,6 +18,7 @@ ln -sf $REPODIR/.config/zellij/* ~/.config/zellij
 ln -sf $REPODIR/.config/wezterm/* ~/.config/wezterm
 ln -sf $REPODIR/.config/alacritty/* ~/.config/alacritty
 ln -sf $REPODIR/.config/starship.toml ~/.config/
+ln -sf $REPODIR/.julia/config/startup.jl ~/.julia/config/startup.jl
 ln -sf $REPODIR/.zshrc $HOME
 ln -sf $REPODIR/.latexmkrc $HOME
 ln -sf $REPODIR/nbin/ $HOME
