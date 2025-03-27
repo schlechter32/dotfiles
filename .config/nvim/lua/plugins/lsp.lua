@@ -144,6 +144,7 @@ return {
                 --     },
                 -- },
                 -- nil_ls = {},
+                basedpyright={},
                 ruff = {},
                 sqlls = {},
                 -- tailwindcss = {},

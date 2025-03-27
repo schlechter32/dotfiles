@@ -11,7 +11,7 @@ fi
 
 if [[ $(command -v security) ]]; then
     opt_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
-    sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.21:~/Documents/down/* ~/Documents/ikrDocuments/down/
+    sshpass -p $opt_pw rsync -avz nclshrnk@129.69.170.12:~/Documents/down/* ~/Documents/ikrDocuments/down/
     # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
     rsync -avz nclshrnk@129.69.170.21:~/Documents/* ~Documents/ikrDocuments/
@@ -25,14 +25,14 @@ if [ $(uname) == "Darwin" ]; then
 else
     ~/nbin/libscripts/knock_ikr_linux
 fi
-
+sleep 0.5
 if [[ $(command -v pass) ]]; then
-    echo "SSpass being used"
+    echo "sshpass being used"
     # opt_pw=$(security find-generic-password -s "$initial_host" -w)
 
     opt_pw=$(pass show "ssh/$initial_host" 2>/dev/null)
     sshpass -p $opt_pw rsync -avz --delete ~/Documents/ikrDocuments/up/ nclshrnk@129.69.170.21:~/Documents/up
     # sshpass -p $opt_pw rsync -avz ~/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
 else
-    rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.21:~/Documents/
+    rsync -avz ~/Documents/ikrDocuments/* nclshrnk@129.69.170.12:~/Documents/
 fi
