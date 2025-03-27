@@ -4,6 +4,8 @@ if [[ $(hostname) == *"cnode"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/julia/"
+#
+export PATH="$BULK_HOME/.juliaup/bin/:$PATH"
 # export PYENV_ROOT="$BULK_HOME/.pyenv"
 
 export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper

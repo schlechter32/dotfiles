@@ -4,8 +4,8 @@ export QT_SCALE_FACTOR=2
 export QT_FONT_DPI=96
 export GDK_SCALE=2
 export GDK_DPI_SCALE=0.5
-DP1="DP-4"
-DP2="DP-3-1-5"
+DP1="DP-2"
+DP2="DP-1-1-5"
 # xrandr --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-2 --primary --output eDP-1 --auto --right-of DP-3-1-5
 # xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-1-5 --primary --output eDP-1 --auto --right-of DP-3-2
 # xrandr --output DP-3-1-5 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --output DP-3-2 --mode 3840x2160 --rate 30 --scale 0.8x0.8 --right-of DP-3-1-5 --primary --output eDP-1 --auto --right-of DP-3-2
