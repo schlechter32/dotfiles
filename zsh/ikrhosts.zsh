@@ -1,5 +1,7 @@
 BULK_HOME="/u/bulk/home/wima/$USER"
 LAB_BULK_HOME="/home/bulk"
+
+export PATH="$HOME/.juliaup/bin/:$PATH"
 if [[ $(hostname) == *"cnode"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/julia/"
@@ -10,6 +12,7 @@ export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
     source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
 }
+
 elif [[ $(hostname) == *"pc"* ]]; then
 
 export PATH="$HOME/.juliaup/bin/:$PATH"
