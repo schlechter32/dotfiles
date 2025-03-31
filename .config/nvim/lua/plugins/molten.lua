@@ -19,7 +19,7 @@ return {
 
       vim.g.molten_auto_open_output = false
       vim.g.molten_image_location = "both"
-      vim.g.molten_image_provider = "image.nvim"
+      vim.g.molten_image_provider = "wezterm"
       vim.g.molten_output_show_more = true
       vim.g.molten_output_win_border = { "", "━", "", "" }
       vim.g.molten_output_win_max_height = 100
@@ -177,15 +177,15 @@ return {
       })
 
       -- Undo those config changes when we go back to a markdown or quarto file
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = { "*.qmd", "*.md", "*.ipynb" },
-        callback = function()
-          if require("molten.status").initialized() == "Molten" then
-            vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", true)
-            vim.fn.MoltenUpdateOption("molten_virt_text_output", true)
-          end
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("BufEnter", {
+      --   pattern = { "*.qmd", "*.md", "*.ipynb" },
+      --   callback = function()
+      --     if require("molten.status").initialized() == "Molten" then
+      --       vim.fn.MoltenUpdateOption("molten_virt_lines_off_by_1", true)
+      --       vim.fn.MoltenUpdateOption("molten_virt_text_output", true)
+      --     end
+      --   end,
+      -- })
 
       local imb = function(e)
         vim.schedule(function()
