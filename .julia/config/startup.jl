@@ -1,3 +1,4 @@
+import Pkg
 function is_package_installed(package::String)
     return Base.find_package(package) !== nothing
 end

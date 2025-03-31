@@ -11,7 +11,7 @@ return {
 
       "catppuccin/nvim",
     },
-
+    build = ":UpdateRemotePlugins",
     lazy = true,
     config = function()
       local wilder = require "wilder"
