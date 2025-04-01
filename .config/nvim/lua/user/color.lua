@@ -253,4 +253,5 @@ if fok then
 end
 
 local default_theme = Themes["moonfly"]
-return Themes[vim.g.color_theme_name] or default_theme
+print(tostring(Themes))
+return default_theme

@@ -4,17 +4,18 @@ return {
   -- dev = true,
   config = function()
     local theme = require('user.color')
+    -- print(theme)
 
-    vim.api.nvim_set_hl(0, "HydraRed", theme.hydra.red)
-    vim.api.nvim_set_hl(0, "HydraBlue", theme.hydra.blue)
-    vim.api.nvim_set_hl(0, "HydraAmaranth", theme.hydra.amaranth)
-    vim.api.nvim_set_hl(0, "HydraTeal", theme.hydra.teal)
-    vim.api.nvim_set_hl(0, "HydraPink", theme.hydra.pink)
-
-    vim.api.nvim_set_hl(0, "HydraHint", theme.fancy_float.window)
-    vim.api.nvim_set_hl(0, "HydraBorder", theme.fancy_float.border)
-    vim.api.nvim_set_hl(0, "HydraTitle", theme.fancy_float.title)
-    vim.api.nvim_set_hl(0, "HydraFooter", theme.fancy_float.title)
+    -- vim.api.nvim_set_hl(0, "HydraRed", theme.hydra.red)
+    -- vim.api.nvim_set_hl(0, "HydraBlue", theme.hydra.blue)
+    -- vim.api.nvim_set_hl(0, "HydraAmaranth", theme.hydra.amaranth)
+    -- vim.api.nvim_set_hl(0, "HydraTeal", theme.hydra.teal)
+    -- vim.api.nvim_set_hl(0, "HydraPink", theme.hydra.pink)
+    --
+    -- vim.api.nvim_set_hl(0, "HydraHint", theme.fancy_float.window)
+    -- vim.api.nvim_set_hl(0, "HydraBorder", theme.fancy_float.border)
+    -- vim.api.nvim_set_hl(0, "HydraTitle", theme.fancy_float.title)
+    -- vim.api.nvim_set_hl(0, "HydraFooter", theme.fancy_float.title)
 
     require("hydra").setup({
       hint = {
