@@ -1,5 +1,4 @@
-local hostname = vim.fn.hostname()
-if not string.find(os.getenv "HOSTNAME", "node") then
+if not string.find(vim.fn.hostname(), "node") then
   return {
     {
       "GCBallesteros/jupytext.nvim",
