@@ -19,7 +19,8 @@ config.enable_wayland = true
 -- end
 -- Dark_scheme = wezterm.color.get_builtin_schemes()[Dark_color_scheme]
 -- Light_scheme = wezterm.color.get_builtin_schemes()[Light_color_scheme]
-
+-- config.term="xterm-kitty"
+config.enable_kitty_graphics=true
 Light_scheme = require("cyberdream-light")
 Dark_scheme = require("cyberdream")
 -- scheme.background = "black"

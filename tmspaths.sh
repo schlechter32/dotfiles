@@ -19,7 +19,7 @@ process_folders() {
     # Execute tms config once with all valid folders
     if [ ${#all_folders[@]} -gt 0 ]; then
         echo "Executing tms config with folders: ${all_folders[*]}"
-        tms config -p "${all_folders[@]}"
+        tms config -p "${all_folders[@]}" --search-submodules=true
     fi
 }
 

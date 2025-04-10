@@ -9,6 +9,7 @@ export PATH="/usr/local/bin:/usr/bin:$PATH"
 export PATH="/usr/local/sbin:/usr/sbin:$PATH"
 export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
+export PATH="/Users/nicolashornek/Library/Python/3.13/bin:$PATH"
 
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/localapps/bin:$PATH"
