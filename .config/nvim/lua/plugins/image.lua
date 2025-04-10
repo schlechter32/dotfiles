@@ -1,5 +1,5 @@
-local hostname = os.getenv "HOSTNAME"
-if not string.find(hostname, "node") then
+-- local hostname = os.getenv "HOSTNAME"
+if not string.find(vim.fn.hostname(), "node") then
   return {
     "3rd/image.nvim",
     opts = {

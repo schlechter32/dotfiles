@@ -4,7 +4,7 @@ return {
     branch = "1.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "natecraddock/telescope-zf-native.nvim",
+      -- "natecraddock/telescope-zf-native.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
@@ -42,9 +42,9 @@ return {
       }
 
       -- Enable telescope fzf native, if installed
-      -- pcall(require("telescope").load_extension, "fzf")
-      -- require("lazy").setup("my_plugins", { rocks = { enabled = false } })
-      require("telescope").load_extension "zf-native"
+        pcall(require("telescope").load_extension, "fzf")
+        -- require("lazy").setup("my_plugins", { rocks = { enabled = false } })
+        -- require("telescope").load_extension "zf-native"
     end,
   },
 }
