@@ -26,7 +26,7 @@ process_folders() {
 # Define your arrays
 folders_personal=("$HOME/secondBrain")
 folders_general=("$HOME/source" "$HOME/dotfiles_ikr" "$HOME/nixos-config")
-folders_netlab=("~/bulk/cobra/source" "~/home/bulk/cobra/source")
+folders_netlab=("~/bulk/cobra/source" "~/home/bulk/cobra/source" "/bulk/cobra0/home/nclshrnk/")
 
 # Call the function with all folders at once
 process_folders "${folders_general[@]}" "${folders_netlab[@]}" "${folders_personal[@]}"
