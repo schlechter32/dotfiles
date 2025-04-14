@@ -25,6 +25,8 @@ function st(){
 
 elif command -v nix &>/dev/null && nix --version &>/dev/null; then
 
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
 export ST_PATH=/home/nclshrnk/source/simtree_wrapper
 function st(){
     source /home/nclshrnk/source/simtree_wrapper/st_uv_wrapper.bash
