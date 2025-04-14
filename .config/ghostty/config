@@ -1,37 +1,48 @@
-theme = catppuccin-macchiato
-# theme = shades-of-purple
-font-size = 14
-mouse-hide-while-typing = true
-#window-decoration = true
-# keybind = global:cmd+/=toggle_quick_terminal
-macos-option-as-alt = true
-background-opacity = 0.8
+adjust-underline-position = 8
+adjust-underline-thickness = 2
+auto-update-channel = "tip"
+cursor-invert-fg-bg = true
+custom-shader-animation = "always"
 font-family="MonoLisa nh"
-background-blur-radius = 20 
-window-decoration=false
-# cyberdream theme for ghostty
-palette = 0=#16181a
-palette = 1=#ff6e5e
-palette = 2=#5eff6c
-palette = 3=#f1ff5e
-palette = 4=#5ea1ff
-palette = 5=#bd5eff
-palette = 6=#5ef1ff
-palette = 7=#ffffff
-# palette = 8=#3c4048
-palette = 8=#ebaeae
-palette = 9=#ff6e5e
-palette = 10=#5eff6c
-palette = 11=#f1ff5e
-palette = 12=#5ea1ff
-palette = 13=#bd5eff
-palette = 14=#5ef1ff
-palette = 15=#ffffff
+background-opacity = 0.8
+background-blur = 20 
+window-decoration=auto
+keybind = "global:super+ctrl+.=toggle_quick_terminal"
+macos-icon = "custom-style"
+macos-icon-frame = "aluminum"
+macos-icon-ghost-color = "86e1fc"
+macos-icon-screen-color = "222436"
+macos-option-as-alt = "true"
+mouse-hide-while-typing = "true"
+font-thicken = true
+alpha-blending = linear-corrected
 
-background = #16181a
-foreground = #ffffff
-cursor-color = #ffffff
-selection-background = #3c4048
-selection-foreground = #ffffff
+# The following function is in my .zshrc, which allows me to use fzf to
+# execute Ghostty configuration snippets. I use this to quickly switch
+# between fonts for example instead of having to edit my config file
+# constantly. See write up in this Github issue:
+# https://github.com/ghostty-org/ghostty/discussions/3527
+#
+#   function gc {
+#     local GHOSTTY_DIR="$HOME/.config/ghostty"
+#     local CMD="sed -i '' 's:\(config-file = {1}\)/.*:\1/{2}:' $GHOSTTY_DIR/config && osascript -so -e 'tell application \"Ghostty\" to activate' -e 'tell application \"System Events\" to keystroke \",\" using {command down, shift down}'"
+#     fd \
+#       --type f \
+#       --exclude 'config' \
+#       --base-directory $GHOSTTY_DIR \
+#     | fzf \
+#       --header="<ctrl-y> :: enable, don't exit" \
+#       --preview "cat $GHOSTTY_DIR/{}" \
+#       --delimiter=/ \
+#       --bind="enter:become:$CMD"
+#   }
 
-#3C4048
+config-file = font/jetbrains-mono
+config-file = leading/default
+config-file = theme/cyberdream
+config-file = opacity/100%
+config-file = shader/none
+
+
+
+# vim: ft=config

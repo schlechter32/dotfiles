@@ -50,3 +50,15 @@ function nsh-add() {
     mkfifo -m 600 "$fifo"
     pass "ssh/$key_name" > "$fifo" & ssh-add "$fifo"
 }
+function tc {
+  local GHOSTTY_DIR="$HOME/dotfiles_ikr/.config/ghostty"
+  local CMD="sed -i '' 's:\(config-file = {1}\)/.*:\1/{2}:' $GHOSTTY_DIR/config && osascript -so -e 'tell application \"Ghostty\" to activate' -e 'tell application \"System Events\" to keystroke \",\" using {command down, shift down}'"
+  fd -L \
+    --type f \
+    --exclude 'config' \
+    --base-directory $GHOSTTY_DIR \
+  | fzf \
+    --preview "cat $GHOSTTY_DIR/{}" \
+    --delimiter=/ \
+    --bind="enter:become:$CMD"
+}
