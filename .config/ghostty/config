@@ -12,10 +12,13 @@ macos-icon = "custom-style"
 macos-icon-frame = "aluminum"
 macos-icon-ghost-color = "86e1fc"
 macos-icon-screen-color = "222436"
-macos-option-as-alt = "true"
+macos-option-as-alt = left
+shell-integration-features=false
 mouse-hide-while-typing = "true"
 font-thicken = true
 alpha-blending = linear-corrected
+keybind = alt+left=unbind
+keybind = alt+right=unbind
 
 # The following function is in my .zshrc, which allows me to use fzf to
 # execute Ghostty configuration snippets. I use this to quickly switch
