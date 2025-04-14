@@ -21,7 +21,7 @@ if not string.find(vim.fn.hostname(), "node") then
 
         vim.g.molten_auto_open_output = false
         vim.g.molten_image_location = "both"
-        vim.g.molten_image_provider = "wezterm"
+        vim.g.molten_image_provider = "image.nvim"
         vim.g.molten_output_show_more = true
         vim.g.molten_output_win_border = { "", "━", "", "" }
         vim.g.molten_output_win_max_height = 100
