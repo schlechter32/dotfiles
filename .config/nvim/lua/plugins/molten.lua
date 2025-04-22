@@ -7,7 +7,7 @@ if not string.find(vim.fn.hostname(), "node") then
     {
       "benlubas/molten-nvim",
       -- enabled = false,
-      dependencies = { "image.nvim", "wezterm.nvim" },
+      dependencies = { "image.nvim"},
       ft = { "python", "norg", "markdown", "quarto", "julia" }, -- this is just to avoid loading image.nvim, loading molten at the start has minimal startup time impact
       -- dev = true,
       init = function()
