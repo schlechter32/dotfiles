@@ -105,8 +105,8 @@ config.font = wezterm.font_with_fallback({
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 	{ family = "FantasqueSansM Nerd Font", scale = 1.2 },
 })
-config.window_background_opacity = 0.9
-config.macos_window_background_blur = 50
+config.window_background_opacity = 0.95
+config.macos_window_background_blur = 70
 local homedir = os.getenv("HOME")
 -- config.window_background_image = homedir .. "/.config/wezterm/AutumnalPeachMatt.jpg"
 config.window_decorations = "RESIZE"
