@@ -67,18 +67,12 @@ return {
         -- },
         html = {},
         jsonls = {},
-        -- texlab = {
-        --         latexFormatter = "latexindent",
-        --         latexindent = {
-        --             modifyLineBreaks = true,
-        --             -- local = "lindent.yamls"
-        --         },
-        -- },
         nil_ls = {},
         texlab = {
           settings = {
             texlab = {
               auxDirectory = "auxfiles",
+              outputDirectory = "build",
               bibtexFormatter = "texlab",
               build = {
                 args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
@@ -100,7 +94,14 @@ return {
                 --   Command: /Users/simo/go/bin/nvim-texlabconfig
                 --   Arguments: -file '%file' -line %line -cache_root /Users/simo/.cache/lvim
                 -- (Commands and Arguments accept only full path, change '/User/simo')
-
+                -- executable = "zathura",
+                -- args = {
+                --   "--synctex-editor-command",
+                --   [[nvim-texlabconfig -file '%%%{input}' -line %%%{line} -server ]] .. vim.v.servername,
+                --   "--synctex-forward",
+                --   "%l:1:%f",
+                --   "%p",
+                -- },
                 -- executable = 'sioyek',
                 -- args = {
                 --     '--reuse-window',
@@ -318,7 +319,7 @@ return {
         typescriptreact = { "prettierd", stop_after_first = true },
         svelte = { "prettierd", "prettier ", stop_after_first = true },
         lua = { "stylua" },
-        julia = {"runic"},
+        julia = { "runic" },
         python = { "black" },
         latex = { "latexindent" },
         markdown = { "prettier" },
