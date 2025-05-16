@@ -1,6 +1,41 @@
 #!/bin/bash
 
-echo $USER
-BULK_JULIA="/u/bulk/home/wima/$USER/.julia"
-echo $BULK_JULIA
-rsync -avz --exclude 'compiled' ~/.julia cnode01:$BULK_JULIA/.julia 
+# Get the username.  Using $USER directly is generally safe, but for extra
+# robustness, especially if this script might be used by multiple users,
+# consider using getent passwd $USER | cut -d: -f1 to handle potential edge cases.
+USER=$(whoami)
+
+# Define the remote path.  Using variables improves readability and maintainability.
+LOCAL_JULIA_DIR="$HOME/.julia/"
+REMOTE_JULIA_DIR="/u/bulk/home/wima/$USER/.julia"  #Added .julia to the end
+
+#Check if the local .julia directory exists
+if [ ! -d "$LOCAL_JULIA_DIR" ]; then
+  echo "Error: Local .julia directory '$LOCAL_JULIA_DIR' does not exist."
+  exit 1
+fi
+
+
+#Optional:  Display paths for verification before proceeding.
+echo "Local Julia directory: $LOCAL_JULIA_DIR"
+echo "Remote Julia directory: $REMOTE_JULIA_DIR"
+
+#Use sshpass if necessary for password-based authentication.  This is generally
+# less secure than key-based authentication; consider using SSH keys instead.
+#If using sshpass remember to install it: sudo apt-get install sshpass (or equivalent for your system)
+#Replace 'your_password' with the actual password if using sshpass.
+#sshpass -p 'your_password' rsync -avz --exclude 'compiled' "$LOCAL_JULIA_DIR" ingress:"$REMOTE_JULIA_DIR"
+
+
+#Recommended: Use SSH keys for secure connection
+knock_ikr_linux
+rsync -avz --exclude 'compiled' "$LOCAL_JULIA_DIR" ingress:"$REMOTE_JULIA_DIR"
+
+
+#Check the exit status of rsync.  0 means success.
+if [ $? -ne 0 ]; then
+  echo "Error: rsync failed."
+  exit 1
+fi
+
+echo "Synchronization complete."
