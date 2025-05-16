@@ -16,7 +16,6 @@ function safe_use(package::String)
     Core.eval(Main, :(using $packsymbol))
 end
 ENV["JULIA_PKG_USE_CLI_GIT"] = true
-ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"
 safe_use("Revise")
 safe_use("Infiltrator")
 safe_use("OhMyREPL")

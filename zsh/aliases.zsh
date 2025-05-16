@@ -45,6 +45,11 @@ alias ff='fzf --preview="bat --color=always --style=plain {}"'
 alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
+alias jp="julia --project"
+alias jo="julia -e import Pkg, Pkg.offline(true)"
+alias jpo="julia --project -e 'import Pkg; Pkg.offline(true)'"
+# $HOME/.juliaup/bin/julia --project=$TOOL_PATH --threads 1 -e "import RL_RSA_MDPs_study; RL_RSA_MDPs_study.ilpmain()"
+
 alias sf="sf_script.sh"
 
 # Update all submodules
