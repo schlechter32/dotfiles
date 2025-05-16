@@ -59,7 +59,7 @@ alias = "!git config -l | grep alias | cut -c 7-"
     proxy=""
 
 [http "https://github.com"]
-    proxy = http://ikrproxy.ikr.uni-stuttgart.de:3128
+    ; proxy = http://ikrproxy.ikr.uni-stuttgart.de:3128
 [https "https://github.com"]
     proxy = http://ikrproxy.ikr.uni-stuttgart.de:3128
 [http]
