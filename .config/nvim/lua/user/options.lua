@@ -1,6 +1,6 @@
 -- vim.g.loaded_node_provider = 0
 -- Enable relative line numbers
-vim.lsp.set_log_level("debug")
+-- vim.lsp.set_log_level("debug")
 vim.opt.nu = true
 vim.opt.rnu = true
 -- Set tabs to 2 spaces
