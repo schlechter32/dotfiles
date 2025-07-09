@@ -17,7 +17,7 @@ if not string.find(vim.fn.hostname(), "node") then
 
         -- vim.g.molten_cover_empty_lines = true
         -- vim.g.molten_comment_string = "# %%"
-        vim.keymap.set({ "v", "n" }, "<leader><leader>R", "<Cmd>MoltenEvaluateVisual<CR>")
+        -- vim.keymap.set({ "v", "n" }, "<leader><leader>R", "<Cmd>MoltenEvaluateVisual<CR>")
 
         vim.g.molten_auto_open_output = false
         vim.g.molten_image_location = "both"
