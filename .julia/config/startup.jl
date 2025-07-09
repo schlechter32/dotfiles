@@ -27,10 +27,10 @@ if isinteractive()
     @eval  safe_use("VimBindings")
 end
 
-if isfile("Project.toml") && isfile("Manifest.toml")
-    @eval import Pkg
-    Pkg.activate(".")
-end
+# if isfile("Project.toml") && isfile("Manifest.toml")
+#     @eval import Pkg
+#     Pkg.activate(".")
+# end
 # atreplinit() do repl
 #   try
 #     @eval using OhMyREPL
