@@ -36,7 +36,8 @@ alias ......="cd ../../.."
 alias cf="cd \$(find * -type d | fzf)"
 
 alias or="v $HOME/secondBrain/00inbox/*.md"
-alias notionsync="python ~/source/notionsync/notionsync.py"
+# alias notionsync="python ~/source/notionsync/notionsync.py"
+alias notionsync="uv run notionsync.py $HOME/secondBrain/05Zettelkasten"
 # alias ff='fzf --preview=\"bat --color=always --style=plain {} --bind k:preview-up, j:preview-down\"'
 # alias ff='fzf --preview="bat --color=always --style=plain {}" --bind "k:preview-up,j:preview-down"'
 
