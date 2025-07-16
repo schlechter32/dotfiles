@@ -10,6 +10,7 @@ mkdir -p ~/.config/alacritty
 mkdir -p ~/.local/share/fonts/
 mkdir -p ~/.gnupg
 mkdir -p ~/.julia/config
+mkdir -p ~/.julia/environments
 
 # nvim conf
 ln -sf $REPODIR/.config/nvim/* ~/.config/nvim
@@ -21,6 +22,7 @@ ln -sf $REPODIR/.config/ghostty/* ~/.config/ghostty
 ln -sf $REPODIR/.config/alacritty/* ~/.config/alacritty
 ln -sf $REPODIR/.config/starship.toml ~/.config/
 ln -sf $REPODIR/.julia/config/startup.jl ~/.julia/config/startup.jl
+ln -sf $REPODIR/.julia/environments/* ~/.julia/environments/
 ln -sf $REPODIR/.zshrc $HOME
 ln -sf $REPODIR/.latexmkrc $HOME
 ln -sf $REPODIR/nbin/ $HOME
