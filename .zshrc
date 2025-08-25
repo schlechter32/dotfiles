@@ -71,6 +71,8 @@ fi
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
+# Use fzf for command history search
+bindkey '^R' fzf-history-widget
 # Secrets
 if [ -f "$HOME/.secrets" ]; then
 source ~/.secrets
