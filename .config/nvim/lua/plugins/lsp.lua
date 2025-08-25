@@ -78,7 +78,7 @@ return {
                 args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
                 executable = "latexmk",
                 forwardSearchAfter = false,
-                onSave = true,
+                onSave = false,
               },
               chktex = {
                 onEdit = false,
@@ -321,7 +321,8 @@ return {
         lua = { "stylua" },
         julia = { "runic" },
         python = { "black" },
-        latex = { "latexindent" },
+        latex = { "tex-fmt"},
+        tex = { "tex-fmt"},
         markdown = { "prettier" },
         bash = { "beautysh" },
         sh = { "beautysh" },
