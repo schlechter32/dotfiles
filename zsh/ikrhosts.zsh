@@ -2,7 +2,7 @@ BULK_HOME="/u/bulk/home/wima/$USER"
 LAB_BULK_HOME="/home/bulk"
 
 # export PATH="$HOME/.juliaup/bin/:$PATH"
-if [[ $(hostname) == *"cnode"* ]]; then
+if [[ $(hostname) == *"node"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/.julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/.julia/"

@@ -70,3 +70,6 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 alias c9="nsh n9"
+# SimTree find commands
+#find . -type d -name 'Seed01' -not -empty -exec sh -c '[ ! -e "$1/Export.log" ] && echo rm -rf "$1"' _ {} \;
+#find . -type d -name "Seed01" -exec test -e "{}/simtree.lock" \; -exec rm -rf {} +   
