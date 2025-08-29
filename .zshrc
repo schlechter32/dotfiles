@@ -71,8 +71,6 @@ fi
 eval "$(zoxide init zsh --cmd cd)"
 eval "$(starship init zsh)"
 eval "$(fzf --zsh)"
-# Use fzf for command history search
-bindkey '^R' fzf-history-widget
 # Secrets
 if [ -f "$HOME/.secrets" ]; then
 source ~/.secrets
@@ -85,5 +83,8 @@ function zvm_after_init() {
     bindkey '^g' autosuggest-execute
     bindkey '^e' autosuggest-accept
     bindkey '^u' autosuggest-toggle
+
+    # Use fzf for command history search
+    bindkey '^R' fzf-history-widget
 }
 zvm_after_init
