@@ -1,0 +1,31 @@
+{
+  "plugins": {
+    "blink.cmp": {
+      "version": "'1.7.0'"
+    },
+    "mini.comment": {
+      "rev": "c40bc46",
+      "src": "https://github.com/nvim-mini/mini.comment"
+    },
+    "mini.pick": {
+      "rev": "bb764a5",
+      "src": "https://github.com/echasnovski/mini.pick"
+    },
+    "nvim-lspconfig": {
+      "rev": "ac98db2",
+      "src": "https://github.com/neovim/nvim-lspconfig"
+    },
+    "nvim-tmux-navigation": {
+      "rev": "4898c98",
+      "src": "https://github.com/alexghergh/nvim-tmux-navigation"
+    },
+    "oil.nvim": {
+      "rev": "7e1cd77",
+      "src": "https://github.com/stevearc/oil.nvim"
+    },
+    "vague.nvim": {
+      "rev": "ac4ecda",
+      "src": "https://github.com/vague-theme/vague.nvim.git"
+    }
+  }
+}
