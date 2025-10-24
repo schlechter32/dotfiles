@@ -19,6 +19,15 @@
       "rev": "4898c98",
       "src": "https://github.com/alexghergh/nvim-tmux-navigation"
     },
+    "nvim-treesitter": {
+      "rev": "30c466ad",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
+      "version": "'main'"
+    },
+    "nvim-web-devicons": {
+      "rev": "b8221e4",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
     "oil.nvim": {
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"

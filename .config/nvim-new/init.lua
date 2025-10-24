@@ -7,11 +7,16 @@ vim.opt.swapfile = false
 vim.o.winborder = "rounded"
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.mapleader = " "
+vim.opt.undofile = true
+vim.opt.ignorecase = true
+vim.opt.smartindent = true
+vim.opt.termguicolors = true
 vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.keymap.set('n', "<leader>o", ':update<CR> :source<CR>')
 vim.keymap.set('n', "<leader>w", ':write<CR>')
 vim.keymap.set('n', "<leader>q", ':quit<CR>')
 vim.keymap.set('n', "<leader>lf", vim.lsp.buf.format)
+vim.keymap.set('n', "<leader>d", vim.diagnostic.open_float)
 --vim.opt.completeopt = {  "noselect" }
 
 vim.pack.add({
@@ -19,9 +24,11 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/nvim-mini/mini.comment" },
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "main" },
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
-	{ src = "https://github.com/saghen/blink.cmp",               version = "1.7.0" },
+	{ src = "https://github.com/saghen/blink.cmp",                version = "1.7.0" },
 })
 
 -- vim.api.nvim_create_autocmd('LspAttach', {
@@ -35,13 +42,22 @@ vim.pack.add({
 local cmp = require "blink.cmp"
 cmp.setup(
 	{
+		signature = { enabled = true },
 		keymap = {
-			preset = 'default',
-			['<CR>'] = cmp.accept({ select = true }), -- Confirm completion on Enter
-			['<Tab>'] = cmp.select_next(),
-			['<S-Tab>'] = cmp.select_prev(),
+			preset = 'enter',
+			['<C-K>'] = { 'show_signature', 'hide_signature', 'fallback' },
+			['<S-Tab>'] = { 'select_prev', 'fallback_to_mappings' },
+			['<Tab>'] = { 'select_next', 'fallback_to_mappings' },
+			-- ['<CR>'] = cmp.accept({ select = true }), -- Confirm completion on Enter
+			-- ['<Tab>'] = cmp.select_next(),
+			-- ['<S-Tab>'] = cmp.select_prev(),
 		},
 	})
+-- choose            = '<CR>',
+-- choose_in_split   = '<C-s>',
+-- choose_in_tabpage = '<C-t>',
+-- choose_in_vsplit  = '<C-v>',
+-- choose_marked     = '<M-CR>',
 require "mini.pick".setup()
 require("nvim-tmux-navigation").setup({})
 require "oil".setup()
@@ -62,8 +78,7 @@ vim.keymap.set('n', '<C-k>', ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set('n', '<C-l>', ":NvimTmuxNavigateRight<CR>")
 vim.cmd("colorscheme vague")
 vim.cmd("hi statusline guibg=NONE")
-
-vim.lsp.enable({ "lua_ls", "basedpyright" })
+vim.lsp.enable({ "lua_ls", "basedpyright","julials" })
 vim.lsp.config("lua_ls",
 	{
 		settings = {
@@ -74,3 +89,9 @@ vim.lsp.config("lua_ls",
 			}
 		}
 	})
+vim.keymap.set('n', '<leader>sg', function()
+  local q = vim.fn.input('Grep > ')
+  if q ~= '' then
+    require('mini.pick').builtin.grep({ pattern = q, preview = { kind = 'vertical' } })
+  end
+end, { desc = 'Grep with preview' })

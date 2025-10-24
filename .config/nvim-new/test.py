@@ -1,3 +1,4 @@
 import os
 
-os.get
+os.getcwd()
+os.path.abspath()

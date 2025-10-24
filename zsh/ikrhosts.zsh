@@ -54,6 +54,8 @@ function st(){
 # }
 else
 
-# export JULIAUP_DEPOT_PATH="$HOME/.julia/"
-# export JULIA_DEPOT_PATH="$HOME/.julia/"
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+
+export PATH="$HOME/.juliaup/bin/:$PATH"
 fi
