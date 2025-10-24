@@ -1,5 +1,6 @@
 # Aliases
 alias z="zellij"
+alias co="open -a 'Visual Studio Code'"
 alias i="ish"
 alias finder="open -a finder"
 alias za="zellij attach"
