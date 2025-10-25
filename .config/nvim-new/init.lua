@@ -30,6 +30,10 @@ vim.pack.add({
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
 	{ src = "https://github.com/saghen/blink.cmp",                version = "1.7.0" },
 })
+require("lua/lazygit_float")
+vim.keymap.set("n", "<leader>lg", function()
+  require("lua/lazygit_float").open()
+end, { desc = "Open LazyGit in float" })
 
 -- vim.api.nvim_create_autocmd('LspAttach', {
 -- 	callback = function(ev)
