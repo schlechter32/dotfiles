@@ -53,4 +53,6 @@ curl -L https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86
 ln -sf $APPS/apps/zellij/zellij $APPS/bin
 # zoxide
 cargo-binstall zoxide
+# uv
+curl -LsSf https://astral.sh/uv/install.sh | sh
 fi

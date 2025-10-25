@@ -1,7 +1,17 @@
 {
   "plugins": {
     "blink.cmp": {
-      "version": "'1.7.0'"
+      "rev": "327fff9",
+      "src": "https://github.com/saghen/blink.cmp",
+      "version": "'v1.7.0'"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a",
+      "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "mini.ai": {
+      "rev": "11c5718",
+      "src": "https://github.com/nvim-mini/mini.ai"
     },
     "mini.comment": {
       "rev": "c40bc46",
@@ -22,7 +32,11 @@
     "nvim-treesitter": {
       "rev": "30c466ad",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'main'"
+      "version": "'master'"
+    },
+    "nvim-treesitter-textobjects": {
+      "rev": "a9742cb",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "nvim-web-devicons": {
       "rev": "b8221e4",
