@@ -35,6 +35,10 @@ vim.pack.add({
 	{ src = "https://github.com/williamboman/mason.nvim" }
 
 })
+require("lua/lazygit_float")
+vim.keymap.set("n", "<leader>lg", function()
+  require("lua/lazygit_float").open()
+end, { desc = "Open LazyGit in float" })
 
 require('mason').setup()
 -- vim.api.nvim_create_autocmd('LspAttach', {
