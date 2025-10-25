@@ -1,4 +1,7 @@
 import os
 
-os.getcwd()
-os.path.abspath()
+cwd = os.getcwd()
+# test
+def myfunc(a):
+    print(a+1)
+    print(a)
