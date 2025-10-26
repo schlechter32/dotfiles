@@ -1,8 +1,6 @@
 {
   "plugins": {
     "blink.cmp": {
-      "rev": "327fff9",
-      "src": "https://github.com/saghen/blink.cmp",
       "version": "'v1.7.0'"
     },
     "mason.nvim": {
@@ -32,7 +30,7 @@
     "nvim-treesitter": {
       "rev": "30c466ad",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'master'"
+      "version": "'v0.10.0'"
     },
     "nvim-treesitter-textobjects": {
       "rev": "a9742cb",

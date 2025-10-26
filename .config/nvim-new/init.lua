@@ -15,11 +15,55 @@ vim.cmd [[set completeopt+=menuone,noselect,popup]]
 vim.keymap.set('n', "<leader>o", ':update<CR> :source<CR>')
 vim.keymap.set('n', "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set('n', "<leader>w", ':write<CR>')
+
+-- Save and Quit with leader key
+vim.keymap.set('n',"<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
 vim.keymap.set('n', "<leader>q", ':quit<CR>')
 vim.keymap.set('n', "<leader>lf", vim.lsp.buf.format)
 vim.keymap.set('n', "<leader>d", vim.diagnostic.open_float)
---vim.opt.completeopt = {  "noselect" }
+vim.keymap.set('v',"<C-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set('v',"<C-k>", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set('v',"<C-n>", "<cmd>tabprevious<cr>")
+vim.keymap.set('v',"<C-p>", "<cmd>tabnext<cr>")
+vim.keymap.set('i', 'jj','<esc>')
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>rr', vim.lsp.buf.references)
+--
+
+-- Center buffer while navigating
+vim.keymap.set('n',"<C-u>", "<C-u>zz")
+vim.keymap.set('n',"<C-f>", "<C-u>zz")
+vim.keymap.set('n',"<C-d>", "<C-d>zz")
+vim.keymap.set('n',"{", "{zz")
+vim.keymap.set('n',"}", "}zz")
+vim.keymap.set('n',"N", "Nzz")
+vim.keymap.set('n',"n", "nzz")
+vim.keymap.set('n',"G", "Gzz")
+vim.keymap.set('n',"gg", "ggzz")
+vim.keymap.set('n',"<C-i>", "<C-i>zz")
+vim.keymap.set('n',"<C-o>", "<C-o>zz")
+vim.keymap.set('n',"%", "%zz")
+vim.keymap.set('n',"*", "*zz")
+vim.keymap.set('n',"#", "#zz")
+-- Press 'H', 'L' to jump to start/end of a line (first/last char)
+vim.keymap.set('n',"L", "$")
+vim.keymap.set('n',"H", "^")
+vim.keymap.set('n',"<leader>no", "<cmd>noh<cr>")
+
+-- Navigate to next qflist item
+vim.keymap.set('n',"<leader>cn", ":cnext<cr>zz")
+
+-- Navigate to previos qflist item
+vim.keymap.set('n',"<leader>cp", ":cprevious<cr>zz")
+
+-- Open the qflist
+vim.keymap.set('n',"<leader>co", ":copen<cr>zz")
+
+-- Close the qflist
+vim.keymap.set('n',"<leader>cc", ":cclose<cr>zz")
+vim.keymap.set('x',"<leader>p", '"_dP')
+--vim.opt.completeopt = {  "noselect" }
 vim.pack.add({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -78,7 +122,24 @@ vim.cmd.colorscheme("vague")
 require("mini.ai").setup()
 require "mini.pick".setup()
 require("nvim-tmux-navigation").setup({})
-require "oil".setup()
+-- require "oil".setup()
+require("oil").setup({
+	lsp_file_methods = {
+		enabled = true,
+		timeout_ms = 1000,
+		autosave_changes = true,
+	},
+	columns = {
+		"permissions",
+		"icon",
+	},
+	float = {
+		max_width = 0.7,
+		max_height = 0.6,
+		border = "rounded",
+	},
+})
+
 require('mini.comment').setup({
 	mappings = {
 		comment = '<leader>a', -- toggle comment for current line or visual selection
