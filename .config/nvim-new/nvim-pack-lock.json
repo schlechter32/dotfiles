@@ -1,11 +1,29 @@
 {
   "plugins": {
+    "animation.nvim": {
+      "rev": "fb77091",
+      "src": "https://github.com/anuvyklack/animation.nvim"
+    },
     "blink.cmp": {
+      "rev": "327fff9",
+      "src": "https://github.com/saghen/blink.cmp",
       "version": "'v1.7.0'"
+    },
+    "conform.nvim": {
+      "rev": "9fd3d5e",
+      "src": "https://github.com/stevearc/conform.nvim"
     },
     "mason.nvim": {
       "rev": "ad7146a",
       "src": "https://github.com/williamboman/mason.nvim"
+    },
+    "maximize.nvim": {
+      "rev": "d688b66",
+      "src": "https://github.com/declancm/maximize.nvim"
+    },
+    "middleclass": {
+      "rev": "9fab4d5",
+      "src": "https://github.com/anuvyklack/middleclass"
     },
     "mini.ai": {
       "rev": "11c5718",
@@ -20,7 +38,7 @@
       "src": "https://github.com/echasnovski/mini.pick"
     },
     "nvim-lspconfig": {
-      "rev": "ac98db2",
+      "rev": "a9b2fb5",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-tmux-navigation": {
@@ -37,7 +55,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter-textobjects"
     },
     "nvim-web-devicons": {
-      "rev": "b8221e4",
+      "rev": "8dcb311",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
@@ -45,8 +63,12 @@
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "vague.nvim": {
-      "rev": "ac4ecda",
+      "rev": "5689afd",
       "src": "https://github.com/vague-theme/vague.nvim.git"
+    },
+    "windows.nvim": {
+      "rev": "c749255",
+      "src": "https://github.com/anuvyklack/windows.nvim"
     }
   }
 }
