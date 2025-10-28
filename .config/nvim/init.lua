@@ -1,25 +1,25 @@
--- Auto-install pack-manager
-local pack_path = vim.fn.stdpath("data") .. "/site/pack/core/start/pack-manager.nvim"
-if not vim.uv.fs_stat(pack_path) then
-	vim.notify("Installing pack-manager.nvim...")
-	vim.fn.system({
-		"git",
-		"clone",
-		"--depth=1",
-		"https://github.com/GlennMm/pack-manager.nvim.git",
-		pack_path,
-	})
-	vim.cmd("packloadall!")
-	vim.notify("Pack-manager installed! Please restart Neovim.")
-end
+-- -- Auto-install pack-manager
+-- local pack_path = vim.fn.stdpath("data") .. "/site/pack/core/start/pack-manager.nvim"
+-- if not vim.uv.fs_stat(pack_path) then
+-- 	vim.notify("Installing pack-manager.nvim...")
+-- 	vim.fn.system({
+-- 		"git",
+-- 		"clone",
+-- 		"--depth=1",
+-- 		"https://github.com/GlennMm/pack-manager.nvim.git",
+-- 		pack_path,
+-- 	})
+-- 	vim.cmd("packloadall!")
+-- 	vim.notify("Pack-manager installed! Please restart Neovim.")
+-- end
+--
+-- local pack = require("pack-manager")
 
-local pack = require("pack-manager")
-
--- Configure pack-manager
-pack.setup({
-	auto_install = true,
-	show_progress = true,
-})
+-- -- Configure pack-manager
+-- pack.setup({
+-- 	auto_install = true,
+-- 	show_progress = true,
+-- })
 --local windows = require("windows")
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -100,10 +100,10 @@ pack.add({
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1.7.0" },
 	{ src = "https://github.com/nvim-mini/mini.ai" },
-	--{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = "https://github.com/williamboman/mason.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	{ src = "declancm/maximize.nvim" },
+	{ src = "https://github.com/declancm/maximize.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	-- { require("obsidian") },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
