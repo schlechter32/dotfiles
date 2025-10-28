@@ -1,25 +1,25 @@
--- -- Auto-install pack-manager
--- local pack_path = vim.fn.stdpath("data") .. "/site/pack/core/start/pack-manager.nvim"
--- if not vim.uv.fs_stat(pack_path) then
--- 	vim.notify("Installing pack-manager.nvim...")
--- 	vim.fn.system({
--- 		"git",
--- 		"clone",
--- 		"--depth=1",
--- 		"https://github.com/GlennMm/pack-manager.nvim.git",
--- 		pack_path,
--- 	})
--- 	vim.cmd("packloadall!")
--- 	vim.notify("Pack-manager installed! Please restart Neovim.")
--- end
---
--- local pack = require("pack-manager")
+-- Auto-install pack-manager
+local pack_path = vim.fn.stdpath("data") .. "/site/pack/core/start/pack-manager.nvim"
+if not vim.uv.fs_stat(pack_path) then
+	vim.notify("Installing pack-manager.nvim...")
+	vim.fn.system({
+		"git",
+		"clone",
+		"--depth=1",
+		"https://github.com/GlennMm/pack-manager.nvim.git",
+		pack_path,
+	})
+	vim.cmd("packloadall!")
+	vim.notify("Pack-manager installed! Please restart Neovim.")
+end
 
--- -- Configure pack-manager
--- pack.setup({
--- 	auto_install = true,
--- 	show_progress = true,
--- })
+local pack = require("pack-manager")
+
+-- Configure pack-manager
+pack.setup({
+	auto_install = true,
+	show_progress = true,
+})
 --local windows = require("windows")
 vim.opt.number = true
 vim.opt.relativenumber = true
