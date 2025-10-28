@@ -77,7 +77,7 @@ return {
               bibtexFormatter = "texlab",
               build = {
 
-                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f", },
+                args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
                 executable = "latexmk",
                 forwardSearchAfter = false,
                 onSave = false,
@@ -195,6 +195,7 @@ return {
           filetypes = {
             "gitcommit",
             "markdown",
+            "markdown_inline",
             "org",
             -- "plaintex",
             "rst",

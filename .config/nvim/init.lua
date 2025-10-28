@@ -30,6 +30,7 @@ vim.opt.swapfile = false
 vim.o.winborder = "rounded"
 vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.opt.undofile = true
 vim.opt.ignorecase = true
 vim.opt.smartindent = true
@@ -95,6 +96,7 @@ pack.add({
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "v0.10.0" },
+	{ src = "nvim-treesitter/nvim-treesitter-context" },
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1.7.0" },
 	{ src = "https://github.com/nvim-mini/mini.ai" },
@@ -102,10 +104,15 @@ pack.add({
 	{ src = "https://github.com/williamboman/mason.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "declancm/maximize.nvim" },
+	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
+	-- { require("obsidian") },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/epwalsh/obsidian.nvim" },
+	-- { src = "iamcco/markdown-preview.nvim" },
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
-
+-- require("markdown-preview.nvim").setup()
 require("maximize").setup()
 vim.keymap.set("n", "<F3>", require("maximize").toggle)
 require("conform").setup({
@@ -119,16 +126,16 @@ require("conform").setup({
 		lsp_fallback = true,
 	},
 	formatters_by_ft = {
-		javascript = { "prettierd", stop_after_first = true },
-		typescript = { "prettierd", stop_after_first = true },
-		typescriptreact = { "prettierd", stop_after_first = true },
-		svelte = { "prettierd", "prettier ", stop_after_first = true },
+		-- javascript = { "prettierd", stop_after_first = true },
+		-- typescript = { "prettierd", stop_after_first = true },
+		-- typescriptreact = { "prettierd", stop_after_first = true },
+		-- svelte = { "prettierd", "prettier ", stop_after_first = true },
 		lua = { "stylua" },
 		julia = { "runic" },
 		python = { "black" },
 		latex = { "tex-fmt" },
 		tex = { "tex-fmt" },
-		markdown = { "prettierd" },
+		markdown = { "dprint" },
 		bash = { "beautysh" },
 		sh = { "beautysh" },
 		nix = { "nixfmt", "alejandra", stop_after_first = true },
@@ -143,10 +150,11 @@ vim.keymap.set("n", "<leader>f", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format buffer" })
 require("lazygit_float")
+require("obsidian_setup")
 vim.keymap.set("n", "<leader>lg", function()
-	require("lua/lazygit_float").open()
+	require("lazygit_float").open()
 end, { desc = "Open LazyGit in float" })
-vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>")
+-- vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>")
 require("mason").setup()
 -- vim.api.nvim_create_autocmd('LspAttach', {
 -- 	callback = function(ev)
@@ -158,6 +166,10 @@ require("mason").setup()
 -- })
 local cmp = require("blink.cmp")
 cmp.setup({
+	-- sources = {
+	-- 	-- Remove 'buffer' if you don't want text completions, by default it's only enabled when LSP returns no items
+	-- 	default = { "lsp", "path", "snippets", "buffer", "obsidian" },
+	-- },
 	signature = { enabled = true },
 	keymap = {
 		preset = "enter",
@@ -218,8 +230,14 @@ vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
-vim.lsp.enable({ "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab" })
+vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab" })
 vim.lsp.config("texlab", {
+	vim.keymap.set(
+		"n",
+		"<leader>lv",
+		"<cmd>LspTexlabForward<cr>",
+		{ buffer = bufnr, desc = "Forward search (Texlab)" }
+	),
 	settings = {
 		texlab = {
 			auxDirectory = "auxfiles",
@@ -244,8 +262,13 @@ vim.lsp.config("texlab", {
 			diagnosticsDelay = 300,
 			formatterLineLength = 80,
 			forwardSearch = {
-				executable = "displayline",
-				args = { "-g", "%l", "%p", "%f" },
+				-- MacOS Skim
+				-- executable = "displayline",
+				-- args = { "-g", "%l", "%p", "%f" },
+				-- Okular Linux
+				executable = "okular",
+				args = { "--unique", "file:%p#src:%l%f" },
+
 				-- Enable back search on Skim -> Preference -> Sync:
 				--   Preset: Custom
 				--   Command: /Users/simo/go/bin/nvim-texlabconfig
@@ -384,7 +407,7 @@ require("nvim-treesitter.configs").setup({
 		"javascript",
 		"json",
 		"julia",
-		"latex",
+		-- "latex",
 		"lua",
 		"markdown",
 		"markdown_inline",
@@ -401,4 +424,5 @@ require("nvim-treesitter.configs").setup({
 		-- "typescript",
 	},
 })
-local pick = require("mini.pick")
+-- local pick = require("mini.pick")
+--
