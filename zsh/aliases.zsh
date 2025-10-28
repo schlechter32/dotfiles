@@ -1,4 +1,6 @@
 # Aliases
+
+alias eof='exo-open $(ff)'
 alias z="zellij"
 alias co="open -a 'Visual Studio Code'"
 alias i="ish"
