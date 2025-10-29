@@ -1,8 +1,9 @@
 BULK_HOME="/u/bulk/home/wima/$USER"
 LAB_BULK_HOME="/home/bulk"
 
+export CPLEX_STUDIO_BINARIES="/ext/cplex/cplex/bin/x86-64_linux"
 # export PATH="$HOME/.juliaup/bin/:$PATH"
-if [[ $(hostname) == *"cnode"* ]]; then
+if [[ $(hostname) == *"node"* ]]; then
 
 export JULIAUP_DEPOT_PATH="$BULK_HOME/.julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/.julia/"
@@ -54,6 +55,8 @@ function st(){
 # }
 else
 
-# export JULIAUP_DEPOT_PATH="$HOME/.julia/"
-# export JULIA_DEPOT_PATH="$HOME/.julia/"
+export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+export JULIA_DEPOT_PATH="$HOME/.julia/"
+
+export PATH="$HOME/.juliaup/bin/:$PATH"
 fi

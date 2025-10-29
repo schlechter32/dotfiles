@@ -1,5 +1,8 @@
 # Aliases
+
+alias eof='exo-open $(ff)'
 alias z="zellij"
+alias co="open -a 'Visual Studio Code'"
 alias i="ish"
 alias finder="open -a finder"
 alias za="zellij attach"
@@ -47,8 +50,8 @@ alias vf="v \$(fzf --preview='bat --color=always --style=plain {}')"
 alias nhmail="mutt -f .IncomingMail.d/"
 alias j="julia"
 alias jp="julia --project"
-alias jo="julia -e import Pkg, Pkg.offline(true)"
-alias jpo="julia --project -e 'import Pkg; Pkg.offline(true)'"
+alias jo="JULIA_PKG_OFFLINE='true' julia "
+alias jpo="JULIA_PKG_OFFLINE='true' julia --project"
 # $HOME/.juliaup/bin/julia --project=$TOOL_PATH --threads 1 -e "import RL_RSA_MDPs_study; RL_RSA_MDPs_study.ilpmain()"
 
 alias sf="sf_script.sh"
@@ -71,3 +74,6 @@ alias echopath="echo \"$PATH\" | tr ':' '\n'"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 alias c9="nsh n9"
+# SimTree find commands
+#find . -type d -name 'Seed01' -not -empty -exec sh -c '[ ! -e "$1/Export.log" ] && echo rm -rf "$1"' _ {} \;
+#find . -type d -name "Seed01" -exec test -e "{}/simtree.lock" \; -exec rm -rf {} +   

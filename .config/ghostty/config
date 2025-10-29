@@ -5,7 +5,7 @@ cursor-invert-fg-bg = true
 custom-shader-animation = "always"
 font-family="MonoLisa nh"
 background-opacity = 0.8
-background-blur = 20 
+background-blur = 4 
 window-decoration=auto
 keybind = "global:super+ctrl+.=toggle_quick_terminal"
 macos-icon = "custom-style"
@@ -13,13 +13,14 @@ macos-icon-frame = "aluminum"
 macos-icon-ghost-color = "86e1fc"
 macos-icon-screen-color = "222436"
 macos-option-as-alt = left
-shell-integration-features=false
-shell-integration-features=false
 mouse-hide-while-typing = "true"
 font-thicken = true
 alpha-blending = linear-corrected
 keybind = alt+left=unbind
 keybind = alt+right=unbind
+shell-integration = detect
+shell-integration-features = true
+shell-integration-features = cursor, sudo, title, ssh-env, no-ssh-terminfo
 
 # The following function is in my .zshrc, which allows me to use fzf to
 # execute Ghostty configuration snippets. I use this to quickly switch
@@ -41,7 +42,7 @@ keybind = alt+right=unbind
 #       --bind="enter:become:$CMD"
 #   }
 
-config-file = font/jetbrains-mono
+config-file = font/monolisa
 config-file = leading/default
 config-file = theme/cyberdream
 config-file = opacity/100%

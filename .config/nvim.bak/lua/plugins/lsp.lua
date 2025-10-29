@@ -73,12 +73,18 @@ return {
             texlab = {
               auxDirectory = "auxfiles",
               outputDirectory = "build",
+              pdfDirectory = "build",
               bibtexFormatter = "texlab",
               build = {
+
                 args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
                 executable = "latexmk",
                 forwardSearchAfter = false,
                 onSave = false,
+
+                auxDirectory = "auxfiles",
+                outputDirectory = "build",
+                pdfDirectory = "build",
               },
               chktex = {
                 onEdit = false,
@@ -189,6 +195,7 @@ return {
           filetypes = {
             "gitcommit",
             "markdown",
+            "markdown_inline",
             "org",
             -- "plaintex",
             "rst",
@@ -321,8 +328,8 @@ return {
         lua = { "stylua" },
         julia = { "runic" },
         python = { "black" },
-        latex = { "tex-fmt"},
-        tex = { "tex-fmt"},
+        latex = { "tex-fmt" },
+        tex = { "tex-fmt" },
         markdown = { "prettier" },
         bash = { "beautysh" },
         sh = { "beautysh" },

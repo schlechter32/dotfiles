@@ -203,6 +203,14 @@ return {
       end,
       desc = "LSP Workspace Symbols",
     },
+
+    {
+      "<leader>sn",
+      function()
+        Snacks.picker.grep({dirs={"05Zettelkasten", "00Inbox"}})
+      end,
+      desc = "Grep",
+    },
     {
       "<leader>sg",
       function()

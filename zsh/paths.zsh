@@ -1,3 +1,5 @@
+
+export PATH="$HOME/.local/share/nvim/mason/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/nbin:$PATH"
@@ -10,6 +12,7 @@ export PATH="/usr/local/sbin:/usr/sbin:$PATH"
 export PATH="/usr/local/tde/curr/bin:$PATH"
 export PATH="/Users/nicolashornek/.local/share/nvim/lazy/nvim-texlabconfig:$PATH"
 export PATH="/Users/nicolashornek/Library/Python/3.13/bin:$PATH"
+export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$HOME/localapps/bin:$PATH"

@@ -83,5 +83,8 @@ function zvm_after_init() {
     bindkey '^g' autosuggest-execute
     bindkey '^e' autosuggest-accept
     bindkey '^u' autosuggest-toggle
+
+    # Use fzf for command history search
+    bindkey '^R' fzf-history-widget
 }
 zvm_after_init
