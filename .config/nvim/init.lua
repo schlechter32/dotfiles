@@ -22,10 +22,33 @@ pack.setup({
 })
 --local windows = require("windows")
 vim.opt.number = true
+
+vim.opt.mouse = "a"
+
+vim.opt.guicursor = {
+	"n-v:blck", -- Normal, visual, command-line: block cursor
+	"i-c-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
+	"r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height
+	"o:hor50", -- Operator-pending: horizontal bar cursor with 50% height
+	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
+	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
+}
+-- Enable 24-bit color
+vim.opt.termguicolors = true
+-- Decrease updatetime to 200ms
+vim.opt.updatetime = 200
+-- Enable ignorecase + smartcase for better searching
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+-- Better splitting
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.o.signcolumn = "yes"
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.expandtab = true
 vim.opt.swapfile = false
 vim.o.winborder = "rounded"
 vim.opt.clipboard = "unnamed,unnamedplus"
@@ -111,11 +134,29 @@ pack.add({
 	-- { require("obsidian") },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
+	{ src = "https://github.com/folke/flash.nvim" },
 	-- { src = "iamcco/markdown-preview.nvim" },
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
+local flash = require("flash")
+flash.setup({
+	modes = {
+		char = {
+			jump_labels = true,
+		},
+	},
+})
+vim.keymap.set({ "n", "x", "o" }, "m", flash.jump, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, "M", flash.treesitter, { desc = "Flash Treesitter" })
+vim.keymap.set("o", "r", flash.remote, { desc = "Remote Flash" })
+vim.keymap.set({ "o", "x" }, "R", flash.treesitter_search, { desc = "Treesitter Search" })
+vim.keymap.set("c", "<C-s>", flash.toggle, { desc = "Toggle Flash Search" })
 -- require("markdown-preview.nvim").setup()
+
+vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = "#555555" }) -- dim gray for background
+vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#64eb34", bold = true }) -- green labels
+vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#df8e1d", underline = true }) -- yellow matches
 require("maximize").setup()
 vim.keymap.set("n", "<F3>", require("maximize").toggle)
 require("conform").setup({
@@ -192,9 +233,23 @@ cmp.setup({
 --
 vim.cmd("hi statusline guibg=NONE")
 require("vague").setup({
-	colors = {
-		comment = "#ebaeae",
-	},
+	on_highlights = function(hl, c)
+		hl.Comment = { fg = "#ebaeae", bg = "NONE", italic = true }
+		hl.LineNr = { fg = "#ebaeae", bg = "NONE" }
+		hl.CurSearch = { fg = "#d20f39", bg = "NONE" }
+		hl.IncSearch = { fg = "#64eb34", bg = "NONE" }
+		hl.Search = { fg = "#df8e1d", bg = "NONE" }
+		hl.Visual = { bg = "#666666" }
+
+		-- override Flash groups to avoid Comment bleed
+		hl.FlashBackdrop = { fg = "#9f9f9f" }
+		hl.FlashLabel = { fg = "#64eb34", bold = true }
+		hl.FlashMatch = { fg = "#df8e1d", underline = true }
+	end,
+	-- colors = {
+	-- 	comment = "#ebaeae",
+	-- 	search = "#d20f39",
+	-- },
 })
 vim.cmd.colorscheme("vague")
 require("mini.ai").setup()
@@ -227,6 +282,7 @@ require("mini.comment").setup({
 	},
 })
 vim.keymap.set("n", "<leader> ", ":Pick files<CR>")
+vim.keymap.set("n", "<leader>sb", ":Pick buffers<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>e", require("oil").toggle_float)
 vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")

@@ -82,6 +82,19 @@ config.keys = {
 
 	-- Rename tab
 	{
+		key = "e",
+		mods = "LEADER",
+		action = act.PromptInputLine({
+			description = "Enter new tab name",
+			action = wezterm.action_callback(function(window, _, line)
+				if line then
+					window:active_tab():set_title(line)
+				end
+			end),
+		}),
+	},
+	-- Rename tab
+	{
 		key = "E",
 		mods = "CTRL|SHIFT",
 		action = act.PromptInputLine({

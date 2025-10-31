@@ -13,6 +13,10 @@
       "rev": "9fd3d5e",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "flash.nvim": {
+      "rev": "fcea7ff",
+      "src": "https://github.com/folke/flash.nvim"
+    },
     "grug-far.nvim": {
       "rev": "3e72397",
       "src": "https://github.com/MagicDuck/grug-far.nvim"

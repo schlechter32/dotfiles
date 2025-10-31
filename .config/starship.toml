@@ -7,6 +7,10 @@ $cmd_duration\
 $line_break\
 $python\
 $character"""
+
+command_timeout=200 
+follow_symlinks=false
+
 right_format="""
 $username\
 $hostname\
@@ -51,3 +55,4 @@ style = "yellow"
 [python]
 format = "[$virtualenv]($style) "
 style = "bright-black"
+
