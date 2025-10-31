@@ -289,7 +289,7 @@ vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
-vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab" })
+vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab", "nil_ls" })
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
