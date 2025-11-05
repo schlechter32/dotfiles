@@ -289,7 +289,19 @@ vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
-vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab", "nil_ls" })
+vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
+vim.lsp.config("jetls", {
+	cmd = {
+		"julia",
+		"--startup-file=no",
+		"--history-file=no",
+		"--project=/home/nclshrnk/source/JETLS.jl/",
+		"--threads=auto",
+		"/home/nclshrnk/source/JETLS.jl/runserver.jl",
+	},
+	filetypes = { "julia" },
+})
+vim.lsp.enable("jetls")
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
@@ -393,21 +405,22 @@ vim.lsp.config("ltext_plus", {
 		"text",
 	},
 })
-local cfg = vim.lsp.config("julials", {
-	name = "julials_" .. root,
-	cmd = {
-		"julia",
-		"--startup-file=no",
-		"--history-file=no",
-		"--project=" .. root,
-		vim.fn.stdpath("config") .. "/julials_startup.jl",
-	},
-	root_dir = root,
-	filetypes = { "julia" },
-	on_attach = function(client)
-		print("Julia LSP attached: " .. client.name .. " with " .. root)
-	end,
-})
+vim.lsp.config("julials", require("julials_config"))
+-- local cfg = vim.lsp.config("julials", {
+-- 	name = "julials_" .. root,
+-- 	cmd = {
+-- 		"julia",
+-- 		"--startup-file=no",
+-- 		"--history-file=no",
+-- 		"--project=" .. root,
+-- 		vim.fn.stdpath("config") .. "/julials_startup.jl",
+-- 	},
+-- 	root_dir = root,
+-- 	filetypes = { "julia" },
+-- 	on_attach = function(client)
+-- 		print("Julia LSP attached: " .. client.name .. " with " .. root)
+-- 	end,
+-- })
 
 vim.lsp.config("lua_ls", {
 	settings = {
