@@ -63,6 +63,8 @@ vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>w", ":write<CR>")
 
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition", buffer = buffer_number })
+
 -- Save and Quit with leader key
 vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
 vim.keymap.set("n", "<leader>q", ":quit<CR>")
@@ -76,6 +78,7 @@ vim.keymap.set("v", "<C-p>", "<cmd>tabnext<cr>")
 vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references)
+vim.keymap.set("n", "U", "<C-r>")
 --
 --
 
@@ -301,7 +304,7 @@ vim.lsp.config("jetls", {
 	},
 	filetypes = { "julia" },
 })
-vim.lsp.enable("jetls")
+-- vim.lsp.enable("jetls")
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
@@ -405,6 +408,7 @@ vim.lsp.config("ltext_plus", {
 		"text",
 	},
 })
+vim.lsp.enable("julials")
 vim.lsp.config("julials", require("julials_config"))
 -- local cfg = vim.lsp.config("julials", {
 -- 	name = "julials_" .. root,
