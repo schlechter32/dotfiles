@@ -82,6 +82,12 @@ vim.keymap.set("n", "U", "<C-r>")
 --
 --
 
+vim.api.nvim_create_autocmd("VimResized", {
+	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
+	pattern = "*",
+	command = "wincmd =",
+	desc = "Auto-resize windows on terminal buffer resize.",
+})
 vim.keymap.set("n", "<leader>ok", ":w<cr>:!mv '%:p' $HOME/secondBrain/05Zettelkasten/<cr>:bd<cr>")
 vim.keymap.set("n", "<leader>od", ":!rm '%:p'<cr>:bd<cr>", { desc = "Delete bufferfile" })
 -- Center buffer while navigating
@@ -120,6 +126,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 pack.add({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/nvim-mini/mini.comment" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -142,6 +149,14 @@ pack.add({
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
+require("marks").setup({
+	builtin_marks = { "<", ">", "^" },
+	refresh_interval = 250,
+	sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+	excluded_filetypes = {},
+	excluded_buftypes = {},
+	mappings = {},
+})
 local flash = require("flash")
 flash.setup({
 	modes = {
@@ -150,8 +165,8 @@ flash.setup({
 		},
 	},
 })
-vim.keymap.set({ "n", "x", "o" }, "m", flash.jump, { desc = "Flash" })
-vim.keymap.set({ "n", "x", "o" }, "M", flash.treesitter, { desc = "Flash Treesitter" })
+vim.keymap.set({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, "S", flash.treesitter, { desc = "Flash Treesitter" })
 vim.keymap.set("o", "r", flash.remote, { desc = "Remote Flash" })
 vim.keymap.set({ "o", "x" }, "R", flash.treesitter_search, { desc = "Treesitter Search" })
 vim.keymap.set("c", "<C-s>", flash.toggle, { desc = "Toggle Flash Search" })
