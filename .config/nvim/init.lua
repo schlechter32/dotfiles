@@ -63,6 +63,8 @@ vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>w", ":write<CR>")
 
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition", buffer = buffer_number })
+
 -- Save and Quit with leader key
 vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
 vim.keymap.set("n", "<leader>q", ":quit<CR>")
@@ -76,9 +78,16 @@ vim.keymap.set("v", "<C-p>", "<cmd>tabnext<cr>")
 vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references)
+vim.keymap.set("n", "U", "<C-r>")
 --
 --
 
+vim.api.nvim_create_autocmd("VimResized", {
+	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
+	pattern = "*",
+	command = "wincmd =",
+	desc = "Auto-resize windows on terminal buffer resize.",
+})
 vim.keymap.set("n", "<leader>ok", ":w<cr>:!mv '%:p' $HOME/secondBrain/05Zettelkasten/<cr>:bd<cr>")
 vim.keymap.set("n", "<leader>od", ":!rm '%:p'<cr>:bd<cr>", { desc = "Delete bufferfile" })
 -- Center buffer while navigating
@@ -117,6 +126,7 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 pack.add({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
+	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/nvim-mini/mini.comment" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
@@ -139,6 +149,14 @@ pack.add({
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
+require("marks").setup({
+	builtin_marks = { "<", ">", "^" },
+	refresh_interval = 250,
+	sign_priority = { lower = 10, upper = 15, builtin = 8, bookmark = 20 },
+	excluded_filetypes = {},
+	excluded_buftypes = {},
+	mappings = {},
+})
 local flash = require("flash")
 flash.setup({
 	modes = {
@@ -147,8 +165,8 @@ flash.setup({
 		},
 	},
 })
-vim.keymap.set({ "n", "x", "o" }, "m", flash.jump, { desc = "Flash" })
-vim.keymap.set({ "n", "x", "o" }, "M", flash.treesitter, { desc = "Flash Treesitter" })
+vim.keymap.set({ "n", "x", "o" }, "s", flash.jump, { desc = "Flash" })
+vim.keymap.set({ "n", "x", "o" }, "S", flash.treesitter, { desc = "Flash Treesitter" })
 vim.keymap.set("o", "r", flash.remote, { desc = "Remote Flash" })
 vim.keymap.set({ "o", "x" }, "R", flash.treesitter_search, { desc = "Treesitter Search" })
 vim.keymap.set("c", "<C-s>", flash.toggle, { desc = "Toggle Flash Search" })
@@ -289,7 +307,19 @@ vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
 vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
-vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "julials", "ltext_plus", "texlab", "nil_ls" })
+vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
+vim.lsp.config("jetls", {
+	cmd = {
+		"julia",
+		"--startup-file=no",
+		"--history-file=no",
+		"--project=/home/nclshrnk/source/JETLS.jl/",
+		"--threads=auto",
+		"/home/nclshrnk/source/JETLS.jl/runserver.jl",
+	},
+	filetypes = { "julia" },
+})
+-- vim.lsp.enable("jetls")
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
@@ -393,21 +423,23 @@ vim.lsp.config("ltext_plus", {
 		"text",
 	},
 })
-local cfg = vim.lsp.config("julials", {
-	name = "julials_" .. root,
-	cmd = {
-		"julia",
-		"--startup-file=no",
-		"--history-file=no",
-		"--project=" .. root,
-		vim.fn.stdpath("config") .. "/julials_startup.jl",
-	},
-	root_dir = root,
-	filetypes = { "julia" },
-	on_attach = function(client)
-		print("Julia LSP attached: " .. client.name .. " with " .. root)
-	end,
-})
+vim.lsp.enable("julials")
+vim.lsp.config("julials", require("julials_config"))
+-- local cfg = vim.lsp.config("julials", {
+-- 	name = "julials_" .. root,
+-- 	cmd = {
+-- 		"julia",
+-- 		"--startup-file=no",
+-- 		"--history-file=no",
+-- 		"--project=" .. root,
+-- 		vim.fn.stdpath("config") .. "/julials_startup.jl",
+-- 	},
+-- 	root_dir = root,
+-- 	filetypes = { "julia" },
+-- 	on_attach = function(client)
+-- 		print("Julia LSP attached: " .. client.name .. " with " .. root)
+-- 	end,
+-- })
 
 vim.lsp.config("lua_ls", {
 	settings = {

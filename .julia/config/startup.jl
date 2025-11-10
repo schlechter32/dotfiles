@@ -3,16 +3,24 @@ function is_package_installed(package::String)
     return Base.find_package(package) !== nothing
 end
 
+function in_base_environment()
+    # Detect if we are in the global/base environment (i.e., not using --project or custom environment)
+    project_path = Base.active_project()
+    env_dir = joinpath(DEPOT_PATH[1], "environments", "v$(VERSION.major).$(VERSION.minor)", "Project.toml")
+    return project_path == env_dir
+end
+
 function safe_use(package::String)
-    if !is_package_installed(package)
-        @warn "Package $package is not installed. Installing..."
+    if in_base_environment() && !is_package_installed(package)
+        @warn "Package $package is not installed. Installing in the global environment..."
         Pkg.add(package)
+    elseif !is_package_installed(package)
+        @warn "Package $package is not installed and not in base environment. Skipping installation."
+        return
     end
-    
-    # Use eval to import the package in the Main module
-    packsymbol=Symbol(package)
+
+    packsymbol = Symbol(package)
     Core.eval(Main, :(import $packsymbol))
-    # Also add a using statement to bring all exported names into scope
     Core.eval(Main, :(using $packsymbol))
 end
 ENV["JULIA_PKG_USE_CLI_GIT"] = true
