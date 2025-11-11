@@ -8,9 +8,11 @@ local config = wezterm.config_builder and wezterm.config_builder() or {}
 --=============================
 -- Backend / Performance
 --=============================
-config.enable_wayland = true
-config.enable_kitty_graphics = true
+-- config.enable_wayland = true
+-- config.enable_kitty_graphics = true
 config.max_fps = 120
+-- config.warn_about
+config.warn_about_missing_glyphs = false
 
 --=============================
 -- Color Schemes
@@ -111,7 +113,7 @@ config.keys = {
 	{ key = "Enter", mods = "ALT", action = wezterm.action.DisableDefaultAssignment },
 
 	-- Toggle dark/light
-	{ key = "q", mods = "CTRL", action = act.EmitEvent("toggle-dark-mode") },
+	{ key = "Q", mods = "CTRL", action = act.EmitEvent("toggle-dark-mode") },
 }
 
 -- Leader+[1–9] → activate tab
