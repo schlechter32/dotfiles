@@ -23,9 +23,7 @@ version = "1.11.0"
 
 [[deps.CSTParser]]
 deps = ["Tokenize"]
-git-tree-sha1 = "2023899a170655671dae9f1b60fd024e3b59f7d4"
-repo-rev = "main"
-repo-url = "https://github.com/julia-vscode/CSTParser.jl.git"
+git-tree-sha1 = "0157e592151e39fa570645e2b2debcdfb8a0f112"
 uuid = "00ebfdb7-1f24-5e51-bd34-a7502290713f"
 version = "3.4.3"
 
