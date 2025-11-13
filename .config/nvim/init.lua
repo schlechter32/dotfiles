@@ -145,10 +145,12 @@ pack.add({
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
+	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	-- { src = "iamcco/markdown-preview.nvim" },
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
+require("fidget").setup({})
 require("marks").setup({
 	builtin_marks = { "<", ">", "^" },
 	refresh_interval = 250,
@@ -159,7 +161,9 @@ require("marks").setup({
 })
 local flash = require("flash")
 flash.setup({
+	label = { rainbow = { enabled = true, shade = 5 } },
 	modes = {
+		search = { enabled = true },
 		char = {
 			jump_labels = true,
 		},
@@ -517,3 +521,5 @@ require("nvim-treesitter.configs").setup({
 })
 -- local pick = require("mini.pick")
 --
+--
+vim.opt.wrap = true
