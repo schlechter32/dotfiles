@@ -521,3 +521,5 @@ require("nvim-treesitter.configs").setup({
 })
 -- local pick = require("mini.pick")
 --
+--
+vim.opt.wrap = true
