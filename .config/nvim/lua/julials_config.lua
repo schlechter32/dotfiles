@@ -25,7 +25,8 @@
 
 local root_files = { "Project.toml", "JuliaProject.toml" }
 
-local function activate_env(path)
+local function activate_env(opts)
+	local path = opts.args ~= "" and opts.args or nil
 	assert(vim.fn.has("nvim-0.10") == 1, "requires Nvim 0.10 or newer")
 	local bufnr = vim.api.nvim_get_current_buf()
 	local julials_clients = vim.lsp.get_clients({ bufnr = bufnr, name = "julials" })

@@ -159,6 +159,7 @@ require("marks").setup({
 	excluded_buftypes = {},
 	mappings = {},
 })
+vim.keymap.set("n", "M", "`")
 local flash = require("flash")
 flash.setup({
 	label = { rainbow = { enabled = true, shade = 5 } },
@@ -323,7 +324,7 @@ vim.lsp.config("jetls", {
 	},
 	filetypes = { "julia" },
 })
--- vim.lsp.enable("jetls")
+vim.lsp.enable("jetls")
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
@@ -427,7 +428,7 @@ vim.lsp.config("ltext_plus", {
 		"text",
 	},
 })
-vim.lsp.enable("julials")
+-- vim.lsp.enable("julials")
 vim.lsp.config("julials", require("julials_config"))
 -- local cfg = vim.lsp.config("julials", {
 -- 	name = "julials_" .. root,
