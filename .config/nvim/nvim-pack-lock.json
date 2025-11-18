@@ -94,6 +94,10 @@
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
     },
+    "sidekick.nvim": {
+      "rev": "c2bdf8c",
+      "src": "https://github.com/folke/sidekick.nvim"
+    },
     "vague.nvim": {
       "rev": "5689afd",
       "src": "https://github.com/vague-theme/vague.nvim.git"

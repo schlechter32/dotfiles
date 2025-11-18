@@ -141,11 +141,13 @@ pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/declancm/maximize.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
-	-- { require("obsidian") },
+	-- { require("obsidian") }.setup(),
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
+	require("install_on_cobra"),
+	-- require("sidekick.lua"),
 	-- { src = "iamcco/markdown-preview.nvim" },
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
@@ -218,6 +220,7 @@ vim.keymap.set("n", "<leader>f", function()
 end, { desc = "Format buffer" })
 require("lazygit_float")
 require("obsidian_setup")
+require("local_sidekick")
 vim.keymap.set("n", "<leader>lg", function()
 	require("lazygit_float").open()
 end, { desc = "Open LazyGit in float" })
@@ -296,6 +299,9 @@ require("oil").setup({
 	},
 })
 
+require("sidekick").setup({
+	opts = { cli = { mux = { backend = "tmux", enabled = true } } },
+})
 require("mini.comment").setup({
 	mappings = {
 		comment = "<leader>a", -- toggle comment for current line or visual selection
@@ -325,6 +331,7 @@ vim.lsp.config("jetls", {
 	filetypes = { "julia" },
 })
 vim.lsp.enable("jetls")
+vim.lsp.enable("copilot")
 vim.lsp.config("texlab", {
 	vim.keymap.set(
 		"n",
