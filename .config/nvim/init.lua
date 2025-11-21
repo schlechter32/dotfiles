@@ -22,7 +22,7 @@ pack.setup({
 })
 --local windows = require("windows")
 vim.opt.number = true
-
+vim.opt.conceallevel = 2
 vim.opt.mouse = "a"
 
 vim.opt.guicursor = {
@@ -146,7 +146,11 @@ pack.add({
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
-	-- { src = "iamcco/markdown-preview.nvim" },
+	{ src = "iamcco/markdown-preview.nvim" },
+	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
+
+	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
+
 	-- { src = "https://github.com/anuvyklack/middleclass" },
 	-- { src = "https://github.com/anuvyklack/animation.nvim" },
 })
@@ -175,7 +179,8 @@ vim.keymap.set("o", "r", flash.remote, { desc = "Remote Flash" })
 vim.keymap.set({ "o", "x" }, "R", flash.treesitter_search, { desc = "Treesitter Search" })
 vim.keymap.set("c", "<C-s>", flash.toggle, { desc = "Toggle Flash Search" })
 -- require("markdown-preview.nvim").setup()
-
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Markdown preview" })
+vim.keymap.set("n", "<leader>ma", "<cmd>MarksListAll<CR>", { desc = "List all marks" })
 vim.api.nvim_set_hl(0, "FlashBackdrop", { fg = "#555555" }) -- dim gray for background
 vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#64eb34", bold = true }) -- green labels
 vim.api.nvim_set_hl(0, "FlashMatch", { fg = "#df8e1d", underline = true }) -- yellow matches
