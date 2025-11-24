@@ -8,7 +8,7 @@ $line_break\
 $python\
 $character"""
 
-command_timeout=200 
+command_timeout=250 
 follow_symlinks=false
 
 right_format="""
