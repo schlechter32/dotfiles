@@ -43,7 +43,7 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.o.signcolumn = "yes"
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -147,7 +147,7 @@ pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	{ src = "iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
-
+	require("install_on_cobra"),
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 
 	-- { src = "https://github.com/anuvyklack/middleclass" },
@@ -313,10 +313,20 @@ vim.keymap.set("n", "<leader> ", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>sb", ":Pick buffers<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>e", require("oil").toggle_float)
-vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
-vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
-vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
-vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-j>", ":NvimTmuxNavigateDown<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-h>", ":NvimTmuxNavigateLeft<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-k>", ":NvimTmuxNavigateUp<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-l>", ":NvimTmuxNavigateRight<CR>")
+-- terminal (incl. Sidekick’s terminal)
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><Cmd>NvimTmuxNavigateDown<CR>]], {
+	silent = true,
+	desc = "Tmux down (terminal)",
+})
+
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><Cmd>NvimTmuxNavigateRight<CR>]], {
+	silent = true,
+	desc = "Tmux right (terminal)",
+})
 vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
 vim.lsp.config("jetls", {
 	cmd = {
