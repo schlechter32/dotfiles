@@ -20,11 +20,9 @@ pack.setup({
 	auto_install = true,
 	show_progress = true,
 })
---local windows = require("windows")
+-- Options
 vim.opt.number = true
-
 vim.opt.mouse = "a"
-
 vim.opt.guicursor = {
 	"n-v:blck", -- Normal, visual, command-line: block cursor
 	"i-c-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
@@ -55,15 +53,13 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.undofile = true
-vim.opt.ignorecase = true
 vim.opt.smartindent = true
-vim.opt.termguicolors = true
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
+
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>w", ":write<CR>")
-
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition", buffer = buffer_number })
 
 -- Save and Quit with leader key
 vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
@@ -79,6 +75,8 @@ vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references)
 vim.keymap.set("n", "U", "<C-r>")
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "LSP: [G]oto [R]eferences" })
 --
 --
 
@@ -299,9 +297,6 @@ require("oil").setup({
 	},
 })
 
-require("sidekick").setup({
-	opts = { cli = { mux = { backend = "tmux", enabled = true } } },
-})
 require("mini.comment").setup({
 	mappings = {
 		comment = "<leader>a", -- toggle comment for current line or visual selection
@@ -333,12 +328,12 @@ vim.lsp.config("jetls", {
 vim.lsp.enable("jetls")
 vim.lsp.enable("copilot")
 vim.lsp.config("texlab", {
-	vim.keymap.set(
-		"n",
-		"<leader>lv",
-		"<cmd>LspTexlabForward<cr>",
-		{ buffer = bufnr, desc = "Forward search (Texlab)" }
-	),
+	on_attach = function(_, bufnr)
+		vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>", {
+			buffer = bufnr,
+			desc = "Forward search (Texlab)",
+		})
+	end,
 	settings = {
 		texlab = {
 			auxDirectory = "auxfiles",
@@ -400,7 +395,7 @@ vim.lsp.config("texlab", {
 		},
 	},
 })
-
+-- Briefly highlight text after any yank for visual feedback
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
 	pattern = "*",
@@ -409,10 +404,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 200, visual = true })
 	end,
 })
-local util = require("lspconfig.util")
-
-local root = util.root_pattern("Project.toml")(dir) or vim.fn.getcwd()
-
 vim.lsp.config("ltext_plus", {
 
 	cmd = { "ltex-ls-plus" },
@@ -530,4 +521,3 @@ require("nvim-treesitter.configs").setup({
 -- local pick = require("mini.pick")
 --
 --
-vim.opt.wrap = true
