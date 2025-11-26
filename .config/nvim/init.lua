@@ -20,11 +20,10 @@ pack.setup({
 	auto_install = true,
 	show_progress = true,
 })
---local windows = require("windows")
+-- Options
 vim.opt.number = true
 vim.opt.conceallevel = 2
 vim.opt.mouse = "a"
-
 vim.opt.guicursor = {
 	"n-v:blck", -- Normal, visual, command-line: block cursor
 	"i-c-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
@@ -44,7 +43,7 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.relativenumber = true
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.o.signcolumn = "yes"
 vim.opt.tabstop = 2
 vim.opt.softtabstop = 2
@@ -55,15 +54,13 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.undofile = true
-vim.opt.ignorecase = true
 vim.opt.smartindent = true
-vim.opt.termguicolors = true
 vim.cmd([[set completeopt+=menuone,noselect,popup]])
+
+vim.keymap.set("t", "<C-q>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
 vim.keymap.set("n", "<leader>o", ":update<CR> :source<CR>")
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>w", ":write<CR>")
-
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition", buffer = buffer_number })
 
 -- Save and Quit with leader key
 vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>", { silent = false }, { desc = "Save and close Buffer" })
@@ -79,6 +76,8 @@ vim.keymap.set("i", "jj", "<esc>")
 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>rr", vim.lsp.buf.references)
 vim.keymap.set("n", "U", "<C-r>")
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efinition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "LSP: [G]oto [R]eferences" })
 --
 --
 
@@ -141,13 +140,14 @@ pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/declancm/maximize.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
-	-- { require("obsidian") },
+	-- { require("obsidian") }.setup(),
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	{ src = "iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
+	require("install_on_cobra"),
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 
 	-- { src = "https://github.com/anuvyklack/middleclass" },
@@ -222,6 +222,7 @@ vim.keymap.set("n", "<leader>f", function()
 end, { desc = "Format buffer" })
 require("lazygit_float")
 require("obsidian_setup")
+require("local_sidekick")
 vim.keymap.set("n", "<leader>lg", function()
 	require("lazygit_float").open()
 end, { desc = "Open LazyGit in float" })
@@ -312,10 +313,20 @@ vim.keymap.set("n", "<leader> ", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>sb", ":Pick buffers<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>e", require("oil").toggle_float)
-vim.keymap.set("n", "<C-j>", ":NvimTmuxNavigateDown<CR>")
-vim.keymap.set("n", "<C-h>", ":NvimTmuxNavigateLeft<CR>")
-vim.keymap.set("n", "<C-k>", ":NvimTmuxNavigateUp<CR>")
-vim.keymap.set("n", "<C-l>", ":NvimTmuxNavigateRight<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-j>", ":NvimTmuxNavigateDown<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-h>", ":NvimTmuxNavigateLeft<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-k>", ":NvimTmuxNavigateUp<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-l>", ":NvimTmuxNavigateRight<CR>")
+-- terminal (incl. Sidekick’s terminal)
+vim.keymap.set("t", "<C-j>", [[<C-\><C-n><Cmd>NvimTmuxNavigateDown<CR>]], {
+	silent = true,
+	desc = "Tmux down (terminal)",
+})
+
+vim.keymap.set("t", "<C-l>", [[<C-\><C-n><Cmd>NvimTmuxNavigateRight<CR>]], {
+	silent = true,
+	desc = "Tmux right (terminal)",
+})
 vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
 vim.lsp.config("jetls", {
 	cmd = {
@@ -329,13 +340,14 @@ vim.lsp.config("jetls", {
 	filetypes = { "julia" },
 })
 vim.lsp.enable("jetls")
+vim.lsp.enable("copilot")
 vim.lsp.config("texlab", {
-	vim.keymap.set(
-		"n",
-		"<leader>lv",
-		"<cmd>LspTexlabForward<cr>",
-		{ buffer = bufnr, desc = "Forward search (Texlab)" }
-	),
+	on_attach = function(_, bufnr)
+		vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>", {
+			buffer = bufnr,
+			desc = "Forward search (Texlab)",
+		})
+	end,
 	settings = {
 		texlab = {
 			auxDirectory = "auxfiles",
@@ -397,7 +409,7 @@ vim.lsp.config("texlab", {
 		},
 	},
 })
-
+-- Briefly highlight text after any yank for visual feedback
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
 	pattern = "*",
@@ -406,10 +418,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank({ timeout = 200, visual = true })
 	end,
 })
-local util = require("lspconfig.util")
-
-local root = util.root_pattern("Project.toml")(dir) or vim.fn.getcwd()
-
 vim.lsp.config("ltext_plus", {
 
 	cmd = { "ltex-ls-plus" },
@@ -527,4 +535,3 @@ require("nvim-treesitter.configs").setup({
 -- local pick = require("mini.pick")
 --
 --
-vim.opt.wrap = true
