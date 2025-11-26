@@ -121,8 +121,11 @@ vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
 -- Close the qflist
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
 vim.keymap.set("x", "<leader>p", '"_dP')
---vim.opt.completeopt = {  "noselect" }
-pack.add({
+local cobra = require("install_on_cobra")
+
+local cobra = require("install_on_cobra") -- returns {} or { {src=...} }
+
+pack.add(vim.list_extend({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
@@ -140,19 +143,15 @@ pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/declancm/maximize.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
-	-- { require("obsidian") }.setup(),
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
 	{ src = "https://github.com/folke/flash.nvim" },
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	{ src = "iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
-	require("install_on_cobra"),
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
+}, cobra))
 
-	-- { src = "https://github.com/anuvyklack/middleclass" },
-	-- { src = "https://github.com/anuvyklack/animation.nvim" },
-})
 require("fidget").setup({})
 require("marks").setup({
 	builtin_marks = { "<", ">", "^" },
@@ -333,9 +332,9 @@ vim.lsp.config("jetls", {
 		"julia",
 		"--startup-file=no",
 		"--history-file=no",
-		"--project=/home/nclshrnk/source/JETLS.jl/",
+		"--project=" .. vim.fn.expand("~") .. "/source/JETLS.jl",
 		"--threads=auto",
-		"/home/nclshrnk/source/JETLS.jl/runserver.jl",
+		vim.fn.expand("~") .. "/source/JETLS.jl/runserver.jl",
 	},
 	filetypes = { "julia" },
 })
