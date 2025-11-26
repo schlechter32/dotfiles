@@ -148,7 +148,6 @@ pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	{ src = "iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
-
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 
 	-- { src = "https://github.com/anuvyklack/middleclass" },

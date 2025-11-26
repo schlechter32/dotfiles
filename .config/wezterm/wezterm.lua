@@ -46,7 +46,7 @@ config.font = wezterm.font_with_fallback({
 --=============================
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 40
-config.window_padding = { left = 6, right = 3, top = 0, bottom = 1 }
+config.window_padding = { left = 8, right = 3, top = 0, bottom = 1 }
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000
