@@ -329,12 +329,9 @@ vim.keymap.set("t", "<C-l>", [[<C-\><C-n><Cmd>NvimTmuxNavigateRight<CR>]], {
 vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
 vim.lsp.config("jetls", {
 	cmd = {
-		"julia",
-		"--startup-file=no",
-		"--history-file=no",
-		"--project=" .. vim.fn.expand("~") .. "/source/JETLS.jl",
+		"jetls",
 		"--threads=auto",
-		vim.fn.expand("~") .. "/source/JETLS.jl/runserver.jl",
+		"--",
 	},
 	filetypes = { "julia" },
 })
