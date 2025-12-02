@@ -21,7 +21,7 @@ function safe_use(package::String)
 
     packsymbol = Symbol(package)
     Core.eval(Main, :(import $packsymbol))
-    Core.eval(Main, :(using $packsymbol))
+    return Core.eval(Main, :(using $packsymbol))
 end
 ENV["JULIA_PKG_USE_CLI_GIT"] = true
 safe_use("Revise")
@@ -49,18 +49,18 @@ end
 # ENV["CPLEX_STUDIO_BINARIES"] = "/ext/cplex/cplex/bin/x86-64_linux"
 
 function rr()
-    Revise.retry()
+    return Revise.retry()
 end
-function pluto(;port=1234)
+function pluto(; port = 1234)
 
     @eval using Pluto
-    Pluto.run(threads=6,port=port, launch_browser=false, auto_reload_from_file=true)
+    return Pluto.run(threads = 6, port = port, launch_browser = false, auto_reload_from_file = true)
 end
 
 function tool_activate()
     @eval import Pkg
-    Pkg.activate(ENV["TOOL_PATH"])
-    @eval using RL_RSA_MDPs, IKRNetBase
+    return Pkg.activate(ENV["TOOL_PATH"])
+    # @eval using RL_RSA_MDPs, IKRNetBase
 end
 
 struct DebugModuleLogger <: AbstractLogger
@@ -96,7 +96,7 @@ current_logger = DebugModuleLogger(ConsoleLogger(stderr, Logging.Debug), debug_m
 
 function set_debug_logging(modules...)
     global debug_modules = Set(modules)
-    update_logger()
+    return update_logger()
 end
 
 
@@ -107,7 +107,7 @@ function enable_debug_logging(module_name::Symbol)
         println("Was already enabled")
     end
     update_logger()
-    println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
+    return println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
 end
 function disable_debug_logging(module_name::Symbol)
     if module_name in debug_modules
@@ -116,7 +116,7 @@ function disable_debug_logging(module_name::Symbol)
         println("Was not enabled")
     end
     update_logger()
-    println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
+    return println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
 end
 function toggle_debug_logging(module_name::Symbol)
     if module_name in debug_modules
@@ -125,10 +125,10 @@ function toggle_debug_logging(module_name::Symbol)
         push!(debug_modules, module_name)
     end
     update_logger()
-    println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
+    return println("Debug logging is now $(module_name in debug_modules ? "enabled" : "disabled") for $module_name")
 end
 
 function update_logger()
     global current_logger = DebugModuleLogger(ConsoleLogger(stderr, Logging.Debug), debug_modules)
-    global_logger(current_logger)
+    return global_logger(current_logger)
 end
