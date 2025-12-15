@@ -127,6 +127,7 @@ local cobra = require("install_on_cobra") -- returns {} or { {src=...} }
 
 pack.add(vim.list_extend({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
+	{ src = "https://github.com/jmbuhr/otter.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
 	{ src = "https://github.com/chentoast/marks.nvim" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
@@ -151,7 +152,20 @@ pack.add(vim.list_extend({
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 }, cobra))
+-- Otter: enable for markdown, map julia fences, auto-attach
+require("otter").setup({
+	buffers = {
+		names = { markdown = true }, -- allow otter in markdown
+		ft_to_lang = { markdown = { julia = "julia" } }, -- ```julia -> julia LSP
+	},
+})
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "markdown",
+	callback = function()
+		require("otter").activate()
+	end, -- or :OtterAttach
+})
 require("fidget").setup({})
 require("marks").setup({
 	builtin_marks = { "<", ">", "^" },
@@ -338,6 +352,26 @@ vim.lsp.config("jetls", {
 	},
 	filetypes = { "julia" },
 })
+-- lspconfig.julials.setup({
+--   cmd = {
+--     "julia",
+--     "--startup-file=no",
+--     "--history-file=no",
+--     "--threads=auto",
+--     vim.fn.expand("~") .. "/source/JETLS.jl/runserver.jl",
+--   },
+--   filetypes = { "julia" },
+--   -- pick a real root: Project.toml / Manifest.toml / .git / cwd fallback
+--   root_dir = function(fname)
+--     return util.root_pattern("Project.toml", "Manifest.toml", ".git")(fname)
+--            or vim.fn.getcwd()
+--   end,
+--   on_new_config = function(new_config, root)
+--     -- point JetLS to the project it should index
+--     new_config.cmd[3] = "--project=" .. root
+--   end,
+--   single_file_support = true,
+-- })
 vim.lsp.enable("jetls")
 vim.lsp.enable("copilot")
 vim.lsp.config("texlab", {

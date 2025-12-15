@@ -94,6 +94,10 @@
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
     },
+    "otter.nvim": {
+      "rev": "b36e1a4",
+      "src": "https://github.com/jmbuhr/otter.nvim.git"
+    },
     "plenary.nvim": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
