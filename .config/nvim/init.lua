@@ -340,7 +340,17 @@ vim.keymap.set("t", "<C-l>", [[<C-\><C-n><Cmd>NvimTmuxNavigateRight<CR>]], {
 	silent = true,
 	desc = "Tmux right (terminal)",
 })
-vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
+-- lspconfig helpers
+local util = require("lspconfig.util")
+vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls", "jetls" })
+-- vim.lsp.config("jetls", {
+-- 	cmd = {
+-- 		"jetls",
+-- 		"--threads=8",
+-- 		"--",
+-- 	},
+-- 	filetypes = { "julia" },
+-- })
 vim.lsp.config("jetls", {
 	cmd = {
 		"jetls",
@@ -349,6 +359,21 @@ vim.lsp.config("jetls", {
 	},
 	filetypes = { "julia" },
 })
+vim.lsp.enable("jetls")
+-- vim.lsp.config("jetls", {
+-- 	-- Baseline command that already works for you
+-- 	cmd = { "jetls", "--threads=auto", "--" },
+-- 	filetypes = { "julia" },
+-- 	-- Pick a project root for JetLS; fall back to cwd so it never becomes nil
+-- 	root_dir = function(fname)
+-- 		return util.root_pattern("Project.toml", "Manifest.toml", ".git")(fname) or vim.fn.getcwd()
+-- 	end,
+-- 	on_new_config = function(new_config, root)
+-- 		-- Pass the root as project to JetLS
+-- 		new_config.cmd = { "jetls", "--threads=auto", "--project=" .. root }
+-- 	end,
+-- 	single_file_support = true,
+-- })
 -- lspconfig.julials.setup({
 --   cmd = {
 --     "julia",
@@ -473,7 +498,7 @@ vim.lsp.config("ltext_plus", {
 	},
 })
 -- vim.lsp.enable("julials")
-vim.lsp.config("julials", require("julials_config"))
+-- vim.lsp.config("julials", require("julials_config"))
 -- local cfg = vim.lsp.config("julials", {
 -- 	name = "julials_" .. root,
 -- 	cmd = {
