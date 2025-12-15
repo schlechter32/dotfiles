@@ -219,7 +219,7 @@ require("conform").setup({
 		python = { "black" },
 		latex = { "tex-fmt" },
 		tex = { "tex-fmt" },
-		markdown = { "dprint" },
+		markdown = { "pymarkdownlnt" },
 		bash = { "beautysh" },
 		sh = { "beautysh" },
 		nix = { "nixfmt", "alejandra", stop_after_first = true },
@@ -326,9 +326,9 @@ vim.keymap.set("n", "<leader> ", ":Pick files<CR>")
 vim.keymap.set("n", "<leader>sb", ":Pick buffers<CR>")
 vim.keymap.set("n", "<leader>h", ":Pick help<CR>")
 vim.keymap.set("n", "<leader>e", require("oil").toggle_float)
-vim.keymap.set({ "n", "i", "t" }, "<C-j>", ":NvimTmuxNavigateDown<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-j>", ":NvimTmuxNavigateDown<CR>")
 vim.keymap.set({ "n", "i", "v", "t" }, "<C-h>", ":NvimTmuxNavigateLeft<CR>")
-vim.keymap.set({ "n", "i", "t" }, "<C-k>", ":NvimTmuxNavigateUp<CR>")
+vim.keymap.set({ "n", "i", "v", "t" }, "<C-k>", ":NvimTmuxNavigateUp<CR>")
 vim.keymap.set({ "n", "i", "v", "t" }, "<C-l>", ":NvimTmuxNavigateRight<CR>")
 -- terminal (incl. Sidekick’s terminal)
 vim.keymap.set("t", "<C-j>", [[<C-\><C-n><Cmd>NvimTmuxNavigateDown<CR>]], {
@@ -343,12 +343,9 @@ vim.keymap.set("t", "<C-l>", [[<C-\><C-n><Cmd>NvimTmuxNavigateRight<CR>]], {
 vim.lsp.enable({ "marksman", "lua_ls", "basedpyright", "ltext_plus", "texlab", "nil_ls" })
 vim.lsp.config("jetls", {
 	cmd = {
-		"julia",
-		"--startup-file=no",
-		"--history-file=no",
-		"--project=" .. vim.fn.expand("~") .. "/source/JETLS.jl",
+		"jetls",
 		"--threads=auto",
-		vim.fn.expand("~") .. "/source/JETLS.jl/runserver.jl",
+		"--",
 	},
 	filetypes = { "julia" },
 })
@@ -374,13 +371,15 @@ vim.lsp.config("jetls", {
 -- })
 vim.lsp.enable("jetls")
 vim.lsp.enable("copilot")
+
+vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>")
 vim.lsp.config("texlab", {
-	on_attach = function(_, bufnr)
-		vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>", {
-			buffer = bufnr,
-			desc = "Forward search (Texlab)",
-		})
-	end,
+	-- on_attach = function(_, bufnr)
+	-- 	vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>", {
+	-- 		buffer = bufnr,
+	-- 		desc = "Forward search (Texlab)",
+	-- 	})
+	-- end,
 	settings = {
 		texlab = {
 			auxDirectory = "auxfiles",

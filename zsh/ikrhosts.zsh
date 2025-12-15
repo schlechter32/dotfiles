@@ -9,6 +9,7 @@ export JULIAUP_DEPOT_PATH="$BULK_HOME/.julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/.julia/"
 #
 export PATH="$BULK_HOME/.juliaup/bin/:$PATH"
+export PATH="$BULK_HOME/.julia/bin/:$PATH"
 
 # export PATH="/u/bulk/home/wima/nclshrnk/julia/juliaup/julia-1.11.3/bin/:$PATH"
 #
@@ -29,6 +30,7 @@ elif [[ $(hostname) == *"pc"* ]]; then
 
 export CPLEX_STUDIO_BINARIES="$HOME/ext/cplex/cplex/bin/x86-64_linux"
 export PATH="$HOME/.juliaup/bin/:$PATH"
+export PATH="$HOME/.julia/bin/:$PATH"
 export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
     source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
@@ -59,4 +61,5 @@ export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
 export PATH="$HOME/.juliaup/bin/:$PATH"
+export PATH="$HOME/.julia/bin/:$PATH"
 fi
