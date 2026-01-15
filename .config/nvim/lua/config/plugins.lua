@@ -19,6 +19,10 @@ pack.add(vim.list_extend({
 	{ src = "https://github.com/williamboman/mason.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	{ src = "https://github.com/declancm/maximize.nvim" },
+	{ src = "https://github.com/mfussenegger/nvim-dap" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio.git" },
+	{ src = "https://github.com/mfussenegger/nvim-dap-python" },
 	{ src = "folke/todo-comments.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -32,6 +36,59 @@ pack.add(vim.list_extend({
 
 require("todo-comments").setup({})
 require("fidget").setup({})
+
+-- nvim-dap UI + python adapter
+require("dapui").setup()
+require("dap-python").setup("uv")
+local dap_ok, dap = pcall(require, "dap")
+local dapui_ok, dapui = pcall(require, "dapui")
+if dap_ok and dapui_ok then
+	dapui.setup()
+	dap.listeners.after.event_initialized["dapui_config"] = function()
+		dapui.open()
+	end
+	dap.listeners.before.event_terminated["dapui_config"] = function()
+		dapui.close()
+	end
+	dap.listeners.before.event_exited["dapui_config"] = function()
+		dapui.close()
+	end
+	-- python adapter (falls back to system python)
+	require("dap-python").setup("uv")
+	local dap_py_ok, dap_python = pcall(require, "dap-python")
+	if dap_py_ok then
+		print("dap_py_ok")
+		-- use python that has debugpy; swap to your venv path if needed
+		dap_python.setup("uv")
+		-- ensure configurations table exists
+		-- dap.configurations.python = dap.configurations.python or {}
+		-- local pycfg = dap.configurations.python
+		-- local function add(cfg)
+		-- 	table.insert(pycfg, cfg)
+		-- end
+		-- add({
+		-- 	type = "python",
+		-- 	request = "launch",
+		-- 	name = "Python: current file",
+		-- 	program = "${file}",
+		-- 	console = "integratedTerminal",
+		-- })
+		-- add({
+		-- 	type = "python",
+		-- 	request = "launch",
+		-- 	name = "Python: module",
+		-- 	module = "${fileBasenameNoExtension}",
+		-- 	cwd = "${workspaceFolder}",
+		-- })
+		-- add({
+		-- 	type = "python",
+		-- 	request = "attach",
+		-- 	name = "Python: attach 5678",
+		-- 	connect = { host = "127.0.0.1", port = 5678 },
+		-- 	justMyCode = false,
+		-- })
+	end
+end
 
 require("marks").setup({
 	builtin_marks = { "<", ">", "^" },
