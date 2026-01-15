@@ -18,7 +18,8 @@ pack.add(vim.list_extend({
 	{ src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects" },
 	{ src = "https://github.com/williamboman/mason.nvim" },
 	{ src = "https://github.com/stevearc/conform.nvim" },
-	-- { src = "https://github.com/declancm/maximize.nvim" },
+	{ src = "https://github.com/declancm/maximize.nvim" },
+	{ src = "folke/todo-comments.nvim" },
 	{ src = "https://github.com/MagicDuck/grug-far.nvim" },
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/epwalsh/obsidian.nvim" },
@@ -29,6 +30,7 @@ pack.add(vim.list_extend({
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 }, cobra))
 
+require("todo-comments").setup({})
 require("fidget").setup({})
 
 require("marks").setup({

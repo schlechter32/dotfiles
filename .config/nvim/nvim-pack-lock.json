@@ -114,6 +114,10 @@
       "rev": "c2bdf8c",
       "src": "https://github.com/folke/sidekick.nvim"
     },
+    "todo-comments.nvim": {
+      "rev": "31e3c38",
+      "src": "https://github.com/folke/todo-comments.nvim"
+    },
     "vague.nvim": {
       "rev": "5689afd",
       "src": "https://github.com/vague-theme/vague.nvim.git"
