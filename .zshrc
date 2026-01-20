@@ -88,3 +88,4 @@ function zvm_after_init() {
     bindkey '^R' fzf-history-widget
 }
 zvm_after_init
+eval "$(uv generate-shell-completion zsh)"
