@@ -40,6 +40,7 @@ elif command -v nix &>/dev/null && nix --version &>/dev/null; then
 export nethome=/bulk/netserv0/wimas/nclshrnk/
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
+export PATH="$HOME/.julia/bin/:$PATH"
 export ST_PATH=/home/nclshrnk/source/simtree_wrapper
 function st(){
     source /home/nclshrnk/source/simtree_wrapper/st_uv_wrapper.bash
