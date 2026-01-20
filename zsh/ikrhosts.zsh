@@ -1,5 +1,5 @@
 BULK_HOME="/u/bulk/home/wima/$USER"
-LAB_BULK_HOME="/home/bulk"
+LAB_BULK_HOME="/bulk/netserv0/wimas/$USER"
 
 export CPLEX_STUDIO_BINARIES="/ext/cplex/cplex/bin/x86-64_linux"
 # export PATH="$HOME/.juliaup/bin/:$PATH"
@@ -41,6 +41,7 @@ export nethome=/bulk/netserv0/wimas/nclshrnk/
 export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 export PATH="$HOME/.julia/bin/:$PATH"
+export UV_CACHE_DIR="$LAB_BULK_HOME/.uv/cache"
 export ST_PATH=/home/nclshrnk/source/simtree_wrapper
 function st(){
     source /home/nclshrnk/source/simtree_wrapper/st_uv_wrapper.bash
