@@ -38,7 +38,7 @@ end)
 --=============================
 config.font = wezterm.font_with_fallback({
 	{ family = "MonoLisa script", scale = 1.15 },
-	{ family = "JetbrainMono NerdFont", scale = 1.15 },
+	{ family = "JetbrainsMono NerdFont", scale = 1.15 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 })
 
