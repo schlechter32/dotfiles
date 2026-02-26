@@ -27,6 +27,15 @@ return {
 		"nvim-mini/mini.comment",
 		version = false,
 		opts = {
+			options = {
+				custom_commentstring = function()
+					local ft = vim.bo.filetype
+					if ft == "json" or ft == "jsonc" then
+						return "// %s"
+					end
+					return nil
+				end,
+			},
 
 			mappings = {
 				comment = "<leader>a",
