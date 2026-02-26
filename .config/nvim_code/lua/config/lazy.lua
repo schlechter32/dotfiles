@@ -18,7 +18,8 @@ local lazy = require "lazy"
 
 lazy.setup({
   { import = "plugins" },
-}, { rocks = { enables = false } }, {
+}, {
+  rocks = { enabled = false },
   change_detection = {
     enabled = true,
     notify = false,

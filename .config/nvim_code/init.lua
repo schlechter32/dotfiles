@@ -16,15 +16,16 @@ package.path = table.concat({
 -- -- Load pack-manager and set it up early
 -- require("pack-manager").setup({
 -- 	auto_install = true,
--
 -- 	show_progress = true,
 -- })
 --
 -- -- Load modular config
-require("config.lazy")
+--
 require("config.options")
+require("config.lazy")
 require("config.autocmds")
 require("config.keymaps")
+require("config.codium")
 
 -- require("config.plugins")
 -- -- require("config.lsp")
