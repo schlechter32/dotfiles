@@ -3,7 +3,25 @@ return {
 		"nvim-mini/mini.ai",
 		version = false,
 		opts = {},
-    deps={"nvim-treesitter/nvim-treesitter-textobjects",},
+		deps = { "nvim-treesitter/nvim-treesitter-textobjects" },
+	},
+
+	{
+		"nvim-mini/mini.surround",
+		version = false,
+		opts = {
+			mappings = {
+				add = "ma", -- Add surrounding in Normal and Visual modes
+				delete = "md", -- Delete surrounding
+				find = "mf", -- Find surrounding (to the right)
+				find_left = "mF", -- Find surrounding (to the left)
+				highlight = "mh", -- Highlight surrounding
+				replace = "mr", -- Replace surrounding
+
+				suffix_last = "l", -- Suffix to search with "prev" method
+				suffix_next = "n", -- Suffix to search with "next" method
+			},
+		},
 	},
 	{
 		"nvim-mini/mini.comment",
@@ -18,4 +36,5 @@ return {
 			},
 		},
 	},
+	-- TODO: surround
 }

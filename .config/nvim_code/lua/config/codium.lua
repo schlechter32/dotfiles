@@ -44,8 +44,18 @@ vim.keymap.set("v", "<C-j> ",function()
 vim.keymap.set("n", "<leader>lv ",function()
     vscode.action("latex-workshop.synctex")
   end, { desc = "VSCode pick files" })
-else
 
+vim.keymap.set("n", "<leader>q",function()
+    vscode.action("workbench.action.closeActiveEditor")
+  end, { desc = "VSCode close" })
+
+vim.keymap.set("n", "<leader>z",function()
+    vim.cmd("write")
+    vscode.call("workbench.action.closeActiveEditor")
+  end, { desc = "VSCode save close" })
+else
+vim.keymap.set("n", "<leader>q", ":quit<CR>")
+vim.keymap.set("n", "<leader>z", "<cmd>wq<cr>",  { desc = "Save and close Buffer" })
 vim.keymap.set("n", "<leader>lv", "<cmd>LspTexlabForward<cr>")
 vim.keymap.set("v", "<C-j>", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "<C-k>", ":m '<-2<CR>gv=gv")
