@@ -19,12 +19,12 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP: [G]oto [D]efini
 vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "LSP: [G]oto [R]eferences" })
 
 -- Window resize + move around tmux
-vim.api.nvim_create_autocmd("VimResized", {
-	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
-	pattern = "*",
-	command = "wincmd =",
-	desc = "Auto-resize windows on terminal buffer resize.",
-})
+-- vim.api.nvim_create_autocmd("VimResized", {
+-- 	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
+-- 	pattern = "*",
+-- 	command = "wincmd =",
+-- 	desc = "Auto-resize windows on terminal buffer resize.",
+-- })
 
 -- Convenience file ops
 vim.keymap.set("n", "<leader>ok", ":w<cr>:!mv '%:p' $HOME/secondBrain/05Zettelkasten/<cr>:bd<cr>")
@@ -50,52 +50,14 @@ vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "M", "`")
 
 -- Plugin-related mappings
-vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Markdown preview" })
+-- vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<CR>", { desc = "Markdown preview" })
 vim.keymap.set("n", "<leader>ma", "<cmd>MarksListAll<CR>", { desc = "List all marks" })
 vim.keymap.set("n", "<leader>lg", function()
 	require("lazygit_float").open()
 end, { desc = "Open LazyGit in float" })
 -- DAP basic controls
-vim.keymap.set("n", "<leader>du", function()
-	local ok, dapui = pcall(require, "dapui")
-	if ok then
-		dapui.toggle()
-	end
-end, { desc = "DAP UI toggle" })
-vim.keymap.set("n", "<leader>db", function()
-	local ok, dap = pcall(require, "dap")
-	if ok then
-		dap.toggle_breakpoint()
-	end
-end, { desc = "DAP toggle breakpoint" })
-vim.keymap.set("n", "<leader>dc", function()
-	local ok, dap = pcall(require, "dap")
-	if ok then
-		dap.continue()
-	end
-end, { desc = "DAP continue" })
-vim.keymap.set("n", "<leader>dn", function()
-	local ok, dap = pcall(require, "dap")
-	if ok then
-		dap.step_over()
-	end
-end, { desc = "DAP step over" })
-vim.keymap.set("n", "<leader>di", function()
-	local ok, dap = pcall(require, "dap")
-	if ok then
-		dap.step_into()
-	end
-end, { desc = "DAP step into" })
-vim.keymap.set("n", "<leader>dw", function()
-	local ok, dapui = pcall(require, "dapui")
-	if not ok then
-		return
-	end
-	local expr = vim.fn.input("DAP watch: ")
-	if expr ~= "" then
-		dapui.elements.watches.add(expr)
-	end
-end, { desc = "DAP add watch" })
+-- check if this needs to be done in code
+--
 vim.keymap.set("n", "<F3>", function()
 	local ok, maximize = pcall(require, "maximize")
 	if ok then
@@ -104,6 +66,7 @@ vim.keymap.set("n", "<F3>", function()
 		vim.notify("maximize.nvim not available", vim.log.levels.WARN)
 	end
 end, { desc = "Toggle maximize" })
+-- Map to code
 vim.keymap.set("n", "<leader>sg", function()
 	local q = vim.fn.input("Grep > ")
 	if q ~= "" then

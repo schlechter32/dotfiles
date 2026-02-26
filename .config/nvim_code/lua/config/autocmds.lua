@@ -8,20 +8,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Enable Quarto (and its Otter-backed LSPs) for markdown and quarto files
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "quarto" },
-	callback = function()
-		local ok, quarto = pcall(require, "quarto")
-		if ok and quarto.activate then
-			quarto.activate()
-		end
-	end,
-})
-
-vim.api.nvim_create_autocmd("VimResized", {
-	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
-	pattern = "*",
-	command = "wincmd =",
-	desc = "Auto-resize windows on terminal buffer resize.",
-})
+-- TODO: maybe put this back in for code
+-- vim.api.nvim_create_autocmd("VimResized", {
+-- 	group = vim.api.nvim_create_augroup("WinResize", { clear = true }),
+-- 	pattern = "*",
+-- 	command = "wincmd =",
+-- 	desc = "Auto-resize windows on terminal buffer resize.",
+-- })
