@@ -1,4 +1,8 @@
 # Make nice tree
+#
+function cfp() {
+  realpath -- "$1" | xclip -selection clipboard
+}
 function lt() {
   if [ -z "$1" ]; then
     eza --icons -T -L 2

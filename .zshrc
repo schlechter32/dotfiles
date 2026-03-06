@@ -86,6 +86,7 @@ function zvm_after_init() {
 
     # Use fzf for command history search
     bindkey '^R' fzf-history-widget
+    # unbindkey '^T'
 }
 zvm_after_init
 eval "$(uv generate-shell-completion zsh)"
