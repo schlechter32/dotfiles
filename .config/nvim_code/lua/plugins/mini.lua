@@ -2,8 +2,19 @@ return {
 	{
 		"nvim-mini/mini.ai",
 		version = false,
-		opts = {},
-		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
+		opts = function()
+			local ai = require("mini.ai")
+			return {
+				n_lines = 500,
+				custom_textobjects = {
+					F = ai.gen_spec.treesitter({
+						a = "@function.outer",
+						i = "@function.inner",
+					}, { use_nvim_treesitter = true }),
+				},
+			}
+		end,
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-treesitter/nvim-treesitter-textobjects" },
 	},
 
 	{
@@ -47,3 +58,4 @@ return {
 	},
 	-- TODO: surround
 }
+

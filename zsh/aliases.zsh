@@ -15,6 +15,7 @@
 # eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 #find . -type d -name "Seed01" -exec test -e "{}/simtree.lock" \; -exec rm -rf {} +   
 #find . -type d -name 'Seed01' -not -empty -exec sh -c '[ ! -e "$1/Export.log" ] && echo rm -rf "$1"' _ {} \;
+# alias cpfp='realpath "$1" | xclip -sel -c'
 alias ......="cd ../../.."
 alias ....="cd ../.."
 alias ..="cd .."
@@ -42,10 +43,10 @@ alias jpo="JULIA_PKG_OFFLINE='true' julia --project"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
 alias la='ls -a'
 alias lg='lazygit'
+alias ls="eza --icons --group --header --mounts --created "
 alias ll="ls -l"
 alias lla="ls -alh"
-alias ls="eza --icons --group --header --mounts --created "
-alias ls='ls --color'
+# alias ls='ls --color'
 alias nhmail="mutt -f .IncomingMail.d/"
 alias notionsync="uv run notionsync.py $HOME/secondBrain/05Zettelkasten"
 alias or="v $HOME/secondBrain/00inbox/*.md"
