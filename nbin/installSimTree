@@ -35,6 +35,8 @@ $usr@host:/ext/bin/STResultViewer \
 $usr@host:/ext/bin/gs_local_program_starter \
 $usr@host:/ext/bin/gs_remote_program_starter \
 $HOME/ext/simtree/
+rsync -avz usr@n9:/usr/bin/time $HOME
+sudo mv $HOME/time /usr/bin/
 sudo mv $HOME/ext /
 
 sudo mkdir -p /ext/misc/lib

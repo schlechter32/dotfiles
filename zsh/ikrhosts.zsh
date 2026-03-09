@@ -1,5 +1,5 @@
 BULK_HOME="/u/bulk/home/wima/$USER"
-LAB_BULK_HOME="/home/bulk"
+LAB_BULK_HOME="/bulk/netserv0/wimas/$USER"
 
 export CPLEX_STUDIO_BINARIES="/ext/cplex/cplex/bin/x86-64_linux"
 # export PATH="$HOME/.juliaup/bin/:$PATH"
@@ -9,6 +9,7 @@ export JULIAUP_DEPOT_PATH="$BULK_HOME/.julia/"
 export JULIA_DEPOT_PATH="$BULK_HOME/.julia/"
 #
 export PATH="$BULK_HOME/.juliaup/bin/:$PATH"
+export PATH="$BULK_HOME/.julia/bin/:$PATH"
 
 # export PATH="/u/bulk/home/wima/nclshrnk/julia/juliaup/julia-1.11.3/bin/:$PATH"
 #
@@ -29,15 +30,23 @@ elif [[ $(hostname) == *"pc"* ]]; then
 
 export CPLEX_STUDIO_BINARIES="$HOME/ext/cplex/cplex/bin/x86-64_linux"
 export PATH="$HOME/.juliaup/bin/:$PATH"
+export PATH="$HOME/.julia/bin/:$PATH"
 export ST_PATH=/u/home/wima/nclshrnk/source/SimTree_wrapper
 function st(){
     source /u/home/wima/nclshrnk/source/SimTree_wrapper/st_wrapper.bash
 }
 
 elif command -v nix &>/dev/null && nix --version &>/dev/null; then
-export nethome=/bulk/netserv0/wimas/nclshrnk/
-export JULIAUP_DEPOT_PATH="$HOME/.julia/"
-export JULIA_DEPOT_PATH="$HOME/.julia/"
+# export nethome=/bulk/netserv0/wimas/nclshrnk/
+# export JULIAUP_DEPOT_PATH="$HOME/.julia/"
+# export JULIA_DEPOT_PATH="$HOME/.julia/"
+export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
+#
+export PATH="$LAB_BULK_HOME/.juliaup/bin/:$PATH"
+export PATH="$LAB_BULK_HOME/.julia/bin/:$PATH"
+export PATH="$LAB_BULK_HOME/.julia/bin/:$PATH"
+export UV_CACHE_DIR="$LAB_BULK_HOME/.uv/cache"
 export ST_PATH=/home/nclshrnk/source/simtree_wrapper
 function st(){
     source /home/nclshrnk/source/simtree_wrapper/st_uv_wrapper.bash
@@ -59,4 +68,5 @@ export JULIAUP_DEPOT_PATH="$HOME/.julia/"
 export JULIA_DEPOT_PATH="$HOME/.julia/"
 
 export PATH="$HOME/.juliaup/bin/:$PATH"
+export PATH="$HOME/.julia/bin/:$PATH"
 fi

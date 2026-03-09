@@ -7,6 +7,8 @@ mkdir -p ~/.config/zellij
 mkdir -p ~/.config/wezterm
 mkdir -p ~/.config/ghostty
 mkdir -p ~/.config/alacritty
+mkdir -p ~/.config/ptpython/
+mkdir -p ~/.ipython/profile_default/
 mkdir -p ~/.local/share/fonts/
 mkdir -p ~/.gnupg
 mkdir -p ~/.julia/config
@@ -16,6 +18,8 @@ mkdir -p ~/.julia/environments
 ln -sf $REPODIR/.config/nvim/* ~/.config/nvim
 # tmux conf
 ln -sf $REPODIR/.config/tmux/* ~/.config/tmux
+ln -sf $REPODIR/.ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
+ln -sf $REPODIR/.config/ptpython/* ~/.config/ptpython/
 ln -sf $REPODIR/.config/zellij/* ~/.config/zellij
 ln -sf $REPODIR/.config/wezterm/* ~/.config/wezterm
 ln -sf $REPODIR/.config/ghostty/* ~/.config/ghostty
@@ -41,12 +45,12 @@ else
 
     else
 
-if [[ $(hostname) == *"cnode"* ]]; then
-        ln -sf $REPODIR/.gitconfigikr $HOME/.gitconfig
-elif [[ $(hostname) == *"pc"* ]]; then
+        if [[ $(hostname) == *"cnode"* ]]; then
+            ln -sf $REPODIR/.gitconfigikr $HOME/.gitconfig
+        elif [[ $(hostname) == *"pc"* ]]; then
 
-        ln -sf $REPODIR/.gitconfigikr $HOME/.gitconfig
-fi
+            ln -sf $REPODIR/.gitconfigikr $HOME/.gitconfig
+        fi
     fi
 fi
 

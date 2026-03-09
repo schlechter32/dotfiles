@@ -19,6 +19,7 @@ config.warn_about_missing_glyphs = false
 --=============================
 local Light_scheme = require("cyberdream-light")
 local Dark_scheme = require("cyberdream")
+-- local Dark_scheme = require("tokyonight_moon")
 
 config.color_schemes = {
 	mydark = Dark_scheme,
@@ -37,7 +38,7 @@ end)
 --=============================
 config.font = wezterm.font_with_fallback({
 	{ family = "MonoLisa script", scale = 1.15 },
-	{ family = "JetbrainMono NerdFont", scale = 1.15 },
+	{ family = "JetbrainsMono NerdFont", scale = 1.15 },
 	{ family = "CaskaydiaCove Nerd Font", scale = 1.2 },
 })
 
@@ -46,7 +47,7 @@ config.font = wezterm.font_with_fallback({
 --=============================
 config.window_background_opacity = 0.85
 config.macos_window_background_blur = 40
-config.window_padding = { left = 6, right = 3, top = 0, bottom = 1 }
+config.window_padding = { left = 8, right = 3, top = 0, bottom = 1 }
 config.window_decorations = "RESIZE"
 config.window_close_confirmation = "AlwaysPrompt"
 config.scrollback_lines = 30000
@@ -164,12 +165,28 @@ config.colors = {
 }
 
 wezterm.on("update-right-status", function(window)
-	local text = window:leader_is_active() and "󰘳  " or ""
+	local leader = window:leader_is_active() and "󰘳  " or ""
+
+	local batt = ""
+	for _, b in ipairs(wezterm.battery_info() or {}) do
+		batt = string.format(" %d%%  ", math.floor((b.state_of_charge or 0) * 100 + 0.5))
+		break
+	end
+
+	local time = wezterm.strftime("%H:%M")
+
 	window:set_right_status(wezterm.format({
 		{ Foreground = { Color = "#a6d189" } },
-		{ Text = text },
+		{ Text = leader .. batt .. time },
 	}))
 end)
+-- wezterm.on("update-right-status", function(window)
+-- 	local text = window:leader_is_active() and "󰘳  " or ""
+-- 	window:set_right_status(wezterm.format({
+-- 		{ Foreground = { Color = "#a6d189" } },
+-- 		{ Text = text },
+-- 	}))
+-- end)
 --=============================
 -- Default shell
 --=============================
