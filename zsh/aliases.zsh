@@ -42,10 +42,10 @@ alias jpo="JULIA_PKG_OFFLINE='true' julia --project"
 alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
 alias la='ls -a'
 alias lg='lazygit'
+alias ls="eza --icons --group --header --mounts --created "
 alias ll="ls -l"
 alias lla="ls -alh"
-alias ls="eza --icons --group --header --mounts --created "
-alias ls='ls --color'
+# alias ls='ls --color'
 alias nhmail="mutt -f .IncomingMail.d/"
 alias notionsync="uv run notionsync.py $HOME/secondBrain/05Zettelkasten"
 alias or="v $HOME/secondBrain/00inbox/*.md"
