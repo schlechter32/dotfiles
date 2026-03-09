@@ -15,6 +15,7 @@
 # eval "$(pyenv virtualenv-init - | sed s/precmd/precwd/g)"
 #find . -type d -name "Seed01" -exec test -e "{}/simtree.lock" \; -exec rm -rf {} +   
 #find . -type d -name 'Seed01' -not -empty -exec sh -c '[ ! -e "$1/Export.log" ] && echo rm -rf "$1"' _ {} \;
+# alias cpfp='realpath "$1" | xclip -sel -c'
 alias ......="cd ../../.."
 alias ....="cd ../.."
 alias ..="cd .."
