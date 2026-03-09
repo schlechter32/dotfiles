@@ -122,6 +122,8 @@ vim.keymap.set("n", "<leader>co", ":copen<cr>zz")
 vim.keymap.set("n", "<leader>cc", ":cclose<cr>zz")
 vim.keymap.set("x", "<leader>p", '"_dP')
 --vim.opt.completeopt = {  "noselect" }
+--
+local host = vim.loop.os_gethostname()
 pack.add({
 	{ src = "https://github.com/vague-theme/vague.nvim.git" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -147,7 +149,8 @@ pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim.git" },
 	{ src = "iamcco/markdown-preview.nvim" },
 	{ src = "https://github.com/kevinhwang91/nvim-bqf.git" },
-	require("install_on_cobra"),
+	-- TODO: Does not work on netserv1 for some reason
+	-- require("install_on_cobra"),
 	{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim.git" },
 
 	-- { src = "https://github.com/anuvyklack/middleclass" },

@@ -14,25 +14,26 @@ sudo cp extpath.sh /etc/profile.d
 rm extpath.sh
 export PATH="/ext/bin:$PATH"
 # Rsync files down
-usr=$1
+usr=nclshrnk
+host=netserv0
 rsync -avz \
-$usr@n9:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar \
-$usr@n9:/ext/misc/lib/ikr-simtree.jar \
-$usr@n9:/ext/misc/lib/ikr-simtree-lzma-01.jar \
-$usr@n9:/ext/misc/lib/ikr-simtree-lzma.jar \
-$usr@n9:/ext/misc/lib/ikr-simtree-bzip-01.jar \
-$usr@n9:/ext/misc/lib/ikr-simtree-bzip.jar \
-$usr@n9:/ext/misc/bin/simtree_helper \
-$usr@n9:/ext/misc/doc/SimTree.html \
-$usr@n9:/ext/misc/doc/SimTree.txt \
-$usr@n9:/ext/bin/SimTree \
-$usr@n9:/ext/bin/GSProgramStarter \
-$usr@n9:/ext/bin/SimTreeGS \
-$usr@n9:/ext/bin/SimTreeGSControl \
-$usr@n9:/ext/bin/STResultPrinter \
-$usr@n9:/ext/bin/STResultViewer \
-$usr@n9:/ext/bin/gs_local_program_starter \
-$usr@n9:/ext/bin/gs_remote_program_starter \
+$usr@host:/ext/misc/lib/ikr-simtree-2.7.0beta16-1662726429.jar \
+$usr@host:/ext/misc/lib/ikr-simtree.jar \
+$usr@host:/ext/misc/lib/ikr-simtree-lzma-01.jar \
+$usr@host:/ext/misc/lib/ikr-simtree-lzma.jar \
+$usr@host:/ext/misc/lib/ikr-simtree-bzip-01.jar \
+$usr@host:/ext/misc/lib/ikr-simtree-bzip.jar \
+$usr@host:/ext/misc/bin/simtree_helper \
+$usr@host:/ext/misc/doc/SimTree.html \
+$usr@host:/ext/misc/doc/SimTree.txt \
+$usr@host:/ext/bin/SimTree \
+$usr@host:/ext/bin/GSProgramStarter \
+$usr@host:/ext/bin/SimTreeGS \
+$usr@host:/ext/bin/SimTreeGSControl \
+$usr@host:/ext/bin/STResultPrinter \
+$usr@host:/ext/bin/STResultViewer \
+$usr@host:/ext/bin/gs_local_program_starter \
+$usr@host:/ext/bin/gs_remote_program_starter \
 $HOME/ext/simtree/
 sudo mv $HOME/ext /
 
