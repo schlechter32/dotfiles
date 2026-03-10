@@ -53,6 +53,11 @@ function M.setup()
 	-- 	map("n", "<leader>cc", function()
 	-- 		require("sidekick.cli").toggle({ name = "claude", focus = true })
 	-- 	end, { desc = "Toggle Claude" })
+	vim.api.nvim_create_user_command("CodexResume", function()
+		vim.fn.jobstart({ "tmux", "new-session", "-A", "-s", "codex", "codex", "resume", "--last" }, {
+			detach = true,
+		})
+	end, {})
 end
 
 return M

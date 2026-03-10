@@ -17,6 +17,7 @@
 #find . -type d -name 'Seed01' -not -empty -exec sh -c '[ ! -e "$1/Export.log" ] && echo rm -rf "$1"' _ {} \;
 # alias cpfp='realpath "$1" | xclip -sel -c'
 alias ......="cd ../../.."
+alias sl="ssh-add -l"
 alias ....="cd ../.."
 alias ..="cd .."
 alias c9="nsh n9"
