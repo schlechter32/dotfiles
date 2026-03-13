@@ -10,7 +10,7 @@ pack.add(vim.list_extend({
 	{ src = "https://github.com/nvim-mini/mini.comment" },
 	{ src = "https://github.com/nvim-tree/nvim-web-devicons" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
-	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "v0.10.0" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "nvim-treesitter/nvim-treesitter-context" },
 	{ src = "https://github.com/alexghergh/nvim-tmux-navigation" },
 	{ src = "https://github.com/saghen/blink.cmp", version = "v1.7.0" },
@@ -178,7 +178,7 @@ require("mini.pick").setup()
 require("nvim-tmux-navigation").setup({})
 
 -- Treesitter for highlighting (markdown fenced code blocks included)
-local ok_ts, ts_configs = pcall(require, "nvim-treesitter.configs")
+local ok_ts, ts_configs = pcall(require, "nvim-treesitter")
 if ok_ts then
 	ts_configs.setup({
 		ensure_installed = { "lua", "julia", "markdown", "markdown_inline", "python", "latex", "bash", "vim" },

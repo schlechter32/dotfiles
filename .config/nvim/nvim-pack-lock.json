@@ -1,9 +1,5 @@
 {
   "plugins": {
-    "animation.nvim": {
-      "rev": "fb77091",
-      "src": "https://github.com/anuvyklack/animation.nvim"
-    },
     "blink.cmp": {
       "rev": "327fff9",
       "src": "https://github.com/saghen/blink.cmp",
@@ -40,10 +36,6 @@
     "maximize.nvim": {
       "rev": "d688b66",
       "src": "https://github.com/declancm/maximize.nvim"
-    },
-    "middleclass": {
-      "rev": "9fab4d5",
-      "src": "https://github.com/anuvyklack/middleclass"
     },
     "mini.ai": {
       "rev": "11c5718",
@@ -87,8 +79,7 @@
     },
     "nvim-treesitter": {
       "rev": "30c466ad",
-      "src": "https://github.com/nvim-treesitter/nvim-treesitter",
-      "version": "'v0.10.0'"
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-context": {
       "rev": "ec308c7",
@@ -110,17 +101,9 @@
       "rev": "7e1cd77",
       "src": "https://github.com/stevearc/oil.nvim"
     },
-    "otter.nvim": {
-      "rev": "b36e1a4",
-      "src": "https://github.com/jmbuhr/otter.nvim.git"
-    },
     "plenary.nvim": {
       "rev": "b9fd522",
       "src": "https://github.com/nvim-lua/plenary.nvim"
-    },
-    "quarto-nvim": {
-      "rev": "0e9491509b38efbd83d3f41dbfacc7fc4bd40191",
-      "src": "https://github.com/quarto-dev/quarto-nvim"
     },
     "render-markdown.nvim": {
       "rev": "6e0e890",
@@ -137,10 +120,6 @@
     "vague.nvim": {
       "rev": "5689afd",
       "src": "https://github.com/vague-theme/vague.nvim.git"
-    },
-    "windows.nvim": {
-      "rev": "c749255",
-      "src": "https://github.com/anuvyklack/windows.nvim"
     }
   }
 }

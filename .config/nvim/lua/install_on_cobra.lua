@@ -1,6 +1,6 @@
 local host = vim.loop.os_gethostname()
 
-if not host:find("cobra1") then
+if not host:find("cobra3") then
 	return {} -- never nil
 end
 
