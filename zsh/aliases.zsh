@@ -69,3 +69,14 @@ alias vim='nvim'
 alias z="zellij"
 alias za="zellij attach"
 alias zl="zellij list-sessions"
+
+alias codex-auto='codex -a full-auto'
+alias codex-local-auto='OLLAMA_BASE_URL=http://localhost:11434/v1 codex --provider
+  ollama -m qwen3-coder-next:latest -a full-auto'
+
+
+alias claude-auto='claude --dangerously-skip-permissions'
+alias claude-local-auto='ANTHROPIC_AUTH_TOKEN=ollama
+  ANTHROPIC_BASE_URL=http://localhost:11434 ANTHROPIC_API_KEY="" claude
+  --dangerously-skip-permissions --model qwen3-coder-next:latest'
+
