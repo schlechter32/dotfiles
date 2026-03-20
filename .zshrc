@@ -5,6 +5,7 @@ export GPG_TTY
 source "$HOME/dotfiles/zsh/paths.zsh"
 source "$HOME/dotfiles/zsh/homebrew.zsh"
 
+
 export TMS_CONFIG_FILE="$HOME/.config/tms/config.toml"
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -30,10 +31,12 @@ zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
-autoload -Uz compinit 
+autoload -Uz compinit
 compinit
 
 zinit cdreplay -q
+
+source "$HOME/dotfiles/zsh/devpod.zsh"
 
 # History
 HISTSIZE=5000
