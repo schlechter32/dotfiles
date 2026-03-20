@@ -56,3 +56,4 @@ cargo-binstall zoxide
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
+linkconf.sh

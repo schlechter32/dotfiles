@@ -16,6 +16,7 @@ mkdir -p ~/.julia/environments
 
 # nvim conf
 ln -sf $REPODIR/.config/nvim/* ~/.config/nvim
+ln -sf $REPODIR/zsh ~/zsh
 # tmux conf
 ln -sf $REPODIR/.config/tmux/* ~/.config/tmux
 ln -sf $REPODIR/.ipython/ipython_config.py ~/.ipython/profile_default/ipython_config.py
