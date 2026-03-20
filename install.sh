@@ -31,11 +31,11 @@ else
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 export PATH="$HOME/.cargo/bin:$PATH"
 # bat
-cargo-binstall bat
+cargo-binstall bat -y
 # eza
-cargo-binstall eza
+cargo-binstall eza -y
 #starship
-cargo-binstall starship
+cargo-binstall starship -y
 # fzf
 mkdir -p $APPS/apps/fzf
 curl -L https://github.com/junegunn/fzf/releases/download/0.53.0/fzf-0.53.0-linux_amd64.tar.gz | tar -xz -C $APPS/apps/fzf
@@ -50,11 +50,11 @@ mkdir -p $APPS/apps/nvim
   curl -L https://github.com/neovim/neovim/releases/download/v0.10.4/nvim-linux-x86_64.tar.gz | tar -xz -C $APPS/apps/nvim/ --strip-components=1
 ln -sf $APPS/apps/nvim/bin/nvim $APPS/bin/
 # ripgrep
-cargo-binstall ripgrep
+cargo-binstall ripgrep -y
 # tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # yazi-fm
-cargo-binstall yazi-fm
+cargo-binstall yazi-fm -y
 # zellij
 mkdir -p $APPS/apps/zellij
 curl -L https://github.com/zellij-org/zellij/releases/latest/download/zellij-x86_64-unknown-linux-musl.tar.gz | tar -xz -C $APPS/apps/zellij
