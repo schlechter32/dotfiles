@@ -3,6 +3,7 @@ set -euo pipefail
 
 workspace="${1:-$PWD}"
 mode="${2:-auto}"
+provider="${3:-}"
 
 if [ "$mode" = "auto" ]; then
     if command -v nvidia-smi >/dev/null 2>&1 || [ -e /dev/nvidia0 ]; then
@@ -17,7 +18,7 @@ fi
 case "$mode" in
     cpu|cuda|rocm) ;;
     *)
-        echo "usage: $(basename "$0") [workspace-path] [cpu|cuda|rocm|auto]" >&2
+        echo "usage: $(basename "$0") [workspace-path] [cpu|cuda|rocm|auto] [provider]" >&2
         exit 1
         ;;
 esac
@@ -29,8 +30,12 @@ workspace_id="${workspace_name}-${workspace_hash}"
 devcontainer_path=".devcontainer/devcontainer.${mode}.json"
 dotfiles_repo="https://github.com/schlechter32/dotfiles_ikr.git"
 
+provider_arg=()
+[ -n "$provider" ] && provider_arg=(--provider "$provider")
+
 exec devpod up "$workspace_abs" \
     --id "$workspace_id" \
     --ide none \
     --dotfiles "$dotfiles_repo" \
-    --devcontainer-path "$devcontainer_path"
+    --devcontainer-path "$devcontainer_path" \
+    "${provider_arg[@]}"
