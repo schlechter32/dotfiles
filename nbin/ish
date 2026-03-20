@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-SSH_CONFIG="${HOME}/dotfiles_ikr/.ssh/config"
+SSH_CONFIG="${SSH_CONFIG:-${HOME}/.ssh/config}"
 
 usage() {
     echo "Usage: ish [ssh options] host [command ...]" >&2

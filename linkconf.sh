@@ -1,5 +1,7 @@
 #! /bin/bash
-REPODIR=$(pwd)
+set -euo pipefail
+
+REPODIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/tmux
@@ -34,13 +36,12 @@ ln -sf $REPODIR/nbin/ $HOME
 ln -sf $REPODIR/.local/share/fonts/* ~/.local/share/fonts
 ln -sf $REPODIR/.gitconfig $HOME
 ln -sf $REPODIR/.gnupg/gpg-agent.conf $HOME/.gnupg
+mkdir -p ~/.ssh
+cp -f "$REPODIR/.ssh/config" "$HOME/.ssh/config"
 
 if command -v nix &>/dev/null && nix --version &>/dev/null; then
     echo "On nix assuming shelltools already installed"
 else
-    mkdir -p ~/.ssh
-    ln -sf $REPODIR/.ssh/config ~/.ssh/
-
     if [ $(uname) == "Darwin" ]; then
         echo "On Darwin"
 
@@ -54,5 +55,4 @@ else
         fi
     fi
 fi
-
 

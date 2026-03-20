@@ -41,7 +41,7 @@ alias j="julia"
 alias jo="JULIA_PKG_OFFLINE='true' julia "
 alias jp="julia --project"
 alias jpo="JULIA_PKG_OFFLINE='true' julia --project"
-alias ka="sudo kanata --quiet --cfg ~/dotfiles_ikr/kanata.kbd&"
+alias ka="sudo kanata --quiet --cfg ~/dotfiles/kanata.kbd&"
 alias la='ls -a'
 alias lg='lazygit'
 alias ls="eza --icons --group --header --mounts --created "

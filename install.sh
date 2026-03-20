@@ -1,12 +1,20 @@
 #! /bin/bash
-APPS=$HOME/localapps
-REPODIR=$(pwd)
-echo $REPODIR
+set -euo pipefail
+
+APPS="$HOME/localapps"
+REPODIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_HOME="$HOME/dotfiles"
+
+echo "$REPODIR"
+
+if [[ "$REPODIR" != "$DOTFILES_HOME" ]]; then
+  ln -sfn "$REPODIR" "$DOTFILES_HOME"
+fi
 
 mkdir -p $APPS/apps/
 mkdir -p $APPS/bin/
 mkdir -p ~/.ssh
-ln -sf $REPODIR/nbin/* $APPS/bin
+ln -sf "$REPODIR"/nbin/* "$APPS/bin"
 # ln -sf $REPODIR/.zshrc ~
 
 # touch ~/.bashrc_machine_specific.sh
@@ -56,4 +64,4 @@ cargo-binstall zoxide
 # uv
 curl -LsSf https://astral.sh/uv/install.sh | sh
 fi
-linkconf.sh
+"$REPODIR/linkconf.sh"

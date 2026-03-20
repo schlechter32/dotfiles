@@ -53,7 +53,7 @@ nsh-add() {
   pass show "ssh/$key_name" | ssh-add -
 }
 function tc {
-  local GHOSTTY_DIR="$HOME/dotfiles_ikr/.config/ghostty"
+  local GHOSTTY_DIR="$HOME/dotfiles/.config/ghostty"
   local CMD="sed -i '' 's:\(config-file = {1}\)/.*:\1/{2}:' $GHOSTTY_DIR/config && osascript -so -e 'tell application \"Ghostty\" to activate' -e 'tell application \"System Events\" to keystroke \",\" using {command down, shift down}'"
   fd -L \
     --type f \
