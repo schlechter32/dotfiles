@@ -15,6 +15,7 @@ vim.opt.termguicolors = true
 vim.opt.updatetime = 200
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+vim.opt.shortmess:append("sS") -- suppress search count [x/y] and wrap messages (avoids VSCode output panel)
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.wrap = true
