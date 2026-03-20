@@ -11,8 +11,11 @@ vim.lsp.config("copilot", {
 
 -- JetLS using your working defaults (configure before enabling)
 vim.lsp.config("jetls", {
-	cmd = { "jetls", "--threads=auto", "--" },
+	cmd = {
+		"jetls",
+	},
 	filetypes = { "julia" },
+	root_markers = { "Project.toml" },
 })
 
 -- Base server enabling (after configs are defined)

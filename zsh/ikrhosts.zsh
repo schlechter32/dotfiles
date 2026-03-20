@@ -59,7 +59,7 @@ export UV_CACHE_DIR="$LAB_BULK_HOME/.uv/cache"
 # export JULIAUP_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
 # export JULIA_DEPOT_PATH="$LAB_BULK_HOME/.julia/"
 
-export ST_PATH=$HOME/source/simtree_wrapper
+export ST_PATH=$LAB_BULK_HOME/source/simtree_wrapper
 # function st(){
 #     source $HOME/source/simtree_wrapper/st_wrapper.bash
 # }
