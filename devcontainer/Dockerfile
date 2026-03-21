@@ -16,6 +16,7 @@ RUN apt-get update \
       git-lfs \
       jq \
       less \
+      libgmt-dev \
       neovim \
       pkg-config \
       procps \

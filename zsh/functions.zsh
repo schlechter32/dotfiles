@@ -64,3 +64,26 @@ function tc {
     --delimiter=/ \
     --bind="enter:become:$CMD"
 }
+
+# List devpod workspaces on a remote host
+# Usage: devpod-remote-list [host]
+devpod-remote-list() {
+  local host="${1:-ecobra3}"
+  ssh "$host" devpod list --output json 2>/dev/null | jq -r '.[].id'
+}
+
+# Generate SSH config block for a remote devpod workspace
+# Usage: devpod-remote-ssh-config <workspace-id> [host]
+devpod-remote-ssh-config() {
+  local workspace="$1"
+  local host="${2:-ecobra3}"
+  cat <<SSHCONF
+Host ${workspace}.devpod
+  ForwardAgent yes
+  LogLevel error
+  StrictHostKeyChecking no
+  UserKnownHostsFile /dev/null
+  ProxyCommand ssh ${host} devpod ssh --stdio --context default --user dev ${workspace} --workdir "/workspace"
+  User dev
+SSHCONF
+}
