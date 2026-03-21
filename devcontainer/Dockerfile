@@ -1,9 +1,5 @@
 FROM ubuntu:24.04
 
-ARG USERNAME=dev
-ARG USER_UID=1000
-ARG USER_GID=1000
-
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       bubblewrap \
@@ -27,11 +23,10 @@ RUN apt-get update \
       zsh \
     && rm -rf /var/lib/apt/lists/*
 
-RUN groupadd -f --gid ${USER_GID} ${USERNAME} \
-    && useradd --uid ${USER_UID} --gid ${USER_GID} -m -s /usr/bin/zsh ${USERNAME} 2>/dev/null \
-    || usermod -s /usr/bin/zsh -d /home/${USERNAME} ${USERNAME} \
-    && echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${USERNAME} \
-    && chmod 0440 /etc/sudoers.d/${USERNAME}
+RUN usermod -l dev -d /home/dev -m ubuntu \
+    && groupmod -n dev ubuntu \
+    && echo "dev ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/dev \
+    && chmod 0440 /etc/sudoers.d/dev
 
-USER ${USERNAME}
+USER dev
 WORKDIR /workspace
