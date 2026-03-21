@@ -2,9 +2,10 @@ name: Build devcontainer image
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
     paths:
       - devcontainer/Dockerfile
+  workflow_dispatch:
 
 jobs:
   build:
