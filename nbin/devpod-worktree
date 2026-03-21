@@ -23,7 +23,11 @@ case "$mode" in
         ;;
 esac
 
-workspace_abs="$(realpath "$workspace")"
+if [ -n "$provider" ] && [ ! -e "$workspace" ]; then
+    workspace_abs="$workspace"
+else
+    workspace_abs="$(realpath "$workspace")"
+fi
 workspace_hash="$(printf '%s' "$workspace_abs" | sha256sum | cut -c1-10)"
 workspace_name="$(basename "$workspace_abs" | tr '[:upper:]' '[:lower:]' | tr -cs 'a-z0-9._-' '-')"
 workspace_id="${workspace_name}-${workspace_hash}"
