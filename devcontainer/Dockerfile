@@ -2,16 +2,13 @@ FROM ubuntu:24.04
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      bubblewrap \
       ca-certificates \
       curl \
       git \
-      git-lfs \
       less \
       libgmt-dev \
       procps \
       sudo \
-      tmux \
       unzip \
       xz-utils \
       zsh \
@@ -31,12 +28,12 @@ ENV DOTFILES_INSTALL_MODE=container
 ENV NIX_CONFIG="experimental-features = nix-command flakes"
 ENV PATH="$HOME/.nix-profile/bin:$HOME/.local/state/nix/profile/bin:$HOME/.local/bin:$HOME/.cargo/bin:$HOME/nbin:$PATH"
 
-COPY --chown=dev:dev nixos-config /tmp/nixos-config
-COPY --chown=dev:dev dotfiles_ikr /home/dev/dotfiles
+COPY --chown=dev:dev devcontainer /tmp/devcontainer-build
+COPY --chown=dev:dev . /home/dev/dotfiles
 
 RUN curl -fsSL https://nixos.org/nix/install | sh -s -- --no-daemon \
     && . "$HOME/.nix-profile/etc/profile.d/nix.sh" \
-    && nix profile install /tmp/nixos-config#container-tools \
-    && rm -rf /tmp/nixos-config
+    && nix profile install path:/tmp/devcontainer-build#container-tools \
+    && rm -rf /tmp/devcontainer-build
 
 WORKDIR /workspace
