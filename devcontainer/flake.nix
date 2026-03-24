@@ -23,6 +23,34 @@
           })
         ];
       };
+      runtimeLibs = with pkgs; [
+        zlib
+        zstd
+        stdenv.cc.cc
+        stdenv.cc.cc.lib
+        curl
+        openssl
+        attr
+        libssh
+        bzip2
+        libxml2
+        acl
+        libsodium
+        util-linux
+        xz
+        systemd
+      ];
+      systemPython = pkgs.symlinkJoin {
+        name = "system-python";
+        paths = [ pkgs.python314 ];
+        buildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          lib_path="${pkgs.lib.makeLibraryPath runtimeLibs}"
+          wrapProgram "$out/bin/python3.14" --prefix LD_LIBRARY_PATH : "$lib_path"
+          wrapProgram "$out/bin/python3" --prefix LD_LIBRARY_PATH : "$lib_path"
+          ln -sf "$out/bin/python3" "$out/bin/python"
+        '';
+      };
     in {
       packages.${system}.container-tools = pkgs.buildEnv {
         name = "container-tools";
@@ -38,7 +66,6 @@
           jq
           lazygit
           pass
-          python314
           ripgrep
           starship
           tmux
@@ -51,7 +78,8 @@
           neovim-nightly-overlay.packages.${system}.default
           unstable.claude-code
           unstable.codex
-        ];
+          systemPython
+        ] ++ runtimeLibs;
       };
     };
 }
