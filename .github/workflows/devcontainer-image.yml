@@ -5,8 +5,8 @@ on:
     branches: [main, master]
     paths:
       - .dockerignore
-      - devcontainer/Dockerfile
-      - devcontainer/flake.nix
+      - .github/workflows/devcontainer-image.yml
+      - devcontainer/**
   workflow_dispatch:
 
 jobs:
