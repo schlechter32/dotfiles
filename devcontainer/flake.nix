@@ -23,6 +23,10 @@
           })
         ];
       };
+      btopGpu = pkgs.btop.override {
+        cudaSupport = true;
+        rocmSupport = true;
+      };
       runtimeLibs = with pkgs; [
         zlib
         zstd
@@ -56,7 +60,8 @@
         name = "container-tools";
         paths = with pkgs; [
           bat
-          btop
+          btopGpu
+          cargo-binstall
           eza
           fd
           file

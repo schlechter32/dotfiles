@@ -34,6 +34,8 @@ COPY --chown=dev:dev . /home/dev/dotfiles
 RUN curl -fsSL https://nixos.org/nix/install | sh -s -- --no-daemon \
     && . "$HOME/.nix-profile/etc/profile.d/nix.sh" \
     && nix profile install path:/tmp/devcontainer-build#container-tools \
+    && cargo-binstall -y television \
+    && curl -fsSL https://opencode.ai/install | bash \
     && rm -rf /tmp/devcontainer-build
 
 WORKDIR /workspace
